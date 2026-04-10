@@ -170,9 +170,10 @@ class MemoryGame:
                 self.selected = []
 
     def draw(self):
-        self.screen.fill(WHITE)
+        bg_full = pygame.image.load("theme.jpg").convert()
+        self.screen.blit(bg_full, (0, 0))
         if self.scene == "MENU":
-            self.draw_text("CHỌN CHỦ ĐỀ", (WIDTH//2, 100))
+            self.draw_text("CHON CHU DE BAN MUON", (WIDTH//2, 400))
             # Vẽ 3 nút ở đây...
             
         elif self.scene == "INTRO":
@@ -204,7 +205,7 @@ class MemoryGame:
         # Vẽ text nội dung giáo dục lên trên overlay
         
     def draw_text(self, text, pos):
-        img = self.font.render(text, True, BLACK)
+        img = self.font.render(text, True, WHITE)
         rect = img.get_rect(center=pos)
         self.screen.blit(img, rect)
 
