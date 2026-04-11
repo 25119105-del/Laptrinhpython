@@ -92,8 +92,24 @@ INFO_DATA = {
                 "Thổ": {
                     "nguon_goc": "Giao thoa văn hóa Kinh - Mường vùng Nghệ An, Thanh Hóa.",
                         "dac_diem": "Váy đen có cạp dệt hoa văn tinh xảo, thắt lưng màu nổi và khăn vuông trắng."},
-                },
-    "Lịch sử": {"dien_bien": "Chiến thắng Điện Biên Phủ...", "vua_hung": "Giỗ tổ Hùng Vương..."}
+                }},
+    "Lịch sử": {
+    "An_Duong_Vuong": "Sự kiện đánh dấu sự ra đời của nhà nước Âu Lạc với kinh đô Cổ Loa, nổi bật với kỹ thuật xây thành kiên cố và nỏ liên châu huyền thoại.",
+    "Hai_Ba_Trung": "Cuộc khởi nghĩa vũ trang đầu tiên chống lại ách đô hộ phương Bắc, khẳng định sức mạnh và vai trò to lớn của phụ nữ Việt Nam.",
+    "Ba_Trieu": "Hình tượng oai phong với câu nói 'cưỡi cơn gió mạnh, đạp luồng sóng dữ', biểu tượng bất diệt cho ý chí kiên cường, không chịu cúi đầu làm tì thiếp.",
+    "chien_thang_bach_dang": "Trận thủy chiến vĩ đại đánh bại quân Nam Hán bằng trận địa cọc gỗ, chấm dứt vĩnh viễn 1000 năm Bắc thuộc, mở ra kỷ nguyên độc lập lâu dài.",
+    "dinh_bo_linh": "Hành trình dẹp yên loạn 12 sứ quân, thống nhất đất nước và đặt quốc hiệu Đại Cồ Việt, củng cố mạnh mẽ nền độc lập non trẻ.",
+    "le_hoan_pha_tong": "Cuộc kháng chiến oanh liệt đánh tan quân xâm lược nhà Tống cả trên bộ lẫn trên sông Bạch Đằng, buộc nhà Tống thừa nhận sức mạnh Đại Cồ Việt.",
+    "doi_do_thang_long": "Quyết định mang tính bước ngoặt chuyển kinh đô về vùng đất 'Rồng cuộn hổ ngồi' Đại La, tạo tiền đề cho sự phát triển rực rỡ của kinh thành ngàn năm.",
+    "Lý_Thường_Kiệt": "Trận chiến trên sông Như Nguyệt bẻ gãy ý chí xâm lược của nhà Tống gắn liền với bài thơ thần 'Nam quốc sơn hà' - bản Tuyên ngôn Độc lập đầu tiên.",
+    "khang_chien_nguyen_mong": "Bản hùng ca chói lọi của quân dân nhà Trần với những trận đánh tan đạo quân hùng mạnh nhất thế giới, gắn liền với hào khí Đông A rực lửa.",
+    "khoi_nghia_lam_son": "Cuộc kháng chiến trường kỳ 10 năm 'nằm gai nếm mật' đánh đuổi giặc Minh, mở ra thời kỳ phát triển thịnh vượng và để lại bản 'Bình Ngô Đại Cáo'.",
+    "Quang_Trung": "Cuộc hành quân thần tốc mùa xuân năm Kỷ Dậu đánh tan 29 vạn quân Thanh chỉ trong 5 ngày, đỉnh cao của nghệ thuật quân sự đánh nhanh diệt gọn.",
+    "phap_no_sung": "Sự kiện mở đầu cho quá trình thực dân Pháp xâm lược Việt Nam tại Đà Nẵng, đưa đất nước vào thời kỳ kháng chiến cam go chống lại vũ khí phương Tây.",
+    "thanh_lap_dang": "Bước ngoặt vĩ đại hợp nhất các tổ chức cộng sản do Nguyễn Ái Quốc chủ trì, chấm dứt thời kỳ khủng hoảng về đường lối giải phóng dân tộc.",
+    "cach_mang_thang_tam": "Cuộc tổng khởi nghĩa giành chính quyền rực rỡ và ngày 2/9/1945 khai sinh ra nước Việt Nam Dân chủ Cộng hòa tại quảng trường Ba Đình.",
+    "dien_bien_phu": "Trận quyết chiến chiến lược kéo dài 56 ngày đêm 'lừng lẫy năm châu, chấn động địa cầu', buộc Pháp ký Hiệp định Geneva lập lại hòa bình miền Bắc.",
+    "chien_dich_ho_chi_minh": "Chiến dịch quân sự cuối cùng mang tính quyết định, giải phóng hoàn toàn miền Nam và thống nhất đất nước vào trưa ngày 30/4/1975."
     }
 }
 
