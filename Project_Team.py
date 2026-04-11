@@ -92,16 +92,16 @@ INFO_DATA = {
                 "Thổ": {
                     "nguon_goc": "Giao thoa văn hóa Kinh - Mường vùng Nghệ An, Thanh Hóa.",
                         "dac_diem": "Váy đen có cạp dệt hoa văn tinh xảo, thắt lưng màu nổi và khăn vuông trắng."},
-                },
+                }},
     "Lịch sử": {"dien_bien": "Chiến thắng Điện Biên Phủ...", "vua_hung": "Giỗ tổ Hùng Vương..."}
-    }
+    
 }
 
 class MemoryGame:
     def __init__(self):
         pygame.init()
         
-        self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
+        self.screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.RESIZABLE)
         self.clock = pygame.time.Clock()
         self.font = pygame.font.SysFont("Arial", 24)
         
@@ -109,6 +109,17 @@ class MemoryGame:
         self.scene = "MENU" # MENU, INTRO, GAMEPLAY
         self.current_theme = None
         self.running = True
+        
+        try:
+            self.bg_full = pygame.image.load("theme.jpg").convert()
+        except FileNotFoundError:
+            print("Không tìm thấy file ảnh background.png!")
+            # Tạo một nền màu tạm thời nếu không có ảnh
+            self.bg_full = pygame.Surface((self.WIDTH, self.HEIGHT))
+            self.bg_full.fill((0, 0, 50)) # Màu xanh tối
+        
+        self.bg_current = None
+        self.scale_bg() #gọi hàm 
         
         # Logic Game ////////////////////////
         self.cards = []      # Danh sách các tấm ảnh/tên ảnh
@@ -170,16 +181,25 @@ class MemoryGame:
                 self.selected = []
 
     def draw(self):
-        bg_full = pygame.image.load("theme.jpg").convert()
-        self.screen.blit(bg_full, (0, 0))
+        self.screen.blit(self.bg_current, (0, 0))
+        #self.screen.blit(bg_full, (0, 0))
+        
+        
+        
+        #self.screen.blit(self.bg_current, (0, 0))
+        
         if self.scene == "MENU":
-            self.draw_text("CHON CHU DE BAN MUON", (WIDTH//2, 400))
+            curr_w = self.screen.get_width()
+            curr_h = self.screen.get_height()
+            self.draw_text("CHON CHU DE BAN MUON", (curr_w // 2, curr_h - 200))
             # Vẽ 3 nút ở đây...
             
         elif self.scene == "INTRO":
             # Vẽ ảnh nền theme /////////////////////////////////
-            self.draw_text(f"Chủ đề: {self.current_theme}. Click để bắt đầu!", (WIDTH//2, HEIGHT//2))
-            
+            curr_w = self.screen.get_width()
+            curr_h = self.screen.get_height()
+            self.draw_text(f"Chủ đề: {self.current_theme}. Click để bắt đầu!", (curr_w // 2, curr_h // 2))
+
         elif self.scene == "GAMEPLAY":
             self.draw_grid()
             if self.matched_info:
@@ -212,6 +232,13 @@ class MemoryGame:
     def start_intro(self, theme):
         self.setup_level(theme)
         self.scene = "INTRO"
+    
+    def scale_bg(self):
+        # Hàm này sẽ lấy kích thước HIỆN TẠI của màn hình và scale ảnh gốc theo đó
+        current_size = self.screen.get_size() # Lấy (width, height) mới
+        # Dùng smoothscale để chất lượng đẹp hơn khi co giãn
+        self.bg_current = pygame.transform.smoothscale(self.bg_full, current_size)
+        print(f"Đã scale nền theo kích thước mới: {current_size}")
 
 # --- CHẠY GAME ---
 if __name__ == "__main__":
@@ -219,9 +246,23 @@ if __name__ == "__main__":
     while game.running:
         game.draw()
         for event in pygame.event.get():
-            if event.type == pygame.QUIT: game.running = False
+            if event.type == pygame.QUIT: 
+                game.running = False
+            if event.type == pygame.VIDEORESIZE:
+                new_width, new_height = event.w, event.h
+                    
+                # Cập nhật lại chế độ màn hình với kích thước mới
+                screen = pygame.display.set_mode((new_width, new_height), pygame.RESIZABLE)
+                    
+                # Gọi hàm scale lại ảnh nền theo kích thước mới này
+                game.scale_bg()
+                
+                
             if event.type == pygame.MOUSEBUTTONDOWN:
                 game.handle_click(event.pos)
+        
+        #self.screen.blit(self.bg_current, (0, 0))
+        
         if game.scene == "GAMEPLAY":
             game.update()
             
