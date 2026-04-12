@@ -103,9 +103,19 @@ class MemoryGame:
     def __init__(self):
         pygame.init()
         
+        self.size_title = 75
+        self.size_normal = 24
+        
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.RESIZABLE)
         self.clock = pygame.time.Clock()
-        self.font = pygame.font.SysFont("Arial", 24)
+        self.font = pygame.font.SysFont("Arial", self.size_normal)
+        
+        try:
+            self.font_title = pygame.font.Font("Top Secret.ttf",self.size_title)
+        except:
+            # Phòng trường hợp sai đường dẫn file, dùng font mặc định để không lỗi game
+            self.font_title = pygame.font.SysFont("Arial", self.size_title)
+            print("Không tìm thấy file Top Secret.ttf, đang dùng font mặc định.")
         
         # Trạng thái hệ thống
         self.scene = "MENU" # MENU, INTRO, GAMEPLAY
@@ -113,7 +123,7 @@ class MemoryGame:
         self.running = True
         
         try:
-            self.bg_full = pygame.image.load("theme.jpg").convert()
+            self.bg_full = pygame.image.load("theme.png").convert()
         except FileNotFoundError:
             print("Không tìm thấy file ảnh background.png!")
             # Tạo một nền màu tạm thời nếu không có ảnh
@@ -187,14 +197,11 @@ class MemoryGame:
         self.screen.blit(self.bg_current, (0, 0))
         #self.screen.blit(bg_full, (0, 0))
         
-        
-        
-        #self.screen.blit(self.bg_current, (0, 0))
-        
         if self.scene == "MENU":
-            curr_w = self.screen.get_width()
-            curr_h = self.screen.get_height()
-            self.draw_text("CHON CHU DE BAN MUON", (curr_w // 2, curr_h - 200))
+            self.curr_w = self.screen.get_width()
+            self.curr_h = self.screen.get_height()
+            #self.draw_text("Flip Game", (curr_w // 2, curr_h - 200))
+            self.draw_text_title("FLIP GAME", (self.screen.get_width()*0.6, self.screen.get_height()*0.2))
 
             # Vẽ 3 nút ở đây...
             
@@ -210,7 +217,6 @@ class MemoryGame:
                 self.draw_popup(self.matched_info)
 
     def draw_grid(self):
-        """Vẽ lưới 4x4 (Giao cho Sâm/Nghĩa)"""
         for i in range(16):
             row, col = i // 4, i % 4
             rect = pygame.Rect(80 + col*(CARD_SIZE+MARGIN), 80 + row*(CARD_SIZE+MARGIN), CARD_SIZE, CARD_SIZE)
@@ -228,21 +234,39 @@ class MemoryGame:
         self.screen.blit(overlay, (100, 200))
         # Vẽ text nội dung giáo dục lên trên overlay
         
-    def draw_text(self, text, pos):
+    def draw_text_title(self, text, pos): #hàm này dùng để viết tên game do có font riêng
+        img = self.font_title.render(text, True, WHITE)
+        rect = img.get_rect(center=pos)
+        self.screen.blit(img, rect)
+        
+    def draw_text(self, text, pos): #hàm này dùng để viết nội dung
         img = self.font.render(text, True, WHITE)
         rect = img.get_rect(center=pos)
         self.screen.blit(img, rect)
-
+        
     def start_intro(self, theme):
         self.setup_level(theme)
         self.scene = "INTRO"
     
-    def scale_bg(self):
+    def scale_bg(self, current_size=None): #hàm này dùng để điều chỉnh kích thước
         # Hàm này sẽ lấy kích thước HIỆN TẠI của màn hình và scale ảnh gốc theo đó
-        current_size = self.screen.get_size() # Lấy (width, height) mới
+        if current_size is None:
+            current_size = self.screen.get_size() # Lấy (width, height) mới
         # Dùng smoothscale để chất lượng đẹp hơn khi co giãn
         self.bg_current = pygame.transform.smoothscale(self.bg_full, current_size)
         print(f"Đã scale nền theo kích thước mới: {current_size}")
+        
+        #phần dưới này để fix cỡ chữ cho hợp
+        scale_ratio = current_size[0] / 800 
+        new_title_size = int(self.size_title * scale_ratio)
+        new_normal_size = int(self.size_normal * scale_ratio)
+        
+        # Khởi tạo lại font với size mới
+        try:
+            self.font_title = pygame.font.Font("Top Secret.ttf", max(20, new_title_size))
+            self.font = pygame.font.SysFont("Arial", max(12, new_normal_size))
+        except:
+            self.font_title = pygame.font.SysFont("Arial", max(20, new_title_size))
 
 # --- CHẠY GAME ---
 if __name__ == "__main__":
@@ -259,7 +283,9 @@ if __name__ == "__main__":
                 screen = pygame.display.set_mode((new_width, new_height), pygame.RESIZABLE)
                     
                 # Gọi hàm scale lại ảnh nền theo kích thước mới này
-                game.scale_bg()
+                game.scale_bg((new_width, new_height))
+                game.curr_h = new_height
+                game.curr_w = new_width
                 
                 
             if event.type == pygame.MOUSEBUTTONDOWN:
