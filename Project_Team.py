@@ -130,18 +130,7 @@ INFO_DATA = {
     "Tục tang ma": "(Khi có người thân qua đời): Thể hiện đạo lý 'Nghĩa tử là nghĩa tận'. Các nghi lễ được thực hiện cẩn trọng để linh hồn người khuất được yên nghỉ và phù hộ cho hậu thế.",
     "Tục treo câu đối": "(Trước đêm Giao thừa): Những đôi câu đối đỏ tượng trưng cho sự may mắn, trí tuệ và là lời nhắc nhở về đạo đức, lối sống cho con cháu trong nhà.",
     "Tục uống trà": "(Mọi lúc trong ngày): Trà Việt thường là trà mộc hoặc ướp hoa. Thưởng trà là nghệ thuật đòi hỏi sự tĩnh lặng, thể hiện tính cách điềm đạm và lòng hiếu khách."
-  }
-
-    "Phong tục": {
-    "Tết Nguyên Đán": "(Từ 23 tháng Chạp đến mùng 3 Tết): Lễ hội lớn nhất trong năm của người Việt, đánh dấu sự giao thoa giữa năm cũ và năm mới. Đây là dịp để gia đình sum vầy, tri ân tổ tiên qua mâm ngũ quả và những bữa cơm tất niên ấm cúng.",
-    "Ông Công Ông Táo": "(Ngày 23 tháng Chạp âm lịch): Người Việt thực hiện nghi lễ thả cá chép ra sông hồ để tiễn các vị thần Bếp về trời báo cáo việc nhà, cầu mong một năm mới sung túc.",
-    "Gói bánh chưng": "(Từ 26 đến 29 Tết): Bánh chưng vuông tượng trưng cho Đất và lòng biết ơn nguồn cội. Tục quây quần bên nồi bánh đỏ lửa đêm cuối năm là biểu tượng thiêng liêng nhất của sự gắn kết gia đình.",
-    "Đi chùa đầu năm": "(Từ đêm Giao thừa đến hết tháng Giêng): Không chỉ để cầu xin bình an, tài lộc mà còn là khoảnh khắc tìm về sự thanh tịnh. Đây là nét đẹp tâm linh gắn liền với tục 'hái lộc' mang may mắn về nhà.",
-    "Xin chữ": "(Những ngày đầu xuân): Thường diễn ra tại các 'phố ông đồ', thể hiện truyền thống hiếu học và tinh thần tôn sư trọng đạo. Mỗi nét chữ gửi gắm ước nguyện về sự thành đạt và bình an.",
-    "Lì xì": "(Mùng 1 đến mùng 3 Tết): Những phong bao đỏ rực rỡ tượng trưng cho may mắn kèm theo lời chúc 'hay ăn chóng lớn' cho trẻ nhỏ và sức khỏe cho người già. Ý nghĩa nằm ở tình cảm dành cho nhau.",
-    "Giỗ Tổ": "(Ngày 10/03 âm lịch): Ngày hội toàn dân hướng về Đền Hùng (Phú Thọ) để tưởng nhớ công ơn dựng nước của các vị vua Hùng, nhắc nhở đạo lý 'Uống nước nhớ nguồn'.",
-    "Tết Trung thu": "(Rằm tháng Tám âm lịch): Được coi là ngày tết của tình thân và sự đoàn viên cho trẻ em với các hoạt động rước đèn cá chép, múa lân và phá cỗ trông trăng dưới ánh rằm."
-    }
+  },
     "Địa danh": {"vinh_ha_Long": "Vịnh Hạ Long là một trong những kỳ quan thiên nhiên nổi tiếng nhất của Việt Nam và đã được UNESCO công nhận là di sản thiên nhiên thế giới. Nơi đây có hàng nghìn hòn đảo đá vôi lớn nhỏ với nhiều hình dạng độc đáo nhô lên giữa làn nước xanh ngọc. Cảnh quan hùng vĩ cùng hệ thống hang động kỳ ảo khiến vịnh trở thành điểm du lịch hấp dẫn đối với du khách trong và ngoài nước.",
                  "pho_co_hoi_an": "Phố cổ Hội An là đô thị cổ nổi tiếng với những ngôi nhà mái ngói rêu phong và những con phố nhỏ yên bình. Nơi đây từng là thương cảng sầm uất từ thế kỷ XVI đến XVII, nơi giao lưu văn hóa giữa nhiều quốc gia. Vào buổi tối, ánh đèn lồng rực rỡ tạo nên khung cảnh rất thơ mộng và đặc trưng.",
                  "hang_son_doong": "Hang Sơn Đoòng được xem là hang động tự nhiên lớn nhất thế giới, nằm trong Vườn quốc gia Phong Nha Kẻ Bàng. Bên trong hang có những khối thạch nhũ khổng lồ, sông ngầm và cả khu rừng nguyên sinh. Đây là địa điểm khám phá nổi tiếng dành cho các nhà thám hiểm và du khách yêu thiên nhiên.",
@@ -158,8 +147,6 @@ INFO_DATA = {
                 "ho_hoan_kiem":"Hồ Hoàn Kiếm nằm ở trung tâm thủ đô Hà Nội và gắn liền với truyền thuyết vua Lê trả gươm thần cho rùa vàng. Giữa hồ có Tháp Rùa cổ kính, tạo nên hình ảnh đặc trưng của thành phố. Đây là nơi người dân và du khách thường đến tham quan, dạo bộ và thư giãn.",
                 "chua_mot_cot":"Chùa Một Cột là ngôi chùa có kiến trúc độc đáo được xây dựng trên một cột đá giữa hồ nước. Công trình được xây dựng từ thời nhà Lý và mang ý nghĩa biểu tượng cho hoa sen – biểu tượng của sự thanh cao trong văn hóa Việt Nam. Đây là một trong những ngôi chùa nổi tiếng nhất ở Hà Nội.",
                 "cho_ben_thanh":"Chợ Bến Thành là khu chợ nổi tiếng và lâu đời của TP. Hồ Chí Minh. Chợ bày bán nhiều loại hàng hóa như quần áo, thủ công mỹ nghệ, đặc sản và đồ lưu niệm. Đây cũng là điểm tham quan quen thuộc của du khách khi đến thành phố."}
-                
-
 }
 
 class MemoryGame:
