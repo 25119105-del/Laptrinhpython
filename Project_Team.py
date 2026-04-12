@@ -111,16 +111,24 @@ INFO_DATA = {
     "dien_bien_phu": "Trận quyết chiến chiến lược kéo dài 56 ngày đêm 'lừng lẫy năm châu, chấn động địa cầu', buộc Pháp ký Hiệp định Geneva lập lại hòa bình miền Bắc.",
     "chien_dich_ho_chi_minh": "Chiến dịch quân sự cuối cùng mang tính quyết định, giải phóng hoàn toàn miền Nam và thống nhất đất nước vào trưa ngày 30/4/1975."
     },
-    "Phong tục": {
-    "Tết Nguyên Đán": "(Từ 23 tháng Chạp đến mùng 3 Tết): Lễ hội lớn nhất trong năm của người Việt, đánh dấu sự giao thoa giữa năm cũ và năm mới. Đây là dịp để gia đình sum vầy, tri ân tổ tiên qua mâm ngũ quả và những bữa cơm tất niên ấm cúng.",
-    "Ông Công Ông Táo": "(Ngày 23 tháng Chạp âm lịch): Người Việt thực hiện nghi lễ thả cá chép ra sông hồ để tiễn các vị thần Bếp về trời báo cáo việc nhà, cầu mong một năm mới sung túc.",
-    "Gói bánh chưng": "(Từ 26 đến 29 Tết): Bánh chưng vuông tượng trưng cho Đất và lòng biết ơn nguồn cội. Tục quây quần bên nồi bánh đỏ lửa đêm cuối năm là biểu tượng thiêng liêng nhất của sự gắn kết gia đình.",
-    "Đi chùa đầu năm": "(Từ đêm Giao thừa đến hết tháng Giêng): Không chỉ để cầu xin bình an, tài lộc mà còn là khoảnh khắc tìm về sự thanh tịnh. Đây là nét đẹp tâm linh gắn liền với tục 'hái lộc' mang may mắn về nhà.",
-    "Xin chữ": "(Những ngày đầu xuân): Thường diễn ra tại các 'phố ông đồ', thể hiện truyền thống hiếu học và tinh thần tôn sư trọng đạo. Mỗi nét chữ gửi gắm ước nguyện về sự thành đạt và bình an.",
-    "Lì xì": "(Mùng 1 đến mùng 3 Tết): Những phong bao đỏ rực rỡ tượng trưng cho may mắn kèm theo lời chúc 'hay ăn chóng lớn' cho trẻ nhỏ và sức khỏe cho người già. Ý nghĩa nằm ở tình cảm dành cho nhau.",
-    "Giỗ Tổ": "(Ngày 10/03 âm lịch): Ngày hội toàn dân hướng về Đền Hùng (Phú Thọ) để tưởng nhớ công ơn dựng nước của các vị vua Hùng, nhắc nhở đạo lý 'Uống nước nhớ nguồn'.",
-    "Tết Trung thu": "(Rằm tháng Tám âm lịch): Được coi là ngày tết của tình thân và sự đoàn viên cho trẻ em với các hoạt động rước đèn cá chép, múa lân và phá cỗ trông trăng dưới ánh rằm."
-    }
+  "Phong tục": {
+    "Tết Nguyên Đán": "(Từ cuối tháng Chạp đến mùng 3 Tết): Lễ hội lớn nhất trong năm, là dịp 'tống cựu nghinh tân'. Mọi nghi thức từ dọn dẹp nhà cửa đến chúc Tết đều hướng về tinh thần đoàn viên và hiếu nghĩa.",
+    "Ông Công Ông Táo": "(Ngày 23 tháng Chạp âm lịch): Ngày các vị thần bếp cưỡi cá chép về trời. Người Việt thường chuẩn bị mũ áo giấy và cá chép thật để phóng sinh, mong những điều tốt đẹp được tâu báo với Ngọc Hoàng.",
+    "Gói bánh chưng": "(Từ 26 đến 29 Tết): Bắt nguồn từ sự tích Lang Liêu. Bánh hình vuông tượng trưng cho Đất, đại diện cho sự phồn thịnh của nền văn minh lúa nước và lòng biết ơn nguồn cội.",
+    "Đi chùa đầu năm": "(Từ đêm Giao thừa đến hết tháng Giêng): Khoảnh khắc tâm linh để gửi gắm ước vọng về sức khỏe và an nhiên. Đi kèm là tục 'hái lộc' để mang may mắn từ nơi linh thiêng về nhà.",
+    "Xin chữ": "(Những ngày đầu tháng Giêng): Nét đẹp đề cao tri thức và sự hướng thiện. Người xin thường chọn các chữ như Tâm, Phúc, Đức, Nhẫn... để thể hiện mục tiêu phấn đấu trong năm mới.",
+    "Lì xì": "(Từ mùng 1 đến mùng 10 Tết): Tiền mở hàng đặt trong bao đỏ để trừ tà ma và chúc may mắn. Quan trọng ở lời chúc tốt đẹp dành cho trẻ nhỏ và sự tôn kính dành cho người già.",
+    "Giỗ Tổ Hùng Vương": "(Ngày 10/03 âm lịch): Ngày hội tụ bản sắc dân tộc, khẳng định sức mạnh đại đoàn kết và lòng tự hào về dòng máu 'Con Rồng cháu Tiên', nhắc nhớ đạo lý 'Uống nước nhớ nguồn'.",
+    "Tết Trung thu": "(Ngày Rằm tháng Tám âm lịch): Bắt nguồn từ nghi lễ mừng mùa màng bội thu. Hình ảnh bánh nướng, bánh dẻo tượng trưng cho sự trọn vẹn của trời đất và tình cảm gia đình khăng khít.",
+    "Lễ cầu ngư": "(Tháng Giêng hoặc tháng Hai âm lịch): Gắn liền với tục thờ cá Ông. Bao gồm tế lễ trang nghiêm và phần hội (đua ghe, hò bả trạo), thể hiện sức mạnh tập thể và niềm tin vào biển cả.",
+    "Rằm tháng Giêng": "(Ngày 15/01 âm lịch): Còn gọi là Tết Thượng Nguyên. Người dân thường đến chùa dâng sao giải hạn, cầu nguyện cho mọi việc khởi đầu trong năm được hanh thông.",
+    "Tục ăn trầu": "(Diễn ra hàng ngày và trong nghi lễ): Gắn liền với 'Sự tích trầu cau'. Miếng trầu là biểu tượng cho sự gắn kết thủy chung, bền chặt giữa người với người.",
+    "Tục cưới hỏi": "(Ngày lành tháng tốt): Bao gồm các lễ Chạm ngõ, Ăn hỏi và Xin dâu. Lễ vật chứa đựng lời chúc phúc cho cặp đôi 'trăm năm tình viên mãn, bạc đầu nghĩa phu thê'.",
+    "Tục đốt vàng mã": "(Các ngày giỗ, Rằm và mồng 1): Thể hiện niềm tin 'trần sao âm vậy'. Đây là sợi dây kết nối tình cảm và lòng tưởng nhớ của người sống đối với tổ tiên.",
+    "Tục tang ma": "(Khi có người thân qua đời): Thể hiện đạo lý 'Nghĩa tử là nghĩa tận'. Các nghi lễ được thực hiện cẩn trọng để linh hồn người khuất được yên nghỉ và phù hộ cho hậu thế.",
+    "Tục treo câu đối": "(Trước đêm Giao thừa): Những đôi câu đối đỏ tượng trưng cho sự may mắn, trí tuệ và là lời nhắc nhở về đạo đức, lối sống cho con cháu trong nhà.",
+    "Tục uống trà": "(Mọi lúc trong ngày): Trà Việt thường là trà mộc hoặc ướp hoa. Thưởng trà là nghệ thuật đòi hỏi sự tĩnh lặng, thể hiện tính cách điềm đạm và lòng hiếu khách."
+  }
 }
 
 class MemoryGame:
