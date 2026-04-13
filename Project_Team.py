@@ -298,7 +298,7 @@ class MemoryGame:
 
             #nút bấm
             self.mouse_pos = pygame.mouse.get_pos()
-            self.draw_button(self.btn_amthuc, (0,0,0), (255,255,255), "Ẩm thực")
+            self.draw_button(self.btn_amthuc, (200,50,50), (255,100,100), "Ẩm thực")
             self.draw_button(self.btn_vanhoa, (50,150,255), (100,200,255), "Văn hóa")
             self.draw_button(self.btn_lichsu, (50,200,100), (100,255,150), "Lịch sử")
             
