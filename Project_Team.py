@@ -7,7 +7,7 @@ WIDTH, HEIGHT = 800, 600
 FPS = 30
 WHITE, BLACK, GRAY = (255, 255, 255), (0, 0, 0), (200, 200, 200)
 GRID_SIZE = 4
-CARD_SIZE = 150
+#CARD_SIZE = 150
 MARGIN = 20
 
 # --- DATABASE (Giao cho cả nhóm soạn nội dung) ---
@@ -166,6 +166,10 @@ class MemoryGame:
         #self.font = pygame.font.SysFont("Arial", self.size_normal)
         self.font = pygame.font.Font("font.ttf", 24)
         
+        sw, sh = WIDTH, HEIGHT
+        grid_area_w, grid_area_h = sw * 0.8, sh * 0.8
+        self.dynamic_size = int(min((grid_area_w - 3*MARGIN)/4, (grid_area_h - 3*MARGIN)/4))
+            
         try:
             self.font_title = pygame.font.Font("Top Secret.ttf",self.size_title)
         except:
@@ -240,11 +244,11 @@ class MemoryGame:
             
             if image_path:
                 img = pygame.image.load(image_path).convert_alpha()
-                img = pygame.transform.smoothscale(img, (CARD_SIZE, CARD_SIZE))
+                #img = pygame.transform.smoothscale(img, (self.dynamic_size, self.dynamic_size))
                 self.card_images[item_name] = img
             else:
                 print(f"LỖI: Chưa có ảnh cho '{item_name}' trong thư mục '{theme}'")
-                temp_surface = pygame.Surface((CARD_SIZE, CARD_SIZE))
+                temp_surface = pygame.Surface((self.dynamic_size, self.dynamic_size))
                 temp_surface.fill(GRAY)
                 self.card_images[item_name] = temp_surface
 
@@ -268,19 +272,36 @@ class MemoryGame:
             self.scene = "GAMEPLAY" # Click để vào chơi
             
         elif self.scene == "GAMEPLAY":
-            if self.matched_info: # Nếu đang hiện Pop-up, click để đóng
+            if self.matched_info:
                 self.matched_info = None
                 return
 
-            # Tính tọa độ lưới (Quan trọng nhất)
             x, y = pos
-            col = (x - 80) // (CARD_SIZE + MARGIN)
-            row = (y - 80) // (CARD_SIZE + MARGIN)
-            idx = row * GRID_SIZE + col
+            sw, sh = self.screen.get_size()
             
-            if 0 <= idx < 16 and not self.revealed[idx]:
-                self.revealed[idx] = True
-                self.selected.append(idx)
+            # Tái sử dụng công thức tính toán từ draw_grid
+            grid_area_w, grid_area_h = sw * 0.8, sh * 0.8
+            self.dynamic_size = int(min((grid_area_w - 3*MARGIN)/4, (grid_area_h - 3*MARGIN)/4))
+            start_x = (sw - (4*self.dynamic_size + 3*MARGIN)) // 2
+            start_y = (sh - (4*self.dynamic_size + 3*MARGIN)) // 2
+
+            # Xác định tọa độ hàng/cột dựa trên vị trí chuột
+            col = (x - start_x) // (self.dynamic_size + MARGIN)
+            row = (y - start_y) // (self.dynamic_size + MARGIN)
+            
+            # Kiểm tra xem có click trúng vào phạm vi lưới 4x4 không
+            if 0 <= col < 4 and 0 <= row < 4:
+            # Tạo rect ảo để kiểm tra va chạm chính xác (tránh click vào khoảng trống MARGIN)
+                card_rect = pygame.Rect(
+                    start_x + col*(self.dynamic_size + MARGIN), 
+                    start_y + row*(self.dynamic_size + MARGIN), 
+                    self.dynamic_size, self.dynamic_size
+            )
+            if card_rect.collidepoint(pos):
+                idx = row * 4 + col
+                if not self.revealed[idx]:
+                    self.revealed[idx] = True
+                    self.selected.append(idx)
 
     def update(self):
         #"""Logic kiểm tra cặp bài """//////////////////////////////////
@@ -300,7 +321,7 @@ class MemoryGame:
             else:
                 # KHÔNG TRÙNG -> Đợi 1 giây rồi úp lại
                 pygame.display.flip()
-                pygame.time.delay(1000)
+                pygame.time.delay(500)
                 self.revealed[idx1] = self.revealed[idx2] = False
                 self.selected = []
 
@@ -340,21 +361,92 @@ class MemoryGame:
         else:
             pygame.draw.rect(self.screen, color, rect, border_radius=15)
             self.draw_text(text, rect.center)
+    
+    def get_rounded_image(self, surface, size, radius):
+        #"""Hàm này cắt ảnh thành hình bo góc"""
+        # 1. Tạo một Surface rỗng có hỗ trợ độ trong suốt
+        mask = pygame.Surface(size, pygame.SRCALPHA)
+        # 2. Vẽ một hình chữ nhật trắng đã bo góc lên đó
+        pygame.draw.rect(mask, (255, 255, 255), (0, 0, *size), border_radius=radius)
+        
+        # 3. Scale ảnh gốc về đúng kích thước cần vẽ
+        image = pygame.transform.smoothscale(surface, size)
+        # 4. Chỉ giữ lại những phần ảnh nằm trong hình chữ nhật trắng của mask
+        image.blit(mask, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)
+        return image
 
     def draw_grid(self):
+        sw, sh = self.screen.get_size()
+    
+        # 2. Tính toán kích thước thẻ dựa trên màn hình (để chừa lề)
+        grid_area_w = sw * 0.8
+        grid_area_h = sh * 0.8
+        
+        # Tính size thẻ sao cho khít với 4 cột và 4 hàng
+        # CARD_SIZE = (Tổng chiều rộng - Tổng khoảng cách giữa các thẻ) / Số thẻ
+        card_w = (grid_area_w - (GRID_SIZE - 1) * MARGIN) / GRID_SIZE
+        card_h = (grid_area_h - (GRID_SIZE - 1) * MARGIN) / GRID_SIZE
+        
+        # Chọn cạnh nhỏ hơn để thẻ luôn là hình vuông
+        dynamic_size = int(min(card_w, card_h))
+        
+        # 3. Tính toán vị trí bắt đầu (offset) để lưới nằm chính giữa
+        total_grid_w = GRID_SIZE * dynamic_size + (GRID_SIZE - 1) * MARGIN
+        total_grid_h = GRID_SIZE * dynamic_size + (GRID_SIZE - 1) * MARGIN
+        start_x = (sw - total_grid_w) // 2
+        start_y = (sh - total_grid_h) // 2
+        
+        # Thiết lập Padding và độ bo góc
+        PADDING = 6  # Khoảng cách để ảnh nằm lọt trong khung (tùy chỉnh theo ý bạn)
+        CORNER_RADIUS = 15 # Độ bo góc của thẻ và ảnh
+    
+        # Kích thước thực tế của ảnh sau khi trừ padding
+        inner_size = self.dynamic_size - (PADDING * 2)
+            
         for i in range(16):
             row, col = i // 4, i % 4
-            rect = pygame.Rect(80 + col*(CARD_SIZE+MARGIN), 80 + row*(CARD_SIZE+MARGIN), CARD_SIZE, CARD_SIZE)
+            rect = pygame.Rect(
+                start_x + col * (self.dynamic_size + MARGIN), 
+                start_y + row * (self.dynamic_size + MARGIN), 
+                self.dynamic_size, 
+                self.dynamic_size
+        )
             
             if self.revealed[i]:
                 # Gọi ảnh đã tải ra để dán lên thẻ
                 item_name = self.cards[i]
-                if hasattr(self, 'card_images') and item_name in self.card_images:
-                    self.screen.blit(self.card_images[item_name], rect.topleft)
+                if item_name in self.card_images:
+                    # --- SỬ DỤNG TRANSFORM Ở ĐÂY ---
+                    # Lấy ảnh gốc từ dictionary và ép nó theo self.dynamic_size hiện tại
+                    img_scaled = pygame.transform.smoothscale(
+                    self.card_images[item_name], 
+                    (self.dynamic_size, self.dynamic_size)
+                    )
+                    self.screen.blit(img_scaled, rect.topleft)
+                    # 1. Vẽ khung nền của thẻ trước (màu xám hoặc trắng tùy bạn)
+                    pygame.draw.rect(self.screen, WHITE, rect, border_radius=CORNER_RADIUS)
+                    
+                    # 2. Xử lý ảnh: Scale và Bo góc
+                    raw_img = self.card_images[item_name]
+                    # Scale ảnh theo kích thước đã trừ padding
+                    img_scaled = pygame.transform.smoothscale(raw_img, (inner_size, inner_size))
+                    
+                    # Tạo một Surface rỗng có hỗ trợ độ trong suốt (Alpha) để làm Mask
+                    mask = pygame.Surface((inner_size, inner_size), pygame.SRCALPHA)
+                    # Vẽ một hình chữ nhật bo góc màu trắng lên Mask
+                    pygame.draw.rect(mask, (255, 255, 255), (0, 0, inner_size, inner_size), border_radius=CORNER_RADIUS-2)
+                    
+                    # Cắt ảnh theo Mask bằng chế độ BLEND_RGBA_MIN
+                    img_scaled.blit(mask, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)
+                    
+                    # 3. Vẽ ảnh đã được bo góc vào chính giữa thẻ
+                    self.screen.blit(img_scaled, (rect.x + PADDING, rect.y + PADDING))
+                    
                 else:
-                    pygame.draw.rect(self.screen, GRAY, rect)
+                    pygame.draw.rect(self.screen, GRAY, rect, border_radius=CORNER_RADIUS)
             else:
-                pygame.draw.rect(self.screen, BLACK, rect)
+                pygame.draw.rect(self.screen, BLACK, rect, border_radius=CORNER_RADIUS)
+    
 
     def draw_popup(self, text):
         # 1. Vẽ bảng thông báo giáo dục (khung nền)
