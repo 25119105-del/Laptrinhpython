@@ -4,7 +4,7 @@ import os
 
 # --- CẤU HÌNH  --- //////////////////////////
 WIDTH, HEIGHT = 800, 600
-FPS = 60
+FPS = 30
 WHITE, BLACK, GRAY = (255, 255, 255), (0, 0, 0), (200, 200, 200)
 GRID_SIZE = 4
 #CARD_SIZE = 150
@@ -160,7 +160,8 @@ class MemoryGame:
         
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.RESIZABLE)
         self.clock = pygame.time.Clock()
-        self.font = pygame.font.SysFont("Arial.ttf", self.size_normal)
+        #self.font = pygame.font.SysFont("Arial", self.size_normal)
+        self.font = pygame.font.SysFont("Arial", self.size_normal)
         
         sw, sh = WIDTH, HEIGHT
         grid_area_w, grid_area_h = sw * 0.8, sh * 0.8
@@ -259,6 +260,7 @@ class MemoryGame:
 
             elif self.btn_lichsu.collidepoint(pos):
                 self.start_intro("Lịch sử")
+            # Kiểm tra click vào nút chọn Theme (Giao cho Sâm/Nghĩa vẽ nút)
             # if 100 < pos[0] < 300: self.start_intro("Ẩm thực")
             # elif 350 < pos[0] < 550: self.start_intro("Văn hóa")
 
@@ -519,9 +521,9 @@ class MemoryGame:
         # Khởi tạo lại font với size mới
         try:
             self.font_title = pygame.font.Font("Top Secret.ttf", max(20, new_title_size))
-            self.font = pygame.font.SysFont("Arial.ttf", max(12, new_normal_size))
+            self.font = pygame.font.SysFont("Arial", max(12, new_normal_size))
         except:
-            self.font_title = pygame.font.SysFont("Arial.ttf", max(20, new_title_size))
+            self.font_title = pygame.font.SysFont("Arial", max(20, new_title_size))
 
 
 # --- CHẠY GAME ---
