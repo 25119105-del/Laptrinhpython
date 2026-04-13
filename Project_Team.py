@@ -4,7 +4,7 @@ import os
 
 # --- CẤU HÌNH  --- //////////////////////////
 WIDTH, HEIGHT = 800, 600
-FPS = 30
+FPS = 60
 WHITE, BLACK, GRAY = (255, 255, 255), (0, 0, 0), (200, 200, 200)
 GRID_SIZE = 4
 #CARD_SIZE = 150
@@ -128,9 +128,9 @@ INFO_DATA = {
                     "thac_ban_gioc":"Thác Bản Giốc là một trong những thác nước đẹp nhất Việt Nam, nằm trên biên giới giữa Việt Nam và Trung Quốc. Thác có nhiều tầng nước đổ xuống từ độ cao lớn tạo nên khung cảnh rất hùng vĩ. Vào mùa nước nhiều, dòng thác trắng xóa giữa núi rừng tạo nên cảnh tượng tuyệt đẹp.",
                     "nui_ba_den":"Núi Bà Đen được mệnh danh là “nóc nhà Nam Bộ” với độ cao hơn 900 mét. Đây là địa điểm du lịch tâm linh nổi tiếng với nhiều chùa và tượng Phật lớn. Du khách có thể leo núi hoặc đi cáp treo để ngắm toàn cảnh vùng đồng bằng xung quanh.",
                     "ho_hoan_kiem":"Hồ Hoàn Kiếm nằm ở trung tâm thủ đô Hà Nội và gắn liền với truyền thuyết vua Lê trả gươm thần cho rùa vàng. Giữa hồ có Tháp Rùa cổ kính, tạo nên hình ảnh đặc trưng của thành phố. Đây là nơi người dân và du khách thường đến tham quan, dạo bộ và thư giãn.",
-                    "chua_mot_cot":"Chùa Một Cột là ngôi chùa có kiến trúc độc đáo được xây dựng trên một cột đá giữa hồ nước. Công trình được xây dựng từ thời nhà Lý và mang ý nghĩa biểu tượng cho hoa sen – biểu tượng của sự thanh cao trong văn hóa Việt Nam. Đây là một trong những ngôi chùa nổi tiếng nhất ở Hà Nội.",
+                    "chua_mot_cot":"Chùa Một Cột là ngôi chùa có kiến trúc độc đáo được xây dựng trên một cột đá giữa hồ nước. Công trình được xây dựng từ thời nhà Lý và mang ý nghĩa biểu tượng cho hoa sen - biểu tượng của sự thanh cao trong văn hóa Việt Nam. Đây là một trong những ngôi chùa nổi tiếng nhất ở Hà Nội.",
                     "cho_ben_thanh":"Chợ Bến Thành là khu chợ nổi tiếng và lâu đời của TP. Hồ Chí Minh. Chợ bày bán nhiều loại hàng hóa như quần áo, thủ công mỹ nghệ, đặc sản và đồ lưu niệm. Đây cũng là điểm tham quan quen thuộc của du khách khi đến thành phố."
-                },
+                },},
     "Lịch sử": {
             "An_Duong_Vuong": "Sự kiện đánh dấu sự ra đời của nhà nước Âu Lạc với kinh đô Cổ Loa, nổi bật với kỹ thuật xây thành kiên cố và nỏ liên châu huyền thoại.",
             "Hai_Ba_Trung": "Cuộc khởi nghĩa vũ trang đầu tiên chống lại ách đô hộ phương Bắc, khẳng định sức mạnh và vai trò to lớn của phụ nữ Việt Nam.",
@@ -148,7 +148,7 @@ INFO_DATA = {
             "cach_mang_thang_tam": "Cuộc tổng khởi nghĩa giành chính quyền rực rỡ và ngày 2/9/1945 khai sinh ra nước Việt Nam Dân chủ Cộng hòa tại quảng trường Ba Đình.",
             "dien_bien_phu": "Trận quyết chiến chiến lược kéo dài 56 ngày đêm 'lừng lẫy năm châu, chấn động địa cầu', buộc Pháp ký Hiệp định Geneva lập lại hòa bình miền Bắc.",
             "chien_dich_ho_chi_minh": "Chiến dịch quân sự cuối cùng mang tính quyết định, giải phóng hoàn toàn miền Nam và thống nhất đất nước vào trưa ngày 30/4/1975."
-            },},
+            },
 }
 
 class MemoryGame:
@@ -190,6 +190,7 @@ class MemoryGame:
         
         self.bg_current = None
         self.scale_bg() #gọi hàm 
+        self.intro_bg = None #ảnh nền intro
 
         self.btn_amthuc = pygame.Rect(100, 250, 180, 80)
         self.btn_vanhoa = pygame.Rect(310, 250, 180, 80)
@@ -207,6 +208,21 @@ class MemoryGame:
         # Lấy danh sách tên ảnh từ Database của theme đó
 
         names = list(INFO_DATA[theme].keys()) 
+        
+        # Thêm phần load ảnh Intro Theme
+        theme_files = {
+            "Ẩm thực": "am_thuc.png",
+            "Lịch sử": "lich_su.png",
+            "Văn hóa": "phong_tuc.png"
+        }
+        bg_path = theme_files.get(theme)
+        if bg_path and os.path.exists(bg_path):
+            self.intro_bg = pygame.image.load(bg_path).convert()
+            # Scale ảnh cho vừa màn hình hiện tại
+            self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (self.curr_w, self.curr_h))
+        else:
+            self.intro_bg = None # Nếu không tìm thấy ảnh thì để trống
+            print(f"Cảnh báo: Không tìm thấy file {bg_path}")
 
         data = INFO_DATA[theme]
 
@@ -342,7 +358,10 @@ class MemoryGame:
             self.draw_button(self.btn_lichsu, (50,200,100), (100,255,150), "Lịch sử")
             
         elif self.scene == "INTRO":
-            # Vẽ ảnh nền theme /////////////////////////////////
+            if hasattr(self, 'intro_bg') and self.intro_bg:
+                self.screen.blit(self.intro_bg, (0, 0))
+            else:
+                self.screen.blit(self.bg_current, (0, 0))
             curr_w = self.screen.get_width()
             curr_h = self.screen.get_height()
             self.draw_text(f"Chủ đề: {self.current_theme}. Click để bắt đầu!", (curr_w // 2, curr_h // 2))
@@ -448,20 +467,17 @@ class MemoryGame:
         # 1. Vẽ bảng thông báo giáo dục (khung nền)
         overlay = pygame.Surface((600, 400))
         overlay.set_alpha(230) # Tăng độ mờ lên một chút để dễ đọc chữ hơn
-        overlay.fill((40, 40, 40))
-        
+        overlay.fill((40, 40, 40))      
         # Đặt bảng ở giữa màn hình (tạm tính theo kích thước mặc định 800x600)
         start_x = (self.screen.get_width() - 600) // 2
         start_y = (self.screen.get_height() - 400) // 2
         self.screen.blit(overlay, (start_x, start_y))
-
         # 2. Xử lý dữ liệu text (Vì chủ đề Văn hóa là Dictionary, các chủ đề khác là String)
         content = ""
         if isinstance(text, dict):
             content = f"Nguồn gốc: {text['nguon_goc']}\n\nĐặc điểm: {text['dac_diem']}"
         else:
             content = str(text)
-
         # 3. Thuật toán tự động xuống dòng (Word Wrap)
         words = content.replace('\n', ' \n ').split(' ')
         lines = []
@@ -524,7 +540,10 @@ class MemoryGame:
             self.font = pygame.font.SysFont("Arial", max(12, new_normal_size))
         except:
             self.font_title = pygame.font.SysFont("Arial", max(20, new_title_size))
-
+            
+        if hasattr(self, 'intro_bg') and self.intro_bg:
+            self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (self.curr_w, self.curr_h))
+        
 
 # --- CHẠY GAME ---
 if __name__ == "__main__":
@@ -544,12 +563,9 @@ if __name__ == "__main__":
                 game.scale_bg((new_width, new_height))
                 game.curr_h = new_height
                 game.curr_w = new_width
-                
-                
+                                
             if event.type == pygame.MOUSEBUTTONDOWN:
                 game.handle_click(event.pos)
-        
-        #self.screen.blit(self.bg_current, (0, 0))
         
         if game.scene == "GAMEPLAY":
             game.update()
