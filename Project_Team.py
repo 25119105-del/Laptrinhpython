@@ -1,5 +1,6 @@
 import pygame
 import random
+import os
 
 # --- CẤU HÌNH  --- //////////////////////////
 WIDTH, HEIGHT = 800, 600
@@ -201,7 +202,6 @@ class MemoryGame:
         self.matched_info = None # Lưu thông tin giáo dục để hiện Pop-up
 
     def setup_level(self, theme):
-        #"""Khởi tạo lưới 4x4 cho theme đã chọn"""
         self.current_theme = theme
         # Lấy danh sách tên ảnh từ Database của theme đó
 
@@ -209,23 +209,44 @@ class MemoryGame:
 
         data = INFO_DATA[theme]
 
-    
         if theme == "Văn hóa":
             names = list(data["Trang phục Dân tộc"].keys())
         else:
             names = list(data.keys())
+        # 2. CHỌN NGẪU NHIÊN 8 ẢNH từ 16 ảnh có trong danh sách
+        if len(names) >= 8:
+            selected_names = random.sample(names, 8)
+        else:
+            selected_names = names # Đề phòng nếu list không đủ 8
 
-    #  đảm bảo đủ 8 phần tử
-        while len(names) < 8:
-            names += names 
-
-        # Chọn 8 món ngẫu nhiên, nhân đôi thành 16
-        game_list = names[:8] * 2 
+        # 3. Nhân đôi thành 16 thẻ và xáo trộn
+        game_list = selected_names * 2 
         random.shuffle(game_list)
         
         self.cards = game_list
         self.revealed = [False] * 16
         self.selected = []
+        
+        # 4. TẢI ẢNH VÀO BỘ NHỚ
+        self.card_images = {}
+        for item_name in set(self.cards): 
+            image_path = None
+            # Tìm file ảnh (.png, .jpg, .jpeg, .webp) trong thư mục chủ đề tương ứng
+            for ext in ['.png', '.jpg', '.jpeg', '.webp']:
+                temp_path = os.path.join(theme, item_name + ext)
+                if os.path.exists(temp_path):
+                    image_path = temp_path
+                    break
+            
+            if image_path:
+                img = pygame.image.load(image_path).convert_alpha()
+                img = pygame.transform.smoothscale(img, (CARD_SIZE, CARD_SIZE))
+                self.card_images[item_name] = img
+            else:
+                print(f"LỖI: Chưa có ảnh cho '{item_name}' trong thư mục '{theme}'")
+                temp_surface = pygame.Surface((CARD_SIZE, CARD_SIZE))
+                temp_surface.fill(GRAY)
+                self.card_images[item_name] = temp_surface
 
     def handle_click(self, pos):
         if self.scene == "MENU":
@@ -298,7 +319,7 @@ class MemoryGame:
 
             #nút bấm
             self.mouse_pos = pygame.mouse.get_pos()
-            self.draw_button(self.btn_amthuc, (200,50,50), (255,100,100), "Ẩm thực")
+            self.draw_button(self.btn_amthuc, (0,0,0), (255,255,255), "Ẩm thực")
             self.draw_button(self.btn_vanhoa, (50,150,255), (100,200,255), "Văn hóa")
             self.draw_button(self.btn_lichsu, (50,200,100), (100,255,150), "Lịch sử")
             
@@ -324,20 +345,64 @@ class MemoryGame:
         for i in range(16):
             row, col = i // 4, i % 4
             rect = pygame.Rect(80 + col*(CARD_SIZE+MARGIN), 80 + row*(CARD_SIZE+MARGIN), CARD_SIZE, CARD_SIZE)
+            
             if self.revealed[i]:
-                pygame.draw.rect(self.screen, GRAY, rect) # Thay bằng ảnh thật
-                self.draw_text(self.cards[i], rect.center)
+                # Gọi ảnh đã tải ra để dán lên thẻ
+                item_name = self.cards[i]
+                if hasattr(self, 'card_images') and item_name in self.card_images:
+                    self.screen.blit(self.card_images[item_name], rect.topleft)
+                else:
+                    pygame.draw.rect(self.screen, GRAY, rect)
             else:
                 pygame.draw.rect(self.screen, BLACK, rect)
 
     def draw_popup(self, text):
-        #"""Vẽ bảng thông báo giáo dục """//////////////////////////////////////////
+        # 1. Vẽ bảng thông báo giáo dục (khung nền)
         overlay = pygame.Surface((600, 400))
-        overlay.set_alpha(200)
-        overlay.fill((50, 50, 50))
-        self.screen.blit(overlay, (100, 200))
-        # Vẽ text nội dung giáo dục lên trên overlay
+        overlay.set_alpha(230) # Tăng độ mờ lên một chút để dễ đọc chữ hơn
+        overlay.fill((40, 40, 40))
         
+        # Đặt bảng ở giữa màn hình (tạm tính theo kích thước mặc định 800x600)
+        start_x = (self.screen.get_width() - 600) // 2
+        start_y = (self.screen.get_height() - 400) // 2
+        self.screen.blit(overlay, (start_x, start_y))
+
+        # 2. Xử lý dữ liệu text (Vì chủ đề Văn hóa là Dictionary, các chủ đề khác là String)
+        content = ""
+        if isinstance(text, dict):
+            content = f"Nguồn gốc: {text['nguon_goc']}\n\nĐặc điểm: {text['dac_diem']}"
+        else:
+            content = str(text)
+
+        # 3. Thuật toán tự động xuống dòng (Word Wrap)
+        words = content.replace('\n', ' \n ').split(' ')
+        lines = []
+        current_line = []
+        max_width = 560 # Giới hạn chiều rộng chữ để không tràn khỏi overlay (600 - lề 40)
+        
+        for word in words:
+            if word == '\n':
+                lines.append(' '.join(current_line))
+                current_line = []
+                continue
+                
+            current_line.append(word)
+            # Tính toán kích thước của dòng hiện tại
+            fw, fh = self.font.size(' '.join(current_line))
+            if fw > max_width: # Nếu vượt quá giới hạn thì đẩy từ cuối xuống dòng mới
+                current_line.pop()
+                lines.append(' '.join(current_line))
+                current_line = [word]
+                
+        if current_line:
+            lines.append(' '.join(current_line))
+
+        # 4. Vẽ từng dòng chữ lên màn hình
+        y_offset = start_y + 30 # Cách lề trên của khung 30px
+        for line in lines:
+            text_surface = self.font.render(line, True, WHITE)
+            self.screen.blit(text_surface, (start_x + 20, y_offset)) # Cách lề trái 20px
+            y_offset += self.font.get_height() + 5 # Khoảng cách giữa các dòng
     def draw_text_title(self, text, pos): #hàm này dùng để viết tên game do có font riêng
         img = self.font_title.render(text, True, WHITE)
         rect = img.get_rect(center=pos)
@@ -402,5 +467,4 @@ if __name__ == "__main__":
             game.update()
             
         pygame.display.flip()
-
-
+    pygame.quit()
