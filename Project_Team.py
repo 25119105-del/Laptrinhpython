@@ -5,10 +5,10 @@ import unicodedata
 
 # --- CẤU HÌNH  --- //////////////////////////
 WIDTH, HEIGHT = 800, 600
-FPS = 30
+FPS = 60
 WHITE, BLACK, GRAY = (255, 255, 255), (0, 0, 0), (200, 200, 200)
 GRID_SIZE = 4
-CARD_SIZE = 150
+#CARD_SIZE = 150
 MARGIN = 20
 
 # --- DATABASE (Giao cho cả nhóm soạn nội dung) ---
@@ -95,7 +95,43 @@ INFO_DATA = {
                 "Thổ": {
                     "nguon_goc": "Giao thoa văn hóa Kinh - Mường vùng Nghệ An, Thanh Hóa.",
                         "dac_diem": "Váy đen có cạp dệt hoa văn tinh xảo, thắt lưng màu nổi và khăn vuông trắng."},
-                }},
+                },
+                "Phong tục": {
+                    "Tết Nguyên Đán": "(Từ cuối tháng Chạp đến mùng 3 Tết): Lễ hội lớn nhất trong năm, là dịp 'tống cựu nghinh tân'. Mọi nghi thức từ dọn dẹp nhà cửa đến chúc Tết đều hướng về tinh thần đoàn viên và hiếu nghĩa.",
+                    "Ông Công Ông Táo": "(Ngày 23 tháng Chạp âm lịch): Ngày các vị thần bếp cưỡi cá chép về trời. Người Việt thường chuẩn bị mũ áo giấy và cá chép thật để phóng sinh, mong những điều tốt đẹp được tâu báo với Ngọc Hoàng.",
+                    "Gói bánh chưng": "(Từ 26 đến 29 Tết): Bắt nguồn từ sự tích Lang Liêu. Bánh hình vuông tượng trưng cho Đất, đại diện cho sự phồn thịnh của nền văn minh lúa nước và lòng biết ơn nguồn cội.",
+                    "Đi chùa đầu năm": "(Từ đêm Giao thừa đến hết tháng Giêng): Khoảnh khắc tâm linh để gửi gắm ước vọng về sức khỏe và an nhiên. Đi kèm là tục 'hái lộc' để mang may mắn từ nơi linh thiêng về nhà.",
+                    "Xin chữ": "(Những ngày đầu tháng Giêng): Nét đẹp đề cao tri thức và sự hướng thiện. Người xin thường chọn các chữ như Tâm, Phúc, Đức, Nhẫn... để thể hiện mục tiêu phấn đấu trong năm mới.",
+                    "Lì xì": "(Từ mùng 1 đến mùng 10 Tết): Tiền mở hàng đặt trong bao đỏ để trừ tà ma và chúc may mắn. Quan trọng ở lời chúc tốt đẹp dành cho trẻ nhỏ và sự tôn kính dành cho người già.",
+                    "Giỗ Tổ Hùng Vương": "(Ngày 10/03 âm lịch): Ngày hội tụ bản sắc dân tộc, khẳng định sức mạnh đại đoàn kết và lòng tự hào về dòng máu 'Con Rồng cháu Tiên', nhắc nhớ đạo lý 'Uống nước nhớ nguồn'.",
+                    "Tết Trung thu": "(Ngày Rằm tháng Tám âm lịch): Bắt nguồn từ nghi lễ mừng mùa màng bội thu. Hình ảnh bánh nướng, bánh dẻo tượng trưng cho sự trọn vẹn của trời đất và tình cảm gia đình khăng khít.",
+                    "Lễ cầu ngư": "(Tháng Giêng hoặc tháng Hai âm lịch): Gắn liền với tục thờ cá Ông. Bao gồm tế lễ trang nghiêm và phần hội (đua ghe, hò bả trạo), thể hiện sức mạnh tập thể và niềm tin vào biển cả.",
+                    "Rằm tháng Giêng": "(Ngày 15/01 âm lịch): Còn gọi là Tết Thượng Nguyên. Người dân thường đến chùa dâng sao giải hạn, cầu nguyện cho mọi việc khởi đầu trong năm được hanh thông.",
+                    "Tục ăn trầu": "(Diễn ra hàng ngày và trong nghi lễ): Gắn liền với 'Sự tích trầu cau'. Miếng trầu là biểu tượng cho sự gắn kết thủy chung, bền chặt giữa người với người.",
+                    "Tục cưới hỏi": "(Ngày lành tháng tốt): Bao gồm các lễ Chạm ngõ, Ăn hỏi và Xin dâu. Lễ vật chứa đựng lời chúc phúc cho cặp đôi 'trăm năm tình viên mãn, bạc đầu nghĩa phu thê'.",
+                    "Tục đốt vàng mã": "(Các ngày giỗ, Rằm và mồng 1): Thể hiện niềm tin 'trần sao âm vậy'. Đây là sợi dây kết nối tình cảm và lòng tưởng nhớ của người sống đối với tổ tiên.",
+                    "Tục tang ma": "(Khi có người thân qua đời): Thể hiện đạo lý 'Nghĩa tử là nghĩa tận'. Các nghi lễ được thực hiện cẩn trọng để linh hồn người khuất được yên nghỉ và phù hộ cho hậu thế.",
+                    "Tục treo câu đối": "(Trước đêm Giao thừa): Những đôi câu đối đỏ tượng trưng cho sự may mắn, trí tuệ và là lời nhắc nhở về đạo đức, lối sống cho con cháu trong nhà.",
+                    "Tục uống trà": "(Mọi lúc trong ngày): Trà Việt thường là trà mộc hoặc ướp hoa. Thưởng trà là nghệ thuật đòi hỏi sự tĩnh lặng, thể hiện tính cách điềm đạm và lòng hiếu khách."
+                },
+                "Địa danh": {
+                    "vinh_ha_Long": "Vịnh Hạ Long là một trong những kỳ quan thiên nhiên nổi tiếng nhất của Việt Nam và đã được UNESCO công nhận là di sản thiên nhiên thế giới. Nơi đây có hàng nghìn hòn đảo đá vôi lớn nhỏ với nhiều hình dạng độc đáo nhô lên giữa làn nước xanh ngọc. Cảnh quan hùng vĩ cùng hệ thống hang động kỳ ảo khiến vịnh trở thành điểm du lịch hấp dẫn đối với du khách trong và ngoài nước.",
+                    "pho_co_hoi_an": "Phố cổ Hội An là đô thị cổ nổi tiếng với những ngôi nhà mái ngói rêu phong và những con phố nhỏ yên bình. Nơi đây từng là thương cảng sầm uất từ thế kỷ XVI đến XVII, nơi giao lưu văn hóa giữa nhiều quốc gia. Vào buổi tối, ánh đèn lồng rực rỡ tạo nên khung cảnh rất thơ mộng và đặc trưng.",
+                    "hang_son_doong": "Hang Sơn Đoòng được xem là hang động tự nhiên lớn nhất thế giới, nằm trong Vườn quốc gia Phong Nha Kẻ Bàng. Bên trong hang có những khối thạch nhũ khổng lồ, sông ngầm và cả khu rừng nguyên sinh. Đây là địa điểm khám phá nổi tiếng dành cho các nhà thám hiểm và du khách yêu thiên nhiên.",
+                    "dao_phu_quoc": "Đảo Phú Quốc là hòn đảo lớn nhất của Việt Nam, nằm trong vịnh Thái Lan. Hòn đảo nổi tiếng với những bãi biển cát trắng, làn nước trong xanh và hệ sinh thái đa dạng. Ngoài ra, Phú Quốc còn nổi tiếng với nước mắm truyền thống, hồ tiêu và nhiều khu nghỉ dưỡng hiện đại.",
+                    "cau_vang_ba_na_hills":"Cầu Vàng là cây cầu du lịch nổi tiếng nằm trong khu du lịch Bà Nà Hills. Điểm đặc biệt của cây cầu là hai bàn tay khổng lồ nâng đỡ cầu giữa núi rừng, tạo nên kiến trúc vô cùng độc đáo. Từ đây, du khách có thể ngắm nhìn toàn cảnh núi non và thiên nhiên tuyệt đẹp của Đà Nẵng.",
+                    "thanh_dia_my_son":"Thánh địa Mỹ Sơn là quần thể đền tháp cổ của vương quốc Chăm Pa được xây dựng từ nhiều thế kỷ trước. Nơi đây từng là trung tâm tôn giáo quan trọng của người Chăm. Những công trình kiến trúc bằng gạch với hoa văn tinh xảo thể hiện trình độ nghệ thuật và kỹ thuật cao của nền văn minh Chăm.",
+                    "kinh_thanh_hue": "Kinh thành Huế là quần thể cung điện, thành quách và lăng tẩm của triều Nguyễn triều đại phong kiến cuối cùng của Việt Nam. Công trình có kiến trúc đồ sộ và mang đậm phong cách truyền thống. Đây là một di sản văn hóa thế giới và là biểu tượng lịch sử của cố đô Huế.",
+                    "ruong_bac_thang":"Ruộng bậc thang Sa Pa là cảnh quan nông nghiệp độc đáo của vùng núi Tây Bắc do người dân tộc thiểu số tạo nên. Những thửa ruộng uốn lượn theo sườn núi tạo thành khung cảnh rất đẹp. Vào mùa lúa chín, cả vùng núi được phủ một màu vàng rực rỡ.",
+                    "ho_xuan_huong": "Hồ Xuân Hương nằm ngay trung tâm thành phố Đà Lạt và được xem là biểu tượng của thành phố này. Hồ có hình dạng cong nhẹ như vầng trăng và được bao quanh bởi rừng thông và vườn hoa. Khung cảnh nơi đây rất thơ mộng và thích hợp cho việc dạo bộ, đạp xe hay ngắm cảnh.",
+                    "van_mieu_quoc_tu_giam": "Văn Miếu Quốc Tử Giám được xây dựng từ thế kỷ XI và được xem là trường đại học đầu tiên của Việt Nam. Nơi đây thờ Khổng Tử và tôn vinh những người đỗ đạt trong các kỳ thi Nho học. Công trình là biểu tượng cho truyền thống hiếu học và tôn sư trọng đạo của dân tộc.",
+                    "dinh_doc_lap": "Dinh Độc Lập, còn gọi là Hội trường Thống Nhất, là một công trình lịch sử quan trọng của Việt Nam. Nơi đây gắn liền với sự kiện ngày 30/4/1975 khi chiến tranh kết thúc. Hiện nay dinh là một điểm tham quan nổi tiếng thu hút nhiều du khách.",
+                    "thac_ban_gioc":"Thác Bản Giốc là một trong những thác nước đẹp nhất Việt Nam, nằm trên biên giới giữa Việt Nam và Trung Quốc. Thác có nhiều tầng nước đổ xuống từ độ cao lớn tạo nên khung cảnh rất hùng vĩ. Vào mùa nước nhiều, dòng thác trắng xóa giữa núi rừng tạo nên cảnh tượng tuyệt đẹp.",
+                    "nui_ba_den":"Núi Bà Đen được mệnh danh là “nóc nhà Nam Bộ” với độ cao hơn 900 mét. Đây là địa điểm du lịch tâm linh nổi tiếng với nhiều chùa và tượng Phật lớn. Du khách có thể leo núi hoặc đi cáp treo để ngắm toàn cảnh vùng đồng bằng xung quanh.",
+                    "ho_hoan_kiem":"Hồ Hoàn Kiếm nằm ở trung tâm thủ đô Hà Nội và gắn liền với truyền thuyết vua Lê trả gươm thần cho rùa vàng. Giữa hồ có Tháp Rùa cổ kính, tạo nên hình ảnh đặc trưng của thành phố. Đây là nơi người dân và du khách thường đến tham quan, dạo bộ và thư giãn.",
+                    "chua_mot_cot":"Chùa Một Cột là ngôi chùa có kiến trúc độc đáo được xây dựng trên một cột đá giữa hồ nước. Công trình được xây dựng từ thời nhà Lý và mang ý nghĩa biểu tượng cho hoa sen - biểu tượng của sự thanh cao trong văn hóa Việt Nam. Đây là một trong những ngôi chùa nổi tiếng nhất ở Hà Nội.",
+                    "cho_ben_thanh":"Chợ Bến Thành là khu chợ nổi tiếng và lâu đời của TP. Hồ Chí Minh. Chợ bày bán nhiều loại hàng hóa như quần áo, thủ công mỹ nghệ, đặc sản và đồ lưu niệm. Đây cũng là điểm tham quan quen thuộc của du khách khi đến thành phố."
+                },},
     "Lịch sử": {
             "An_Duong_Vuong": "Sự kiện đánh dấu sự ra đời của nhà nước Âu Lạc với kinh đô Cổ Loa, nổi bật với kỹ thuật xây thành kiên cố và nỏ liên châu huyền thoại.",
             "Hai_Ba_Trung": "Cuộc khởi nghĩa vũ trang đầu tiên chống lại ách đô hộ phương Bắc, khẳng định sức mạnh và vai trò to lớn của phụ nữ Việt Nam.",
@@ -113,46 +149,7 @@ INFO_DATA = {
             "cach_mang_thang_tam": "Cuộc tổng khởi nghĩa giành chính quyền rực rỡ và ngày 2/9/1945 khai sinh ra nước Việt Nam Dân chủ Cộng hòa tại quảng trường Ba Đình.",
             "dien_bien_phu": "Trận quyết chiến chiến lược kéo dài 56 ngày đêm 'lừng lẫy năm châu, chấn động địa cầu', buộc Pháp ký Hiệp định Geneva lập lại hòa bình miền Bắc.",
             "chien_dich_ho_chi_minh": "Chiến dịch quân sự cuối cùng mang tính quyết định, giải phóng hoàn toàn miền Nam và thống nhất đất nước vào trưa ngày 30/4/1975."
-        },
-
-    "Phong tục": {
-            "Tết Nguyên Đán": "(Từ cuối tháng Chạp đến mùng 3 Tết): Lễ hội lớn nhất trong năm, là dịp 'tống cựu nghinh tân'. Mọi nghi thức từ dọn dẹp nhà cửa đến chúc Tết đều hướng về tinh thần đoàn viên và hiếu nghĩa.",
-            "Ông Công Ông Táo": "(Ngày 23 tháng Chạp âm lịch): Ngày các vị thần bếp cưỡi cá chép về trời. Người Việt thường chuẩn bị mũ áo giấy và cá chép thật để phóng sinh, mong những điều tốt đẹp được tâu báo với Ngọc Hoàng.",
-            "Gói bánh chưng": "(Từ 26 đến 29 Tết): Bắt nguồn từ sự tích Lang Liêu. Bánh hình vuông tượng trưng cho Đất, đại diện cho sự phồn thịnh của nền văn minh lúa nước và lòng biết ơn nguồn cội.",
-            "Đi chùa đầu năm": "(Từ đêm Giao thừa đến hết tháng Giêng): Khoảnh khắc tâm linh để gửi gắm ước vọng về sức khỏe và an nhiên. Đi kèm là tục 'hái lộc' để mang may mắn từ nơi linh thiêng về nhà.",
-            "Xin chữ": "(Những ngày đầu tháng Giêng): Nét đẹp đề cao tri thức và sự hướng thiện. Người xin thường chọn các chữ như Tâm, Phúc, Đức, Nhẫn... để thể hiện mục tiêu phấn đấu trong năm mới.",
-            "Lì xì": "(Từ mùng 1 đến mùng 10 Tết): Tiền mở hàng đặt trong bao đỏ để trừ tà ma và chúc may mắn. Quan trọng ở lời chúc tốt đẹp dành cho trẻ nhỏ và sự tôn kính dành cho người già.",
-            "Giỗ Tổ Hùng Vương": "(Ngày 10/03 âm lịch): Ngày hội tụ bản sắc dân tộc, khẳng định sức mạnh đại đoàn kết và lòng tự hào về dòng máu 'Con Rồng cháu Tiên', nhắc nhớ đạo lý 'Uống nước nhớ nguồn'.",
-            "Tết Trung thu": "(Ngày Rằm tháng Tám âm lịch): Bắt nguồn từ nghi lễ mừng mùa màng bội thu. Hình ảnh bánh nướng, bánh dẻo tượng trưng cho sự trọn vẹn của trời đất và tình cảm gia đình khăng khít.",
-            "Lễ cầu ngư": "(Tháng Giêng hoặc tháng Hai âm lịch): Gắn liền với tục thờ cá Ông. Bao gồm tế lễ trang nghiêm và phần hội (đua ghe, hò bả trạo), thể hiện sức mạnh tập thể và niềm tin vào biển cả.",
-            "Rằm tháng Giêng": "(Ngày 15/01 âm lịch): Còn gọi là Tết Thượng Nguyên. Người dân thường đến chùa dâng sao giải hạn, cầu nguyện cho mọi việc khởi đầu trong năm được hanh thông.",
-            "Tục ăn trầu": "(Diễn ra hàng ngày và trong nghi lễ): Gắn liền với 'Sự tích trầu cau'. Miếng trầu là biểu tượng cho sự gắn kết thủy chung, bền chặt giữa người với người.",
-            "Tục cưới hỏi": "(Ngày lành tháng tốt): Bao gồm các lễ Chạm ngõ, Ăn hỏi và Xin dâu. Lễ vật chứa đựng lời chúc phúc cho cặp đôi 'trăm năm tình viên mãn, bạc đầu nghĩa phu thê'.",
-            "Tục đốt vàng mã": "(Các ngày giỗ, Rằm và mồng 1): Thể hiện niềm tin 'trần sao âm vậy'. Đây là sợi dây kết nối tình cảm và lòng tưởng nhớ của người sống đối với tổ tiên.",
-            "Tục tang ma": "(Khi có người thân qua đời): Thể hiện đạo lý 'Nghĩa tử là nghĩa tận'. Các nghi lễ được thực hiện cẩn trọng để linh hồn người khuất được yên nghỉ và phù hộ cho hậu thế.",
-            "Tục treo câu đối": "(Trước đêm Giao thừa): Những đôi câu đối đỏ tượng trưng cho sự may mắn, trí tuệ và là lời nhắc nhở về đạo đức, lối sống cho con cháu trong nhà.",
-            "Tục uống trà": "(Mọi lúc trong ngày): Trà Việt thường là trà mộc hoặc ướp hoa. Thưởng trà là nghệ thuật đòi hỏi sự tĩnh lặng, thể hiện tính cách điềm đạm và lòng hiếu khách."
-        },
-    "Địa danh": {
-            "vinh_ha_Long": "Vịnh Hạ Long là một trong những kỳ quan thiên nhiên nổi tiếng nhất của Việt Nam và đã được UNESCO công nhận là di sản thiên nhiên thế giới. Nơi đây có hàng nghìn hòn đảo đá vôi lớn nhỏ với nhiều hình dạng độc đáo nhô lên giữa làn nước xanh ngọc. Cảnh quan hùng vĩ cùng hệ thống hang động kỳ ảo khiến vịnh trở thành điểm du lịch hấp dẫn đối với du khách trong và ngoài nước.",
-            "pho_co_hoi_an": "Phố cổ Hội An là đô thị cổ nổi tiếng với những ngôi nhà mái ngói rêu phong và những con phố nhỏ yên bình. Nơi đây từng là thương cảng sầm uất từ thế kỷ XVI đến XVII, nơi giao lưu văn hóa giữa nhiều quốc gia. Vào buổi tối, ánh đèn lồng rực rỡ tạo nên khung cảnh rất thơ mộng và đặc trưng.",
-            "hang_son_doong": "Hang Sơn Đoòng được xem là hang động tự nhiên lớn nhất thế giới, nằm trong Vườn quốc gia Phong Nha Kẻ Bàng. Bên trong hang có những khối thạch nhũ khổng lồ, sông ngầm và cả khu rừng nguyên sinh. Đây là địa điểm khám phá nổi tiếng dành cho các nhà thám hiểm và du khách yêu thiên nhiên.",
-            "dao_phu_quoc": "Đảo Phú Quốc là hòn đảo lớn nhất của Việt Nam, nằm trong vịnh Thái Lan. Hòn đảo nổi tiếng với những bãi biển cát trắng, làn nước trong xanh và hệ sinh thái đa dạng. Ngoài ra, Phú Quốc còn nổi tiếng với nước mắm truyền thống, hồ tiêu và nhiều khu nghỉ dưỡng hiện đại.",
-            "cau_vang_ba_na_hills":"Cầu Vàng là cây cầu du lịch nổi tiếng nằm trong khu du lịch Bà Nà Hills. Điểm đặc biệt của cây cầu là hai bàn tay khổng lồ nâng đỡ cầu giữa núi rừng, tạo nên kiến trúc vô cùng độc đáo. Từ đây, du khách có thể ngắm nhìn toàn cảnh núi non và thiên nhiên tuyệt đẹp của Đà Nẵng.",
-            "thanh_dia_my_son":"Thánh địa Mỹ Sơn là quần thể đền tháp cổ của vương quốc Chăm Pa được xây dựng từ nhiều thế kỷ trước. Nơi đây từng là trung tâm tôn giáo quan trọng của người Chăm. Những công trình kiến trúc bằng gạch với hoa văn tinh xảo thể hiện trình độ nghệ thuật và kỹ thuật cao của nền văn minh Chăm.",
-            "kinh_thanh_hue": "Kinh thành Huế là quần thể cung điện, thành quách và lăng tẩm của triều Nguyễn triều đại phong kiến cuối cùng của Việt Nam. Công trình có kiến trúc đồ sộ và mang đậm phong cách truyền thống. Đây là một di sản văn hóa thế giới và là biểu tượng lịch sử của cố đô Huế.",
-            "ruong_bac_thang":"Ruộng bậc thang Sa Pa là cảnh quan nông nghiệp độc đáo của vùng núi Tây Bắc do người dân tộc thiểu số tạo nên. Những thửa ruộng uốn lượn theo sườn núi tạo thành khung cảnh rất đẹp. Vào mùa lúa chín, cả vùng núi được phủ một màu vàng rực rỡ.",
-            "ho_xuan_huong": "Hồ Xuân Hương nằm ngay trung tâm thành phố Đà Lạt và được xem là biểu tượng của thành phố này. Hồ có hình dạng cong nhẹ như vầng trăng và được bao quanh bởi rừng thông và vườn hoa. Khung cảnh nơi đây rất thơ mộng và thích hợp cho việc dạo bộ, đạp xe hay ngắm cảnh.",
-            "van_mieu_quoc_tu_giam": "Văn Miếu Quốc Tử Giám được xây dựng từ thế kỷ XI và được xem là trường đại học đầu tiên của Việt Nam. Nơi đây thờ Khổng Tử và tôn vinh những người đỗ đạt trong các kỳ thi Nho học. Công trình là biểu tượng cho truyền thống hiếu học và tôn sư trọng đạo của dân tộc.",
-            "dinh_doc_lap": "Dinh Độc Lập, còn gọi là Hội trường Thống Nhất, là một công trình lịch sử quan trọng của Việt Nam. Nơi đây gắn liền với sự kiện ngày 30/4/1975 khi chiến tranh kết thúc. Hiện nay dinh là một điểm tham quan nổi tiếng thu hút nhiều du khách.",
-            "thac_ban_gioc":"Thác Bản Giốc là một trong những thác nước đẹp nhất Việt Nam, nằm trên biên giới giữa Việt Nam và Trung Quốc. Thác có nhiều tầng nước đổ xuống từ độ cao lớn tạo nên khung cảnh rất hùng vĩ. Vào mùa nước nhiều, dòng thác trắng xóa giữa núi rừng tạo nên cảnh tượng tuyệt đẹp.",
-            "nui_ba_den":"Núi Bà Đen được mệnh danh là “nóc nhà Nam Bộ” với độ cao hơn 900 mét. Đây là địa điểm du lịch tâm linh nổi tiếng với nhiều chùa và tượng Phật lớn. Du khách có thể leo núi hoặc đi cáp treo để ngắm toàn cảnh vùng đồng bằng xung quanh.",
-            "ho_hoan_kiem":"Hồ Hoàn Kiếm nằm ở trung tâm thủ đô Hà Nội và gắn liền với truyền thuyết vua Lê trả gươm thần cho rùa vàng. Giữa hồ có Tháp Rùa cổ kính, tạo nên hình ảnh đặc trưng của thành phố. Đây là nơi người dân và du khách thường đến tham quan, dạo bộ và thư giãn.",
-            "chua_mot_cot":"Chùa Một Cột là ngôi chùa có kiến trúc độc đáo được xây dựng trên một cột đá giữa hồ nước. Công trình được xây dựng từ thời nhà Lý và mang ý nghĩa biểu tượng cho hoa sen – biểu tượng của sự thanh cao trong văn hóa Việt Nam. Đây là một trong những ngôi chùa nổi tiếng nhất ở Hà Nội.",
-            "cho_ben_thanh":"Chợ Bến Thành là khu chợ nổi tiếng và lâu đời của TP. Hồ Chí Minh. Chợ bày bán nhiều loại hàng hóa như quần áo, thủ công mỹ nghệ, đặc sản và đồ lưu niệm. Đây cũng là điểm tham quan quen thuộc của du khách khi đến thành phố."
-        }
-
-
+            },
 }
 
 class MemoryGame:
@@ -171,12 +168,12 @@ class MemoryGame:
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.RESIZABLE)
         self.clock = pygame.time.Clock()
         #self.font = pygame.font.SysFont("Arial", self.size_normal)
-<<<<<<< Updated upstream
-        self.font = pygame.font.Font("font.ttf", 24)
-=======
         self.font = self.load_text_font(self.size_normal)
->>>>>>> Stashed changes
         
+        sw, sh = WIDTH, HEIGHT
+        grid_area_w, grid_area_h = sw * 0.8, sh * 0.8
+        self.dynamic_size = int(min((grid_area_w - 3*MARGIN)/4, (grid_area_h - 3*MARGIN)/4))
+            
         try:
             self.font_title = pygame.font.Font("Top Secret.ttf",self.size_title)
         except:
@@ -202,6 +199,7 @@ class MemoryGame:
         
         self.bg_current = None
         self.scale_bg() #gọi hàm 
+        self.intro_bg = None #ảnh nền intro
 
         self.btn_amthuc = pygame.Rect(100, 250, 180, 80)
         self.btn_vanhoa = pygame.Rect(310, 250, 180, 80)
@@ -227,9 +225,6 @@ class MemoryGame:
         self.current_theme = self.normalize_text(theme)
         # Lấy danh sách tên ảnh từ Database của theme đó
 
-<<<<<<< Updated upstream
-        names = list(INFO_DATA[theme].keys()) 
-=======
         data = self.get_theme_data(self.current_theme)
         names = list(data.keys()) 
         
@@ -247,7 +242,6 @@ class MemoryGame:
         else:
             self.intro_bg = None # Nếu không tìm thấy ảnh thì để trống
             print(f"Cảnh báo: Không tìm thấy file {bg_path}")
->>>>>>> Stashed changes
 
         if self.current_theme == self.normalize_text("Văn hóa"):
             names = list(data["Trang phục Dân tộc"].keys())
@@ -276,11 +270,11 @@ class MemoryGame:
             
             if image_path:
                 img = pygame.image.load(image_path).convert_alpha()
-                img = pygame.transform.smoothscale(img, (CARD_SIZE, CARD_SIZE))
+                #img = pygame.transform.smoothscale(img, (self.dynamic_size, self.dynamic_size))
                 self.card_images[item_name] = img
             else:
                 print(f"LỖI: Chưa có ảnh cho '{item_name}' trong thư mục '{theme}'")
-                temp_surface = pygame.Surface((CARD_SIZE, CARD_SIZE))
+                temp_surface = pygame.Surface((self.dynamic_size, self.dynamic_size))
                 temp_surface.fill(GRAY)
                 self.card_images[item_name] = temp_surface
 
@@ -305,21 +299,13 @@ class MemoryGame:
             #self.scene = "GAMEPLAY" # Click để vào chơi
             
         elif self.scene == "GAMEPLAY":
-            if self.matched_info: # Nếu đang hiện Pop-up, click để đóng
+            if self.matched_info:
                 self.matched_info = None
                 return
 
-            # Tính tọa độ lưới (Quan trọng nhất)
             x, y = pos
-            col = (x - 80) // (CARD_SIZE + MARGIN)
-            row = (y - 80) // (CARD_SIZE + MARGIN)
-            idx = row * GRID_SIZE + col
+            sw, sh = self.screen.get_size()
             
-<<<<<<< Updated upstream
-            if 0 <= idx < 16 and not self.revealed[idx]:
-                self.revealed[idx] = True
-                self.selected.append(idx)
-=======
             # Tái sử dụng công thức tính toán từ draw_grid
             
             start_x = (sw - (4*self.dynamic_size + 3*MARGIN)) // 2
@@ -342,7 +328,6 @@ class MemoryGame:
                 if not self.revealed[idx]:
                     self.revealed[idx] = True
                     self.selected.append(idx)
->>>>>>> Stashed changes
 
     def update(self):
         current_time = pygame.time.get_ticks()
@@ -369,11 +354,7 @@ class MemoryGame:
             else:
                 # KHÔNG TRÙNG -> Đợi 1 giây rồi úp lại
                 pygame.display.flip()
-<<<<<<< Updated upstream
-                pygame.time.delay(1000)
-=======
                 pygame.time.delay(100)
->>>>>>> Stashed changes
                 self.revealed[idx1] = self.revealed[idx2] = False
                 self.selected = []
     
@@ -401,7 +382,10 @@ class MemoryGame:
             self.draw_button(self.btn_lichsu, (50,200,100), (100,255,150), "Lịch sử")
             
         elif self.scene == "INTRO":
-            # Vẽ ảnh nền theme /////////////////////////////////
+            if hasattr(self, 'intro_bg') and self.intro_bg:
+                self.screen.blit(self.intro_bg, (0, 0))
+            else:
+                self.screen.blit(self.bg_current, (0, 0))
             curr_w = self.screen.get_width()
             curr_h = self.screen.get_height()
             self.draw_text(f"Chủ đề: {self.current_theme}. Đang chuẩn bị vào game...", (curr_w // 2, curr_h // 2))
@@ -416,11 +400,6 @@ class MemoryGame:
             pygame.draw.rect(self.screen, hover_color, rect, border_radius=15)
         else:
             pygame.draw.rect(self.screen, color, rect, border_radius=15)
-<<<<<<< Updated upstream
-            self.draw_text(text, rect.center)
-
-    def draw_grid(self):
-=======
         self.draw_text(text, rect.center)
     
     def get_rounded_image(self, surface, size, radius):
@@ -451,36 +430,51 @@ class MemoryGame:
         # Kích thước thực tế của ảnh sau khi trừ padding
         inner_size = self.dynamic_size - (PADDING * 2)
             
->>>>>>> Stashed changes
         for i in range(16):
             row, col = i // 4, i % 4
-            rect = pygame.Rect(80 + col*(CARD_SIZE+MARGIN), 80 + row*(CARD_SIZE+MARGIN), CARD_SIZE, CARD_SIZE)
-            
+            rect = pygame.Rect(
+                start_x + col * (self.dynamic_size + MARGIN), 
+                start_y + row * (self.dynamic_size + MARGIN), 
+                self.dynamic_size, 
+                self.dynamic_size
+            )           
             if self.revealed[i]:
                 # Gọi ảnh đã tải ra để dán lên thẻ
                 item_name = self.cards[i]
-                if hasattr(self, 'card_images') and item_name in self.card_images:
-                    self.screen.blit(self.card_images[item_name], rect.topleft)
+                if item_name in self.card_images:
+                    # --- SỬ DỤNG TRANSFORM Ở ĐÂY ---
+                    # Lấy ảnh gốc từ dictionary và ép nó theo self.dynamic_size hiện tại
+                    img_scaled = pygame.transform.smoothscale(
+                    self.card_images[item_name], 
+                    (self.dynamic_size, self.dynamic_size)
+                    )
+                    self.screen.blit(img_scaled, rect.topleft)
+                    # 1. Vẽ khung nền của thẻ trước (màu xám hoặc trắng tùy bạn)
+                    pygame.draw.rect(self.screen, WHITE, rect, border_radius=CORNER_RADIUS)
+                    
+                    # 2. Xử lý ảnh: Scale và Bo góc
+                    raw_img = self.card_images[item_name]
+                    # Scale ảnh theo kích thước đã trừ padding
+                    img_scaled = pygame.transform.smoothscale(raw_img, (inner_size, inner_size))
+                    
+                    # Tạo một Surface rỗng có hỗ trợ độ trong suốt (Alpha) để làm Mask
+                    mask = pygame.Surface((inner_size, inner_size), pygame.SRCALPHA)
+                    # Vẽ một hình chữ nhật bo góc màu trắng lên Mask
+                    pygame.draw.rect(mask, (255, 255, 255), (0, 0, inner_size, inner_size), border_radius=CORNER_RADIUS-2)
+                    
+                    # Cắt ảnh theo Mask bằng chế độ BLEND_RGBA_MIN
+                    img_scaled.blit(mask, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)
+                    
+                    # 3. Vẽ ảnh đã được bo góc vào chính giữa thẻ
+                    self.screen.blit(img_scaled, (rect.x + PADDING, rect.y + PADDING))
+                    
                 else:
-                    pygame.draw.rect(self.screen, GRAY, rect)
+                    pygame.draw.rect(self.screen, GRAY, rect, border_radius=CORNER_RADIUS)
             else:
-                pygame.draw.rect(self.screen, BLACK, rect)
+                pygame.draw.rect(self.screen, BLACK, rect, border_radius=CORNER_RADIUS)
+    
 
     def draw_popup(self, text):
-<<<<<<< Updated upstream
-        # 1. Vẽ bảng thông báo giáo dục (khung nền)
-        overlay = pygame.Surface((600, 400))
-        overlay.set_alpha(230) # Tăng độ mờ lên một chút để dễ đọc chữ hơn
-        overlay.fill((40, 40, 40))
-        
-        # Đặt bảng ở giữa màn hình (tạm tính theo kích thước mặc định 800x600)
-        start_x = (self.screen.get_width() - 600) // 2
-        start_y = (self.screen.get_height() - 400) // 2
-        self.screen.blit(overlay, (start_x, start_y))
-
-        # 2. Xử lý dữ liệu text (Vì chủ đề Văn hóa là Dictionary, các chủ đề khác là String)
-        content = ""
-=======
         sw, sh = self.screen.get_size()
 
         # Lớp nền tối để tập trung ánh nhìn vào popup
@@ -526,57 +520,12 @@ class MemoryGame:
         self.screen.blit(hint_img, hint_rect)
 
         # Xử lý dữ liệu text
->>>>>>> Stashed changes
         if isinstance(text, dict):
             content = f"Nguon goc: {text['nguon_goc']}\n\nDac diem: {text['dac_diem']}"
         else:
             content = str(text)
-<<<<<<< Updated upstream
 
-        # 3. Thuật toán tự động xuống dòng (Word Wrap)
-        words = content.replace('\n', ' \n ').split(' ')
-        lines = []
-        current_line = []
-        max_width = 560 # Giới hạn chiều rộng chữ để không tràn khỏi overlay (600 - lề 40)
         
-        for word in words:
-            if word == '\n':
-                lines.append(' '.join(current_line))
-                current_line = []
-                continue
-                
-            current_line.append(word)
-            # Tính toán kích thước của dòng hiện tại
-            fw, fh = self.font.size(' '.join(current_line))
-            if fw > max_width: # Nếu vượt quá giới hạn thì đẩy từ cuối xuống dòng mới
-                current_line.pop()
-                lines.append(' '.join(current_line))
-                current_line = [word]
-                
-        if current_line:
-            lines.append(' '.join(current_line))
-=======
->>>>>>> Stashed changes
-
-        # Hàm xuống dòng gọn để xử lý cả đoạn có xuống dòng thủ công
-        def wrap_text(content_text, font_obj, width_limit):
-            lines = []
-            for paragraph in content_text.split("\n"):
-                if not paragraph.strip():
-                    lines.append("")
-                    continue
-
-                words = paragraph.split()
-                current = words[0]
-                for word in words[1:]:
-                    trial = f"{current} {word}"
-                    if font_obj.size(trial)[0] <= width_limit:
-                        current = trial
-                    else:
-                        lines.append(current)
-                        current = word
-                lines.append(current)
-            return lines
 
         body_x = start_x + 26
         body_y = start_y + header_h + 22
@@ -584,7 +533,7 @@ class MemoryGame:
         body_h = box_h - header_h - 36
         line_gap = 6
 
-        body_lines = wrap_text(content, self.font, body_w)
+        body_lines = self.wrap_text(content, self.font, body_w)
         max_lines = max(1, body_h // (self.font.get_height() + line_gap))
 
         # Nếu nội dung quá dài thì cắt mềm và thêm ...
@@ -603,6 +552,27 @@ class MemoryGame:
             text_surface = self.font.render(line, True, (244, 247, 255))
             self.screen.blit(text_surface, (body_x, y_offset))
             y_offset += self.font.get_height() + line_gap
+            
+    # Hàm xuống dòng gọn để xử lý cả đoạn có xuống dòng thủ công
+    def wrap_text(self, content_text, font_obj, width_limit):
+        lines = []
+        for paragraph in content_text.split("\n"):
+            if not paragraph.strip():
+                lines.append("")
+                continue
+
+            words = paragraph.split()
+            current = words[0]
+            for word in words[1:]:
+                trial = f"{current} {word}"
+                if font_obj.size(trial)[0] <= width_limit:
+                    current = trial
+                else:
+                    lines.append(current)
+                    current = word
+            lines.append(current)
+        return lines
+    
     def draw_text_title(self, text, pos): #hàm này dùng để viết tên game do có font riêng
         text = self.normalize_text(text)
         img = self.font_title.render(text, True, WHITE)
@@ -648,9 +618,6 @@ class MemoryGame:
             self.font = self.load_text_font(max(12, new_normal_size))
         except:
             self.font_title = pygame.font.SysFont("Arial", max(20, new_title_size))
-<<<<<<< Updated upstream
-
-=======
             self.font = self.load_text_font(max(12, new_normal_size))
         if hasattr(self, 'intro_bg') and self.intro_bg:
             self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (self.curr_w, self.curr_h))
@@ -684,7 +651,6 @@ class MemoryGame:
             return pygame.font.Font(self.text_font_path, size)
         return pygame.font.SysFont("Arial", size)
         
->>>>>>> Stashed changes
 
 # --- CHẠY GAME ---
 if __name__ == "__main__":
@@ -704,19 +670,11 @@ if __name__ == "__main__":
                 game.scale_bg((new_width, new_height))
                 game.curr_h = new_height
                 game.curr_w = new_width
-                
-                
+                                
             if event.type == pygame.MOUSEBUTTONDOWN:
                 game.handle_click(event.pos)
         
-<<<<<<< Updated upstream
-        #self.screen.blit(self.bg_current, (0, 0))
-        
-        if game.scene == "GAMEPLAY":
-            game.update()
-=======
         game.update()
->>>>>>> Stashed changes
             
         pygame.display.flip()
     pygame.quit()
