@@ -1,6 +1,7 @@
 import pygame
 import random
 import os
+import unicodedata
 
 # --- CẤU HÌNH  --- //////////////////////////
 WIDTH, HEIGHT = 800, 600
@@ -160,17 +161,27 @@ class MemoryGame:
         
         self.size_title = 75
         self.size_normal = 24
+
+        self.text_font_path = None
+        for candidate in ["NotoSans.ttf"]:
+            if os.path.exists(candidate):
+                self.text_font_path = candidate
+                break
         
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.RESIZABLE)
         self.clock = pygame.time.Clock()
         #self.font = pygame.font.SysFont("Arial", self.size_normal)
+<<<<<<< Updated upstream
         self.font = pygame.font.Font("font.ttf", 24)
+=======
+        self.font = self.load_text_font(self.size_normal)
+>>>>>>> Stashed changes
         
         try:
             self.font_title = pygame.font.Font("Top Secret.ttf",self.size_title)
         except:
             # Phòng trường hợp sai đường dẫn file, dùng font mặc định để không lỗi game
-            self.font_title = pygame.font.SysFont("Arial", self.size_title)
+            self.font_title = self.load_text_font(self.size_title)
             print("Không tìm thấy file Top Secret.ttf, đang dùng font mặc định.")
 
         
@@ -178,6 +189,8 @@ class MemoryGame:
         self.scene = "MENU" # MENU, INTRO, GAMEPLAY
         self.current_theme = None
         self.running = True
+        self.intro_start_time = 0
+        self.sound_played = False
         
         try:
             self.bg_full = pygame.image.load("theme.png").convert()
@@ -200,16 +213,43 @@ class MemoryGame:
         self.revealed = []   # Trạng thái lật (True/False)
         self.selected = []   # Lưu index của 2 ô đang chọn để so sánh
         self.matched_info = None # Lưu thông tin giáo dục để hiện Pop-up
+        
+        # Âm thanh chuyển cảnh
+        pygame.mixer.init()
+        self.intro_duration = 4000 # Thời gian dừng ở Intro (4 giây)
+        try:
+            self.sound_transition = pygame.mixer.Sound("transition.mp3") # Tên file âm thanh của nhóm
+        except:
+            self.sound_transition = None
+            print("Không tìm thấy file âm thanh chuyển cảnh")
 
     def setup_level(self, theme):
-        self.current_theme = theme
+        self.current_theme = self.normalize_text(theme)
         # Lấy danh sách tên ảnh từ Database của theme đó
 
+<<<<<<< Updated upstream
         names = list(INFO_DATA[theme].keys()) 
+=======
+        data = self.get_theme_data(self.current_theme)
+        names = list(data.keys()) 
+        
+        # Thêm phần load ảnh Intro Theme
+        theme_files = {
+            "Ẩm thực": "am_thuc.png",
+            "Lịch sử": "lich_su.png",
+            "Văn hóa": "phong_tuc.png"
+        }
+        bg_path = theme_files.get(theme)
+        if bg_path and os.path.exists(bg_path):
+            self.intro_bg = pygame.image.load(bg_path).convert()
+            # Scale ảnh cho vừa màn hình hiện tại
+            self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (self.curr_w, self.curr_h))
+        else:
+            self.intro_bg = None # Nếu không tìm thấy ảnh thì để trống
+            print(f"Cảnh báo: Không tìm thấy file {bg_path}")
+>>>>>>> Stashed changes
 
-        data = INFO_DATA[theme]
-
-        if theme == "Văn hóa":
+        if self.current_theme == self.normalize_text("Văn hóa"):
             names = list(data["Trang phục Dân tộc"].keys())
         else:
             names = list(data.keys())
@@ -232,11 +272,7 @@ class MemoryGame:
         for item_name in set(self.cards): 
             image_path = None
             # Tìm file ảnh (.png, .jpg, .jpeg, .webp) trong thư mục chủ đề tương ứng
-            for ext in ['.png', '.jpg', '.jpeg', '.webp']:
-                temp_path = os.path.join(theme, item_name + ext)
-                if os.path.exists(temp_path):
-                    image_path = temp_path
-                    break
+            image_path = self.find_image_path(self.current_theme, item_name)
             
             if image_path:
                 img = pygame.image.load(image_path).convert_alpha()
@@ -264,8 +300,9 @@ class MemoryGame:
             # elif 350 < pos[0] < 550: self.start_intro("Văn hóa")
 
             
-        elif self.scene == "INTRO":
-            self.scene = "GAMEPLAY" # Click để vào chơi
+        #elif self.scene == "INTRO":
+            #khúc này thêm âm thanh ready go
+            #self.scene = "GAMEPLAY" # Click để vào chơi
             
         elif self.scene == "GAMEPLAY":
             if self.matched_info: # Nếu đang hiện Pop-up, click để đóng
@@ -278,12 +315,44 @@ class MemoryGame:
             row = (y - 80) // (CARD_SIZE + MARGIN)
             idx = row * GRID_SIZE + col
             
+<<<<<<< Updated upstream
             if 0 <= idx < 16 and not self.revealed[idx]:
                 self.revealed[idx] = True
                 self.selected.append(idx)
+=======
+            # Tái sử dụng công thức tính toán từ draw_grid
+            
+            start_x = (sw - (4*self.dynamic_size + 3*MARGIN)) // 2
+            start_y = (sh - (4*self.dynamic_size + 3*MARGIN)) // 2
+
+            # Xác định tọa độ hàng/cột dựa trên vị trí chuột
+            col = (x - start_x) // (self.dynamic_size + MARGIN)
+            row = (y - start_y) // (self.dynamic_size + MARGIN)
+            
+            # Kiểm tra xem có click trúng vào phạm vi lưới 4x4 không
+            if 0 <= col < 4 and 0 <= row < 4:
+            # Tạo rect ảo để kiểm tra va chạm chính xác (tránh click vào khoảng trống MARGIN)
+                card_rect = pygame.Rect(
+                    start_x + col*(self.dynamic_size + MARGIN), 
+                    start_y + row*(self.dynamic_size + MARGIN), 
+                    self.dynamic_size, self.dynamic_size
+            )
+            if card_rect.collidepoint(pos):
+                idx = row * 4 + col
+                if not self.revealed[idx]:
+                    self.revealed[idx] = True
+                    self.selected.append(idx)
+>>>>>>> Stashed changes
 
     def update(self):
-        #"""Logic kiểm tra cặp bài """//////////////////////////////////
+        current_time = pygame.time.get_ticks()
+        if self.scene == "INTRO":
+            elapsed = current_time - self.intro_start_time
+            if elapsed >= self.intro_duration:
+                self.scene = "GAMEPLAY"
+            return
+                
+        #Logic kiểm tra cặp bài
         if len(self.selected) == 2:
             idx1, idx2 = self.selected
             if self.cards[idx1] == self.cards[idx2]:
@@ -292,17 +361,25 @@ class MemoryGame:
 
 
                 if self.current_theme == "Văn hóa":
-                    self.matched_info = INFO_DATA["Văn hóa"]["Trang phục Dân tộc"][item_name]
+                    self.matched_info = self.get_theme_data("Văn hóa")["Trang phục Dân tộc"][item_name]
                 else:
-                   self.matched_info = INFO_DATA[self.current_theme][item_name]
+                   self.matched_info = self.get_theme_data(self.current_theme)[item_name]
 
                 self.selected = []
             else:
                 # KHÔNG TRÙNG -> Đợi 1 giây rồi úp lại
                 pygame.display.flip()
+<<<<<<< Updated upstream
                 pygame.time.delay(1000)
+=======
+                pygame.time.delay(100)
+>>>>>>> Stashed changes
                 self.revealed[idx1] = self.revealed[idx2] = False
                 self.selected = []
+    
+    def play_transition_sound(self):
+        if self.sound_transition:
+            self.sound_transition.play()
 
     def draw(self):
 
@@ -312,7 +389,7 @@ class MemoryGame:
         if self.scene == "MENU":
             #lấy kích thước hiện tại
             self.curr_w = self.screen.get_width()
-            self.curr_h = self.screen.get_height()
+            self.curr_h = self.screen.get_height() 
             
             #viết tên tiêu đề game
             self.draw_text_title("FLIP GAME", (self.screen.get_width()*0.6, self.screen.get_height()*0.2))
@@ -327,7 +404,7 @@ class MemoryGame:
             # Vẽ ảnh nền theme /////////////////////////////////
             curr_w = self.screen.get_width()
             curr_h = self.screen.get_height()
-            self.draw_text(f"Chủ đề: {self.current_theme}. Click để bắt đầu!", (curr_w // 2, curr_h // 2))
+            self.draw_text(f"Chủ đề: {self.current_theme}. Đang chuẩn bị vào game...", (curr_w // 2, curr_h // 2))
 
         elif self.scene == "GAMEPLAY":
             self.draw_grid()
@@ -339,9 +416,42 @@ class MemoryGame:
             pygame.draw.rect(self.screen, hover_color, rect, border_radius=15)
         else:
             pygame.draw.rect(self.screen, color, rect, border_radius=15)
+<<<<<<< Updated upstream
             self.draw_text(text, rect.center)
 
     def draw_grid(self):
+=======
+        self.draw_text(text, rect.center)
+    
+    def get_rounded_image(self, surface, size, radius):
+        #"""Hàm này cắt ảnh thành hình bo góc"""
+        # 1. Tạo một Surface rỗng có hỗ trợ độ trong suốt
+        mask = pygame.Surface(size, pygame.SRCALPHA)
+        # 2. Vẽ một hình chữ nhật trắng đã bo góc lên đó
+        pygame.draw.rect(mask, (255, 255, 255), (0, 0, *size), border_radius=radius)
+        
+        # 3. Scale ảnh gốc về đúng kích thước cần vẽ
+        image = pygame.transform.smoothscale(surface, size)
+        # 4. Chỉ giữ lại những phần ảnh nằm trong hình chữ nhật trắng của mask
+        image.blit(mask, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)
+        return image
+
+    def draw_grid(self):
+        sw, sh = self.screen.get_size()
+        # 3. Tính toán vị trí bắt đầu (offset) để lưới nằm chính giữa
+        total_grid_w = GRID_SIZE * self.dynamic_size + (GRID_SIZE - 1) * MARGIN
+        total_grid_h = GRID_SIZE * self.dynamic_size + (GRID_SIZE - 1) * MARGIN
+        start_x = (sw - total_grid_w) // 2
+        start_y = (sh - total_grid_h) // 2
+        
+        # Thiết lập Padding và độ bo góc
+        PADDING = 6  # Khoảng cách để ảnh nằm lọt trong khung (tùy chỉnh theo ý bạn)
+        CORNER_RADIUS = 15 # Độ bo góc của thẻ và ảnh
+    
+        # Kích thước thực tế của ảnh sau khi trừ padding
+        inner_size = self.dynamic_size - (PADDING * 2)
+            
+>>>>>>> Stashed changes
         for i in range(16):
             row, col = i // 4, i % 4
             rect = pygame.Rect(80 + col*(CARD_SIZE+MARGIN), 80 + row*(CARD_SIZE+MARGIN), CARD_SIZE, CARD_SIZE)
@@ -357,6 +467,7 @@ class MemoryGame:
                 pygame.draw.rect(self.screen, BLACK, rect)
 
     def draw_popup(self, text):
+<<<<<<< Updated upstream
         # 1. Vẽ bảng thông báo giáo dục (khung nền)
         overlay = pygame.Surface((600, 400))
         overlay.set_alpha(230) # Tăng độ mờ lên một chút để dễ đọc chữ hơn
@@ -369,10 +480,58 @@ class MemoryGame:
 
         # 2. Xử lý dữ liệu text (Vì chủ đề Văn hóa là Dictionary, các chủ đề khác là String)
         content = ""
+=======
+        sw, sh = self.screen.get_size()
+
+        # Lớp nền tối để tập trung ánh nhìn vào popup
+        dim = pygame.Surface((sw, sh), pygame.SRCALPHA)
+        dim.fill((8, 10, 16, 175))
+        self.screen.blit(dim, (0, 0))
+
+        # Kích thước popup responsive theo cửa sổ
+        box_w = min(720, int(sw * 0.84))
+        box_h = min(470, int(sh * 0.78))
+        start_x = (sw - box_w) // 2
+        start_y = (sh - box_h) // 2
+        box_rect = pygame.Rect(start_x, start_y, box_w, box_h)
+
+        # Bóng đổ
+        shadow = pygame.Surface((box_w + 16, box_h + 16), pygame.SRCALPHA)
+        pygame.draw.rect(shadow, (0, 0, 0, 120), shadow.get_rect(), border_radius=26)
+        self.screen.blit(shadow, (start_x - 2, start_y + 8))
+
+        # Khung chính kiểu glass card
+        panel = pygame.Surface((box_w, box_h), pygame.SRCALPHA)
+        pygame.draw.rect(panel, (23, 28, 43, 236), (0, 0, box_w, box_h), border_radius=24)
+        pygame.draw.rect(panel, (114, 159, 255, 165), (0, 0, box_w, box_h), width=2, border_radius=24)
+
+        # Header nổi bật
+        header_h = 72
+        pygame.draw.rect(panel, (36, 56, 95, 210), (0, 0, box_w, header_h), border_top_left_radius=24, border_top_right_radius=24)
+        pygame.draw.line(panel, (130, 180, 255, 170), (20, header_h), (box_w - 20, header_h), 1)
+        self.screen.blit(panel, box_rect.topleft)
+
+        # Font phụ cho tiêu đề/hint
+        title_size = max(24, int(self.size_normal * 1.35))
+        hint_size = max(14, int(self.size_normal * 0.72))
+        title_font = self.load_text_font(title_size)
+        hint_font = self.load_text_font(hint_size)
+
+        title_img = title_font.render("THONG TIN VAN HOA", True, (235, 243, 255))
+        title_rect = title_img.get_rect(midleft=(start_x + 24, start_y + header_h // 2))
+        self.screen.blit(title_img, title_rect)
+
+        hint_img = hint_font.render("Nhan chuot de dong", True, (180, 205, 255))
+        hint_rect = hint_img.get_rect(midright=(start_x + box_w - 20, start_y + header_h // 2))
+        self.screen.blit(hint_img, hint_rect)
+
+        # Xử lý dữ liệu text
+>>>>>>> Stashed changes
         if isinstance(text, dict):
-            content = f"Nguồn gốc: {text['nguon_goc']}\n\nĐặc điểm: {text['dac_diem']}"
+            content = f"Nguon goc: {text['nguon_goc']}\n\nDac diem: {text['dac_diem']}"
         else:
             content = str(text)
+<<<<<<< Updated upstream
 
         # 3. Thuật toán tự động xuống dòng (Word Wrap)
         words = content.replace('\n', ' \n ').split(' ')
@@ -396,19 +555,62 @@ class MemoryGame:
                 
         if current_line:
             lines.append(' '.join(current_line))
+=======
+>>>>>>> Stashed changes
 
-        # 4. Vẽ từng dòng chữ lên màn hình
-        y_offset = start_y + 30 # Cách lề trên của khung 30px
-        for line in lines:
-            text_surface = self.font.render(line, True, WHITE)
-            self.screen.blit(text_surface, (start_x + 20, y_offset)) # Cách lề trái 20px
-            y_offset += self.font.get_height() + 5 # Khoảng cách giữa các dòng
+        # Hàm xuống dòng gọn để xử lý cả đoạn có xuống dòng thủ công
+        def wrap_text(content_text, font_obj, width_limit):
+            lines = []
+            for paragraph in content_text.split("\n"):
+                if not paragraph.strip():
+                    lines.append("")
+                    continue
+
+                words = paragraph.split()
+                current = words[0]
+                for word in words[1:]:
+                    trial = f"{current} {word}"
+                    if font_obj.size(trial)[0] <= width_limit:
+                        current = trial
+                    else:
+                        lines.append(current)
+                        current = word
+                lines.append(current)
+            return lines
+
+        body_x = start_x + 26
+        body_y = start_y + header_h + 22
+        body_w = box_w - 52
+        body_h = box_h - header_h - 36
+        line_gap = 6
+
+        body_lines = wrap_text(content, self.font, body_w)
+        max_lines = max(1, body_h // (self.font.get_height() + line_gap))
+
+        # Nếu nội dung quá dài thì cắt mềm và thêm ...
+        if len(body_lines) > max_lines:
+            body_lines = body_lines[:max_lines]
+            if body_lines[-1] != "":
+                while self.font.size(body_lines[-1] + "...")[0] > body_w and len(body_lines[-1]) > 1:
+                    body_lines[-1] = body_lines[-1][:-1]
+                body_lines[-1] += "..."
+
+        y_offset = body_y
+        for line in body_lines:
+            if line == "":
+                y_offset += self.font.get_height() + line_gap
+                continue
+            text_surface = self.font.render(line, True, (244, 247, 255))
+            self.screen.blit(text_surface, (body_x, y_offset))
+            y_offset += self.font.get_height() + line_gap
     def draw_text_title(self, text, pos): #hàm này dùng để viết tên game do có font riêng
+        text = self.normalize_text(text)
         img = self.font_title.render(text, True, WHITE)
         rect = img.get_rect(center=pos)
         self.screen.blit(img, rect)
         
     def draw_text(self, text, pos): #hàm này dùng để viết nội dung
+        text = self.normalize_text(text)
         img = self.font.render(text, True, WHITE)
         rect = img.get_rect(center=pos)
         self.screen.blit(img, rect)
@@ -416,7 +618,12 @@ class MemoryGame:
     def start_intro(self, theme):
         self.setup_level(theme)
         self.scene = "INTRO"
-    
+        self.intro_start_time = pygame.time.get_ticks() # Lưu lúc bắt đầu Intro
+        # Phát âm thanh ngay khi vào Intro
+        if self.sound_transition:
+            self.sound_transition.play()
+        self.sound_played = True
+        
     def scale_bg(self, current_size=None): #hàm này dùng để điều chỉnh kích thước
         # Hàm này sẽ lấy kích thước HIỆN TẠI của màn hình và scale ảnh gốc theo đó
         if current_size is None:
@@ -424,6 +631,11 @@ class MemoryGame:
         # Dùng smoothscale để chất lượng đẹp hơn khi co giãn
         self.bg_current = pygame.transform.smoothscale(self.bg_full, current_size)
         print(f"Đã scale nền theo kích thước mới: {current_size}")
+        
+        # Cập nhật dynamic_size ngay tại đây
+        sw, sh = current_size
+        grid_area_w, grid_area_h = sw * 0.8, sh * 0.8
+        self.dynamic_size = int(min((grid_area_w - 3*MARGIN)/4, (grid_area_h - 3*MARGIN)/4))
         
         #phần dưới này để fix cỡ chữ cho hợp
         scale_ratio = current_size[0] / 800 
@@ -433,10 +645,46 @@ class MemoryGame:
         # Khởi tạo lại font với size mới
         try:
             self.font_title = pygame.font.Font("Top Secret.ttf", max(20, new_title_size))
-            self.font = pygame.font.SysFont("Arial", max(12, new_normal_size))
+            self.font = self.load_text_font(max(12, new_normal_size))
         except:
             self.font_title = pygame.font.SysFont("Arial", max(20, new_title_size))
+<<<<<<< Updated upstream
 
+=======
+            self.font = self.load_text_font(max(12, new_normal_size))
+        if hasattr(self, 'intro_bg') and self.intro_bg:
+            self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (self.curr_w, self.curr_h))
+
+    def normalize_text(self, value):
+        if isinstance(value, str):
+            return unicodedata.normalize("NFC", value)
+        return value
+
+    def get_theme_data(self, theme):
+        normalized_theme = self.normalize_text(theme)
+        for key, value in INFO_DATA.items():
+            if self.normalize_text(key) == normalized_theme:
+                return value
+        raise KeyError(f"Không tìm thấy dữ liệu cho chủ đề: {theme}")
+
+    def find_image_path(self, theme, item_name):
+        normalized_item_name = self.normalize_text(item_name)
+        theme_folder = self.normalize_text(theme)
+        if not os.path.isdir(theme_folder):
+            return None
+
+        for filename in os.listdir(theme_folder):
+            stem, ext = os.path.splitext(filename)
+            if ext.lower() in ['.png', '.jpg', '.jpeg', '.webp'] and self.normalize_text(stem) == normalized_item_name:
+                return os.path.join(theme_folder, filename)
+        return None
+
+    def load_text_font(self, size):
+        if self.text_font_path:
+            return pygame.font.Font(self.text_font_path, size)
+        return pygame.font.SysFont("Arial", size)
+        
+>>>>>>> Stashed changes
 
 # --- CHẠY GAME ---
 if __name__ == "__main__":
@@ -461,10 +709,14 @@ if __name__ == "__main__":
             if event.type == pygame.MOUSEBUTTONDOWN:
                 game.handle_click(event.pos)
         
+<<<<<<< Updated upstream
         #self.screen.blit(self.bg_current, (0, 0))
         
         if game.scene == "GAMEPLAY":
             game.update()
+=======
+        game.update()
+>>>>>>> Stashed changes
             
         pygame.display.flip()
     pygame.quit()
