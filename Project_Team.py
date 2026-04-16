@@ -211,6 +211,13 @@ class MemoryGame:
         self.revealed = []   # Trạng thái lật (True/False)
         self.selected = []   # Lưu index của 2 ô đang chọn để so sánh
         self.matched_info = None # Lưu thông tin giáo dục để hiện Pop-up
+        self.hide_pair_at = 0 # Mốc thời gian úp lại cặp thẻ không khớp
+        self.flip_duration = 260 # Thời gian animation lật thẻ (ms)
+        self.card_animations = {} # index -> {start, from, to}
+        self.turn_count = 0
+        self.game_completed = False
+        self.btn_replay = pygame.Rect(0, 0, 0, 0)
+        self.btn_change_theme = pygame.Rect(0, 0, 0, 0)
         
         # Âm thanh chuyển cảnh
         pygame.mixer.init()
@@ -260,6 +267,11 @@ class MemoryGame:
         self.cards = game_list
         self.revealed = [False] * 16
         self.selected = []
+        self.hide_pair_at = 0
+        self.card_animations = {}
+        self.turn_count = 0
+        self.game_completed = False
+        self.matched_info = None
         
         # 4. TẢI ẢNH VÀO BỘ NHỚ
         self.card_images = {}
@@ -299,8 +311,20 @@ class MemoryGame:
             #self.scene = "GAMEPLAY" # Click để vào chơi
             
         elif self.scene == "GAMEPLAY":
+            if self.game_completed:
+                if self.btn_replay.collidepoint(pos):
+                    self.setup_level(self.current_theme)
+                elif self.btn_change_theme.collidepoint(pos):
+                    self.scene = "MENU"
+                    self.game_completed = False
+                return
+
             if self.matched_info:
                 self.matched_info = None
+                return
+
+            # Không cho lật thêm khi đã đủ 2 thẻ và đang chờ xử lý
+            if len(self.selected) >= 2 or self.hide_pair_at or self.has_pending_hide_animation():
                 return
 
             x, y = pos
@@ -326,8 +350,11 @@ class MemoryGame:
             if card_rect.collidepoint(pos):
                 idx = row * 4 + col
                 if not self.revealed[idx]:
+                    self.start_card_animation(idx, True, pygame.time.get_ticks())
                     self.revealed[idx] = True
                     self.selected.append(idx)
+                    if len(self.selected) == 2:
+                        self.turn_count += 1
 
     def update(self):
         current_time = pygame.time.get_ticks()
@@ -336,8 +363,10 @@ class MemoryGame:
             if elapsed >= self.intro_duration:
                 self.scene = "GAMEPLAY"
             return
+
+        self.finish_card_animations(current_time)
                 
-        #Logic kiểm tra cặp bài
+        # Logic kiểm tra cặp bài
         if len(self.selected) == 2:
             idx1, idx2 = self.selected
             if self.cards[idx1] == self.cards[idx2]:
@@ -352,11 +381,49 @@ class MemoryGame:
 
                 self.selected = []
             else:
-                # KHÔNG TRÙNG -> Đợi 1 giây rồi úp lại
-                pygame.display.flip()
-                pygame.time.delay(100)
-                self.revealed[idx1] = self.revealed[idx2] = False
-                self.selected = []
+                # KHÔNG TRÙNG -> Chờ một nhịp ngắn rồi úp cùng lúc cả 2 thẻ
+                if self.hide_pair_at == 0:
+                    self.hide_pair_at = current_time + 700
+
+        if self.hide_pair_at and current_time >= self.hide_pair_at and len(self.selected) == 2:
+            idx1, idx2 = self.selected
+            self.start_card_animation(idx1, False, current_time)
+            self.start_card_animation(idx2, False, current_time)
+            self.selected = []
+            self.hide_pair_at = 0
+
+        if (
+            not self.game_completed
+            and all(self.revealed)
+            and not self.selected
+            and not self.card_animations
+        ):
+            self.game_completed = True
+            self.matched_info = None
+
+    def start_card_animation(self, idx, to_state, current_time):
+        from_state = self.revealed[idx]
+        self.card_animations[idx] = {
+            "start": current_time,
+            "from": from_state,
+            "to": to_state,
+        }
+
+    def finish_card_animations(self, current_time):
+        finished = []
+        for idx, anim in self.card_animations.items():
+            if current_time - anim["start"] >= self.flip_duration:
+                self.revealed[idx] = anim["to"]
+                finished.append(idx)
+
+        for idx in finished:
+            del self.card_animations[idx]
+
+    def has_pending_hide_animation(self):
+        for anim in self.card_animations.values():
+            if anim["to"] is False:
+                return True
+        return False
     
     def play_transition_sound(self):
         if self.sound_transition:
@@ -392,8 +459,61 @@ class MemoryGame:
 
         elif self.scene == "GAMEPLAY":
             self.draw_grid()
-            if self.matched_info:
+            if self.game_completed:
+                self.draw_endgame_popup()
+            elif self.matched_info:
                 self.draw_popup(self.matched_info)
+
+    def draw_endgame_popup(self):
+        sw, sh = self.screen.get_size()
+
+        dim = pygame.Surface((sw, sh), pygame.SRCALPHA)
+        dim.fill((0, 0, 0, 170))
+        self.screen.blit(dim, (0, 0))
+
+        box_w = min(560, int(sw * 0.82))
+        box_h = min(320, int(sh * 0.62))
+        box_x = (sw - box_w) // 2
+        box_y = (sh - box_h) // 2
+        box_rect = pygame.Rect(box_x, box_y, box_w, box_h)
+
+        pygame.draw.rect(self.screen, (18, 30, 45), box_rect, border_radius=20)
+        pygame.draw.rect(self.screen, (108, 181, 255), box_rect, width=2, border_radius=20)
+
+        title_font = self.load_text_font(max(24, int(self.size_normal * 1.45)))
+        info_font = self.load_text_font(max(18, int(self.size_normal * 1.05)))
+        btn_font = self.load_text_font(max(16, int(self.size_normal * 0.9)))
+
+        title_img = title_font.render("HOAN THANH!", True, (235, 245, 255))
+        title_rect = title_img.get_rect(center=(box_x + box_w // 2, box_y + 60))
+        self.screen.blit(title_img, title_rect)
+
+        info_text = f"Ban da hoan thanh trong {self.turn_count} luot"
+        info_img = info_font.render(info_text, True, (209, 229, 255))
+        info_rect = info_img.get_rect(center=(box_x + box_w // 2, box_y + 120))
+        self.screen.blit(info_img, info_rect)
+
+        btn_w = max(170, int(box_w * 0.33))
+        btn_h = 56
+        gap = 24
+        total_w = btn_w * 2 + gap
+        start_x = box_x + (box_w - total_w) // 2
+        y = box_y + box_h - btn_h - 42
+
+        self.btn_replay = pygame.Rect(start_x, y, btn_w, btn_h)
+        self.btn_change_theme = pygame.Rect(start_x + btn_w + gap, y, btn_w, btn_h)
+
+        self.draw_option_button(self.btn_replay, (29, 145, 95), (45, 178, 117), "Choi lai", btn_font)
+        self.draw_option_button(self.btn_change_theme, (40, 90, 155), (58, 118, 195), "Doi chu de", btn_font)
+
+    def draw_option_button(self, rect, color, hover_color, text, font):
+        mouse_pos = pygame.mouse.get_pos()
+        draw_color = hover_color if rect.collidepoint(mouse_pos) else color
+        pygame.draw.rect(self.screen, draw_color, rect, border_radius=12)
+        pygame.draw.rect(self.screen, (220, 235, 255), rect, width=1, border_radius=12)
+        text_img = font.render(text, True, WHITE)
+        text_rect = text_img.get_rect(center=rect.center)
+        self.screen.blit(text_img, text_rect)
     
     def draw_button(self,rect, color, hover_color, text):
         if rect.collidepoint(self.mouse_pos):
@@ -437,41 +557,49 @@ class MemoryGame:
                 start_y + row * (self.dynamic_size + MARGIN), 
                 self.dynamic_size, 
                 self.dynamic_size
-            )           
-            if self.revealed[i]:
-                # Gọi ảnh đã tải ra để dán lên thẻ
-                item_name = self.cards[i]
-                if item_name in self.card_images:
-                    # --- SỬ DỤNG TRANSFORM Ở ĐÂY ---
-                    # Lấy ảnh gốc từ dictionary và ép nó theo self.dynamic_size hiện tại
-                    img_scaled = pygame.transform.smoothscale(
-                    self.card_images[item_name], 
-                    (self.dynamic_size, self.dynamic_size)
-                    )
-                    self.screen.blit(img_scaled, rect.topleft)
-                    # 1. Vẽ khung nền của thẻ trước (màu xám hoặc trắng tùy bạn)
-                    pygame.draw.rect(self.screen, WHITE, rect, border_radius=CORNER_RADIUS)
-                    
-                    # 2. Xử lý ảnh: Scale và Bo góc
-                    raw_img = self.card_images[item_name]
-                    # Scale ảnh theo kích thước đã trừ padding
-                    img_scaled = pygame.transform.smoothscale(raw_img, (inner_size, inner_size))
-                    
-                    # Tạo một Surface rỗng có hỗ trợ độ trong suốt (Alpha) để làm Mask
-                    mask = pygame.Surface((inner_size, inner_size), pygame.SRCALPHA)
-                    # Vẽ một hình chữ nhật bo góc màu trắng lên Mask
-                    pygame.draw.rect(mask, (255, 255, 255), (0, 0, inner_size, inner_size), border_radius=CORNER_RADIUS-2)
-                    
-                    # Cắt ảnh theo Mask bằng chế độ BLEND_RGBA_MIN
-                    img_scaled.blit(mask, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)
-                    
-                    # 3. Vẽ ảnh đã được bo góc vào chính giữa thẻ
-                    self.screen.blit(img_scaled, (rect.x + PADDING, rect.y + PADDING))
-                    
+            )
+
+            item_name = self.cards[i]
+            anim = self.card_animations.get(i)
+
+            if anim:
+                progress = min(1, (pygame.time.get_ticks() - anim["start"]) / self.flip_duration)
+                width_scale = max(0.06, abs(1 - 2 * progress))
+                show_front = anim["from"] if progress < 0.5 else anim["to"]
+
+                card_surface = pygame.Surface((self.dynamic_size, self.dynamic_size), pygame.SRCALPHA)
+                local_rect = pygame.Rect(0, 0, self.dynamic_size, self.dynamic_size)
+
+                if show_front:
+                    self.draw_card_front(card_surface, local_rect, item_name, inner_size, PADDING, CORNER_RADIUS)
                 else:
-                    pygame.draw.rect(self.screen, GRAY, rect, border_radius=CORNER_RADIUS)
+                    self.draw_card_back(card_surface, local_rect, CORNER_RADIUS)
+
+                scaled_w = max(1, int(self.dynamic_size * width_scale))
+                scaled_card = pygame.transform.smoothscale(card_surface, (scaled_w, self.dynamic_size))
+                draw_x = rect.x + (self.dynamic_size - scaled_w) // 2
+                self.screen.blit(scaled_card, (draw_x, rect.y))
             else:
-                pygame.draw.rect(self.screen, BLACK, rect, border_radius=CORNER_RADIUS)
+                if self.revealed[i]:
+                    self.draw_card_front(self.screen, rect, item_name, inner_size, PADDING, CORNER_RADIUS)
+                else:
+                    self.draw_card_back(self.screen, rect, CORNER_RADIUS)
+
+    def draw_card_front(self, target_surface, rect, item_name, inner_size, padding, corner_radius):
+        pygame.draw.rect(target_surface, WHITE, rect, border_radius=corner_radius)
+        if item_name in self.card_images:
+            raw_img = self.card_images[item_name]
+            img_scaled = pygame.transform.smoothscale(raw_img, (inner_size, inner_size))
+            mask = pygame.Surface((inner_size, inner_size), pygame.SRCALPHA)
+            pygame.draw.rect(mask, (255, 255, 255), (0, 0, inner_size, inner_size), border_radius=corner_radius-2)
+            img_scaled.blit(mask, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)
+            target_surface.blit(img_scaled, (rect.x + padding, rect.y + padding))
+        else:
+            pygame.draw.rect(target_surface, GRAY, rect, border_radius=corner_radius)
+
+    def draw_card_back(self, target_surface, rect, corner_radius):
+        pygame.draw.rect(target_surface, BLACK, rect, border_radius=corner_radius)
+        pygame.draw.rect(target_surface, (58, 58, 58), rect, width=2, border_radius=corner_radius)
     
 
     def draw_popup(self, text):
