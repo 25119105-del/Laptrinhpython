@@ -2,6 +2,7 @@ import pygame
 import random
 import os
 import unicodedata
+import re
 
 # --- CẤU HÌNH  --- //////////////////////////
 WIDTH, HEIGHT = 800, 600
@@ -190,7 +191,7 @@ class MemoryGame:
         self.sound_played = False
         
         try:
-            self.bg_full = pygame.image.load("theme.png").convert()
+            self.bg_full = pygame.image.load("theme.jpg").convert()
         except FileNotFoundError:
             print("Không tìm thấy file ảnh background.png!")
             # Tạo một nền màu tạm thời nếu không có ảnh
@@ -198,12 +199,14 @@ class MemoryGame:
             self.bg_full.fill((0, 0, 50)) # Màu xanh tối
         
         self.bg_current = None
+        self.bg_gameplay = None
         self.scale_bg() #gọi hàm 
         self.intro_bg = None #ảnh nền intro
 
-        self.btn_amthuc = pygame.Rect(100, 250, 180, 80)
-        self.btn_vanhoa = pygame.Rect(310, 250, 180, 80)
-        self.btn_lichsu = pygame.Rect(520, 250, 180, 80)
+        self.btn_amthuc = pygame.Rect(0, 0, 0, 0)
+        self.btn_vanhoa = pygame.Rect(0, 0, 0, 0)
+        self.btn_lichsu = pygame.Rect(0, 0, 0, 0)
+        self.update_menu_buttons((WIDTH, HEIGHT))
 
         
         # Logic Game ////////////////////////
@@ -218,6 +221,10 @@ class MemoryGame:
         self.game_completed = False
         self.btn_replay = pygame.Rect(0, 0, 0, 0)
         self.btn_change_theme = pygame.Rect(0, 0, 0, 0)
+        self.culture_image_folders = {}
+        self.popup_scroll_y = 0
+        self.popup_scroll_step = 40
+        self.popup_max_scroll = 0
         
         # Âm thanh chuyển cảnh
         pygame.mixer.init()
@@ -233,7 +240,9 @@ class MemoryGame:
         # Lấy danh sách tên ảnh từ Database của theme đó
 
         data = self.get_theme_data(self.current_theme)
-        names = list(data.keys()) 
+        names = list(data.keys())
+        self.culture_lookup = {}
+        self.culture_image_folders = {}
         
         # Thêm phần load ảnh Intro Theme
         theme_files = {
@@ -251,7 +260,19 @@ class MemoryGame:
             print(f"Cảnh báo: Không tìm thấy file {bg_path}")
 
         if self.current_theme == self.normalize_text("Văn hóa"):
-            names = list(data["Trang phục Dân tộc"].keys())
+            culture_sections = ["Trang phục Dân tộc", "Phong tục", "Địa danh"]
+            section_image_folders = {
+                "Trang phục Dân tộc": "Văn hóa",
+                "Phong tục": "Phong tục",
+                "Địa danh": "Địa danh",
+            }
+            names = []
+            for section in culture_sections:
+                section_data = data.get(section, {})
+                for key, value in section_data.items():
+                    names.append(key)
+                    self.culture_lookup[key] = value
+                    self.culture_image_folders[key] = section_image_folders.get(section, "Văn hóa")
         else:
             names = list(data.keys())
         # 2. CHỌN NGẪU NHIÊN 8 ẢNH từ 16 ảnh có trong danh sách
@@ -272,13 +293,19 @@ class MemoryGame:
         self.turn_count = 0
         self.game_completed = False
         self.matched_info = None
+        self.popup_scroll_y = 0
+        self.popup_max_scroll = 0
         
         # 4. TẢI ẢNH VÀO BỘ NHỚ
         self.card_images = {}
         for item_name in set(self.cards): 
             image_path = None
             # Tìm file ảnh (.png, .jpg, .jpeg, .webp) trong thư mục chủ đề tương ứng
-            image_path = self.find_image_path(self.current_theme, item_name)
+            folder_hint = None
+            if self.current_theme == self.normalize_text("Văn hóa"):
+                folder_hint = self.culture_image_folders.get(item_name)
+
+            image_path = self.find_image_path(self.current_theme, item_name, folder_hint)
             
             if image_path:
                 img = pygame.image.load(image_path).convert_alpha()
@@ -321,6 +348,8 @@ class MemoryGame:
 
             if self.matched_info:
                 self.matched_info = None
+                self.popup_scroll_y = 0
+                self.popup_max_scroll = 0
                 return
 
             # Không cho lật thêm khi đã đủ 2 thẻ và đang chờ xử lý
@@ -375,9 +404,11 @@ class MemoryGame:
 
 
                 if self.current_theme == "Văn hóa":
-                    self.matched_info = self.get_theme_data("Văn hóa")["Trang phục Dân tộc"][item_name]
+                    self.matched_info = self.culture_lookup.get(item_name, "Chưa có dữ liệu cho mục này.")
                 else:
                    self.matched_info = self.get_theme_data(self.current_theme)[item_name]
+                self.popup_scroll_y = 0
+                self.popup_max_scroll = 0
 
                 self.selected = []
             else:
@@ -431,16 +462,20 @@ class MemoryGame:
 
     def draw(self):
 
-        self.screen.blit(self.bg_current, (0, 0))
+        if self.scene == "GAMEPLAY" and self.bg_gameplay:
+            self.screen.blit(self.bg_gameplay, (0, 0))
+        else:
+            self.screen.blit(self.bg_current, (0, 0))
         #self.screen.blit(bg_full, (0, 0))
         
         if self.scene == "MENU":
             #lấy kích thước hiện tại
             self.curr_w = self.screen.get_width()
             self.curr_h = self.screen.get_height() 
+            self.update_menu_buttons((self.curr_w, self.curr_h))
             
             #viết tên tiêu đề game
-            self.draw_text_title("FLIP GAME", (self.screen.get_width()*0.6, self.screen.get_height()*0.2))
+            #self.draw_text_title("FLIP GAME", (self.screen.get_width()*0.5, self.screen.get_height()*0.2))
 
             #nút bấm
             self.mouse_pos = pygame.mouse.get_pos()
@@ -521,6 +556,30 @@ class MemoryGame:
         else:
             pygame.draw.rect(self.screen, color, rect, border_radius=15)
         self.draw_text(text, rect.center)
+
+    def update_menu_buttons(self, current_size=None):
+        if current_size is None:
+            current_size = self.screen.get_size()
+
+        sw, sh = current_size
+
+        # Bố trí 3 nút nằm phía dưới và căn giữa màn hình, co giãn theo cửa sổ.
+        btn_w = max(130, min(240, int(sw * 0.2)))
+        btn_h = max(50, min(86, int(sh * 0.12)))
+        gap = max(12, min(32, int(sw * 0.025)))
+
+        total_w = btn_w * 3 + gap * 2
+        max_layout_w = int(sw * 0.92)
+        if total_w > max_layout_w:
+            btn_w = max(100, (max_layout_w - gap * 2) // 3)
+            total_w = btn_w * 3 + gap * 2
+
+        start_x = (sw - total_w) // 2
+        y = min(int(sh * 0.74), sh - btn_h - 24)
+
+        self.btn_amthuc = pygame.Rect(start_x, y, btn_w, btn_h)
+        self.btn_vanhoa = pygame.Rect(start_x + btn_w + gap, y, btn_w, btn_h)
+        self.btn_lichsu = pygame.Rect(start_x + (btn_w + gap) * 2, y, btn_w, btn_h)
     
     def get_rounded_image(self, surface, size, radius):
         #"""Hàm này cắt ảnh thành hình bo góc"""
@@ -662,24 +721,48 @@ class MemoryGame:
         line_gap = 6
 
         body_lines = self.wrap_text(content, self.font, body_w)
-        max_lines = max(1, body_h // (self.font.get_height() + line_gap))
 
-        # Nếu nội dung quá dài thì cắt mềm và thêm ...
-        if len(body_lines) > max_lines:
-            body_lines = body_lines[:max_lines]
-            if body_lines[-1] != "":
-                while self.font.size(body_lines[-1] + "...")[0] > body_w and len(body_lines[-1]) > 1:
-                    body_lines[-1] = body_lines[-1][:-1]
-                body_lines[-1] += "..."
+        line_height = self.font.get_height() + line_gap
+        total_content_h = len(body_lines) * line_height
+        self.popup_max_scroll = max(0, total_content_h - body_h)
+        self.popup_scroll_y = max(0, min(self.popup_scroll_y, self.popup_max_scroll))
 
-        y_offset = body_y
+        # Chỉ cho phép text vẽ trong khung nội dung để tạo hiệu ứng cuộn.
+        prev_clip = self.screen.get_clip()
+        self.screen.set_clip(pygame.Rect(body_x, body_y, body_w, body_h))
+
+        y_offset = body_y - self.popup_scroll_y
         for line in body_lines:
             if line == "":
-                y_offset += self.font.get_height() + line_gap
+                y_offset += line_height
                 continue
             text_surface = self.font.render(line, True, (244, 247, 255))
             self.screen.blit(text_surface, (body_x, y_offset))
-            y_offset += self.font.get_height() + line_gap
+            y_offset += line_height
+
+        self.screen.set_clip(prev_clip)
+
+        if self.popup_max_scroll > 0:
+            note_img = hint_font.render("Lan chuot de xem them", True, (160, 196, 255))
+            note_rect = note_img.get_rect(midleft=(body_x, start_y + box_h - 14))
+            self.screen.blit(note_img, note_rect)
+
+            track_x = start_x + box_w - 12
+            track_y = body_y
+            track_h = body_h
+            pygame.draw.rect(self.screen, (70, 88, 122), (track_x, track_y, 4, track_h), border_radius=3)
+
+            thumb_h = max(22, int(track_h * (body_h / max(total_content_h, 1))))
+            thumb_y = track_y + int((self.popup_scroll_y / self.popup_max_scroll) * (track_h - thumb_h))
+            pygame.draw.rect(self.screen, (170, 205, 255), (track_x - 1, thumb_y, 6, thumb_h), border_radius=4)
+
+    def handle_popup_scroll(self, wheel_y):
+        if self.scene != "GAMEPLAY" or not self.matched_info or self.game_completed:
+            return
+
+        # wheel_y > 0 là cuộn lên, < 0 là cuộn xuống.
+        self.popup_scroll_y -= wheel_y * self.popup_scroll_step
+        self.popup_scroll_y = max(0, min(self.popup_scroll_y, self.popup_max_scroll))
             
     # Hàm xuống dòng gọn để xử lý cả đoạn có xuống dòng thủ công
     def wrap_text(self, content_text, font_obj, width_limit):
@@ -728,6 +811,7 @@ class MemoryGame:
             current_size = self.screen.get_size() # Lấy (width, height) mới
         # Dùng smoothscale để chất lượng đẹp hơn khi co giãn
         self.bg_current = pygame.transform.smoothscale(self.bg_full, current_size)
+        self.bg_gameplay = self.create_blurred_background(self.bg_current)
         print(f"Đã scale nền theo kích thước mới: {current_size}")
         
         # Cập nhật dynamic_size ngay tại đây
@@ -747,6 +831,7 @@ class MemoryGame:
         except:
             self.font_title = pygame.font.SysFont("Arial", max(20, new_title_size))
             self.font = self.load_text_font(max(12, new_normal_size))
+        self.update_menu_buttons(current_size)
         if hasattr(self, 'intro_bg') and self.intro_bg:
             self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (self.curr_w, self.curr_h))
 
@@ -755,6 +840,15 @@ class MemoryGame:
             return unicodedata.normalize("NFC", value)
         return value
 
+    def normalize_lookup_key(self, value):
+        if not isinstance(value, str):
+            return ""
+        text = unicodedata.normalize("NFKD", value)
+        text = "".join(ch for ch in text if not unicodedata.combining(ch))
+        text = text.lower().strip()
+        text = re.sub(r"[\s_\-]+", "", text)
+        return text
+
     def get_theme_data(self, theme):
         normalized_theme = self.normalize_text(theme)
         for key, value in INFO_DATA.items():
@@ -762,22 +856,73 @@ class MemoryGame:
                 return value
         raise KeyError(f"Không tìm thấy dữ liệu cho chủ đề: {theme}")
 
-    def find_image_path(self, theme, item_name):
+    def find_image_path(self, theme, item_name, folder_hint=None):
         normalized_item_name = self.normalize_text(item_name)
-        theme_folder = self.normalize_text(theme)
-        if not os.path.isdir(theme_folder):
-            return None
+        lookup_key = self.normalize_lookup_key(item_name)
+        candidate_folders = []
 
-        for filename in os.listdir(theme_folder):
-            stem, ext = os.path.splitext(filename)
-            if ext.lower() in ['.png', '.jpg', '.jpeg', '.webp'] and self.normalize_text(stem) == normalized_item_name:
-                return os.path.join(theme_folder, filename)
+        if folder_hint:
+            candidate_folders.append(self.normalize_text(folder_hint))
+
+        candidate_folders.append(self.normalize_text(theme))
+
+        # Bổ sung thêm các thư mục liên quan để dự phòng sai cấu trúc thư mục ảnh
+        if self.normalize_text(theme) == self.normalize_text("Văn hóa"):
+            candidate_folders.extend([
+                self.normalize_text("Phong tục"),
+                self.normalize_text("Địa danh"),
+                self.normalize_text("Văn hóa"),
+            ])
+
+        # Loại trùng nhưng giữ thứ tự ưu tiên
+        ordered_unique_folders = []
+        for folder in candidate_folders:
+            if folder and folder not in ordered_unique_folders:
+                ordered_unique_folders.append(folder)
+
+        for folder in ordered_unique_folders:
+            if not os.path.isdir(folder):
+                continue
+            for filename in os.listdir(folder):
+                stem, ext = os.path.splitext(filename)
+                if ext.lower() not in ['.png', '.jpg', '.jpeg', '.webp']:
+                    continue
+
+                # So khớp chính xác trước, sau đó fallback so khớp mềm.
+                if self.normalize_text(stem) == normalized_item_name:
+                    return os.path.join(folder, filename)
+
+                if self.normalize_lookup_key(stem) == lookup_key:
+                    return os.path.join(folder, filename)
         return None
 
     def load_text_font(self, size):
         if self.text_font_path:
             return pygame.font.Font(self.text_font_path, size)
         return pygame.font.SysFont("Arial", size)
+
+    def create_blurred_background(self, source_surface):
+        sw, sh = source_surface.get_size()
+
+        # Multi-pass blur: giảm kích thước theo nhiều mức rồi scale ngược lại.
+        # Cách này cho cảm giác blur mềm hơn so với chỉ 1 lần thu/phóng.
+        blurred = source_surface.copy()
+        for factor in (2, 4, 6, 8):
+            small_w = max(1, sw // factor)
+            small_h = max(1, sh // factor)
+            blurred = pygame.transform.smoothscale(blurred, (small_w, small_h))
+            blurred = pygame.transform.smoothscale(blurred, (sw, sh))
+
+        # Trộn thêm vài lớp lệch nhẹ để giảm cảm giác răng cưa/pixel.
+        mixed = pygame.Surface((sw, sh), pygame.SRCALPHA)
+        offsets = [(-2, 0), (2, 0), (0, -2), (0, 2), (-1, -1), (1, 1), (0, 0)]
+        layer_alpha = 36
+        for ox, oy in offsets:
+            layer = blurred.copy()
+            layer.set_alpha(layer_alpha)
+            mixed.blit(layer, (ox, oy))
+
+        return mixed.convert()
         
 
 # --- CHẠY GAME ---
@@ -792,15 +937,17 @@ if __name__ == "__main__":
                 new_width, new_height = event.w, event.h
                     
                 # Cập nhật lại chế độ màn hình với kích thước mới
-                screen = pygame.display.set_mode((new_width, new_height), pygame.RESIZABLE)
+                game.screen = pygame.display.set_mode((new_width, new_height), pygame.RESIZABLE)
                     
                 # Gọi hàm scale lại ảnh nền theo kích thước mới này
                 game.scale_bg((new_width, new_height))
                 game.curr_h = new_height
                 game.curr_w = new_width
                                 
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 game.handle_click(event.pos)
+            if event.type == pygame.MOUSEWHEEL:
+                game.handle_popup_scroll(event.y)
         
         game.update()
             
