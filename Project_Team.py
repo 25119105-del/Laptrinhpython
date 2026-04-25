@@ -1,8 +1,10 @@
+
 import pygame
 import random
 import os
 import unicodedata
 import re
+
 
 # --- CẤU HÌNH  --- //////////////////////////
 WIDTH, HEIGHT = 800, 600
@@ -159,6 +161,14 @@ class MemoryGame:
         
         self.size_title = 75
         self.size_normal = 24
+        self.screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.RESIZABLE)
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+        self.btn_images = {
+            "Ẩm thực": pygame.image.load(os.path.join(BASE_DIR, "nutamthuc.png")).convert_alpha(),
+            "Văn hóa": pygame.image.load(os.path.join(BASE_DIR, "nutvanhoa.png")).convert_alpha(),
+            "Lịch sử": pygame.image.load(os.path.join(BASE_DIR, "nutlichsu.png")).convert_alpha(),
+        }
 
         self.text_font_path = None
         for candidate in ["NotoSans.ttf"]:
@@ -166,7 +176,7 @@ class MemoryGame:
                 self.text_font_path = candidate
                 break
         
-        self.screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.RESIZABLE)
+        
         self.clock = pygame.time.Clock()
         #self.font = pygame.font.SysFont("Arial", self.size_normal)
         self.font = self.load_text_font(self.size_normal)
@@ -479,9 +489,9 @@ class MemoryGame:
 
             #nút bấm
             self.mouse_pos = pygame.mouse.get_pos()
-            self.draw_button(self.btn_amthuc, (0,0,0), (255,255,255), "Ẩm thực")
-            self.draw_button(self.btn_vanhoa, (50,150,255), (100,200,255), "Văn hóa")
-            self.draw_button(self.btn_lichsu, (50,200,100), (100,255,150), "Lịch sử")
+            self.draw_image_button(self.btn_amthuc, "Ẩm thực")
+            self.draw_image_button(self.btn_vanhoa, "Văn hóa")
+            self.draw_image_button(self.btn_lichsu, "Lịch sử")
             
         elif self.scene == "INTRO":
             if hasattr(self, 'intro_bg') and self.intro_bg:
@@ -556,6 +566,24 @@ class MemoryGame:
         else:
             pygame.draw.rect(self.screen, color, rect, border_radius=15)
         self.draw_text(text, rect.center)
+    def draw_image_button(self, rect, label):
+        if label not in self.scaled_btn_images:
+            return
+
+        img = self.scaled_btn_images[label]
+        mouse_pos = pygame.mouse.get_pos()
+
+    # hover effect (phóng to nhẹ)
+        if rect.collidepoint(mouse_pos):
+            scale = 1.05
+            new_w = int(rect.width * scale)
+            new_h = int(rect.height * scale)
+            img_hover = pygame.transform.smoothscale(img, (new_w, new_h))
+            draw_x = rect.centerx - new_w // 2
+            draw_y = rect.centery - new_h // 2
+            self.screen.blit(img_hover, (draw_x, draw_y))
+        else:
+            self.screen.blit(img, rect.topleft)
 
     def update_menu_buttons(self, current_size=None):
         if current_size is None:
@@ -563,23 +591,24 @@ class MemoryGame:
 
         sw, sh = current_size
 
-        # Bố trí 3 nút nằm phía dưới và căn giữa màn hình, co giãn theo cửa sổ.
-        btn_w = max(130, min(240, int(sw * 0.2)))
-        btn_h = max(50, min(86, int(sh * 0.12)))
-        gap = max(12, min(32, int(sw * 0.025)))
+        btn_w = int(sw * 0.22)
+        btn_h = int(btn_w * 1.05)
+
+        gap = int(sw * 0.05)
 
         total_w = btn_w * 3 + gap * 2
-        max_layout_w = int(sw * 0.92)
-        if total_w > max_layout_w:
-            btn_w = max(100, (max_layout_w - gap * 2) // 3)
-            total_w = btn_w * 3 + gap * 2
-
         start_x = (sw - total_w) // 2
-        y = min(int(sh * 0.74), sh - btn_h - 24)
+        y = int(sh * 0.65)
 
         self.btn_amthuc = pygame.Rect(start_x, y, btn_w, btn_h)
         self.btn_vanhoa = pygame.Rect(start_x + btn_w + gap, y, btn_w, btn_h)
-        self.btn_lichsu = pygame.Rect(start_x + (btn_w + gap) * 2, y, btn_w, btn_h)
+        self.btn_lichsu = pygame.Rect(start_x + (btn_w + gap)*2, y, btn_w, btn_h)
+
+        # scale ảnh theo nút
+        self.scaled_btn_images = {
+            key: pygame.transform.smoothscale(img, (btn_w, btn_h))
+            for key, img in self.btn_images.items()
+        }
     
     def get_rounded_image(self, surface, size, radius):
         #"""Hàm này cắt ảnh thành hình bo góc"""
