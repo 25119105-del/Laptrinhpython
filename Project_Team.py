@@ -591,20 +591,23 @@ class MemoryGame:
 
         sw, sh = current_size
 
-        btn_w = int(sw * 0.22)
+        # Giữ form cũ: chỉ thu nhỏ theo cửa sổ nhỏ, không phóng to quá kích thước gốc.
+        scale_w = min(1.0, sw / WIDTH)
+        btn_w = int(WIDTH * 0.22 * scale_w)
         btn_h = int(btn_w * 1.05)
-
-        gap = int(sw * 0.05)
+        gap = int(WIDTH * 0.05 * scale_w)
 
         total_w = btn_w * 3 + gap * 2
         start_x = (sw - total_w) // 2
+
+        # Giữ đúng vị trí hàng nút như form cũ theo trục dọc.
         y = int(sh * 0.65)
 
         self.btn_amthuc = pygame.Rect(start_x, y, btn_w, btn_h)
         self.btn_vanhoa = pygame.Rect(start_x + btn_w + gap, y, btn_w, btn_h)
         self.btn_lichsu = pygame.Rect(start_x + (btn_w + gap)*2, y, btn_w, btn_h)
 
-        # scale ảnh theo nút
+        # scale ảnh theo nút (giữ cách hiển thị cũ)
         self.scaled_btn_images = {
             key: pygame.transform.smoothscale(img, (btn_w, btn_h))
             for key, img in self.btn_images.items()
