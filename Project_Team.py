@@ -581,6 +581,7 @@ class MemoryGame:
             draw_x = rect.centerx - new_w // 2
             draw_y = rect.centery - new_h // 2
             self.screen.blit(img_hover, (draw_x, draw_y))
+           
         else:
             self.screen.blit(img, rect.topleft)
 
@@ -597,17 +598,26 @@ class MemoryGame:
 
         total_w = btn_w * 3 + gap * 2
         start_x = (sw - total_w) // 2
-        y = int(sh * 0.65)
+        y = int(sh * 0.55)
 
         self.btn_amthuc = pygame.Rect(start_x, y, btn_w, btn_h)
         self.btn_vanhoa = pygame.Rect(start_x + btn_w + gap, y, btn_w, btn_h)
         self.btn_lichsu = pygame.Rect(start_x + (btn_w + gap)*2, y, btn_w, btn_h)
 
         # scale ảnh theo nút
-        self.scaled_btn_images = {
-            key: pygame.transform.smoothscale(img, (btn_w, btn_h))
-            for key, img in self.btn_images.items()
-        }
+        self.scaled_btn_images = {}
+
+        for key, img in self.btn_images.items():
+        # CẮT VIỀN TRONG SUỐT
+            cropped_rect = img.get_bounding_rect()
+            img_cropped = img.subsurface(cropped_rect)
+
+        # SCALE lại cho đều
+            img_scaled = pygame.transform.smoothscale(img_cropped, (btn_w, btn_h))
+
+            self.scaled_btn_images[key] = img_scaled
+
+    
     
     def get_rounded_image(self, surface, size, radius):
         #"""Hàm này cắt ảnh thành hình bo góc"""
