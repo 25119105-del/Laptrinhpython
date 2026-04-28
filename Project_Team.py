@@ -15,10 +15,10 @@ MARGIN = 20
 
 # --- CẤU HÌNH NÚT BẤM (dễ chỉnh sửa) ---
 BUTTON_START_X_RATIO = 0.15   # Tọa độ X bắt đầu (15% chiều rộng màn hình)
-BUTTON_BOTTOM_MARGIN = 20     # Cách chân màn hình (px)
+BUTTON_BOTTOM_MARGIN = 40     # Cách chân màn hình (px)
 BUTTON_SPACING_RATIO = 0.03   # Khoảng cách giữa các nút (3% chiều rộng màn hình)
 BUTTON_WIDTH_RATIO = 0.20     # Chiều rộng nút = 20% chiều rộng màn hình
-BUTTON_HEIGHT_RATIO = 1.05    # Chiều cao nút = chiều rộng nút × 1.05
+BUTTON_HEIGHT_RATIO = 0.8    # Chiều cao nút = chiều rộng nút × 0.8
 
 # --- DATABASE (Giao cho cả nhóm soạn nội dung) ---
 INFO_DATA = {
