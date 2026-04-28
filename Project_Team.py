@@ -1,4 +1,3 @@
-
 import pygame
 import random
 import os
@@ -13,6 +12,13 @@ WHITE, BLACK, GRAY = (255, 255, 255), (0, 0, 0), (200, 200, 200)
 GRID_SIZE = 4
 #CARD_SIZE = 150
 MARGIN = 20
+
+# --- CẤU HÌNH NÚT BẤM (dễ chỉnh sửa) ---
+BUTTON_START_X_RATIO = 0.15   # Tọa độ X bắt đầu (15% chiều rộng màn hình)
+BUTTON_BOTTOM_MARGIN = 20     # Cách chân màn hình (px)
+BUTTON_SPACING_RATIO = 0.03   # Khoảng cách giữa các nút (3% chiều rộng màn hình)
+BUTTON_WIDTH_RATIO = 0.20     # Chiều rộng nút = 20% chiều rộng màn hình
+BUTTON_HEIGHT_RATIO = 1.05    # Chiều cao nút = chiều rộng nút × 1.05
 
 # --- DATABASE (Giao cho cả nhóm soạn nội dung) ---
 INFO_DATA = {
@@ -582,36 +588,67 @@ class MemoryGame:
             draw_x = rect.centerx - new_w // 2
             draw_y = rect.centery - new_h // 2
             self.screen.blit(img_hover, (draw_x, draw_y))
+           
         else:
             self.screen.blit(img, rect.topleft)
 
     def update_menu_buttons(self, current_size=None):
+        """
+        Cập nhật vị trí và kích thước của 3 nút bấm ở menu chính.
+        
+        Các nút sẽ nằm thẳng hàng theo chiều ngang, bắt đầu từ tọa độ responsive
+        Nút được đặt cách chân màn hình 20px (nằm ở khoảng 1/3 dưới cùng)
+        Kích thước nút thay đổi theo kích thước màn hình để responsive.
+        """
         if current_size is None:
             current_size = self.screen.get_size()
 
-        sw, sh = current_size
+        sw, sh = current_size  # sw = chiều rộng, sh = chiều cao
 
-        # Giữ form cũ: chỉ thu nhỏ theo cửa sổ nhỏ, không phóng to quá kích thước gốc.
-        scale_w = min(1.0, sw / WIDTH)
-        btn_w = int(WIDTH * 0.22 * scale_w)
-        btn_h = int(btn_w * 1.05)
-        gap = int(WIDTH * 0.05 * scale_w)
+        # 🎯 TÍNH TOÁN KÍCH THƯỚC NÚT
+        # Chiều rộng nút = 20% chiều rộng màn hình (dễ điều chỉnh bằng BUTTON_WIDTH_RATIO)
+        btn_w = int(sw * BUTTON_WIDTH_RATIO)
+        # Chiều cao nút = chiều rộng × 1.05 (tạo hình chữ nhật hơi dài)
+        btn_h = int(btn_w * BUTTON_HEIGHT_RATIO)
 
-        total_w = btn_w * 3 + gap * 2
-        start_x = (sw - total_w) // 2
+        # 🎯 TÍNH VỊ TRÍ CỦA 3 NÚT (dựa trên tỉ lệ màn hình)
+        # Nút 1 (Ẩm thực) - ở vị trí đầu tiên
+        x1 = int(sw * BUTTON_START_X_RATIO)
+        # Y được tính cách chân màn hình BUTTON_BOTTOM_MARGIN px
+        y1 = sh - btn_h - BUTTON_BOTTOM_MARGIN
 
-        # Giữ đúng vị trí hàng nút như form cũ theo trục dọc.
-        y = int(sh * 0.65)
+        # Khoảng cách giữa các nút (responsive)
+        btn_spacing = int(sw * BUTTON_SPACING_RATIO)
 
-        self.btn_amthuc = pygame.Rect(start_x, y, btn_w, btn_h)
-        self.btn_vanhoa = pygame.Rect(start_x + btn_w + gap, y, btn_w, btn_h)
-        self.btn_lichsu = pygame.Rect(start_x + (btn_w + gap)*2, y, btn_w, btn_h)
+        # Nút 2 (Văn hóa) - cách nút 1 bằng (chiều rộng nút + khoảng cách)
+        x2 = x1 + btn_w + btn_spacing
+        y2 = y1  # Cùng hàng với nút 1
 
-        # scale ảnh theo nút (giữ cách hiển thị cũ)
-        self.scaled_btn_images = {
-            key: pygame.transform.smoothscale(img, (btn_w, btn_h))
-            for key, img in self.btn_images.items()
-        }
+        # Nút 3 (Lịch sử) - cách nút 2 bằng (chiều rộng nút + khoảng cách)
+        x3 = x2 + btn_w + btn_spacing
+        y3 = y1  # Cùng hàng với các nút khác
+
+        # 🎯 TẠO CÁC RECT CHO 3 NÚT
+        self.btn_amthuc = pygame.Rect(x1, y1, btn_w, btn_h)
+        self.btn_vanhoa = pygame.Rect(x2, y2, btn_w, btn_h)
+        self.btn_lichsu = pygame.Rect(x3, y3, btn_w, btn_h)
+
+        # 🎯 SCALE ẢNH CỦA 3 NÚT
+        # Đảm bảo ảnh vừa vặn với kích thước các nút đã tính
+        self.scaled_btn_images = {}
+
+        for key, img in self.btn_images.items():
+            # Bước 1: Cắt bỏ phần trong suốt quanh ảnh
+            cropped_rect = img.get_bounding_rect()
+            img_cropped = img.subsurface(cropped_rect)
+
+            # Bước 2: Scale ảnh để vừa với kích thước nút
+            img_scaled = pygame.transform.smoothscale(img_cropped, (btn_w, btn_h))
+
+            self.scaled_btn_images[key] = img_scaled
+
+
+    
     
     def get_rounded_image(self, surface, size, radius):
         #"""Hàm này cắt ảnh thành hình bo góc"""
@@ -985,3 +1022,4 @@ if __name__ == "__main__":
             
         pygame.display.flip()
     pygame.quit()
+
