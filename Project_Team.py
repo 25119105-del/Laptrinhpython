@@ -1,3 +1,4 @@
+from matplotlib.pylab import spacing
 import pygame
 import random
 import os
@@ -159,7 +160,14 @@ class MemoryGame:
         
         self.size_title = 75
         self.size_normal = 24
+        self.screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.RESIZABLE)
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+        self.btn_images = {
+            "Ẩm thực": pygame.image.load(os.path.join(BASE_DIR, "nutamthuc.png")).convert_alpha(),
+            "Văn hóa": pygame.image.load(os.path.join(BASE_DIR, "nutvanhoa.png")).convert_alpha(),
+            "Lịch sử": pygame.image.load(os.path.join(BASE_DIR, "nutlichsu.png")).convert_alpha(),
+        }
         self.text_font_path = None
         for candidate in ["NotoSans.ttf"]:
             if os.path.exists(candidate):
@@ -246,15 +254,16 @@ class MemoryGame:
         
         # Thêm phần load ảnh Intro Theme
         theme_files = {
-            "Ẩm thực": "am_thuc.png",
-            "Lịch sử": "lich_su.png",
-            "Văn hóa": "phong_tuc.png"
+            "Ẩm thực": "bg_amthuc.png",
+            "Lịch sử": "bg_lichsu.jpg",
+            "Văn hóa": "bg_vanhoa.jpg"
         }
         bg_path = theme_files.get(theme)
         if bg_path and os.path.exists(bg_path):
             self.intro_bg = pygame.image.load(bg_path).convert()
             # Scale ảnh cho vừa màn hình hiện tại
-            self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (self.curr_w, self.curr_h))
+            sw, sh = self.screen.get_size()
+            self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (sw, sh))
         else:
             self.intro_bg = None # Nếu không tìm thấy ảnh thì để trống
             print(f"Cảnh báo: Không tìm thấy file {bg_path}")
@@ -479,10 +488,9 @@ class MemoryGame:
 
             #nút bấm
             self.mouse_pos = pygame.mouse.get_pos()
-            self.draw_button(self.btn_amthuc, (0,0,0), (255,255,255), "Ẩm thực")
-            self.draw_button(self.btn_vanhoa, (50,150,255), (100,200,255), "Văn hóa")
-            self.draw_button(self.btn_lichsu, (50,200,100), (100,255,150), "Lịch sử")
-            
+            self.draw_image_button(self.btn_amthuc, "Ẩm thực")
+            self.draw_image_button(self.btn_vanhoa, "Văn hóa")
+            self.draw_image_button(self.btn_lichsu, "Lịch sử")
         elif self.scene == "INTRO":
             if hasattr(self, 'intro_bg') and self.intro_bg:
                 self.screen.blit(self.intro_bg, (0, 0))
@@ -558,29 +566,58 @@ class MemoryGame:
             pygame.draw.rect(self.screen, color, rect, border_radius=15)
         self.draw_text(text, rect.center)
 
+    def draw_image_button(self, rect, label):
+        if label not in self.scaled_btn_images:
+            return
+
+        img = self.scaled_btn_images[label]
+        mouse_pos = pygame.mouse.get_pos()
+
+    # hover effect (phóng to nhẹ)
+        if rect.collidepoint(mouse_pos):
+            scale = 1.05
+            new_w = int(rect.width * scale)
+            new_h = int(rect.height * scale)
+            img_hover = pygame.transform.smoothscale(img, (new_w, new_h))
+            draw_x = rect.centerx - new_w // 2
+            draw_y = rect.centery - new_h // 2
+            self.screen.blit(img_hover, (draw_x, draw_y))
+           
+        else:
+            self.screen.blit(img, rect.topleft)
+            
     def update_menu_buttons(self, current_size=None):
         if current_size is None:
             current_size = self.screen.get_size()
 
         sw, sh = current_size
 
-        # Bố trí 3 nút nằm phía dưới và căn giữa màn hình, co giãn theo cửa sổ.
-        btn_w = max(130, min(240, int(sw * 0.2)))
-        btn_h = max(50, min(86, int(sh * 0.12)))
-        gap = max(12, min(32, int(sw * 0.025)))
+        btn_w = int(sw * 0.22)
+        btn_h = int(btn_w * 1.05)
+
+        gap = int(sw * 0.05)
 
         total_w = btn_w * 3 + gap * 2
-        max_layout_w = int(sw * 0.92)
-        if total_w > max_layout_w:
-            btn_w = max(100, (max_layout_w - gap * 2) // 3)
-            total_w = btn_w * 3 + gap * 2
-
         start_x = (sw - total_w) // 2
-        y = min(int(sh * 0.74), sh - btn_h - 24)
+        y = int(sh * 0.55)
 
         self.btn_amthuc = pygame.Rect(start_x, y, btn_w, btn_h)
         self.btn_vanhoa = pygame.Rect(start_x + btn_w + gap, y, btn_w, btn_h)
-        self.btn_lichsu = pygame.Rect(start_x + (btn_w + gap) * 2, y, btn_w, btn_h)
+        self.btn_lichsu = pygame.Rect(start_x + (btn_w + gap)*2, y, btn_w, btn_h)
+
+        # scale ảnh theo nút
+        self.scaled_btn_images = {}
+
+        for key, img in self.btn_images.items():
+        # CẮT VIỀN TRONG SUỐT
+            cropped_rect = img.get_bounding_rect()
+            img_cropped = img.subsurface(cropped_rect)
+
+        # SCALE lại cho đều
+            img_scaled = pygame.transform.smoothscale(img_cropped, (btn_w, btn_h))
+
+            self.scaled_btn_images[key] = img_scaled
+
     
     def get_rounded_image(self, surface, size, radius):
         #"""Hàm này cắt ảnh thành hình bo góc"""
@@ -797,61 +834,91 @@ class MemoryGame:
         rect = img.get_rect(center=pos)
         self.screen.blit(img, rect)
     def draw_side_text(self):
+        width = self.screen.get_width()
+        height = self.screen.get_height()
 
-      width = self.screen.get_width()
-      height = self.screen.get_height()
+    # ===== GRID =====
+        grid_area_w = width * 0.8
+        grid_area_h = height * 0.8
 
-      grid_area_w = width * 0.8
-      grid_area_h = height * 0.8
+        card_w = (grid_area_w - (GRID_SIZE - 1) * MARGIN) / GRID_SIZE
+        card_h = (grid_area_h - (GRID_SIZE - 1) * MARGIN) / GRID_SIZE
 
-      card_w = (grid_area_w - (GRID_SIZE - 1) * MARGIN) / GRID_SIZE
-      card_h = (grid_area_h - (GRID_SIZE - 1) * MARGIN) / GRID_SIZE
+        dynamic_size = int(min(card_w, card_h))
 
-      dynamic_size = int(min(card_w, card_h))
+        total_grid_w = GRID_SIZE * dynamic_size + (GRID_SIZE - 1) * MARGIN
+        start_x = (width - total_grid_w) // 2
 
-      total_grid_w = GRID_SIZE * dynamic_size + (GRID_SIZE - 1) * MARGIN
-      total_grid_h = GRID_SIZE * dynamic_size + (GRID_SIZE - 1) * MARGIN
+    # ===== TEXT =====
+        if self.current_theme == "Văn hóa":
+            left_words = ["Văn", "Hóa"]
+            right_words = ["Việt", "Nam"]
+        elif self.current_theme == "Ẩm thực":
+            left_words = ["Ẩm", "Thực"]
+            right_words = ["Việt", "Nam"]
+        elif self.current_theme == "Lịch sử":
+            left_words = ["Lịch", "Sử"]
+            right_words = ["Việt", "Nam"]
+        else:
+            return
 
-      start_x = (width - total_grid_w) // 2
-      start_y = (height - total_grid_h) // 2
+    # ===== SPACE =====
+        left_space = start_x
+        right_space = width - (start_x + total_grid_w)
+        side_space = min(left_space, right_space)
 
-      font_size = int(dynamic_size * 0.6)
-      big_font = pygame.font.Font("thu_phap.ttf", font_size)
+        margin_side = int(width * 0.03)
+        safe_gap = 15
 
-      if self.current_theme == "Văn hóa":
-         left_words = ["Văn", "Hóa"]
-         right_words = ["Việt", "Nam"]
+    # ===== AUTO SCALE (KHÔNG LAG) =====
+    # thử tối đa 15 lần → đủ mượt
+        best_size = 20
+        for test_size in range(int(side_space * 0.8), 10, -4):
+            font = pygame.font.Font("thu_phap.ttf", test_size)
+            max_w = max(
+                max(font.render(w, True, WHITE).get_width() for w in left_words),
+                max(font.render(w, True, WHITE).get_width() for w in right_words)
+                )
 
-      elif self.current_theme == "Ẩm thực":
-         left_words = ["Ẩm", "Thực"]
-         right_words = ["Việt", "Nam"]
+            spacing = test_size * 1.2
+            total_h = spacing * len(left_words)
 
-      elif self.current_theme == "Lịch sử":
-         left_words = ["Lịch", "Sử"]
-         right_words = ["Việt", "Nam"]
+            if (
+                max_w <= side_space - margin_side - safe_gap
+                and total_h <= height * 0.9
+            ):
+                best_size = test_size
+                break
 
-      else:
-         return
+        big_font = pygame.font.Font("thu_phap.ttf", best_size)
+        spacing = best_size * 1.65 + height * 0.01
 
-      spacing = dynamic_size * 2
-      center_y = start_y + total_grid_h // 2
+    # ===== VẼ TRÁI =====
+        total_text_h = spacing * len(left_words)
+        y = (height - total_text_h) // 2 + int(height * 0.07)
+        for word in left_words:
+            img = big_font.render(word, True, WHITE)
 
-   # ----- chữ bên trái -----
-      y = center_y - spacing // 2
-      for word in left_words:
-        img = big_font.render(word, True, WHITE)
-        x = start_x - img.get_width() - 40
-        self.screen.blit(img, (x, y))
-        y += spacing
+            x = margin_side
+            if x + img.get_width() > start_x - safe_gap:
+                x = start_x - img.get_width() - safe_gap
 
-# ----- chữ bên phải -----
-      y = center_y - spacing // 2
-      for word in right_words:
-        img = big_font.render(word, True, WHITE)
-        x = start_x + total_grid_w + 40
-        self.screen.blit(img, (x, y))
-        y += spacing   
-        
+            self.screen.blit(img, (x, y))
+            y += spacing
+
+    # ===== VẼ PHẢI =====
+        total_text_h = spacing * len(right_words)
+        y = (height - total_text_h) // 2 + int(height * 0.07)
+
+        for word in right_words:
+            img = big_font.render(word, True, WHITE)
+
+            x = width - img.get_width() - margin_side
+            if x < start_x + total_grid_w + safe_gap:
+                x = start_x + total_grid_w + safe_gap
+
+            self.screen.blit(img, (x, y))
+            y += spacing
     def start_intro(self, theme):
         self.setup_level(theme)
         self.scene = "INTRO"
@@ -889,7 +956,8 @@ class MemoryGame:
             self.font = self.load_text_font(max(12, new_normal_size))
         self.update_menu_buttons(current_size)
         if hasattr(self, 'intro_bg') and self.intro_bg:
-            self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (self.curr_w, self.curr_h))
+            sw, sh = self.screen.get_size()
+            self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (sw, sh))
 
     def normalize_text(self, value):
         if isinstance(value, str):
