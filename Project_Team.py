@@ -263,9 +263,9 @@ class MemoryGame:
         
         # Thêm phần load ảnh Intro Theme
         theme_files = {
-            "Ẩm thực": "am_thuc.png",
-            "Lịch sử": "lich_su.png",
-            "Văn hóa": "phong_tuc.png"
+            "Ẩm thực": "bg_amthuc.png",
+            "Lịch sử": "bg_lichsu.jpg",
+            "Văn hóa": "bg_vanhoa.jpg"
         }
         bg_path = theme_files.get(theme)
         if bg_path and os.path.exists(bg_path):
