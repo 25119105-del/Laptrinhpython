@@ -6,7 +6,7 @@ import unicodedata
 import re
 
 # --- CẤU HÌNH  --- //////////////////////////
-WIDTH, HEIGHT = 800, 600
+WIDTH, HEIGHT = 800, 500
 FPS = 60
 WHITE, BLACK, GRAY = (255, 255, 255), (0, 0, 0), (200, 200, 200)
 GRID_SIZE = 4
@@ -15,10 +15,10 @@ MARGIN = 20
 
 # --- CẤU HÌNH NÚT BẤM (dễ chỉnh sửa) ---
 BUTTON_START_X_RATIO = 0.15   # Tọa độ X bắt đầu (15% chiều rộng màn hình)
-BUTTON_BOTTOM_MARGIN = 40     # Cách chân màn hình (px)
+BUTTON_BOTTOM_MARGIN = 60     # Cách chân màn hình (px)
 BUTTON_SPACING_RATIO = 0.03   # Khoảng cách giữa các nút (3% chiều rộng màn hình)
 BUTTON_WIDTH_RATIO = 0.20     # Chiều rộng nút = 20% chiều rộng màn hình
-BUTTON_HEIGHT_RATIO = 0.8    # Chiều cao nút = chiều rộng nút × 0.8
+BUTTON_HEIGHT_RATIO = 0.4    # Chiều cao nút = chiều rộng nút × 0.8
 
 # --- DATABASE (Giao cho cả nhóm soạn nội dung) ---
 INFO_DATA = {
@@ -171,9 +171,9 @@ class MemoryGame:
         BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
         self.btn_images = {
-            "Ẩm thực": pygame.image.load(os.path.join(BASE_DIR, "nutamthuc.png")).convert_alpha(),
-            "Văn hóa": pygame.image.load(os.path.join(BASE_DIR, "nutvanhoa.png")).convert_alpha(),
-            "Lịch sử": pygame.image.load(os.path.join(BASE_DIR, "nutlichsu.png")).convert_alpha(),
+            "Ẩm thực": pygame.image.load(os.path.join(BASE_DIR, "at_button.png")).convert_alpha(),
+            "Văn hóa": pygame.image.load(os.path.join(BASE_DIR, "vh_button.png")).convert_alpha(),
+            "Lịch sử": pygame.image.load(os.path.join(BASE_DIR, "ls_button.png")).convert_alpha(),
         }
         self.text_font_path = None
         for candidate in ["NotoSans.ttf"]:
@@ -580,18 +580,22 @@ class MemoryGame:
         img = self.scaled_btn_images[label]
         mouse_pos = pygame.mouse.get_pos()
 
-    # hover effect (phóng to nhẹ)
+        # hover effect: màu nhạt khi bình thường, sáng khi hover
         if rect.collidepoint(mouse_pos):
+            # Hover: màu đầy đủ + phóng to nhẹ
             scale = 1.05
             new_w = int(rect.width * scale)
             new_h = int(rect.height * scale)
             img_hover = pygame.transform.smoothscale(img, (new_w, new_h))
+            img_hover.set_alpha(255)  # Màu đầy đủ
             draw_x = rect.centerx - new_w // 2
             draw_y = rect.centery - new_h // 2
             self.screen.blit(img_hover, (draw_x, draw_y))
-           
         else:
-            self.screen.blit(img, rect.topleft)
+            # Không hover: màu nhạt
+            img_faded = img.copy()
+            img_faded.set_alpha(140)  # Màu nhạt (có thể điều chỉnh 100-180)
+            self.screen.blit(img_faded, rect.topleft)
             
     def update_menu_buttons(self, current_size=None):
         """
