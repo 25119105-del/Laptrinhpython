@@ -1,13 +1,12 @@
-
+from matplotlib.pylab import spacing
 import pygame
 import random
 import os
 import unicodedata
 import re
 
-
 # --- CẤU HÌNH  --- //////////////////////////
-WIDTH, HEIGHT = 800, 600
+WIDTH, HEIGHT = 800, 500
 FPS = 60
 WHITE, BLACK, GRAY = (255, 255, 255), (0, 0, 0), (200, 200, 200)
 GRID_SIZE = 4
@@ -16,10 +15,10 @@ MARGIN = 20
 
 # --- CẤU HÌNH NÚT BẤM (dễ chỉnh sửa) ---
 BUTTON_START_X_RATIO = 0.15   # Tọa độ X bắt đầu (15% chiều rộng màn hình)
-BUTTON_BOTTOM_MARGIN = 40     # Cách chân màn hình (px)
+BUTTON_BOTTOM_MARGIN = 80     # Cách chân màn hình (px)
 BUTTON_SPACING_RATIO = 0.03   # Khoảng cách giữa các nút (3% chiều rộng màn hình)
 BUTTON_WIDTH_RATIO = 0.20     # Chiều rộng nút = 20% chiều rộng màn hình
-BUTTON_HEIGHT_RATIO = 0.8    # Chiều cao nút = chiều rộng nút × 0.8
+BUTTON_HEIGHT_RATIO = 0.4    # Chiều cao nút = chiều rộng nút × 0.8
 
 # --- DATABASE (Giao cho cả nhóm soạn nội dung) ---
 INFO_DATA = {
@@ -125,7 +124,7 @@ INFO_DATA = {
                     "Tục uống trà": "(Mọi lúc trong ngày): Trà Việt thường là trà mộc hoặc ướp hoa. Thưởng trà là nghệ thuật đòi hỏi sự tĩnh lặng, thể hiện tính cách điềm đạm và lòng hiếu khách."
                 },
                 "Địa danh": {
-                    "vinh_ha_Long": "Vịnh Hạ Long là một trong những kỳ quan thiên nhiên nổi tiếng nhất của Việt Nam và đã được UNESCO công nhận là di sản thiên nhiên thế giới. Nơi đây có hàng nghìn hòn đảo đá vôi lớn nhỏ với nhiều hình dạng độc đáo nhô lên giữa làn nước xanh ngọc. Cảnh quan hùng vĩ cùng hệ thống hang động kỳ ảo khiến vịnh trở thành điểm du lịch hấp dẫn đối với du khách trong và ngoài nước.",
+                    "vinh_ha_long": "Vịnh Hạ Long là một trong những kỳ quan thiên nhiên nổi tiếng nhất của Việt Nam và đã được UNESCO công nhận là di sản thiên nhiên thế giới. Nơi đây có hàng nghìn hòn đảo đá vôi lớn nhỏ với nhiều hình dạng độc đáo nhô lên giữa làn nước xanh ngọc. Cảnh quan hùng vĩ cùng hệ thống hang động kỳ ảo khiến vịnh trở thành điểm du lịch hấp dẫn đối với du khách trong và ngoài nước.",
                     "pho_co_hoi_an": "Phố cổ Hội An là đô thị cổ nổi tiếng với những ngôi nhà mái ngói rêu phong và những con phố nhỏ yên bình. Nơi đây từng là thương cảng sầm uất từ thế kỷ XVI đến XVII, nơi giao lưu văn hóa giữa nhiều quốc gia. Vào buổi tối, ánh đèn lồng rực rỡ tạo nên khung cảnh rất thơ mộng và đặc trưng.",
                     "hang_son_doong": "Hang Sơn Đoòng được xem là hang động tự nhiên lớn nhất thế giới, nằm trong Vườn quốc gia Phong Nha Kẻ Bàng. Bên trong hang có những khối thạch nhũ khổng lồ, sông ngầm và cả khu rừng nguyên sinh. Đây là địa điểm khám phá nổi tiếng dành cho các nhà thám hiểm và du khách yêu thiên nhiên.",
                     "dao_phu_quoc": "Đảo Phú Quốc là hòn đảo lớn nhất của Việt Nam, nằm trong vịnh Thái Lan. Hòn đảo nổi tiếng với những bãi biển cát trắng, làn nước trong xanh và hệ sinh thái đa dạng. Ngoài ra, Phú Quốc còn nổi tiếng với nước mắm truyền thống, hồ tiêu và nhiều khu nghỉ dưỡng hiện đại.",
@@ -172,18 +171,17 @@ class MemoryGame:
         BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
         self.btn_images = {
-            "Ẩm thực": pygame.image.load(os.path.join(BASE_DIR, "nutamthuc.png")).convert_alpha(),
-            "Văn hóa": pygame.image.load(os.path.join(BASE_DIR, "nutvanhoa.png")).convert_alpha(),
-            "Lịch sử": pygame.image.load(os.path.join(BASE_DIR, "nutlichsu.png")).convert_alpha(),
+            "Ẩm thực": pygame.image.load(os.path.join(BASE_DIR, "at_button.png")).convert_alpha(),
+            "Văn hóa": pygame.image.load(os.path.join(BASE_DIR, "vh_button.png")).convert_alpha(),
+            "Lịch sử": pygame.image.load(os.path.join(BASE_DIR, "ls_button.png")).convert_alpha(),
         }
-
         self.text_font_path = None
         for candidate in ["NotoSans.ttf"]:
             if os.path.exists(candidate):
                 self.text_font_path = candidate
                 break
         
-        
+        self.screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.RESIZABLE)
         self.clock = pygame.time.Clock()
         #self.font = pygame.font.SysFont("Arial", self.size_normal)
         self.font = self.load_text_font(self.size_normal)
@@ -242,15 +240,75 @@ class MemoryGame:
         self.popup_scroll_y = 0
         self.popup_scroll_step = 40
         self.popup_max_scroll = 0
-        
-        # Âm thanh chuyển cảnh
+
+        # Pause & Mute state
+        self.is_paused = False
+        self.is_muted = False
+        self.pause_start_time = 0
+        self.total_pause_duration = 0
+
+        # UI buttons for settings
+        self.btn_settings = pygame.Rect(0, 0, 0, 0)
+        self.show_settings_menu = False
+        self.btn_pause = pygame.Rect(0, 0, 0, 0)
+        self.btn_mute = pygame.Rect(0, 0, 0, 0)
+        self.btn_close_settings = pygame.Rect(0, 0, 0, 0)
+
+        # MENU buttons (mute & guide)
+        self.btn_menu_mute = pygame.Rect(0, 0, 0, 0)
+        self.btn_menu_guide = pygame.Rect(0, 0, 0, 0)
+
+        # Guide popup
+        self.show_guide_popup = False
+        self.guide_scroll_y = 0
+        self.guide_scroll_max = 0
+        self.guide_content = ""  # Nội dung file hướng dẫn
+
+        # Tracking thời gian & điểm
+        self.game_start_time = 0
+        self.game_end_time = 0
+        self.combo_count = 0           # Combo hiện tại
+        self.combo_best = 0            # Combo cao nhất
+        self.match_count = 0           # Số cặp ghép thành công
+        self.score = 0                 # Tổng điểm
+
+        # --- PHẦN XỬ LÝ ÂM THANH MỚI ---
         pygame.mixer.init()
+
+        # Chuẩn bị nhạc nền nhưng CHƯA phát
+        self.bg_music_loaded = False
+        try:
+            pygame.mixer.music.load("nhac_nen.mp3")
+            pygame.mixer.music.set_volume(0.6) # Chỉnh âm lượng (0.0 đến 1.0)
+            self.bg_music_loaded = True
+        except:
+            print("Lỗi tải nhạc nền")
+
+        # Âm thanh chuyển cảnh
         self.intro_duration = 4000 # Thời gian dừng ở Intro (4 giây)
         try:
             self.sound_transition = pygame.mixer.Sound("transition.mp3") # Tên file âm thanh của nhóm
         except:
             self.sound_transition = None
             print("Không tìm thấy file âm thanh chuyển cảnh")
+
+        # Phát nhạc nền khi game khởi động ở MENU
+        self.play_background_music()
+
+        # Load hướng dẫn chơi
+        self.load_guide_file()
+
+    def load_guide_file(self):
+        """Đọc nội dung từ file huong_dan_choi.txt"""
+        try:
+            with open("huong_dan_choi.txt", "r", encoding="utf-8") as f:
+                self.guide_content = f.read()
+        except FileNotFoundError:
+            print("Không tìm thấy file huong_dan_choi.txt!")
+            self.guide_content = "Không tìm thấy file hướng dẫn.\n\nVui lòng kiểm tra file huong_dan_choi.txt"
+        except Exception as e:
+            print(f"Lỗi đọc file: {e}")
+            self.guide_content = f"Lỗi: {e}"
 
     def setup_level(self, theme):
         self.current_theme = self.normalize_text(theme)
@@ -263,15 +321,17 @@ class MemoryGame:
         
         # Thêm phần load ảnh Intro Theme
         theme_files = {
-            "Ẩm thực": "am_thuc.png",
-            "Lịch sử": "lich_su.png",
-            "Văn hóa": "phong_tuc.png"
+            "Ẩm thực": "bg_amthuc.png",
+            "Lịch sử": "bg_lichsu.jpg",
+            "Văn hóa": "bg_vanhoa.jpg"
+
         }
         bg_path = theme_files.get(theme)
         if bg_path and os.path.exists(bg_path):
             self.intro_bg = pygame.image.load(bg_path).convert()
             # Scale ảnh cho vừa màn hình hiện tại
-            self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (self.curr_w, self.curr_h))
+            sw, sh = self.screen.get_size()
+            self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (sw, sh))
         else:
             self.intro_bg = None # Nếu không tìm thấy ảnh thì để trống
             print(f"Cảnh báo: Không tìm thấy file {bg_path}")
@@ -312,6 +372,14 @@ class MemoryGame:
         self.matched_info = None
         self.popup_scroll_y = 0
         self.popup_max_scroll = 0
+
+        # Reset các biến điểm khi bắt đầu game
+        self.combo_count = 0
+        self.combo_best = 0
+        self.match_count = 0
+        self.score = 0
+        self.game_start_time = pygame.time.get_ticks()
+        self.game_end_time = 0
         
         # 4. TẢI ẢNH VÀO BỘ NHỚ
         self.card_images = {}
@@ -336,7 +404,17 @@ class MemoryGame:
 
     def handle_click(self, pos):
         if self.scene == "MENU":
-            
+            # Mute button
+            if self.btn_menu_mute.collidepoint(pos):
+                self.toggle_mute()
+                return
+
+            # Guide button
+            if self.btn_menu_guide.collidepoint(pos):
+                self.show_guide_popup = not self.show_guide_popup
+                self.guide_scroll_y = 0  # Reset scroll
+                return
+
             if self.btn_amthuc.collidepoint(pos):
                 self.start_intro("Ẩm thực")
 
@@ -349,18 +427,39 @@ class MemoryGame:
             # if 100 < pos[0] < 300: self.start_intro("Ẩm thực")
             # elif 350 < pos[0] < 550: self.start_intro("Văn hóa")
 
-            
+
         #elif self.scene == "INTRO":
             #khúc này thêm âm thanh ready go
             #self.scene = "GAMEPLAY" # Click để vào chơi
-            
+
         elif self.scene == "GAMEPLAY":
+            # Settings button
+            if self.btn_settings.collidepoint(pos) and not self.game_completed:
+                self.show_settings_menu = not self.show_settings_menu
+                return
+
+            # Settings menu options (nếu menu đang hiển thị)
+            if self.show_settings_menu and not self.game_completed:
+                if self.btn_pause.collidepoint(pos):
+                    self.toggle_pause()
+                    return
+                if self.btn_mute.collidepoint(pos):
+                    self.toggle_mute()
+                    return
+                if self.btn_close_settings.collidepoint(pos):
+                    self.show_settings_menu = False
+                    return
+
             if self.game_completed:
                 if self.btn_replay.collidepoint(pos):
                     self.setup_level(self.current_theme)
+                    # Phát lại nhạc nền khi chơi lại
+                    self.play_background_music()
                 elif self.btn_change_theme.collidepoint(pos):
                     self.scene = "MENU"
                     self.game_completed = False
+                    # Phát nhạc nền khi quay lại MENU
+                    self.play_background_music()
                 return
 
             if self.matched_info:
@@ -375,22 +474,22 @@ class MemoryGame:
 
             x, y = pos
             sw, sh = self.screen.get_size()
-            
+
             # Tái sử dụng công thức tính toán từ draw_grid
-            
+
             start_x = (sw - (4*self.dynamic_size + 3*MARGIN)) // 2
             start_y = (sh - (4*self.dynamic_size + 3*MARGIN)) // 2
 
             # Xác định tọa độ hàng/cột dựa trên vị trí chuột
             col = (x - start_x) // (self.dynamic_size + MARGIN)
             row = (y - start_y) // (self.dynamic_size + MARGIN)
-            
+
             # Kiểm tra xem có click trúng vào phạm vi lưới 4x4 không
             if 0 <= col < 4 and 0 <= row < 4:
             # Tạo rect ảo để kiểm tra va chạm chính xác (tránh click vào khoảng trống MARGIN)
                 card_rect = pygame.Rect(
-                    start_x + col*(self.dynamic_size + MARGIN), 
-                    start_y + row*(self.dynamic_size + MARGIN), 
+                    start_x + col*(self.dynamic_size + MARGIN),
+                    start_y + row*(self.dynamic_size + MARGIN),
                     self.dynamic_size, self.dynamic_size
             )
             if card_rect.collidepoint(pos):
@@ -404,10 +503,19 @@ class MemoryGame:
 
     def update(self):
         current_time = pygame.time.get_ticks()
+
+        # Nếu đang pause, không update logic game
+        if self.is_paused and self.scene == "GAMEPLAY":
+            return
+
         if self.scene == "INTRO":
             elapsed = current_time - self.intro_start_time
             if elapsed >= self.intro_duration:
                 self.scene = "GAMEPLAY"
+
+                # Phát lại nhạc nền khi vào GAMEPLAY
+                self.play_background_music()
+
             return
 
         self.finish_card_animations(current_time)
@@ -419,7 +527,6 @@ class MemoryGame:
                 # TRÙNG KHỚP -> Hiện Pop-up giáo dục
                 item_name = self.cards[idx1]
 
-
                 if self.current_theme == "Văn hóa":
                     self.matched_info = self.culture_lookup.get(item_name, "Chưa có dữ liệu cho mục này.")
                 else:
@@ -427,11 +534,19 @@ class MemoryGame:
                 self.popup_scroll_y = 0
                 self.popup_max_scroll = 0
 
+                # Cập nhật combo & điểm khi match thành công
+                self.match_count += 1
+                self.combo_count += 1
+                if self.combo_count > self.combo_best:
+                    self.combo_best = self.combo_count
+
                 self.selected = []
             else:
                 # KHÔNG TRÙNG -> Chờ một nhịp ngắn rồi úp cùng lúc cả 2 thẻ
                 if self.hide_pair_at == 0:
                     self.hide_pair_at = current_time + 700
+                    # Reset combo khi sai
+                    self.combo_count = 0
 
         if self.hide_pair_at and current_time >= self.hide_pair_at and len(self.selected) == 2:
             idx1, idx2 = self.selected
@@ -446,6 +561,8 @@ class MemoryGame:
             and not self.selected
             and not self.card_animations
         ):
+            self.game_end_time = current_time
+            self.calculate_score()  # Gọi hàm tính điểm
             self.game_completed = True
             self.matched_info = None
 
@@ -477,6 +594,356 @@ class MemoryGame:
         if self.sound_transition:
             self.sound_transition.play()
 
+    def play_background_music(self):
+        """Phát nhạc nền lặp lại"""
+        if self.bg_music_loaded:
+            try:
+                pygame.mixer.music.play(-1)  # -1 để lặp lại vô tận
+            except:
+                print("Lỗi phát nhạc nền")
+
+    def stop_background_music(self):
+        """Tắt nhạc nền"""
+        try:
+            pygame.mixer.music.stop()
+        except:
+            print("Lỗi tắt nhạc nền")
+
+    def calculate_score(self):
+        """Tính tổng điểm dựa trên combo, thời gian, và lượt chơi"""
+        if self.game_end_time == 0 or self.game_start_time == 0:
+            self.score = 0
+            return
+
+        # 1. Điểm cơ bản
+        base_score = 1000
+
+        # 2. Điểm combo
+        combo_points = self.combo_best * 200
+
+        # 3. Điểm thời gian (bonus nếu nhanh) - trừ đi thời gian pause
+        elapsed_time = (self.game_end_time - self.game_start_time - self.total_pause_duration) // 1000  # đơn vị giây
+        time_bonus = max(0, (60 - elapsed_time) * 10)
+
+        # 4. Điểm lượt chơi (penalty nếu chơi nhiều lượt)
+        ideal_turns = 8
+        turns_bonus = max(0, (ideal_turns - self.turn_count) * 100)
+
+        # Tổng điểm (không bao giờ âm)
+        self.score = max(0, base_score + combo_points + time_bonus + turns_bonus)
+
+    def toggle_pause(self):
+        """Toggle pause state"""
+        if self.is_paused:
+            # Resume
+            self.total_pause_duration += (pygame.time.get_ticks() - self.pause_start_time)
+            self.is_paused = False
+            if not self.is_muted:
+                pygame.mixer.music.unpause()
+        else:
+            # Pause
+            self.pause_start_time = pygame.time.get_ticks()
+            self.is_paused = True
+            pygame.mixer.music.pause()
+
+    def toggle_mute(self):
+        """Toggle mute state"""
+        self.is_muted = not self.is_muted
+        if self.is_muted:
+            pygame.mixer.music.set_volume(0.0)
+        else:
+            pygame.mixer.music.set_volume(0.6)
+
+    def update_settings_button(self):
+        """Cập nhật vị trí nút settings ở góc trên phải"""
+        sw, sh = self.screen.get_size()
+
+        # Kích thước nút responsive
+        btn_size = max(40, int(sh * 0.06))  # 6% chiều cao màn hình
+        margin = max(10, int(sw * 0.015))   # Margin từ góc (1.5% chiều rộng)
+
+        # Vị trí: góc trên phải
+        self.btn_settings = pygame.Rect(
+            sw - btn_size - margin,
+            margin,
+            btn_size,
+            btn_size
+        )
+
+    def update_menu_buttons_circle(self):
+        """Cập nhật vị trí nút tròn (Mute & Guide) ở MENU"""
+        sw, sh = self.screen.get_size()
+
+        # Kích thước nút responsive (giống settings button)
+        btn_size = max(40, int(sh * 0.06))  # 6% chiều cao
+        margin = max(10, int(sw * 0.015))   # Margin từ góc
+
+        # Nút Mute - góc trên phải
+        self.btn_menu_mute = pygame.Rect(
+            sw - btn_size - margin,
+            margin,
+            btn_size,
+            btn_size
+        )
+
+        # Nút Guide - góc trên trái
+        self.btn_menu_guide = pygame.Rect(
+            margin,
+            margin,
+            btn_size,
+            btn_size
+        )
+
+    def draw_menu_button_circle(self, rect, icon, hover_color_factor=1.2):
+        """Vẽ nút tròn với icon cho MENU (tái sử dụng logic từ draw_settings_button)"""
+        mouse_pos = pygame.mouse.get_pos()
+
+        # Màu hover
+        base_color = (255, 255, 255)
+        if rect.collidepoint(mouse_pos):
+            color = tuple(min(255, int(c * hover_color_factor)) for c in base_color)
+        else:
+            color = base_color
+
+        # Vẽ nút tròn
+        pygame.draw.circle(
+            self.screen,
+            color,
+            rect.center,
+            rect.width // 2
+        )
+
+        # Vẽ icon từ hình ảnh
+        icon_size = int(rect.width * 0.6)
+        if icon == "🔇":
+            icon_path = "tat.png"
+        elif icon == "❓":
+            icon_path = "chamhoi.png"
+        else:
+            icon_font = self.load_text_font(max(18, icon_size))
+            icon_text = icon_font.render(icon, True, (255, 255, 255))
+            icon_rect = icon_text.get_rect(center=rect.center)
+            self.screen.blit(icon_text, icon_rect)
+            return
+        
+        try:
+            icon_img = pygame.image.load(icon_path)
+            icon_img = pygame.transform.scale(icon_img, (icon_size, icon_size))
+            icon_rect = icon_img.get_rect(center=rect.center)
+            self.screen.blit(icon_img, icon_rect)
+        except:
+            icon_font = self.load_text_font(max(18, icon_size))
+            icon_text = icon_font.render(icon, True, (255, 255, 255))
+            icon_rect = icon_text.get_rect(center=rect.center)
+            self.screen.blit(icon_text, icon_rect)
+
+    def draw_settings_button(self):
+        """Vẽ nút settings ở góc trên phải"""
+        mouse_pos = pygame.mouse.get_pos()
+
+        # Màu hover
+        color = (80, 150, 200) if self.btn_settings.collidepoint(mouse_pos) else (255,255,255)
+
+        # Vẽ nút tròn
+        pygame.draw.circle(
+            self.screen,
+            color,
+            self.btn_settings.center,
+            self.btn_settings.width // 2
+        )
+
+        # Vẽ icon từ hình ảnh
+        icon_size = int(self.btn_settings.width * 0.6)
+        try:
+            icon_img = pygame.image.load("caidat.png")
+            icon_img = pygame.transform.scale(icon_img, (icon_size, icon_size))
+            icon_rect = icon_img.get_rect(center=self.btn_settings.center)
+            self.screen.blit(icon_img, icon_rect)
+        except:
+            icon_font = self.load_text_font(max(18, icon_size))
+            icon_text = icon_font.render("⚙", True, (255, 255, 255))
+            icon_rect = icon_text.get_rect(center=self.btn_settings.center)
+            self.screen.blit(icon_text, icon_rect)
+
+    def draw_settings_menu(self):
+        """Vẽ popup menu settings"""
+        sw, sh = self.screen.get_size()
+
+        # Kích thước menu
+        menu_w = min(280, int(sw * 0.35))
+        menu_h = 240
+        menu_x = sw - menu_w - max(10, int(sw * 0.015))
+        menu_y = self.btn_settings.bottom + 10
+        menu_rect = pygame.Rect(menu_x, menu_y, menu_w, menu_h)
+
+        # Vẽ nền menu
+        pygame.draw.rect(self.screen, (25, 35, 50), menu_rect, border_radius=15)
+        pygame.draw.rect(self.screen, (100, 150, 200), menu_rect, width=2, border_radius=15)
+
+        # Font
+        title_font = self.load_text_font(max(16, int(self.size_normal * 0.95)))
+        btn_font = self.load_text_font(max(13, int(self.size_normal * 0.8)))
+
+        # Tiêu đề
+        title_img = title_font.render("CÀI ĐẶT", True, (220, 240, 255))
+        self.screen.blit(title_img, (menu_x + 15, menu_y + 12))
+
+        # ────────────────────────
+        # Nút Mute/Unmute
+        # ────────────────────────
+        mute_label = "Âm thanh"
+
+        self.btn_mute = pygame.Rect(menu_x + 10, menu_y + 50, menu_w - 20, 45)
+        self.draw_option_button_with_icon(
+            self.btn_mute,
+            (50, 100, 150),
+            (70, 130, 180),
+            mute_label,
+            btn_font,
+            "tat.png" if self.is_muted else "mo.png"
+        )
+
+        # ────────────────────────
+        # Nút Pause/Resume
+        # ────────────────────────
+        pause_status = "TIẾP TỤC" if self.is_paused else "DỪNG"
+        pause_label = pause_status
+
+        self.btn_pause = pygame.Rect(menu_x + 10, menu_y + 110, menu_w - 20, 45)
+        self.draw_option_button_with_icon(
+            self.btn_pause,
+            (100, 50, 50),
+            (150, 80, 80),
+            pause_label,
+            btn_font,
+            "dung.png"
+        )
+
+        # ────────────────────────
+        # Nút Đóng
+        # ────────────────────────
+        self.btn_close_settings = pygame.Rect(menu_x + 10, menu_y + 170, menu_w - 20, 35)
+        self.draw_option_button(
+            self.btn_close_settings,
+            (60, 60, 60),
+            (100, 100, 100),
+            "ĐÓNG",
+            btn_font
+        )
+
+    def draw_guide_popup(self):
+        """Vẽ popup hướng dẫn chơi (tái sử dụng logic từ draw_popup)"""
+        sw, sh = self.screen.get_size()
+
+        # Lớp tối
+        dim = pygame.Surface((sw, sh), pygame.SRCALPHA)
+        dim.fill((8, 10, 16, 175))
+        self.screen.blit(dim, (0, 0))
+
+        # Kích thước popup
+        box_w = min(700, int(sw * 0.85))
+        box_h = min(500, int(sh * 0.82))
+        start_x = (sw - box_w) // 2
+        start_y = (sh - box_h) // 2
+        box_rect = pygame.Rect(start_x, start_y, box_w, box_h)
+
+        # Vẽ nền popup
+        pygame.draw.rect(self.screen, (23, 28, 43), box_rect, border_radius=24)
+        pygame.draw.rect(self.screen, (114, 159, 255), box_rect, width=2, border_radius=24)
+
+        # Header
+        header_h = 70
+        pygame.draw.rect(self.screen, (36, 56, 95), (start_x, start_y, box_w, header_h), border_top_left_radius=24, border_top_right_radius=24)
+        pygame.draw.line(self.screen, (130, 180, 255), (start_x + 20, start_y + header_h), (start_x + box_w - 20, start_y + header_h), 1)
+
+        # Font
+        title_font = self.load_text_font(max(22, int(self.size_normal * 1.4)))
+        hint_font = self.load_text_font(max(14, int(self.size_normal * 0.7)))
+
+        # Tiêu đề với icon
+        title_font = self.load_text_font(max(22, int(self.size_normal * 1.4)))
+        
+        # Tải hình ảnh dấu chấm hỏi
+        try:
+            question_img = pygame.image.load("chamhoi.jpg")
+            question_size = int(title_font.get_height() * 1.2)
+            question_img = pygame.transform.scale(question_img, (question_size, question_size))
+            self.screen.blit(question_img, (start_x + 24, start_y + 16))
+            title_text = title_font.render(" HƯỚNG DẪN CHƠI", True, (235, 243, 255))
+            self.screen.blit(title_text, (start_x + 24 + question_size + 10, start_y + 18))
+        except:
+            title_img = title_font.render("❓ HƯỚNG DẪN CHƠI", True, (235, 243, 255))
+            self.screen.blit(title_img, (start_x + 24, start_y + 18))
+
+        # Hint text
+        hint_img = hint_font.render("Nhan chuot de dong", True, (180, 205, 255))
+        self.screen.blit(hint_img, (start_x + box_w - 180, start_y + 22))
+
+        # Nội dung text
+        body_x = start_x + 26
+        body_y = start_y + header_h + 20
+        body_w = box_w - 52
+        body_h = box_h - header_h - 36
+        line_gap = 8
+
+        # Parse nội dung & tính scroll
+        guide_lines = self.wrap_text(self.guide_content, self.font, body_w)
+
+        line_height = self.font.get_height() + line_gap
+        total_content_h = len(guide_lines) * line_height
+        self.guide_scroll_max = max(0, total_content_h - body_h)
+        self.guide_scroll_y = max(0, min(self.guide_scroll_y, self.guide_scroll_max))
+
+        # Vẽ text với scroll
+        prev_clip = self.screen.get_clip()
+        self.screen.set_clip(pygame.Rect(body_x, body_y, body_w, body_h))
+
+        y_offset = body_y - self.guide_scroll_y
+        for i, line in enumerate(guide_lines):
+            # Dòng đầu là tiêu đề (format đặc biệt)
+            if i == 0 or (line.strip() and line.isupper()):
+                text_font = self.load_text_font(max(16, int(self.size_normal * 1.1)))
+                text_surface = text_font.render(line, True, (255, 215, 0))  # Vàng
+            else:
+                text_surface = self.font.render(line, True, (244, 247, 255))  # Trắng
+
+            self.screen.blit(text_surface, (body_x, y_offset))
+            y_offset += line_height
+
+        self.screen.set_clip(prev_clip)
+
+        # Scrollbar
+        if self.guide_scroll_max > 0:
+            track_x = start_x + box_w - 12
+            track_y = body_y
+            track_h = body_h
+            pygame.draw.rect(self.screen, (70, 88, 122), (track_x, track_y, 4, track_h), border_radius=3)
+
+            thumb_h = max(22, int(track_h * (body_h / max(total_content_h, 1))))
+            thumb_y = track_y + int((self.guide_scroll_y / self.guide_scroll_max) * (track_h - thumb_h))
+            pygame.draw.rect(self.screen, (170, 205, 255), (track_x - 1, thumb_y, 6, thumb_h), border_radius=4)
+
+            # Hint scroll
+            note_img = hint_font.render("Lan chuot de xem them", True, (160, 196, 255))
+            self.screen.blit(note_img, (body_x, start_y + box_h - 18))
+
+        # Nút Đóng
+        btn_close_w = max(100, int(box_w * 0.2))
+        btn_close_h = 40
+        btn_close_x = start_x + box_w - btn_close_w - 15
+        btn_close_y = start_y + box_h - btn_close_h - 15
+        self.btn_guide_close = pygame.Rect(btn_close_x, btn_close_y, btn_close_w, btn_close_h)
+
+        mouse_pos = pygame.mouse.get_pos()
+        btn_color = (70, 100, 140) if self.btn_guide_close.collidepoint(mouse_pos) else (50, 80, 120)
+        pygame.draw.rect(self.screen, btn_color, self.btn_guide_close, border_radius=8)
+        pygame.draw.rect(self.screen, (150, 180, 220), self.btn_guide_close, width=1, border_radius=8)
+
+        close_font = self.load_text_font(max(14, int(self.size_normal * 0.85)))
+        close_text = close_font.render("ĐÓNG", True, (255, 255, 255))
+        close_rect = close_text.get_rect(center=self.btn_guide_close.center)
+        self.screen.blit(close_text, close_rect)
+
     def draw(self):
 
         if self.scene == "GAMEPLAY" and self.bg_gameplay:
@@ -488,9 +955,12 @@ class MemoryGame:
         if self.scene == "MENU":
             #lấy kích thước hiện tại
             self.curr_w = self.screen.get_width()
-            self.curr_h = self.screen.get_height() 
+            self.curr_h = self.screen.get_height()
             self.update_menu_buttons((self.curr_w, self.curr_h))
-            
+
+            # Update menu circle buttons
+            self.update_menu_buttons_circle()
+
             #viết tên tiêu đề game
             #self.draw_text_title("FLIP GAME", (self.screen.get_width()*0.5, self.screen.get_height()*0.2))
 
@@ -499,7 +969,14 @@ class MemoryGame:
             self.draw_image_button(self.btn_amthuc, "Ẩm thực")
             self.draw_image_button(self.btn_vanhoa, "Văn hóa")
             self.draw_image_button(self.btn_lichsu, "Lịch sử")
-            
+
+            # Draw menu circle buttons
+            self.draw_menu_button_circle(self.btn_menu_mute, "🔇")
+            self.draw_menu_button_circle(self.btn_menu_guide, "❓")
+
+            # Draw guide popup nếu hiển thị
+            if self.show_guide_popup:
+                self.draw_guide_popup()
         elif self.scene == "INTRO":
             if hasattr(self, 'intro_bg') and self.intro_bg:
                 self.screen.blit(self.intro_bg, (0, 0))
@@ -510,7 +987,17 @@ class MemoryGame:
             self.draw_text(f"Chủ đề: {self.current_theme}. Đang chuẩn bị vào game...", (curr_w // 2, curr_h // 2))
 
         elif self.scene == "GAMEPLAY":
+            self.update_settings_button()  # Cập nhật vị trí
             self.draw_grid()
+            self.draw_side_text()
+
+            # Draw settings button
+            self.draw_settings_button()
+
+            # Draw settings menu nếu hiển thị
+            if self.show_settings_menu and not self.game_completed:
+                self.draw_settings_menu()
+
             if self.game_completed:
                 self.draw_endgame_popup()
             elif self.matched_info:
@@ -536,14 +1023,33 @@ class MemoryGame:
         info_font = self.load_text_font(max(18, int(self.size_normal * 1.05)))
         btn_font = self.load_text_font(max(16, int(self.size_normal * 0.9)))
 
+        # Tính thời gian
+        elapsed_time = (self.game_end_time - self.game_start_time) // 1000
+        minutes = elapsed_time // 60
+        seconds = elapsed_time % 60
+
         title_img = title_font.render("HOAN THANH!", True, (235, 245, 255))
-        title_rect = title_img.get_rect(center=(box_x + box_w // 2, box_y + 60))
+        title_rect = title_img.get_rect(center=(box_x + box_w // 2, box_y + 40))
         self.screen.blit(title_img, title_rect)
 
-        info_text = f"Ban da hoan thanh trong {self.turn_count} luot"
-        info_img = info_font.render(info_text, True, (209, 229, 255))
-        info_rect = info_img.get_rect(center=(box_x + box_w // 2, box_y + 120))
-        self.screen.blit(info_img, info_rect)
+        # Điểm số chính (vàng)
+        score_img = info_font.render(f"Diem so: {self.score}", True, (255, 215, 0))
+        score_rect = score_img.get_rect(center=(box_x + box_w // 2, box_y + 100))
+        self.screen.blit(score_img, score_rect)
+
+        # Thống kê chi tiết
+        stats_font = self.load_text_font(max(14, int(self.size_normal * 0.85)))
+        stats_lines = [
+            f"Thoi gian: {minutes}m {seconds}s",
+            f"So luot: {self.turn_count} | Combo cao nhat: {self.combo_best}",
+            f"Toc do: {8/max(1, minutes or 1):.1f} cap/phut"
+        ]
+        stats_y = box_y + 150
+        for line in stats_lines:
+            stats_img = stats_font.render(line, True, (209, 229, 255))
+            stats_rect = stats_img.get_rect(center=(box_x + box_w // 2, stats_y))
+            self.screen.blit(stats_img, stats_rect)
+            stats_y += 28
 
         btn_w = max(170, int(box_w * 0.33))
         btn_h = 56
@@ -567,12 +1073,36 @@ class MemoryGame:
         text_rect = text_img.get_rect(center=rect.center)
         self.screen.blit(text_img, text_rect)
     
+    def draw_option_button_with_icon(self, rect, color, hover_color, text, font, icon_path):
+        """Vẽ nút option với icon hình ảnh bên trái"""
+        mouse_pos = pygame.mouse.get_pos()
+        draw_color = hover_color if rect.collidepoint(mouse_pos) else color
+        pygame.draw.rect(self.screen, draw_color, rect, border_radius=12)
+        pygame.draw.rect(self.screen, (220, 235, 255), rect, width=1, border_radius=12)
+        
+        # Vẽ icon
+        icon_size = int(rect.height * 0.6)
+        try:
+            icon_img = pygame.image.load(icon_path)
+            icon_img = pygame.transform.scale(icon_img, (icon_size, icon_size))
+            icon_rect = icon_img.get_rect(center=(rect.x + icon_size // 2 + 8, rect.centery))
+            self.screen.blit(icon_img, icon_rect)
+        except:
+            pass
+        
+        # Vẽ text bên phải icon
+        text_img = font.render(text, True, WHITE)
+        text_x = rect.x + icon_size + 18
+        text_rect = text_img.get_rect(midleft=(text_x, rect.centery))
+        self.screen.blit(text_img, text_rect)
+    
     def draw_button(self,rect, color, hover_color, text):
         if rect.collidepoint(self.mouse_pos):
             pygame.draw.rect(self.screen, hover_color, rect, border_radius=15)
         else:
             pygame.draw.rect(self.screen, color, rect, border_radius=15)
         self.draw_text(text, rect.center)
+
     def draw_image_button(self, rect, label):
         if label not in self.scaled_btn_images:
             return
@@ -580,19 +1110,23 @@ class MemoryGame:
         img = self.scaled_btn_images[label]
         mouse_pos = pygame.mouse.get_pos()
 
-    # hover effect (phóng to nhẹ)
+        # hover effect: màu nhạt khi bình thường, sáng khi hover
         if rect.collidepoint(mouse_pos):
+            # Hover: màu đầy đủ + phóng to nhẹ
             scale = 1.05
             new_w = int(rect.width * scale)
             new_h = int(rect.height * scale)
             img_hover = pygame.transform.smoothscale(img, (new_w, new_h))
+            img_hover.set_alpha(255)  # Màu đầy đủ
             draw_x = rect.centerx - new_w // 2
             draw_y = rect.centery - new_h // 2
             self.screen.blit(img_hover, (draw_x, draw_y))
-           
         else:
-            self.screen.blit(img, rect.topleft)
-
+            # Không hover: màu nhạt
+            img_faded = img.copy()
+            img_faded.set_alpha(140)  # Màu nhạt (có thể điều chỉnh 100-180)
+            self.screen.blit(img_faded, rect.topleft)
+            
     def update_menu_buttons(self, current_size=None):
         """
         Cập nhật vị trí và kích thước của 3 nút bấm ở menu chính.
@@ -648,8 +1182,6 @@ class MemoryGame:
 
             self.scaled_btn_images[key] = img_scaled
 
-
-    
     
     def get_rounded_image(self, surface, size, radius):
         #"""Hàm này cắt ảnh thành hình bo góc"""
@@ -826,6 +1358,14 @@ class MemoryGame:
             thumb_y = track_y + int((self.popup_scroll_y / self.popup_max_scroll) * (track_h - thumb_h))
             pygame.draw.rect(self.screen, (170, 205, 255), (track_x - 1, thumb_y, 6, thumb_h), border_radius=4)
 
+    def handle_guide_scroll(self, wheel_y):
+        """Xử lý scroll trong popup hướng dẫn"""
+        if not self.show_guide_popup:
+            return
+
+        self.guide_scroll_y -= wheel_y * self.popup_scroll_step
+        self.guide_scroll_y = max(0, min(self.guide_scroll_y, self.guide_scroll_max))
+
     def handle_popup_scroll(self, wheel_y):
         if self.scene != "GAMEPLAY" or not self.matched_info or self.game_completed:
             return
@@ -865,12 +1405,101 @@ class MemoryGame:
         img = self.font.render(text, True, WHITE)
         rect = img.get_rect(center=pos)
         self.screen.blit(img, rect)
-        
+    def draw_side_text(self):
+        width = self.screen.get_width()
+        height = self.screen.get_height()
+
+    # ===== GRID =====
+        grid_area_w = width * 0.8
+        grid_area_h = height * 0.8
+
+        card_w = (grid_area_w - (GRID_SIZE - 1) * MARGIN) / GRID_SIZE
+        card_h = (grid_area_h - (GRID_SIZE - 1) * MARGIN) / GRID_SIZE
+
+        dynamic_size = int(min(card_w, card_h))
+
+        total_grid_w = GRID_SIZE * dynamic_size + (GRID_SIZE - 1) * MARGIN
+        start_x = (width - total_grid_w) // 2
+
+    # ===== TEXT =====
+        if self.current_theme == "Văn hóa":
+            left_words = ["Văn", "Hóa"]
+            right_words = ["Việt", "Nam"]
+        elif self.current_theme == "Ẩm thực":
+            left_words = ["Ẩm", "Thực"]
+            right_words = ["Việt", "Nam"]
+        elif self.current_theme == "Lịch sử":
+            left_words = ["Lịch", "Sử"]
+            right_words = ["Việt", "Nam"]
+        else:
+            return
+
+    # ===== SPACE =====
+        left_space = start_x
+        right_space = width - (start_x + total_grid_w)
+        side_space = min(left_space, right_space)
+
+        margin_side = int(width * 0.03)
+        safe_gap = 15
+
+    # ===== AUTO SCALE (KHÔNG LAG) =====
+    # thử tối đa 15 lần → đủ mượt
+        best_size = 20
+        for test_size in range(int(side_space * 0.8), 10, -4):
+            font = pygame.font.Font("thu_phap.ttf", test_size)
+            max_w = max(
+                max(font.render(w, True, WHITE).get_width() for w in left_words),
+                max(font.render(w, True, WHITE).get_width() for w in right_words)
+                )
+
+            spacing = test_size * 1.2
+            total_h = spacing * len(left_words)
+
+            if (
+                max_w <= side_space - margin_side - safe_gap
+                and total_h <= height * 0.9
+            ):
+                best_size = test_size
+                break
+
+        big_font = pygame.font.Font("thu_phap.ttf", best_size)
+        spacing = best_size * 1.65 + height * 0.01
+
+    # ===== VẼ TRÁI =====
+        total_text_h = spacing * len(left_words)
+        y = (height - total_text_h) // 2 + int(height * 0.07)
+        for word in left_words:
+            img = big_font.render(word, True, WHITE)
+
+            x = margin_side
+            if x + img.get_width() > start_x - safe_gap:
+                x = start_x - img.get_width() - safe_gap
+
+            self.screen.blit(img, (x, y))
+            y += spacing
+
+    # ===== VẼ PHẢI =====
+        total_text_h = spacing * len(right_words)
+        y = (height - total_text_h) // 2 + int(height * 0.07)
+
+        for word in right_words:
+            img = big_font.render(word, True, WHITE)
+
+            x = width - img.get_width() - margin_side
+            if x < start_x + total_grid_w + safe_gap:
+                x = start_x + total_grid_w + safe_gap
+
+            self.screen.blit(img, (x, y))
+            y += spacing
     def start_intro(self, theme):
         self.setup_level(theme)
         self.scene = "INTRO"
         self.intro_start_time = pygame.time.get_ticks() # Lưu lúc bắt đầu Intro
-        # Phát âm thanh ngay khi vào Intro
+
+        # Tắt nhạc nền khi vào INTRO
+        self.stop_background_music()
+
+        # Phát âm thanh chuyển cảnh ngay khi vào Intro
         if self.sound_transition:
             self.sound_transition.play()
         self.sound_played = True
@@ -903,7 +1532,11 @@ class MemoryGame:
             self.font = self.load_text_font(max(12, new_normal_size))
         self.update_menu_buttons(current_size)
         if hasattr(self, 'intro_bg') and self.intro_bg:
-            self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (self.curr_w, self.curr_h))
+            sw, sh = self.screen.get_size()
+            self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (sw, sh))
+
+        # Cập nhật settings button
+        self.update_settings_button()
 
     def normalize_text(self, value):
         if isinstance(value, str):
@@ -962,7 +1595,7 @@ class MemoryGame:
                 if self.normalize_text(stem) == normalized_item_name:
                     return os.path.join(folder, filename)
 
-                if self.normalize_lookup_key(stem) == lookup_key:
+                if lookup_key in self.normalize_lookup_key(stem):
                     return os.path.join(folder, filename)
         return None
 
@@ -1016,11 +1649,19 @@ if __name__ == "__main__":
                                 
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 game.handle_click(event.pos)
+
+                # Xử lý click nút đóng popup guide
+                if game.show_guide_popup and hasattr(game, 'btn_guide_close'):
+                    if game.btn_guide_close.collidepoint(event.pos):
+                        game.show_guide_popup = False
+
             if event.type == pygame.MOUSEWHEEL:
                 game.handle_popup_scroll(event.y)
+
+                # Xử lý scroll popup guide
+                game.handle_guide_scroll(event.y)
         
         game.update()
             
         pygame.display.flip()
     pygame.quit()
-
