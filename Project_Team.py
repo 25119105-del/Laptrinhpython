@@ -1,9 +1,9 @@
+from matplotlib.pylab import spacing
 import pygame
 import random
 import os
 import unicodedata
 import re
-
 
 # --- CẤU HÌNH  --- //////////////////////////
 WIDTH, HEIGHT = 800, 600
@@ -124,7 +124,7 @@ INFO_DATA = {
                     "Tục uống trà": "(Mọi lúc trong ngày): Trà Việt thường là trà mộc hoặc ướp hoa. Thưởng trà là nghệ thuật đòi hỏi sự tĩnh lặng, thể hiện tính cách điềm đạm và lòng hiếu khách."
                 },
                 "Địa danh": {
-                    "vinh_ha_Long": "Vịnh Hạ Long là một trong những kỳ quan thiên nhiên nổi tiếng nhất của Việt Nam và đã được UNESCO công nhận là di sản thiên nhiên thế giới. Nơi đây có hàng nghìn hòn đảo đá vôi lớn nhỏ với nhiều hình dạng độc đáo nhô lên giữa làn nước xanh ngọc. Cảnh quan hùng vĩ cùng hệ thống hang động kỳ ảo khiến vịnh trở thành điểm du lịch hấp dẫn đối với du khách trong và ngoài nước.",
+                    "vinh_ha_long": "Vịnh Hạ Long là một trong những kỳ quan thiên nhiên nổi tiếng nhất của Việt Nam và đã được UNESCO công nhận là di sản thiên nhiên thế giới. Nơi đây có hàng nghìn hòn đảo đá vôi lớn nhỏ với nhiều hình dạng độc đáo nhô lên giữa làn nước xanh ngọc. Cảnh quan hùng vĩ cùng hệ thống hang động kỳ ảo khiến vịnh trở thành điểm du lịch hấp dẫn đối với du khách trong và ngoài nước.",
                     "pho_co_hoi_an": "Phố cổ Hội An là đô thị cổ nổi tiếng với những ngôi nhà mái ngói rêu phong và những con phố nhỏ yên bình. Nơi đây từng là thương cảng sầm uất từ thế kỷ XVI đến XVII, nơi giao lưu văn hóa giữa nhiều quốc gia. Vào buổi tối, ánh đèn lồng rực rỡ tạo nên khung cảnh rất thơ mộng và đặc trưng.",
                     "hang_son_doong": "Hang Sơn Đoòng được xem là hang động tự nhiên lớn nhất thế giới, nằm trong Vườn quốc gia Phong Nha Kẻ Bàng. Bên trong hang có những khối thạch nhũ khổng lồ, sông ngầm và cả khu rừng nguyên sinh. Đây là địa điểm khám phá nổi tiếng dành cho các nhà thám hiểm và du khách yêu thiên nhiên.",
                     "dao_phu_quoc": "Đảo Phú Quốc là hòn đảo lớn nhất của Việt Nam, nằm trong vịnh Thái Lan. Hòn đảo nổi tiếng với những bãi biển cát trắng, làn nước trong xanh và hệ sinh thái đa dạng. Ngoài ra, Phú Quốc còn nổi tiếng với nước mắm truyền thống, hồ tiêu và nhiều khu nghỉ dưỡng hiện đại.",
@@ -175,14 +175,13 @@ class MemoryGame:
             "Văn hóa": pygame.image.load(os.path.join(BASE_DIR, "nutvanhoa.png")).convert_alpha(),
             "Lịch sử": pygame.image.load(os.path.join(BASE_DIR, "nutlichsu.png")).convert_alpha(),
         }
-
         self.text_font_path = None
         for candidate in ["NotoSans.ttf"]:
             if os.path.exists(candidate):
                 self.text_font_path = candidate
                 break
         
-        
+        self.screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.RESIZABLE)
         self.clock = pygame.time.Clock()
         #self.font = pygame.font.SysFont("Arial", self.size_normal)
         self.font = self.load_text_font(self.size_normal)
@@ -270,7 +269,8 @@ class MemoryGame:
         if bg_path and os.path.exists(bg_path):
             self.intro_bg = pygame.image.load(bg_path).convert()
             # Scale ảnh cho vừa màn hình hiện tại
-            self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (self.curr_w, self.curr_h))
+            sw, sh = self.screen.get_size()
+            self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (sw, sh))
         else:
             self.intro_bg = None # Nếu không tìm thấy ảnh thì để trống
             print(f"Cảnh báo: Không tìm thấy file {bg_path}")
@@ -498,7 +498,6 @@ class MemoryGame:
             self.draw_image_button(self.btn_amthuc, "Ẩm thực")
             self.draw_image_button(self.btn_vanhoa, "Văn hóa")
             self.draw_image_button(self.btn_lichsu, "Lịch sử")
-            
         elif self.scene == "INTRO":
             if hasattr(self, 'intro_bg') and self.intro_bg:
                 self.screen.blit(self.intro_bg, (0, 0))
@@ -510,6 +509,7 @@ class MemoryGame:
 
         elif self.scene == "GAMEPLAY":
             self.draw_grid()
+            self.draw_side_text()
             if self.game_completed:
                 self.draw_endgame_popup()
             elif self.matched_info:
@@ -572,6 +572,7 @@ class MemoryGame:
         else:
             pygame.draw.rect(self.screen, color, rect, border_radius=15)
         self.draw_text(text, rect.center)
+
     def draw_image_button(self, rect, label):
         if label not in self.scaled_btn_images:
             return
@@ -591,7 +592,7 @@ class MemoryGame:
            
         else:
             self.screen.blit(img, rect.topleft)
-
+            
     def update_menu_buttons(self, current_size=None):
         """
         Cập nhật vị trí và kích thước của 3 nút bấm ở menu chính.
@@ -647,8 +648,6 @@ class MemoryGame:
 
             self.scaled_btn_images[key] = img_scaled
 
-
-    
     
     def get_rounded_image(self, surface, size, radius):
         #"""Hàm này cắt ảnh thành hình bo góc"""
@@ -864,7 +863,92 @@ class MemoryGame:
         img = self.font.render(text, True, WHITE)
         rect = img.get_rect(center=pos)
         self.screen.blit(img, rect)
-        
+    def draw_side_text(self):
+        width = self.screen.get_width()
+        height = self.screen.get_height()
+
+    # ===== GRID =====
+        grid_area_w = width * 0.8
+        grid_area_h = height * 0.8
+
+        card_w = (grid_area_w - (GRID_SIZE - 1) * MARGIN) / GRID_SIZE
+        card_h = (grid_area_h - (GRID_SIZE - 1) * MARGIN) / GRID_SIZE
+
+        dynamic_size = int(min(card_w, card_h))
+
+        total_grid_w = GRID_SIZE * dynamic_size + (GRID_SIZE - 1) * MARGIN
+        start_x = (width - total_grid_w) // 2
+
+    # ===== TEXT =====
+        if self.current_theme == "Văn hóa":
+            left_words = ["Văn", "Hóa"]
+            right_words = ["Việt", "Nam"]
+        elif self.current_theme == "Ẩm thực":
+            left_words = ["Ẩm", "Thực"]
+            right_words = ["Việt", "Nam"]
+        elif self.current_theme == "Lịch sử":
+            left_words = ["Lịch", "Sử"]
+            right_words = ["Việt", "Nam"]
+        else:
+            return
+
+    # ===== SPACE =====
+        left_space = start_x
+        right_space = width - (start_x + total_grid_w)
+        side_space = min(left_space, right_space)
+
+        margin_side = int(width * 0.03)
+        safe_gap = 15
+
+    # ===== AUTO SCALE (KHÔNG LAG) =====
+    # thử tối đa 15 lần → đủ mượt
+        best_size = 20
+        for test_size in range(int(side_space * 0.8), 10, -4):
+            font = pygame.font.Font("thu_phap.ttf", test_size)
+            max_w = max(
+                max(font.render(w, True, WHITE).get_width() for w in left_words),
+                max(font.render(w, True, WHITE).get_width() for w in right_words)
+                )
+
+            spacing = test_size * 1.2
+            total_h = spacing * len(left_words)
+
+            if (
+                max_w <= side_space - margin_side - safe_gap
+                and total_h <= height * 0.9
+            ):
+                best_size = test_size
+                break
+
+        big_font = pygame.font.Font("thu_phap.ttf", best_size)
+        spacing = best_size * 1.65 + height * 0.01
+
+    # ===== VẼ TRÁI =====
+        total_text_h = spacing * len(left_words)
+        y = (height - total_text_h) // 2 + int(height * 0.07)
+        for word in left_words:
+            img = big_font.render(word, True, WHITE)
+
+            x = margin_side
+            if x + img.get_width() > start_x - safe_gap:
+                x = start_x - img.get_width() - safe_gap
+
+            self.screen.blit(img, (x, y))
+            y += spacing
+
+    # ===== VẼ PHẢI =====
+        total_text_h = spacing * len(right_words)
+        y = (height - total_text_h) // 2 + int(height * 0.07)
+
+        for word in right_words:
+            img = big_font.render(word, True, WHITE)
+
+            x = width - img.get_width() - margin_side
+            if x < start_x + total_grid_w + safe_gap:
+                x = start_x + total_grid_w + safe_gap
+
+            self.screen.blit(img, (x, y))
+            y += spacing
     def start_intro(self, theme):
         self.setup_level(theme)
         self.scene = "INTRO"
@@ -902,7 +986,8 @@ class MemoryGame:
             self.font = self.load_text_font(max(12, new_normal_size))
         self.update_menu_buttons(current_size)
         if hasattr(self, 'intro_bg') and self.intro_bg:
-            self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (self.curr_w, self.curr_h))
+            sw, sh = self.screen.get_size()
+            self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (sw, sh))
 
     def normalize_text(self, value):
         if isinstance(value, str):
@@ -961,7 +1046,7 @@ class MemoryGame:
                 if self.normalize_text(stem) == normalized_item_name:
                     return os.path.join(folder, filename)
 
-                if self.normalize_lookup_key(stem) == lookup_key:
+                if lookup_key in self.normalize_lookup_key(stem):
                     return os.path.join(folder, filename)
         return None
 
@@ -1022,4 +1107,3 @@ if __name__ == "__main__":
             
         pygame.display.flip()
     pygame.quit()
-
