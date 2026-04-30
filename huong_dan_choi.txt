@@ -1,0 +1,22 @@
+HƯỚNG DẪN CHƠI: SƠN HÀ NHẤT NIỆM
+
+1. MỤC TIÊU TRÒ CHƠI:
+- Tìm và lật mở tất cả các cặp thẻ giống nhau trên bàn chơi trong thời gian ngắn nhất hoặc số lượt lật ít nhất .
+- Khám phá và tìm hiểu về các giá trị Ẩm thực, Văn hóa và Lịch sử hào hùng của Việt Nam.
+
+2. CÁCH CHƠI CƠ BẢN:
+- Bắt đầu: Tại Menu chính, chọn một trong ba chủ đề: Ẩm thực, Văn hóa hoặc Lịch sử.
+- Lật thẻ: Dùng chuột trái nhấn vào một thẻ bất kỳ để lật mặt hình ảnh lên. Sau đó, chọn tiếp thẻ thứ hai.
+- So khớp:
+  + Nếu hai thẻ GIỐNG NHAU: Cặp thẻ sẽ được mở vĩnh viễn. Một cửa sổ thông tin (Pop-up) sẽ hiện ra cung cấp kiến thức chi tiết về hình ảnh đó.
+  + Nếu hai thẻ KHÁC NHAU: Cả hai thẻ sẽ tự động úp lại sau một khoảng thời gian ngắn để bạn ghi nhớ vị trí.
+
+3. TƯƠNG TÁC TRONG GAME:
+- Đọc thông tin: Khi cửa sổ thông tin hiện ra, bạn có thể sử dụng con lăn chuột để cuộn xuống đọc các nội dung dài.
+- Quay lại: Bạn có thể nhấn vào nút "Thoát" hoặc "Quay lại" để đổi chủ đề hoặc về màn hình chính.
+
+4. MẸO CHƠI GAME:
+- Tập trung ghi nhớ các hình ảnh và vị trí của chúng ngay từ những lượt lật đầu tiên.
+- Đừng quên đọc thông tin ở mỗi cặp thẻ khớp được, đó chính là chìa khóa để bạn hiểu thêm về vẻ đẹp của đất nước mình!
+
+Chúc bạn có những giây phút thư giãn và bổ ích cùng Sơn Hà Nhất Niệm!
