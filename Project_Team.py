@@ -944,6 +944,79 @@ class MemoryGame:
         close_rect = close_text.get_rect(center=self.btn_guide_close.center)
         self.screen.blit(close_text, close_rect)
 
+    def draw_intro_loading(self):
+        """Vẽ loading screen đẹp khi chuẩn bị vào game"""
+        sw, sh = self.screen.get_size()
+        
+        # Lớp phủ nửa trong suốt ở giữa
+        overlay = pygame.Surface((sw, sh), pygame.SRCALPHA)
+        overlay.fill((0, 0, 0, 100))
+        self.screen.blit(overlay, (0, 0))
+        
+        # Hộp loading chính
+        box_w = min(500, int(sw * 0.7))
+        box_h = 280
+        box_x = (sw - box_w) // 2
+        box_y = (sh - box_h) // 2
+        
+        # Vẽ hộp với gradient effect (từ tối đến sáng)
+        pygame.draw.rect(self.screen, (20, 35, 60), (box_x, box_y, box_w, box_h), border_radius=20)
+        pygame.draw.rect(self.screen, (100, 150, 220), (box_x, box_y, box_w, box_h), width=3, border_radius=20)
+        
+        # Tiêu đề chủ đề (lớn, sáng)
+        title_font = self.load_text_font(max(32, int(sh * 0.08)))
+        title_text = title_font.render(self.current_theme, True, (255, 215, 0))
+        title_rect = title_text.get_rect(center=(sw // 2, box_y + 50))
+        self.screen.blit(title_text, title_rect)
+        
+        # Text "Đang chuẩn bị..."
+        body_font = self.load_text_font(max(20, int(sh * 0.05)))
+        body_text = body_font.render("Đang chuẩn bị vào game", True, (200, 220, 255))
+        body_rect = body_text.get_rect(center=(sw // 2, box_y + 130))
+        self.screen.blit(body_text, body_rect)
+        
+        # Tính progress dựa trên thời gian INTRO thực tế
+        current_time = pygame.time.get_ticks()
+        elapsed = current_time - self.intro_start_time
+        progress = min(100, (elapsed / self.intro_duration) * 100)  # 0-100%
+        
+        # Animated loading dots (dựa trên progress)
+        loading_cycle = int((progress / 100) * 4) % 4  # Sync với progress
+        
+        dot_font = self.load_text_font(max(28, int(sh * 0.07)))
+        dots_text = "●" * loading_cycle + "○" * (3 - loading_cycle)
+        dots_surface = dot_font.render(dots_text, True, (150, 200, 255))
+        dots_rect = dots_surface.get_rect(center=(sw // 2, box_y + 200))
+        self.screen.blit(dots_surface, dots_rect)
+        
+        # Thanh tiến trình (progress bar)
+        progress_bar_w = int(box_w * 0.6)
+        progress_bar_h = 8
+        progress_bar_x = (sw - progress_bar_w) // 2
+        progress_bar_y = box_y + 240
+        
+        # Nền thanh tiến trình
+        pygame.draw.rect(self.screen, (40, 60, 100), 
+                        (progress_bar_x, progress_bar_y, progress_bar_w, progress_bar_h), 
+                        border_radius=4)
+        
+        # Thanh tiến trình chạy (dựa trên thời gian thực)
+        filled_w = int(progress_bar_w * (progress / 100))
+        pygame.draw.rect(self.screen, (100, 200, 255), 
+                        (progress_bar_x, progress_bar_y, filled_w, progress_bar_h), 
+                        border_radius=4)
+        
+        # Viền thanh tiến trình
+        pygame.draw.rect(self.screen, (150, 180, 220), 
+                        (progress_bar_x, progress_bar_y, progress_bar_w, progress_bar_h), 
+                        width=1, border_radius=4)
+        
+        # Text phần trăm tiến độ (tuỳ chọn)
+        percent_font = self.load_text_font(max(14, int(sh * 0.04)))
+        percent_text = percent_font.render(f"{int(progress)}%", True, (150, 200, 255))
+        percent_rect = percent_text.get_rect(center=(sw // 2, box_y + 265))
+        self.screen.blit(percent_text, percent_rect)
+
     def draw(self):
 
         if self.scene == "GAMEPLAY" and self.bg_gameplay:
@@ -982,9 +1055,9 @@ class MemoryGame:
                 self.screen.blit(self.intro_bg, (0, 0))
             else:
                 self.screen.blit(self.bg_current, (0, 0))
-            curr_w = self.screen.get_width()
-            curr_h = self.screen.get_height()
-            self.draw_text(f"Chủ đề: {self.current_theme}. Đang chuẩn bị vào game...", (curr_w // 2, curr_h // 2))
+            
+            # Vẽ loading screen đẹp hơn
+            self.draw_intro_loading()
 
         elif self.scene == "GAMEPLAY":
             self.update_settings_button()  # Cập nhật vị trí
