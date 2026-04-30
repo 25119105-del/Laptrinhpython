@@ -6,12 +6,19 @@ import unicodedata
 import re
 
 # --- CẤU HÌNH  --- //////////////////////////
-WIDTH, HEIGHT = 800, 600
+WIDTH, HEIGHT = 800, 500
 FPS = 60
 WHITE, BLACK, GRAY = (255, 255, 255), (0, 0, 0), (200, 200, 200)
 GRID_SIZE = 4
 #CARD_SIZE = 150
 MARGIN = 20
+
+# --- CẤU HÌNH NÚT BẤM (dễ chỉnh sửa) ---
+BUTTON_START_X_RATIO = 0.15   # Tọa độ X bắt đầu (15% chiều rộng màn hình)
+BUTTON_BOTTOM_MARGIN = 60     # Cách chân màn hình (px)
+BUTTON_SPACING_RATIO = 0.03   # Khoảng cách giữa các nút (3% chiều rộng màn hình)
+BUTTON_WIDTH_RATIO = 0.20     # Chiều rộng nút = 20% chiều rộng màn hình
+BUTTON_HEIGHT_RATIO = 0.4    # Chiều cao nút = chiều rộng nút × 0.8
 
 # --- DATABASE (Giao cho cả nhóm soạn nội dung) ---
 INFO_DATA = {
@@ -164,9 +171,9 @@ class MemoryGame:
         BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
         self.btn_images = {
-            "Ẩm thực": pygame.image.load(os.path.join(BASE_DIR, "nutamthuc.png")).convert_alpha(),
-            "Văn hóa": pygame.image.load(os.path.join(BASE_DIR, "nutvanhoa.png")).convert_alpha(),
-            "Lịch sử": pygame.image.load(os.path.join(BASE_DIR, "nutlichsu.png")).convert_alpha(),
+            "Ẩm thực": pygame.image.load(os.path.join(BASE_DIR, "at_button.png")).convert_alpha(),
+            "Văn hóa": pygame.image.load(os.path.join(BASE_DIR, "vh_button.png")).convert_alpha(),
+            "Lịch sử": pygame.image.load(os.path.join(BASE_DIR, "ls_button.png")).convert_alpha(),
         }
         self.text_font_path = None
         for candidate in ["NotoSans.ttf"]:
@@ -233,7 +240,18 @@ class MemoryGame:
         self.popup_scroll_y = 0
         self.popup_scroll_step = 40
         self.popup_max_scroll = 0
+
+        # --- PHẦN XỬ LÝ ÂM THANH MỚI ---
+        pygame.mixer.init()
         
+        # 1. Phát nhạc nền ngay khi mở game
+        try:
+            pygame.mixer.music.load("nhac_nen.mp3")
+            pygame.mixer.music.set_volume(0.6) # Chỉnh âm lượng (0.0 đến 1.0)
+            pygame.mixer.music.play(-1)        # -1 để lặp lại vô tận
+        except:
+            print("Lỗi tải nhạc nền")
+
         # Âm thanh chuyển cảnh
         pygame.mixer.init()
         self.intro_duration = 4000 # Thời gian dừng ở Intro (4 giây)
@@ -341,7 +359,7 @@ class MemoryGame:
             # if 100 < pos[0] < 300: self.start_intro("Ẩm thực")
             # elif 350 < pos[0] < 550: self.start_intro("Văn hóa")
 
-            
+
         #elif self.scene == "INTRO":
             #khúc này thêm âm thanh ready go
             #self.scene = "GAMEPLAY" # Click để vào chơi
@@ -400,6 +418,11 @@ class MemoryGame:
             elapsed = current_time - self.intro_start_time
             if elapsed >= self.intro_duration:
                 self.scene = "GAMEPLAY"
+
+                try:
+                    pygame.mixer.music.play(-1) # Bật lại nhạc nền khi vào gameplay
+                except:
+                    print("Lỗi phát nhạc nền trong gameplay")
             return
 
         self.finish_card_animations(current_time)
@@ -573,47 +596,74 @@ class MemoryGame:
         img = self.scaled_btn_images[label]
         mouse_pos = pygame.mouse.get_pos()
 
-    # hover effect (phóng to nhẹ)
+        # hover effect: màu nhạt khi bình thường, sáng khi hover
         if rect.collidepoint(mouse_pos):
+            # Hover: màu đầy đủ + phóng to nhẹ
             scale = 1.05
             new_w = int(rect.width * scale)
             new_h = int(rect.height * scale)
             img_hover = pygame.transform.smoothscale(img, (new_w, new_h))
+            img_hover.set_alpha(255)  # Màu đầy đủ
             draw_x = rect.centerx - new_w // 2
             draw_y = rect.centery - new_h // 2
             self.screen.blit(img_hover, (draw_x, draw_y))
-           
         else:
-            self.screen.blit(img, rect.topleft)
+            # Không hover: màu nhạt
+            img_faded = img.copy()
+            img_faded.set_alpha(140)  # Màu nhạt (có thể điều chỉnh 100-180)
+            self.screen.blit(img_faded, rect.topleft)
             
     def update_menu_buttons(self, current_size=None):
+        """
+        Cập nhật vị trí và kích thước của 3 nút bấm ở menu chính.
+        
+        Các nút sẽ nằm thẳng hàng theo chiều ngang, bắt đầu từ tọa độ responsive
+        Nút được đặt cách chân màn hình 20px (nằm ở khoảng 1/3 dưới cùng)
+        Kích thước nút thay đổi theo kích thước màn hình để responsive.
+        """
         if current_size is None:
             current_size = self.screen.get_size()
 
-        sw, sh = current_size
+        sw, sh = current_size  # sw = chiều rộng, sh = chiều cao
 
-        btn_w = int(sw * 0.22)
-        btn_h = int(btn_w * 1.05)
+        # 🎯 TÍNH TOÁN KÍCH THƯỚC NÚT
+        # Chiều rộng nút = 20% chiều rộng màn hình (dễ điều chỉnh bằng BUTTON_WIDTH_RATIO)
+        btn_w = int(sw * BUTTON_WIDTH_RATIO)
+        # Chiều cao nút = chiều rộng × 1.05 (tạo hình chữ nhật hơi dài)
+        btn_h = int(btn_w * BUTTON_HEIGHT_RATIO)
 
-        gap = int(sw * 0.05)
+        # 🎯 TÍNH VỊ TRÍ CỦA 3 NÚT (dựa trên tỉ lệ màn hình)
+        # Nút 1 (Ẩm thực) - ở vị trí đầu tiên
+        x1 = int(sw * BUTTON_START_X_RATIO)
+        # Y được tính cách chân màn hình BUTTON_BOTTOM_MARGIN px
+        y1 = sh - btn_h - BUTTON_BOTTOM_MARGIN
 
-        total_w = btn_w * 3 + gap * 2
-        start_x = (sw - total_w) // 2
-        y = int(sh * 0.55)
+        # Khoảng cách giữa các nút (responsive)
+        btn_spacing = int(sw * BUTTON_SPACING_RATIO)
 
-        self.btn_amthuc = pygame.Rect(start_x, y, btn_w, btn_h)
-        self.btn_vanhoa = pygame.Rect(start_x + btn_w + gap, y, btn_w, btn_h)
-        self.btn_lichsu = pygame.Rect(start_x + (btn_w + gap)*2, y, btn_w, btn_h)
+        # Nút 2 (Văn hóa) - cách nút 1 bằng (chiều rộng nút + khoảng cách)
+        x2 = x1 + btn_w + btn_spacing
+        y2 = y1  # Cùng hàng với nút 1
 
-        # scale ảnh theo nút
+        # Nút 3 (Lịch sử) - cách nút 2 bằng (chiều rộng nút + khoảng cách)
+        x3 = x2 + btn_w + btn_spacing
+        y3 = y1  # Cùng hàng với các nút khác
+
+        # 🎯 TẠO CÁC RECT CHO 3 NÚT
+        self.btn_amthuc = pygame.Rect(x1, y1, btn_w, btn_h)
+        self.btn_vanhoa = pygame.Rect(x2, y2, btn_w, btn_h)
+        self.btn_lichsu = pygame.Rect(x3, y3, btn_w, btn_h)
+
+        # 🎯 SCALE ẢNH CỦA 3 NÚT
+        # Đảm bảo ảnh vừa vặn với kích thước các nút đã tính
         self.scaled_btn_images = {}
 
         for key, img in self.btn_images.items():
-        # CẮT VIỀN TRONG SUỐT
+            # Bước 1: Cắt bỏ phần trong suốt quanh ảnh
             cropped_rect = img.get_bounding_rect()
             img_cropped = img.subsurface(cropped_rect)
 
-        # SCALE lại cho đều
+            # Bước 2: Scale ảnh để vừa với kích thước nút
             img_scaled = pygame.transform.smoothscale(img_cropped, (btn_w, btn_h))
 
             self.scaled_btn_images[key] = img_scaled
@@ -924,6 +974,7 @@ class MemoryGame:
         self.scene = "INTRO"
         self.intro_start_time = pygame.time.get_ticks() # Lưu lúc bắt đầu Intro
         # Phát âm thanh ngay khi vào Intro
+        pygame.mixer.music.stop()  # Dừng nhạc nền menu nếu đang phát
         if self.sound_transition:
             self.sound_transition.play()
         self.sound_played = True
