@@ -927,22 +927,11 @@ class MemoryGame:
             note_img = hint_font.render("Lan chuot de xem them", True, (160, 196, 255))
             self.screen.blit(note_img, (body_x, start_y + box_h - 18))
 
-        # Nút Đóng
-        btn_close_w = max(100, int(box_w * 0.2))
-        btn_close_h = 40
-        btn_close_x = start_x + box_w - btn_close_w - 15
-        btn_close_y = start_y + box_h - btn_close_h - 15
-        self.btn_guide_close = pygame.Rect(btn_close_x, btn_close_y, btn_close_w, btn_close_h)
-
-        mouse_pos = pygame.mouse.get_pos()
-        btn_color = (70, 100, 140) if self.btn_guide_close.collidepoint(mouse_pos) else (50, 80, 120)
-        pygame.draw.rect(self.screen, btn_color, self.btn_guide_close, border_radius=8)
-        pygame.draw.rect(self.screen, (150, 180, 220), self.btn_guide_close, width=1, border_radius=8)
-
-        close_font = self.load_text_font(max(14, int(self.size_normal * 0.85)))
-        close_text = close_font.render("ĐÓNG", True, (255, 255, 255))
-        close_rect = close_text.get_rect(center=self.btn_guide_close.center)
-        self.screen.blit(close_text, close_rect)
+        # Hint text ở dưới cùng
+        hint_font = self.load_text_font(max(12, int(self.size_normal * 0.7)))
+        hint_text = hint_font.render("Ấn để đóng", True, (150, 180, 220))
+        hint_rect = hint_text.get_rect(center=(sw // 2, start_y + box_h - 12))
+        self.screen.blit(hint_text, hint_rect)
 
     def draw_intro_loading(self):
         """Vẽ loading screen đẹp khi chuẩn bị vào game"""
@@ -1721,12 +1710,11 @@ if __name__ == "__main__":
                 game.curr_w = new_width
                                 
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                game.handle_click(event.pos)
-
-                # Xử lý click nút đóng popup guide
-                if game.show_guide_popup and hasattr(game, 'btn_guide_close'):
-                    if game.btn_guide_close.collidepoint(event.pos):
-                        game.show_guide_popup = False
+                # Xử lý click nút đóng popup guide (ấn bất cứ chỗ nào)
+                if game.show_guide_popup:
+                    game.show_guide_popup = False
+                else:
+                    game.handle_click(event.pos)
 
             if event.type == pygame.MOUSEWHEEL:
                 game.handle_popup_scroll(event.y)
