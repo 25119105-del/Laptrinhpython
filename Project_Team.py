@@ -23,23 +23,23 @@ BUTTON_HEIGHT_RATIO = 0.4    # Chiều cao nút = chiều rộng nút × 0.8
 # --- DATABASE (Giao cho cả nhóm soạn nội dung) ---
 INFO_DATA = {
     "Ẩm thực": {
-            "pho": "'Quốc hồn quốc túy' với sợi bánh gạo mềm, nước dùng trong vắt, thanh ngọt từ xương ống và hương hồi, quế đặc trưng. Được khẳng định chỗ đứng trên thị trường quốc tế khi đã được liệt kê vào từ điển Oxford từ những năm 2011.", 
-            "bun_bo_hue": "Bún Bò Huế là món ăn đặc trưng của miền Trung, gây ấn tượng bởi nước dùng cay nồng, thơm mùi mắm ruốc với những sợi bún to, đậm đà.",
-            "ruou_can": "Rượu Cần là biểu tượng văn hóa cộng đồng của Tây Nguyên, mang hương vị nồng nàn của núi rừng, thường được thưởng thức chung qua những chiếc cần tre.",
-            "trung_vit_lon": "Trứng Vịt Lộn: món ăn dân dã đầy bổ dưỡng, thường ăn kèm cùng rau răm và gừng thái chỉ để cân bằng hương vị. Một món không thể bỏ qua khi đến thăm mảnh đất hình chữ S này",
-            "banh_xeo": "Bánh Xèo: lớp vỏ vàng giòn rụm, nhân tôm thịt đầy đặn, gói trọn trong rau sống và chấm cùng nước mắm chua ngọt.", 
-            "bánh Chưng - bánh Tét": "Bánh chưng và bánh tét không chỉ là món ăn ngày Tết mà còn là biểu tượng văn hóa gắn liền với ký ức sum họp của người Việt. Qua hình dáng, cách gói và ý nghĩa, hai loại bánh truyền thống phản ánh sự đa dạng vùng miền nhưng vẫn thống nhất trong tinh thần Tết cổ truyền.",
-            "bánh Pía": "Đặc sản Sóc Trăng với lớp vỏ mỏng nhiều lớp ôm lấy nhân đậu xanh, sầu riêng và trứng muối thơm lừng.",
-            "bún Chả Hà Nội": "Sự kết hợp hài hòa giữa thịt nướng cháy cạnh thơm nức xì dầu và bát nước chấm đu đủ xanh hài hòa vị chua cay mặn ngọt.",
-            "Cà Phê Trứng": "Sự giao thoa tinh tế giữa vị đắng của cà phê và lớp kem trứng đánh bông mịn màng, béo ngậy như một món tráng miệng cao cấp.",
-            "Cơm Tấm": "Món ăn đặc trưng của Sài Gòn với hạt cơm vụn độc đáo, ăn kèm sườn nướng than, bì chả và nước mắm kẹo.",
-            "Cơm Lam Gà Nướng": "Hương vị vùng cao với gạo nếp dẻo thơm trong ống tre nướng, ăn cùng gà thả vườn nướng vàng óng, là một cặp bài trùng khi được thưởng thức cùng với muối lá é đặc trưng",
-            "Bún Đậu Mắm Tôm": "Món ăn gây 'nghiện' bởi sự tương phản thú vị giữa bún lá thanh mát, đậu rán giòn và mùi vị nồng nàn, đặc trưng của mắm tôm. Song, lâu dần cũng xuất hiện thêm nhiều biến thể như bún đậu nước mắm, nước tương ,...",
-            "Gỏi Cuốn": "Món ăn dân dã vô cùng quen thuộc với người dân miền Nam. Với những nguyên liệu đơn giản như tôm, thịt, rau, bánh tráng, bạn có thể vào bếp chế biến ngay những chiếc gỏi cuốn thơm ngon ngay tại nhà.",
-            "Mì Quảng": "Tinh túy ẩm thực Quảng Nam với sợi mì vàng, to,  ít nước lèo đậm đặc, ăn kèm bánh tráng nướng, đậu phộng rang và gà xé phay.",
-            "Nem Chua": "Đặc sản Thanh Hóa có vị chua thanh, giòn sần sật từ bì lợn và tỏi ớt, món nhắm lý tưởng trong mọi cuộc vui.",
-            "Bánh Mì": "'Vua đường phố' thế giới với vỏ ngoài giòn tan, bên trong đầy ắp pate, thịt nguội, bơ và rau dưa tươi mát. Một trong những món ăn đã được đưa vào từ điển Oxford. Nhiều chuyên trang ẩm thực uy tín như The Guardian hay Lonely Planet liên tục xếp bánh mì Việt Nam vào danh sách những món ăn đường phố ngon nhất hành tinh."
-        },
+            "pho": "Phở: 'Quốc hồn quốc túy' với sợi bánh gạo mềm, nước dùng trong vắt, thanh ngọt từ xương ống. Linh hồn của món ăn nằm ở hương hồi, quế và gừng nướng tạo nên mùi thơm nồng nàn đặc trưng. Món ăn đã khẳng định vị thế quốc tế khi được liệt kê chính thức vào từ điển Oxford từ năm 2011. Đây là biểu tượng không thể thay thế, đại diện cho sự tinh tế trong cách ăn uống của người Việt.",
+            "bun_bo_hue": "Bún Bò Huế: Món ăn đặc trưng của miền Trung, gây ấn tượng bởi nước dùng cay nồng, đậm đà. Sự kết hợp hoàn hảo giữa mắm ruốc thơm nồng, sả tươi và những sợi bún to, tròn, dẻo dai. Ăn kèm với bắp bò thái mỏng, giò heo ninh mềm, huyết và chả cua tạo nên hương vị cố đô khó quên. Món ăn phản ánh nét văn hóa ẩm thực cung đình cầu kỳ nhưng vẫn gần gũi với đời sống người dân.",
+            "ruou_can": "Rượu Cần: Biểu tượng văn hóa cộng đồng của Tây Nguyên, mang hương vị nồng nàn của núi rừng. Nguyên liệu từ gạo, ngô hoặc sắn trộn với men lá rừng đặc hữu, ủ kỹ trong các ché đất nung cổ. Cách thưởng thức độc đáo bằng cách dùng các cần tre dài hút trực tiếp, thể hiện sự gắn kết và đoàn kết. Thường được dùng trong các lễ hội đâm trâu, mừng lúa mới để tạ ơn thần linh và thắt chặt tình làng nghĩa xóm.",
+            "trung_vit_lon": "Trứng Vịt Lộn: Món ăn dân dã đầy bổ dưỡng, là bài thuốc quý giúp cân bằng âm dương theo Đông y. Thường được thưởng thức kèm với rau răm cay nồng, gừng thái chỉ và một chút muối tiêu chanh đậm đà. Vị béo ngậy của lòng đỏ hòa quyện cùng vị ngọt của nước trứng tạo nên trải nghiệm ẩm thực độc đáo. Đây là món ăn đường phố quen thuộc, gắn liền với nhịp sống ban đêm hối hả tại mảnh đất hình chữ S.",
+            "banh_xeo": "Bánh Xèo: Lớp vỏ vàng giòn rụm từ bột gạo và nghệ, mang theo âm thanh 'xèo xèo' vui tai khi chế biến. Nhân bánh đầy đặn với tôm tươi, thịt ba chỉ, giá đỗ và đậu xanh bùi bùi tỏa hương thơm hấp dẫn. Được gói trọn trong các loại rau sống vườn nhà và chấm cùng nước mắm chua ngọt pha chế cầu kỳ. Món ăn là hiện thân của sự trù phú từ vùng sông nước, gắn liền với những buổi họp mặt gia đình ấm cúng.",
+            "bánh Chưng - bánh Tét": "Bánh Chưng - Bánh Tét: Biểu tượng văn hóa thiêng liêng gắn liền với ký ức sum họp trong ngày Tết cổ truyền. Gạo nếp dẻo thơm quấn lấy nhân đậu xanh bùi và thịt mỡ béo ngậy, ướp tiêu nồng nàn thơm phức. Hình dáng vuông tròn (Bánh Chưng đại diện cho Đất, Bánh Tét đại diện cho Trời) chứa đựng triết lý nhân sinh. Sự khác biệt vùng miền được thể hiện qua cách gói nhưng luôn thống nhất trong tinh thần hướng về nguồn cội.",
+            "bánh Pía": "Bánh Pía: Đặc sản trứ danh của vùng đất Sóc Trăng với lớp vỏ mỏng nhiều lớp xếp chồng tinh tế. Nhân bánh là sự hòa quyện giữa đậu xanh xay nhuyễn, sầu riêng tươi thơm nức và trứng muối mặn nhẹ. Món bánh có nguồn gốc từ người Hoa di cư, trải qua thời gian đã trở thành niềm tự hào của ẩm thực miền Tây. Hương vị ngọt thanh, béo bùi khiến bánh Pía trở thành món quà quý giá cho khách phương xa ghé thăm.",
+            "bún Chả Hà Nội": "Bún Chả Hà Nội: Sự kết hợp hài hòa giữa thịt nướng cháy cạnh thơm nức xì dầu và bát nước chấm đậm đà.  Những viên chả được nướng trên than củi hồng rực, tỏa mùi thơm đặc trưng len lỏi khắp các con phố cổ.  Ăn kèm với bún tươi và dưa góp từ đu đủ xanh, cà rốt hài hòa đủ vị chua, cay, mặn, ngọt tinh tế. Từng được cựu Tổng thống Mỹ Obama thưởng thức và khen ngợi, góp phần đưa tinh túy Tràng An ra thế giới.",
+            "Cà Phê Trứng": "Cà Phê Trứng: Sự giao thoa tinh tế giữa vị đắng của cà phê và lớp kem trứng đánh bông mịn màng. Vị béo ngậy của lòng đỏ trứng gà kết hợp cùng mật ong tạo nên lớp màng mịn màng như món tráng miệng cao cấp. Thường được đặt trong bát nước nóng để giữ độ ấm, giúp hương vị cà phê luôn đậm đà và không bị tanh. Sáng tạo độc đáo này của người Hà Nội đã chinh phục những thực khách sành sỏi nhất trên toàn cầu.",
+            "Cơm Tấm": "Cơm Tấm: Món ăn đặc trưng của Sài Gòn với những hạt cơm vụn độc đáo, mang hơi thở của đô thị năng động. Thành phần kinh điển bao gồm sườn nướng than hoa, bì heo thính thơm, chả trứng và một chút mỡ hành béo ngậy. Điểm nhấn quan trọng nhất là bát nước mắm kẹo sánh đặc, cay cay mặn mặn tưới đều lên đĩa cơm nóng hổi. Từ một món ăn bình dân của người lao động, cơm Tấm đã vươn mình trở thành biểu tượng ẩm thực sầm uất.",
+            "Cơm Lam Gà Nướng": "Cơm Lam Gà Nướng: Hương vị đặc trưng của vùng cao với gạo nếp dẻo thơm được nướng chín trong ống tre xanh. Gà thả vườn được tẩm ướp gia vị núi rừng, nướng vàng óng trên lửa than tạo nên lớp da giòn, thịt ngọt. Là 'cặp bài trùng' hoàn hảo khi thưởng thức cùng muối lá é hoặc muối mè giữa không gian đại ngàn lộng gió. Món ăn không chỉ là thực phẩm mà còn là cách người dân vùng cao giữ gìn hồn cốt của rừng già.",
+            "Bún Đậu Mắm Tôm": "Bún Đậu Mắm Tôm: Món ăn gây 'nghiện' bởi sự tương phản thú vị giữa các nguyên liệu mộc mạc và đậm đà. Bún lá thanh mát ăn kèm đậu hũ rán giòn tan, thịt chân giò luộc và các loại rau thơm đặc trưng như kinh giới. Linh hồn nằm ở bát mắm tôm được đánh bông với chanh ớt, tỏa mùi hương nồng nàn kích thích vị giác mạnh mẽ. Ngày nay, món ăn đã có nhiều biến thể phong phú nhưng mắm tôm vẫn là giá trị cốt lõi không thể thay thế.",
+            "Gỏi Cuốn": "Gỏi Cuốn: Món ăn dân dã vô cùng quen thuộc, đại diện cho nét ẩm thực thanh đạm và tươi mới của người miền Nam. Nguyên liệu đơn giản gồm tôm luộc đỏ âu, thịt ba chỉ, bún tươi và hẹ xanh được cuộn chặt trong lớp bánh tráng mỏng. Chấm cùng tương đậu béo bùi hoặc mắm nêm đậm đà, tạo nên sự bùng nổ hương vị ngay từ miếng đầu tiên. Được CNN bình chọn là một trong những món ăn ngon nhất thế giới, phù hợp cho mọi lứa tuổi và chế độ ăn.",
+            "Mì Quảng": "Mì Quảng: Tinh túy của vùng đất Quảng Nam nắng gió với sợi mì vàng, to, mang đậm dấu ấn miền Trung. Nước lèo được hầm đậm đặc, ít nhưng tinh túy, thấm đẫm vào từng sợi mì và miếng thịt gà xé phay ngọt lịm. Ăn kèm bánh tráng nướng giòn tan, đậu phộng rang thơm bùi và các loại rau sống Trà Quế nức tiếng gần xa. Món ăn thể hiện sự chân chất, nồng hậu của người dân xứ Quảng, ăn một lần là nhớ mãi hương vị quê hương.",
+            "Nem Chua": "Nem Chua: Đặc sản trứ danh của Thanh Hóa với vị chua thanh đặc trưng được lên men từ thịt lợn tươi sống. Độ giòn sần sật của bì lợn kết hợp cùng vị cay nồng của tỏi ớt và mùi thơm của lá đinh lăng quấn quanh. Là món nhắm lý tưởng trong mọi cuộc vui, thường xuất hiện trong các mâm cỗ trang trọng hoặc bữa cơm sum họp. Nem chua không chỉ là món ăn mà còn là món quà tình thân, mang theo hơi thở của vùng đất miền Trung kiên cường.",
+            "Bánh Mì": "Bánh Mì: 'Vua đường phố' thế giới với lớp vỏ ngoài giòn tan, bên trong mềm mại đầy ắp các loại nhân hấp dẫn. Sự hòa quyện giữa pate béo ngậy, thịt nguội, bơ, dưa chuột và rau dưa tạo nên một bản giao hưởng hương vị. Tự hào được đưa vào từ điển Oxford và liên tục đứng đầu các bảng xếp hạng ẩm thực uy tín như The Guardian. Bánh mì là minh chứng cho sự sáng tạo không giới hạn của người Việt, biến tấu từ món ăn ngoại quốc thành quốc bảo."
+                },
     "Văn hóa": {"Trang phục Dân tộc": {
                 "Ba Na": {
                     "nguon_goc": "Từ nghề dệt thổ cẩm thủ công, nhuộm từ lá và vỏ cây rừng.",
@@ -254,6 +254,19 @@ class MemoryGame:
         self.btn_mute = pygame.Rect(0, 0, 0, 0)
         self.btn_close_settings = pygame.Rect(0, 0, 0, 0)
 
+        # ⚙️ CONFIG SETTINGS MENU UI (dễ sửa)
+        self.settings_menu_config = {
+            "bg_color": (25, 35, 50),          # Màu nền menu
+            "bg_alpha": 245,                    # Độ trong suốt nền (0-255)
+            "border_color": (100, 150, 200),   # Màu border
+            "border_width": 3,                  # Độ dày border (px)
+            "border_radius": 15,                # Độ cong góc (px)
+            "shadow_color": (0, 0, 0),          # Màu shadow
+            "shadow_alpha": 120,                # Độ trong suốt shadow (0-255)
+            "shadow_offset_x": 8,               # Offset shadow X
+            "shadow_offset_y": 8,               # Offset shadow Y
+        }
+
         # MENU buttons (mute & guide)
         self.btn_menu_mute = pygame.Rect(0, 0, 0, 0)
         self.btn_menu_guide = pygame.Rect(0, 0, 0, 0)
@@ -272,27 +285,50 @@ class MemoryGame:
         self.match_count = 0           # Số cặp ghép thành công
         self.score = 0                 # Tổng điểm
 
-        # --- PHẦN XỬ LÝ ÂM THANH MỚI ---
-        pygame.mixer.init()
+        # --- PHẦN XỬ LÝ ÂM THANH ---
+        # Khởi tạo mixer (pygame.init() đã gọi ở dòng 166)
+        try:
+            pygame.mixer.init()
+        except:
+            pass
 
-        # Chuẩn bị nhạc nền nhưng CHƯA phát
+        # Nhạc nền
         self.bg_music_loaded = False
         try:
             pygame.mixer.music.load("nhac_nen.mp3")
-            pygame.mixer.music.set_volume(0.6) # Chỉnh âm lượng (0.0 đến 1.0)
+            pygame.mixer.music.set_volume(0.6)
             self.bg_music_loaded = True
-        except:
-            print("Lỗi tải nhạc nền")
+            print("✓ Nhạc nền (nhac_nen.mp3) đã load thành công")
+        except FileNotFoundError:
+            print("✗ Lỗi: Không tìm thấy file nhac_nen.mp3")
+        except Exception as e:
+            print(f"✗ Lỗi tải nhạc nền: {e}")
 
         # Âm thanh chuyển cảnh
-        self.intro_duration = 4000 # Thời gian dừng ở Intro (4 giây)
+        self.intro_duration = 4000
+        self.sound_transition = None
         try:
-            self.sound_transition = pygame.mixer.Sound("transition.mp3") # Tên file âm thanh của nhóm
+            self.sound_transition = pygame.mixer.Sound("transition.mp3")
+            self.sound_transition.set_volume(0.7)
         except:
-            self.sound_transition = None
             print("Không tìm thấy file âm thanh chuyển cảnh")
 
-        # Phát nhạc nền khi game khởi động ở MENU
+        # Âm thanh lật thẻ
+        self.flip_sound = None
+        try:
+            self.flip_sound = pygame.mixer.Sound("flip_sound.mp3")
+            self.flip_sound.set_volume(0.7)
+        except:
+            print("Không tìm thấy file âm thanh flip_sound.mp3")
+
+        # Âm thanh vỖ tay (hoàn thành game)
+        self.clap_sound = None
+        
+
+        # Trạng thái mute
+        self.is_muted = False
+
+        # Phát nhạc nền khi menu
         self.play_background_music()
 
         # Load hướng dẫn chơi
@@ -416,12 +452,15 @@ class MemoryGame:
                 return
 
             if self.btn_amthuc.collidepoint(pos):
+                self.stop_background_music() # Dừng nhạc nền khi bắt đầu intro
                 self.start_intro("Ẩm thực")
 
             elif self.btn_vanhoa.collidepoint(pos):
+                self.stop_background_music() # Dừng nhạc nền khi bắt đầu intro
                 self.start_intro("Văn hóa")
 
             elif self.btn_lichsu.collidepoint(pos):
+                self.stop_background_music() # Dừng nhạc nền khi bắt đầu intro
                 self.start_intro("Lịch sử")
             # Kiểm tra click vào nút chọn Theme (Giao cho Sâm/Nghĩa vẽ nút)
             # if 100 < pos[0] < 300: self.start_intro("Ẩm thực")
@@ -447,15 +486,35 @@ class MemoryGame:
                     self.toggle_mute()
                     return
                 if self.btn_close_settings.collidepoint(pos):
+                    # Nút THOÁT: Reset game + Quay về MENU với fade nhạc
+                    self.fade_out_music(400)  # Fade out nhạc gameplay (0.4 giây)
+
+                    # 🔄 Reset game state (xóa hết trò chơi hiện tại)
+                    self.cards = []
+                    self.revealed = []
+                    self.selected = []
+                    self.matched_info = None
+                    self.game_completed = False
+                    self.turn_count = 0
+                    self.combo_count = 0
+                    self.combo_best = 0
+                    self.match_count = 0
+                    self.score = 0
+                    self.stop_clap_sound()  # Tắt âm thanh vỗ tay
                     self.show_settings_menu = False
+
+                    # Chuyển về MENU
+                    self.scene = "MENU"
                     return
 
             if self.game_completed:
                 if self.btn_replay.collidepoint(pos):
+                    self.stop_clap_sound()  # Tắt âm thanh vỖ tay
                     self.setup_level(self.current_theme)
                     # Phát lại nhạc nền khi chơi lại
                     self.play_background_music()
                 elif self.btn_change_theme.collidepoint(pos):
+                    self.stop_clap_sound()  # Tắt âm thanh vỖ tay
                     self.scene = "MENU"
                     self.game_completed = False
                     # Phát nhạc nền khi quay lại MENU
@@ -476,7 +535,6 @@ class MemoryGame:
             sw, sh = self.screen.get_size()
 
             # Tái sử dụng công thức tính toán từ draw_grid
-
             start_x = (sw - (4*self.dynamic_size + 3*MARGIN)) // 2
             start_y = (sh - (4*self.dynamic_size + 3*MARGIN)) // 2
 
@@ -486,27 +544,37 @@ class MemoryGame:
 
             # Kiểm tra xem có click trúng vào phạm vi lưới 4x4 không
             if 0 <= col < 4 and 0 <= row < 4:
-            # Tạo rect ảo để kiểm tra va chạm chính xác (tránh click vào khoảng trống MARGIN)
+                # Tạo rect ảo để kiểm tra va chạm chính xác (tránh click vào khoảng trống MARGIN)
                 card_rect = pygame.Rect(
                     start_x + col*(self.dynamic_size + MARGIN),
                     start_y + row*(self.dynamic_size + MARGIN),
                     self.dynamic_size, self.dynamic_size
-            )
-            if card_rect.collidepoint(pos):
-                idx = row * 4 + col
-                if not self.revealed[idx]:
-                    self.start_card_animation(idx, True, pygame.time.get_ticks())
-                    self.revealed[idx] = True
-                    self.selected.append(idx)
-                    if len(self.selected) == 2:
-                        self.turn_count += 1
+                )
+
+                # Chỉ xử lý nếu click trúng thẻ bài (không phải khoảng trống)
+                if card_rect.collidepoint(pos):
+                    idx = row * 4 + col
+                    if not self.revealed[idx]:
+                        self.start_card_animation(idx, True, pygame.time.get_ticks())
+                        # Phát âm thanh lật thẻ
+                        if self.flip_sound:
+                            self.flip_sound.play()
+                        self.revealed[idx] = True
+                        self.selected.append(idx)
+                        if len(self.selected) == 2:
+                            self.turn_count += 1
+                # Nếu click vào khoảng trống giữa các thẻ → không làm gì, không crash
 
     def update(self):
         current_time = pygame.time.get_ticks()
 
+        if self.scene == "MENU":
+            self.ensure_background_music() # Đảm bảo nhạc nền luôn phát khi ở menu
+            self.stop_clap_sound()  # Đảm bảo khi ở menu thì âm thanh vỗ tay đã tắt
+
         # Nếu đang pause, không update logic game
         if self.is_paused and self.scene == "GAMEPLAY":
-            return
+            return    
 
         if self.scene == "INTRO":
             elapsed = current_time - self.intro_start_time
@@ -552,6 +620,9 @@ class MemoryGame:
             idx1, idx2 = self.selected
             self.start_card_animation(idx1, False, current_time)
             self.start_card_animation(idx2, False, current_time)
+            # Phát âm thanh lật thẻ khi úp lại
+            if self.flip_sound:
+                self.flip_sound.play()
             self.selected = []
             self.hide_pair_at = 0
 
@@ -565,6 +636,12 @@ class MemoryGame:
             self.calculate_score()  # Gọi hàm tính điểm
             self.game_completed = True
             self.matched_info = None
+            # Phát âm thanh tiếng vỖ tay khi hoàn thành
+            # Tắt nhạc nền trước để không bị nhiễu
+            self.stop_background_music()
+            # # if self.clap_sound:
+            #     self.clap_sound.play()
+            self.play_clap_sound()
 
     def start_card_animation(self, idx, to_state, current_time):
         from_state = self.revealed[idx]
@@ -591,12 +668,13 @@ class MemoryGame:
         return False
     
     def play_transition_sound(self):
-        if self.sound_transition:
+        """Phát âm thanh chuyển cảnh"""
+        if self.sound_transition and not self.is_muted:
             self.sound_transition.play()
 
     def play_background_music(self):
         """Phát nhạc nền lặp lại"""
-        if self.bg_music_loaded:
+        if self.bg_music_loaded and not self.is_muted:
             try:
                 pygame.mixer.music.play(-1)  # -1 để lặp lại vô tận
             except:
@@ -608,6 +686,68 @@ class MemoryGame:
             pygame.mixer.music.stop()
         except:
             print("Lỗi tắt nhạc nền")
+
+    def ensure_background_music(self):
+        """Đảm bảo nhạc nền luôn phát ở MENU (nếu không bị mute)
+
+        Kiểm tra xem nhạc có đang phát không.
+        Nếu nhạc bị stop, sẽ tự động restart nó với fade in smooth.
+        Hàm này an toàn - có thể gọi nhiều lần mỗi frame.
+        """
+        # Nếu chưa load nhạc hoặc đang mute, không làm gì
+        if not self.bg_music_loaded or self.is_muted:
+            return
+
+        try:
+            # get_busy() = True nếu nhạc đang phát, False nếu không
+            if not pygame.mixer.music.get_busy():
+                # Nhạc không phát → restart nó với fade in smooth
+                pygame.mixer.music.play(-1, fade_ms=300)
+                print("🔊 Nhạc nền được restart ở MENU (fade in)")
+        except Exception as e:
+            print(f"Lỗi restart nhạc nền: {e}")
+
+    def fade_out_music(self, duration_ms=500):
+        """Fade out nhạc nền (dần yên tĩnh)
+
+        Args:
+            duration_ms: Thời gian fade (ms). VD: 500 = 0.5 giây
+        """
+        if self.bg_music_loaded:
+            try:
+                pygame.mixer.music.fadeout(duration_ms)
+                print(f"🔇 Fade out nhạc nền ({duration_ms}ms)")
+            except Exception as e:
+                print(f"Lỗi fade out: {e}")
+
+    def fade_in_music(self, duration_ms=500):
+        """Fade in nhạc nền (dần lớn dần)
+
+        Args:
+            duration_ms: Thời gian fade (ms). VD: 500 = 0.5 giây
+        """
+        if self.bg_music_loaded and not self.is_muted:
+            try:
+                pygame.mixer.music.play(-1, fade_ms=duration_ms)
+                print(f"🔊 Fade in nhạc nền ({duration_ms}ms)")
+            except Exception as e:
+                print(f"Lỗi fade in: {e}")
+
+    def play_clap_sound(self):         
+        """Phát âm thanh vỖ tay"""
+        try:
+            self.clap_sound = pygame.mixer.Sound("tieng-vo-tay.mp3")
+            self.clap_sound.set_volume(0.8)
+        except:
+            print("Không tìm thấy file âm thanh tieng-vo-tay.mp3")
+        if self.clap_sound and not self.is_muted:
+            self.clap_sound.play()
+
+
+    def stop_clap_sound(self):
+        """Tắt âm thanh vỖ tay"""
+        if self.clap_sound:
+            self.clap_sound.stop()
 
     def calculate_score(self):
         """Tính tổng điểm dựa trên combo, thời gian, và lượt chơi"""
@@ -649,10 +789,21 @@ class MemoryGame:
     def toggle_mute(self):
         """Toggle mute state"""
         self.is_muted = not self.is_muted
+        volume = 0.0 if self.is_muted else 0.6
+        pygame.mixer.music.set_volume(volume)
+
+        # Điều chỉnh volume cho sound effects
+        if self.flip_sound:
+            self.flip_sound.set_volume(0.0 if self.is_muted else 0.7)
+        if self.clap_sound:
+            self.clap_sound.set_volume(0.0 if self.is_muted else 0.8)
+        
+        # Nếu tắt âm thanh, dừng nhạc nền
         if self.is_muted:
-            pygame.mixer.music.set_volume(0.0)
-        else:
-            pygame.mixer.music.set_volume(0.6)
+            self.stop_background_music()
+        # Nếu bật lại âm thanh, phát nhạc nền nếu đang ở MENU hoặc GAMEPLAY (và chưa hoàn thành game)
+        elif self.scene in ["MENU", "GAMEPLAY"] and not self.game_completed:
+            self.play_background_music()
 
     def update_settings_button(self):
         """Cập nhật vị trí nút settings ở góc trên phải"""
@@ -677,6 +828,7 @@ class MemoryGame:
         # Kích thước nút responsive (giống settings button)
         btn_size = max(40, int(sh * 0.06))  # 6% chiều cao
         margin = max(10, int(sw * 0.015))   # Margin từ góc
+        gap_between = 15  # Khoảng cách giữa 2 nút
 
         # Nút Mute - góc trên phải
         self.btn_menu_mute = pygame.Rect(
@@ -686,70 +838,130 @@ class MemoryGame:
             btn_size
         )
 
-        # Nút Guide - góc trên trái
+        # Nút Guide - Dưới nút Mute, bên phải (cùng cột)
         self.btn_menu_guide = pygame.Rect(
-            margin,
-            margin,
+            sw - btn_size - margin,  # Cùng X với nút mute
+            margin + btn_size + gap_between,  # Dưới nút mute + gap
             btn_size,
             btn_size
         )
 
     def draw_menu_button_circle(self, rect, icon, hover_color_factor=1.2):
-        """Vẽ nút tròn với icon cho MENU (tái sử dụng logic từ draw_settings_button)"""
+        """Vẽ nút tròn với border, shadow cho MENU"""
         mouse_pos = pygame.mouse.get_pos()
+        is_hover = rect.collidepoint(mouse_pos)
 
-        # Màu hover
-        base_color = (255, 255, 255)
-        if rect.collidepoint(mouse_pos):
-            color = tuple(min(255, int(c * hover_color_factor)) for c in base_color)
+        # 🎨 Màu nút
+        base_color = (218, 165, 32)  
+        border_color = (139, 101, 8) 
+        shadow_color = (0, 0, 0)
+
+        # Đổi màu khi hover
+        if is_hover:
+            bg_color = tuple(min(255, int(c * 1.3)) for c in base_color)
+            border_color = (200, 240, 255)
         else:
-            color = base_color
+            bg_color = base_color
 
-        # Vẽ nút tròn
+        radius = rect.width // 2
+        center = rect.center
+
+        # ✨ Vẽ shadow (chiều sâu)
+        shadow_offset = 2
         pygame.draw.circle(
             self.screen,
-            color,
-            rect.center,
-            rect.width // 2
+            (*shadow_color, 80),
+            (center[0] + shadow_offset, center[1] + shadow_offset),
+            radius,
+        )
+
+        # 🎨 Vẽ nền nút tròn
+        pygame.draw.circle(
+            self.screen,
+            bg_color,
+            center,
+            radius
+        )
+
+        # 🟦 Vẽ border (khác màu nền)
+        pygame.draw.circle(
+            self.screen,
+            border_color,
+            center,
+            radius,
+            width=2  # Độ dày border
         )
 
         # Vẽ icon từ hình ảnh
         icon_size = int(rect.width * 0.6)
+
+        # Nếu là nút mute, dựa vào is_muted để chọn ảnh
         if icon == "🔇":
-            icon_path = "tat.png"
+            icon_path = "mo.png" if self.is_muted else "tat.png"
         elif icon == "❓":
             icon_path = "chamhoi.png"
         else:
             icon_font = self.load_text_font(max(18, icon_size))
             icon_text = icon_font.render(icon, True, (255, 255, 255))
-            icon_rect = icon_text.get_rect(center=rect.center)
+            icon_rect = icon_text.get_rect(center=center)
             self.screen.blit(icon_text, icon_rect)
             return
-        
+
         try:
             icon_img = pygame.image.load(icon_path)
             icon_img = pygame.transform.scale(icon_img, (icon_size, icon_size))
-            icon_rect = icon_img.get_rect(center=rect.center)
+            icon_rect = icon_img.get_rect(center=center)
             self.screen.blit(icon_img, icon_rect)
         except:
             icon_font = self.load_text_font(max(18, icon_size))
             icon_text = icon_font.render(icon, True, (255, 255, 255))
-            icon_rect = icon_text.get_rect(center=rect.center)
+            icon_rect = icon_text.get_rect(center=center)
             self.screen.blit(icon_text, icon_rect)
 
     def draw_settings_button(self):
-        """Vẽ nút settings ở góc trên phải"""
+        """Vẽ nút settings ở góc trên phải với border + shadow"""
         mouse_pos = pygame.mouse.get_pos()
+        is_hover = self.btn_settings.collidepoint(mouse_pos)
 
-        # Màu hover
-        color = (80, 150, 200) if self.btn_settings.collidepoint(mouse_pos) else (255,255,255)
+        # 🎨 Màu nút
+        base_color = (60, 100, 150)  # Xanh dương
+        border_color = (150, 200, 255)  # Xanh sáng cho border
+        shadow_color = (0, 0, 0)
 
-        # Vẽ nút tròn
+        # Đổi màu khi hover
+        if is_hover:
+            bg_color = tuple(min(255, int(c * 1.3)) for c in base_color)
+            border_color = (200, 240, 255)
+        else:
+            bg_color = base_color
+
+        radius = self.btn_settings.width // 2
+        center = self.btn_settings.center
+
+        # ✨ Vẽ shadow (chiều sâu)
+        shadow_offset = 2
         pygame.draw.circle(
             self.screen,
-            color,
-            self.btn_settings.center,
-            self.btn_settings.width // 2
+            (*shadow_color, 80),
+            (center[0] + shadow_offset, center[1] + shadow_offset),
+            radius,
+        )
+
+        # 🎨 Vẽ nền nút tròn
+        pygame.draw.circle(
+            self.screen,
+            bg_color,
+            center,
+            radius
+        )
+
+        # 🟦 Vẽ border (khác màu nền)
+        pygame.draw.circle(
+            self.screen,
+            border_color,
+            center,
+            radius,
+            width=3  # Độ dày border
         )
 
         # Vẽ icon từ hình ảnh
@@ -757,17 +969,18 @@ class MemoryGame:
         try:
             icon_img = pygame.image.load("caidat.png")
             icon_img = pygame.transform.scale(icon_img, (icon_size, icon_size))
-            icon_rect = icon_img.get_rect(center=self.btn_settings.center)
+            icon_rect = icon_img.get_rect(center=center)
             self.screen.blit(icon_img, icon_rect)
         except:
             icon_font = self.load_text_font(max(18, icon_size))
             icon_text = icon_font.render("⚙", True, (255, 255, 255))
-            icon_rect = icon_text.get_rect(center=self.btn_settings.center)
+            icon_rect = icon_text.get_rect(center=center)
             self.screen.blit(icon_text, icon_rect)
 
     def draw_settings_menu(self):
-        """Vẽ popup menu settings"""
+        """Vẽ popup menu settings với border, shadow, và chiều sâu"""
         sw, sh = self.screen.get_size()
+        cfg = self.settings_menu_config  # Lấy config
 
         # Kích thước menu
         menu_w = min(280, int(sw * 0.35))
@@ -776,9 +989,37 @@ class MemoryGame:
         menu_y = self.btn_settings.bottom + 10
         menu_rect = pygame.Rect(menu_x, menu_y, menu_w, menu_h)
 
-        # Vẽ nền menu
-        pygame.draw.rect(self.screen, (25, 35, 50), menu_rect, border_radius=15)
-        pygame.draw.rect(self.screen, (100, 150, 200), menu_rect, width=2, border_radius=15)
+        # ✨ Vẽ Shadow (chiều sâu)
+        shadow_rect = menu_rect.copy()
+        shadow_rect.x += cfg["shadow_offset_x"]
+        shadow_rect.y += cfg["shadow_offset_y"]
+        shadow_surface = pygame.Surface((shadow_rect.width, shadow_rect.height), pygame.SRCALPHA)
+        pygame.draw.rect(
+            shadow_surface,
+            (*cfg["shadow_color"], cfg["shadow_alpha"]),
+            (0, 0, shadow_rect.width, shadow_rect.height),
+            border_radius=cfg["border_radius"]
+        )
+        self.screen.blit(shadow_surface, shadow_rect.topleft)
+
+        # 🎨 Vẽ nền menu (với độ trong suốt)
+        menu_surface = pygame.Surface((menu_w, menu_h), pygame.SRCALPHA)
+        pygame.draw.rect(
+            menu_surface,
+            (*cfg["bg_color"], cfg["bg_alpha"]),
+            (0, 0, menu_w, menu_h),
+            border_radius=cfg["border_radius"]
+        )
+        self.screen.blit(menu_surface, menu_rect.topleft)
+
+        # 🟦 Vẽ border
+        pygame.draw.rect(
+            self.screen,
+            cfg["border_color"],
+            menu_rect,
+            width=cfg["border_width"],
+            border_radius=cfg["border_radius"]
+        )
 
         # Font
         title_font = self.load_text_font(max(16, int(self.size_normal * 0.95)))
@@ -827,7 +1068,7 @@ class MemoryGame:
             self.btn_close_settings,
             (60, 60, 60),
             (100, 100, 100),
-            "ĐÓNG",
+            "THOÁT",
             btn_font
         )
 
@@ -1554,16 +1795,16 @@ class MemoryGame:
             self.screen.blit(img, (x, y))
             y += spacing
     def start_intro(self, theme):
+        # Tắt nhạc nền trước khi phát transition
+        self.stop_background_music()
+        
+        # Phát âm thanh chuyển cảnh (transition)
+        self.play_transition_sound()
+        
+        # Setup level
         self.setup_level(theme)
         self.scene = "INTRO"
         self.intro_start_time = pygame.time.get_ticks() # Lưu lúc bắt đầu Intro
-
-        # Tắt nhạc nền khi vào INTRO
-        self.stop_background_music()
-
-        # Phát âm thanh chuyển cảnh ngay khi vào Intro
-        if self.sound_transition:
-            self.sound_transition.play()
         self.sound_played = True
         
     def scale_bg(self, current_size=None): #hàm này dùng để điều chỉnh kích thước
