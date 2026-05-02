@@ -155,7 +155,7 @@ INFO_DATA = {
     "chua_mot_cot":"Chùa Một Cột là ngôi chùa có kiến trúc độc đáo được xây dựng trên một cột đá giữa hồ nước. Công trình được xây dựng từ thời nhà Lý và mang ý nghĩa biểu tượng cho hoa sen - biểu tượng của sự thanh cao trong văn hóa Việt Nam. Đây là một trong những ngôi chùa nổi tiếng nhất ở Hà Nội. Kiến trúc đơn giản nhưng mang giá trị tinh thần sâu sắc. Chùa là nơi sinh hoạt tín ngưỡng quen thuộc. Đây là biểu tượng văn hóa tâm linh đặc trưng.",
 
     "cho_ben_thanh":"Chợ Bến Thành là khu chợ nổi tiếng và lâu đời của TP. Hồ Chí Minh. Chợ bày bán nhiều loại hàng hóa như quần áo, thủ công mỹ nghệ, đặc sản và đồ lưu niệm. Đây cũng là điểm tham quan quen thuộc của du khách khi đến thành phố. Không khí buôn bán nhộn nhịp phản ánh đời sống đô thị. Chợ là nơi giao thoa văn hóa giữa nhiều vùng miền. Đây là biểu tượng sôi động của Sài Gòn."
-}
+},
     "Lịch sử": {
             "An_Duong_Vuong": "Sự kiện đánh dấu sự ra đời của nhà nước Âu Lạc với kinh đô Cổ Loa, nổi bật với kỹ thuật xây thành kiên cố và nỏ liên châu huyền thoại.",
             "Hai_Ba_Trung": "Cuộc khởi nghĩa vũ trang đầu tiên chống lại ách đô hộ phương Bắc, khẳng định sức mạnh và vai trò to lớn của phụ nữ Việt Nam.",
