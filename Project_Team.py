@@ -141,24 +141,24 @@ INFO_DATA = {
                     "chua_mot_cot":"Chùa Một Cột là ngôi chùa có kiến trúc độc đáo được xây dựng trên một cột đá giữa hồ nước. Công trình được xây dựng từ thời nhà Lý và mang ý nghĩa biểu tượng cho hoa sen - biểu tượng của sự thanh cao trong văn hóa Việt Nam. Đây là một trong những ngôi chùa nổi tiếng nhất ở Hà Nội.",
                     "cho_ben_thanh":"Chợ Bến Thành là khu chợ nổi tiếng và lâu đời của TP. Hồ Chí Minh. Chợ bày bán nhiều loại hàng hóa như quần áo, thủ công mỹ nghệ, đặc sản và đồ lưu niệm. Đây cũng là điểm tham quan quen thuộc của du khách khi đến thành phố."
                 },},
-    "Lịch sử": {
-            "An_Duong_Vuong": "Sự kiện đánh dấu sự ra đời của nhà nước Âu Lạc với kinh đô Cổ Loa, nổi bật với kỹ thuật xây thành kiên cố và nỏ liên châu huyền thoại.",
-            "Hai_Ba_Trung": "Cuộc khởi nghĩa vũ trang đầu tiên chống lại ách đô hộ phương Bắc, khẳng định sức mạnh và vai trò to lớn của phụ nữ Việt Nam.",
-            "Ba_Trieu": "Hình tượng oai phong với câu nói 'cưỡi cơn gió mạnh, đạp luồng sóng dữ', biểu tượng bất diệt cho ý chí kiên cường, không chịu cúi đầu làm tì thiếp.",
-            "chien_thang_bach_dang": "Trận thủy chiến vĩ đại đánh bại quân Nam Hán bằng trận địa cọc gỗ, chấm dứt vĩnh viễn 1000 năm Bắc thuộc, mở ra kỷ nguyên độc lập lâu dài.",
-            "dinh_bo_linh": "Hành trình dẹp yên loạn 12 sứ quân, thống nhất đất nước và đặt quốc hiệu Đại Cồ Việt, củng cố mạnh mẽ nền độc lập non trẻ.",
-            "le_hoan_pha_tong": "Cuộc kháng chiến oanh liệt đánh tan quân xâm lược nhà Tống cả trên bộ lẫn trên sông Bạch Đằng, buộc nhà Tống thừa nhận sức mạnh Đại Cồ Việt.",
-            "doi_do_thang_long": "Quyết định mang tính bước ngoặt chuyển kinh đô về vùng đất 'Rồng cuộn hổ ngồi' Đại La, tạo tiền đề cho sự phát triển rực rỡ của kinh thành ngàn năm.",
-            "Lý_Thường_Kiệt": "Trận chiến trên sông Như Nguyệt bẻ gãy ý chí xâm lược của nhà Tống gắn liền với bài thơ thần 'Nam quốc sơn hà' - bản Tuyên ngôn Độc lập đầu tiên.",
-            "khang_chien_nguyen_mong": "Bản hùng ca chói lọi của quân dân nhà Trần với những trận đánh tan đạo quân hùng mạnh nhất thế giới, gắn liền với hào khí Đông A rực lửa.",
-            "khoi_nghia_lam_son": "Cuộc kháng chiến trường kỳ 10 năm 'nằm gai nếm mật' đánh đuổi giặc Minh, mở ra thời kỳ phát triển thịnh vượng và để lại bản 'Bình Ngô Đại Cáo'.",
-            "Quang_Trung": "Cuộc hành quân thần tốc mùa xuân năm Kỷ Dậu đánh tan 29 vạn quân Thanh chỉ trong 5 ngày, đỉnh cao của nghệ thuật quân sự đánh nhanh diệt gọn.",
-            "phap_no_sung": "Sự kiện mở đầu cho quá trình thực dân Pháp xâm lược Việt Nam tại Đà Nẵng, đưa đất nước vào thời kỳ kháng chiến cam go chống lại vũ khí phương Tây.",
-            "thanh_lap_dang": "Bước ngoặt vĩ đại hợp nhất các tổ chức cộng sản do Nguyễn Ái Quốc chủ trì, chấm dứt thời kỳ khủng hoảng về đường lối giải phóng dân tộc.",
-            "cach_mang_thang_tam": "Cuộc tổng khởi nghĩa giành chính quyền rực rỡ và ngày 2/9/1945 khai sinh ra nước Việt Nam Dân chủ Cộng hòa tại quảng trường Ba Đình.",
-            "dien_bien_phu": "Trận quyết chiến chiến lược kéo dài 56 ngày đêm 'lừng lẫy năm châu, chấn động địa cầu', buộc Pháp ký Hiệp định Geneva lập lại hòa bình miền Bắc.",
-            "chien_dich_ho_chi_minh": "Chiến dịch quân sự cuối cùng mang tính quyết định, giải phóng hoàn toàn miền Nam và thống nhất đất nước vào trưa ngày 30/4/1975."
-            },
+    "Lịch_sử": {
+  "An_Duong_Vuong": "Nhà nước Âu Lạc được thành lập với kinh đô đặt tại Cổ Loa, nổi bật bởi công trình thành ốc kiên cố và vũ khí nỏ liên châu. Sự kiện này minh chứng cho bước tiến vĩ đại về năng lực tổ chức xã hội và sức mạnh quân sự vượt trội của người Việt cổ.",
+  "Hai_Ba_Trung": "Mùa xuân năm 40, Hai Bà Trưng đã phất cờ khởi nghĩa vũ trang và đánh đuổi thành công thái thú Tô Định của nhà Đông Hán. Thắng lợi oanh liệt này không chỉ giành lại nền độc lập nhất thời mà còn khẳng định sức mạnh quật khởi của người phụ nữ Việt Nam.",
+  "Ba_Trieu": "Năm 248, Bà Triệu cùng anh trai dấy binh khởi nghĩa tại vùng núi Nưa để chống lại ách đô hộ tàn bạo của nhà Đông Ngô. Khí phách anh hùng của bà đã trở thành biểu tượng bất diệt, cổ vũ mạnh mẽ cho ý chí đấu tranh giành độc lập của dân tộc.",
+  "chien_thang_bach_dang": "Năm 938, Ngô Quyền lãnh đạo quân dân dụ địch vào trận địa cọc gỗ ngầm trên sông Bạch Đằng và tiêu diệt hoàn toàn thủy quân Nam Hán. Chiến thắng vĩ đại này đã chấm dứt vĩnh viễn ngàn năm đêm trường Bắc thuộc, mở ra kỷ nguyên độc lập tự chủ lâu dài.",
+  "dinh_bo_linh": "Sau khi Ngô Quyền mất, Đinh Bộ Lĩnh đã dùng tài thao lược xuất chúng để đánh dẹp và thu phục 12 sứ quân nhằm thống nhất giang sơn. Việc ông lên ngôi hoàng đế và đặt quốc hiệu Đại Cồ Việt đã củng cố vững chắc nền độc lập, khẳng định vị thế quốc gia ngang hàng phương Bắc.",
+  "le_hoan_pha_tong": "Năm 981, Thập đạo tướng quân Lê Hoàn trực tiếp cầm quân đánh bại giặc Tống trên cả hai phòng tuyến biên giới bộ và sông Bạch Đằng. Cuộc kháng chiến thắng lợi đã bảo vệ toàn vẹn lãnh thổ non trẻ, buộc triều đình phương Bắc phải công nhận sức mạnh của dân tộc ta.",
+  "doi_do_thang_long": "Mùa thu năm 1010, vua Lý Thái Tổ ban chiếu dời đô từ vùng núi Hoa Lư về vùng đất địa linh nhân kiệt Đại La và đổi tên thành Thăng Long. Quyết định mang tầm nhìn thời đại này tạo tiền đề vững chắc cho sự phát triển hưng thịnh của trung tâm chính trị, văn hóa quốc gia.",
+  "Ly_Thuong_Kiet": "Dưới sự chỉ huy của Lý Thường Kiệt, quân dân nhà Lý đã xây dựng phòng tuyến sông Như Nguyệt kiên cố để chặn đứng và đánh tan quân xâm lược Tống. Chiến công này cùng bài thơ thần Nam quốc sơn hà không chỉ đập tan tham vọng bành trướng mà còn khẳng định chủ quyền thiêng liêng của nước Việt.",
+  "khang_chien_nguyen_mong": "Trong thế kỷ 13, quân dân nhà Trần đã ba lần sử dụng chiến thuật vườn không nhà trống để đánh bại đội quân Mông Nguyên bách chiến bách thắng. Khúc tráng ca vĩ đại này đã bảo vệ vững chắc nền độc lập, đồng thời tôn vinh hào khí Đông A rực lửa của dân tộc.",
+  "khoi_nghia_lam_son": "Lê Lợi và Nguyễn Trãi đã lãnh đạo nghĩa quân Lam Sơn trải qua mười năm nếm mật nằm gai để đánh đuổi hoàn toàn quân Minh xâm lược. Thắng lợi trường kỳ này kết thúc ách đô hộ tàn bạo, mở ra thời kỳ Hậu Lê thịnh trị và để lại bản tuyên ngôn hòa bình Bình Ngô Đại Cáo.",
+  "Quang_Trung": "Mùa xuân năm Kỷ Dậu 1789, hoàng đế Quang Trung chỉ huy nghĩa quân Tây Sơn hành quân thần tốc và tiêu diệt gọn 29 vạn quân Thanh chỉ trong năm ngày. Trận chiến chớp nhoáng này là đỉnh cao của nghệ thuật quân sự Việt Nam, đập tan hoàn toàn dã tâm xâm lược của phương Bắc.",
+  "phap_no_sung": "Tháng 9 năm 1858, liên quân Pháp và Tây Ban Nha nổ súng tấn công bán đảo Sơn Trà tại Đà Nẵng, chính thức bắt đầu quá trình xâm lược Việt Nam. Sự kiện bi tráng này kết thúc thời kỳ độc lập tự chủ của triều Nguyễn, đẩy cả dân tộc bước vào cuộc kháng chiến trường kỳ chống thực dân.",
+  "thanh_lap_dang": "Đầu năm 1930, dưới sự chủ trì của lãnh tụ Nguyễn Ái Quốc, các tổ chức cộng sản trong nước đã chính thức hợp nhất thành Đảng Cộng sản Việt Nam. Đây là bước ngoặt lịch sử vĩ đại chấm dứt sự khủng hoảng về đường lối, mở ra con đường đấu tranh giải phóng dân tộc đúng đắn.",
+  "cach_mang_thang_tam": "Mùa thu năm 1945, toàn thể dân tộc Việt Nam đã nhất tề đứng lên tổng khởi nghĩa để lật đổ ách thống trị của thực dân Pháp và phát xít Nhật. Thắng lợi rực rỡ này dẫn đến sự kiện khai sinh nước Việt Nam Dân chủ Cộng hòa vào ngày 2/9, đưa nhân dân ta lên làm chủ đất nước.",
+  "dien_bien_phu": "Sau 56 ngày đêm chiến đấu gian khổ, bộ đội ta đã tiêu diệt hoàn toàn tập đoàn cứ điểm mạnh nhất Đông Dương của quân Pháp tại Điện Biên Phủ. Chiến thắng lừng lẫy năm châu này giáng đòn quyết định buộc Pháp ký Hiệp định Geneva, chấm dứt vĩnh viễn ách cai trị thực dân tại miền Bắc.",
+  "chien_dich_ho_chi_minh": "Mùa xuân năm 1975, quân và dân ta đã mở cuộc tổng tiến công chiến lược tiến vào Sài Gòn, đập tan toàn bộ bộ máy chính quyền Việt Nam Cộng hòa. Sự kiện lá cờ tung bay trên nóc dinh Độc Lập đã đánh dấu thắng lợi trọn vẹn, giải phóng hoàn toàn miền Nam và thống nhất đất nước."
+},
 }
 
 class MemoryGame:
