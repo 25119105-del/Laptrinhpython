@@ -40,6 +40,7 @@ INFO_DATA = {
             "Nem Chua": "Nem Chua: Đặc sản trứ danh của Thanh Hóa với vị chua thanh đặc trưng được lên men từ thịt lợn tươi sống. Độ giòn sần sật của bì lợn kết hợp cùng vị cay nồng của tỏi ớt và mùi thơm của lá đinh lăng quấn quanh. Là món nhắm lý tưởng trong mọi cuộc vui, thường xuất hiện trong các mâm cỗ trang trọng hoặc bữa cơm sum họp. Nem chua không chỉ là món ăn mà còn là món quà tình thân, mang theo hơi thở của vùng đất miền Trung kiên cường.",
             "Bánh Mì": "Bánh Mì: 'Vua đường phố' thế giới với lớp vỏ ngoài giòn tan, bên trong mềm mại đầy ắp các loại nhân hấp dẫn. Sự hòa quyện giữa pate béo ngậy, thịt nguội, bơ, dưa chuột và rau dưa tạo nên một bản giao hưởng hương vị. Tự hào được đưa vào từ điển Oxford và liên tục đứng đầu các bảng xếp hạng ẩm thực uy tín như The Guardian. Bánh mì là minh chứng cho sự sáng tạo không giới hạn của người Việt, biến tấu từ món ăn ngoại quốc thành quốc bảo."
                 },
+
     "Văn hóa": { "trang_phuc_dan_toc": {
                     "ba_na": "Trang phục Ba Na có nguồn gốc từ nghề dệt thổ cẩm truyền thống lâu đời. Người Ba Na sử dụng sợi bông tự nhiên, nhuộm màu bằng lá và vỏ cây rừng nên màu sắc rất bền. Trang phục chủ yếu có màu đen làm nền, kết hợp hoa văn đỏ, trắng mang ý nghĩa tâm linh và đời sống. Nam thường đóng khố, ở trần hoặc mặc áo ngắn; nữ mặc váy quấn và áo chui đầu. Hoa văn thường là hình học đối xứng, thể hiện núi rừng và vũ trụ.",
 
@@ -73,6 +74,7 @@ INFO_DATA = {
 
                     "tho": "Trang phục Thổ là sự giao thoa giữa văn hóa Kinh và Mường. Phụ nữ mặc váy đen dài, cạp váy có hoa văn, thắt lưng màu nổi. Áo đơn giản nhưng tinh tế. Trang phục thể hiện sự hòa trộn văn hóa độc đáo giữa các dân tộc."
                         },
+
                 "Phong tục": {
                     "Tết Nguyên Đán": "Tết Nguyên Đán(Từ cuối tháng Chạp đến mùng 3 Tết): Đây là cái Tết lớn nhất, khi mọi người gác lại lo toan để về nhà sum họp. Không chỉ là dọn dẹp nhà cửa cho sạch sẽ, sáng sủa mà còn là dịp để 'làm mới' tâm hồn, tha thứ cho nhau và cùng chúc nhau một năm mới vạn sự hanh thông, gia đình êm ấm.",
                     "Ông Công Ông Táo": "Ông Công Ông Táo(Ngày 23 tháng Chạp): Người Việt tin rằng đây là ngày các vị thần bếp cưỡi cá chép lên trời để 'báo cáo' việc lớn nhỏ trong nhà. Hình ảnh phóng sinh cá chép xuống sông hồ không chỉ là nghi lễ tâm linh mà còn thể hiện tấm lòng nhân ái, mong muốn những điều tốt đẹp nhất sẽ đến với gia đình.",
@@ -91,6 +93,7 @@ INFO_DATA = {
                     "Tục treo câu đối": "Tục treo câu đối(Trước đêm Giao thừa): Những đôi câu đối đỏ dán hai bên cửa không chỉ làm ngôi nhà thêm rực rỡ mà còn là những lời răn dạy về đạo đức, lối sống. Màu đỏ tượng trưng cho may mắn, hy vọng xua đuổi điều không may và đón nhận niềm vui vào nhà.",
                     "Tục uống trà": "Tục uống trà(Mọi lúc trong ngày): Người Việt uống trà rất mộc mạc nhưng cũng đầy tinh tế. Một chén trà xanh nóng hổi mời khách hay chén trà ướp hoa thơm dịu của ông bà là cách thể hiện lòng hiếu khách, sự điềm đạm và thói quen sống chậm lại để lắng nghe, chia sẻ với nhau."
                 },
+
                 "Địa danh": {
                     "vinh_ha_long": "Vịnh Hạ Long là một trong những kỳ quan thiên nhiên nổi tiếng nhất của Việt Nam và đã được UNESCO công nhận là di sản thiên nhiên thế giới. Nơi đây có hàng nghìn hòn đảo đá vôi lớn nhỏ với nhiều hình dạng độc đáo nhô lên giữa làn nước xanh ngọc. Cảnh quan hùng vĩ cùng hệ thống hang động kỳ ảo khiến vịnh trở thành điểm du lịch hấp dẫn đối với du khách trong và ngoài nước.",
                     "pho_co_hoi_an": "Phố cổ Hội An là đô thị cổ nổi tiếng với những ngôi nhà mái ngói rêu phong và những con phố nhỏ yên bình. Nơi đây từng là thương cảng sầm uất từ thế kỷ XVI đến XVII, nơi giao lưu văn hóa giữa nhiều quốc gia. Vào buổi tối, ánh đèn lồng rực rỡ tạo nên khung cảnh rất thơ mộng và đặc trưng.",
