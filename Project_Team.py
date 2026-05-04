@@ -40,40 +40,71 @@ INFO_DATA = {
             "Nem Chua": "Nem Chua: Đặc sản trứ danh của Thanh Hóa với vị chua thanh đặc trưng được lên men từ thịt lợn tươi sống. Độ giòn sần sật của bì lợn kết hợp cùng vị cay nồng của tỏi ớt và mùi thơm của lá đinh lăng quấn quanh. Là món nhắm lý tưởng trong mọi cuộc vui, thường xuất hiện trong các mâm cỗ trang trọng hoặc bữa cơm sum họp. Nem chua không chỉ là món ăn mà còn là món quà tình thân, mang theo hơi thở của vùng đất miền Trung kiên cường.",
             "Bánh Mì": "Bánh Mì: 'Vua đường phố' thế giới với lớp vỏ ngoài giòn tan, bên trong mềm mại đầy ắp các loại nhân hấp dẫn. Sự hòa quyện giữa pate béo ngậy, thịt nguội, bơ, dưa chuột và rau dưa tạo nên một bản giao hưởng hương vị. Tự hào được đưa vào từ điển Oxford và liên tục đứng đầu các bảng xếp hạng ẩm thực uy tín như The Guardian. Bánh mì là minh chứng cho sự sáng tạo không giới hạn của người Việt, biến tấu từ món ăn ngoại quốc thành quốc bảo."
                 },
-    "Văn hóa": {
-                "trang_phuc_dan_toc": {
-                    "ba_na": "Trang phục Ba Na có nguồn gốc từ nghề dệt thổ cẩm truyền thống lâu đời. Người Ba Na sử dụng sợi bông tự nhiên, nhuộm màu bằng lá và vỏ cây rừng nên màu sắc rất bền. Trang phục chủ yếu có màu đen làm nền, kết hợp hoa văn đỏ, trắng mang ý nghĩa tâm linh và đời sống. Nam thường đóng khố, ở trần hoặc mặc áo ngắn; nữ mặc váy quấn và áo chui đầu. Hoa văn thường là hình học đối xứng, thể hiện núi rừng và vũ trụ.",
-
-                    "thai": "Trang phục người Thái gắn liền với đời sống vùng núi Tây Bắc và nghề dệt tằm tang phát triển. Nổi bật nhất là áo cóm bó sát cơ thể, giúp tôn dáng người phụ nữ, phía trước có hàng khuy bạc hình bướm tượng trưng cho tình yêu. Váy dài màu đen với hoa văn ở chân váy. Khăn Piêu đội đầu được thêu tay công phu, mỗi hoa văn thể hiện sự khéo léo và cá tính riêng của người phụ nữ.",
-
-                    "cham": "Trang phục Chăm bắt nguồn từ nền văn minh Chămpa cổ, chịu ảnh hưởng mạnh từ văn hóa Ấn Độ và Hồi giáo. Phụ nữ thường mặc áo dài chui đầu gọi là Patra, kết hợp với váy quấn (xà rông) và khăn đội đầu. Trang phục có màu sắc nhẹ nhàng như trắng, vàng, nâu. Hoa văn mang tính tôn giáo và biểu tượng văn hóa. Nam giới mặc áo dài và quấn khăn, thể hiện sự trang nghiêm.",
-
-                    "dao_do": "Trang phục Dao Đỏ phản ánh rõ nét đời sống vùng núi cao phía Bắc. Trang phục sử dụng vải lanh nhuộm chàm, kết hợp thêu tay tinh xảo. Màu đỏ là màu chủ đạo, tượng trưng cho may mắn và sức mạnh. Phụ nữ đội khăn lớn màu đỏ, đính hạt và tua rua. Áo dài có nhiều họa tiết cầu kỳ ở cổ và tay áo. Trang sức bạc được sử dụng nhiều để thể hiện địa vị và sự giàu có.",
-
-                    "e_de": "Trang phục Ê Đê mang đậm dấu ấn văn hóa mẫu hệ Tây Nguyên. Chất liệu chủ yếu là sợi bông dệt thủ công, nhuộm màu tự nhiên. Trang phục có màu đen làm nền, điểm xuyết hoa văn đỏ và trắng. Nữ mặc váy dài và áo chui đầu ôm sát cơ thể. Nam mặc khố và áo ngắn. Hoa văn thể hiện đời sống, thiên nhiên và tín ngưỡng của người Ê Đê.",
-
-                    "hmong": "Trang phục H'Mông rất nổi bật với màu sắc rực rỡ và kỹ thuật thủ công độc đáo. Người H'Mông sử dụng kỹ thuật vẽ sáp ong lên vải trước khi nhuộm chàm để tạo hoa văn. Váy xòe nhiều lớp, thêu họa tiết cầu kỳ. Áo có màu sắc tươi sáng như đỏ, xanh, vàng. Trang sức bạc là phần không thể thiếu, thể hiện sự giàu có và nét đẹp truyền thống.",
-
-                    "kinh": "Trang phục truyền thống của người Kinh tiêu biểu là áo dài. Áo dài có thiết kế ôm sát cơ thể, tà áo dài xẻ hai bên, mặc cùng quần dài. Chất liệu thường là lụa mềm mại. Áo dài thể hiện sự thanh lịch, kín đáo nhưng vẫn tôn lên vẻ đẹp của người mặc. Ngoài ra còn có nón lá – biểu tượng đặc trưng của văn hóa Việt Nam.",
-
-                    "khmer": "Trang phục Khmer chịu ảnh hưởng của văn hóa Angkor và Phật giáo Nam tông. Phụ nữ thường mặc Săm-pốt (váy quấn), kết hợp với áo tầm vông và khăn choàng Sbay. Trang phục thường có màu sắc tươi sáng như vàng, đỏ. Hoa văn mang tính tôn giáo và hoàng gia. Nam giới mặc áo sơ mi và quần truyền thống trong các dịp lễ.",
-
-                    "muong": "Trang phục người Mường mang nét giản dị nhưng tinh tế. Phụ nữ mặc áo cánh ngắn màu trắng hoặc xanh, váy dài màu đen. Điểm đặc biệt là cạp váy được dệt hoa văn rất cầu kỳ với nhiều màu sắc. Thắt lưng màu nổi tạo điểm nhấn. Trang phục thể hiện sự khéo léo trong nghề dệt và gu thẩm mỹ của người Mường.",
-
-                    "nung": "Trang phục người Nùng thường có màu chàm đặc trưng, được nhuộm từ lá cây tự nhiên. Áo có thiết kế đơn giản, cài cúc vải, không nhiều họa tiết. Tay áo thường có viền sáng màu. Trang phục thể hiện sự mộc mạc, thực tế trong đời sống sinh hoạt của người Nùng.",
-
-                    "pa_then": "Trang phục Pà Thẻn nổi bật với màu đỏ rực rỡ. Phụ nữ đội khăn nhiều lớp, trang trí hoa văn dệt trực tiếp lên vải. Áo và váy có họa tiết độc đáo, mang tính tâm linh cao. Trang phục thường được mặc trong các nghi lễ quan trọng như lễ nhảy lửa.",
-
-                    "tay": "Trang phục người Tày đơn giản nhưng thanh lịch. Áo dài màu chàm, không có nhiều hoa văn, kết hợp với thắt lưng xanh. Trang sức bạc như vòng cổ, vòng tay được sử dụng để làm điểm nhấn. Trang phục phản ánh lối sống giản dị và gần gũi thiên nhiên.",
-
-                    "hoa": "Trang phục người Hoa chịu ảnh hưởng văn hóa Trung Hoa. Phụ nữ thường mặc xường xám hoặc áo năm thân với họa tiết thêu tinh xảo như hoa, rồng, phượng. Chất liệu thường là gấm hoặc lụa. Trang phục thể hiện sự sang trọng và truyền thống lâu đời.",
-
-                    "mang": "Trang phục người Mảng khá đặc biệt với tấm choàng trắng thêu chỉ đỏ nổi bật. Áo được trang trí bằng nhiều đồng xu bạc, tạo âm thanh khi di chuyển. Trang phục thể hiện nét văn hóa riêng biệt và đời sống gắn với núi rừng.",
-
-                    "san_diu": "Trang phục Sán Dìu gồm áo dài bốn thân, váy quấn và xà cạp. Màu sắc chủ yếu là nâu và chàm. Trang phục phù hợp với lao động và sinh hoạt hằng ngày. Ngoài ra còn có khăn đội đầu và trang sức đơn giản.",
-
-                    "tho": "Trang phục Thổ là sự giao thoa giữa văn hóa Kinh và Mường. Phụ nữ mặc váy đen dài, cạp váy có hoa văn, thắt lưng màu nổi. Áo đơn giản nhưng tinh tế. Trang phục thể hiện sự hòa trộn văn hóa độc đáo giữa các dân tộc."
-}},
+    "Văn hóa": {"Trang phục Dân tộc": {
+                "Ba Na": {
+                    "nguon_goc": "Từ nghề dệt thổ cẩm thủ công, nhuộm từ lá và vỏ cây rừng.",
+                    "dac_diem": "Màu đen/đỏ chủ đạo. Nam đóng khố, nữ váy hở, hoa văn đối xứng."
+                },
+                "Thái": {
+                    "nguon_goc": "Gắn liền với vùng thung lũng Tây Bắc và nghề dệt tằm tang.",
+                    "dac_diem": "Áo cỏm ôm sát, hàng khuy bạc hình bướm và chiếc khăn Piêu thêu tay."
+                },
+                "Chăm": {
+                    "nguon_goc": "Nền văn minh Chămpa cổ đại, ảnh hưởng Ấn Độ và Hồi giáo.",
+                    "dac_diem": "Áo dài chui đầu Patra, quấn xà rông và thắt lưng dệt tinh xảo."
+                },
+                "Dao Đỏ": {
+                    "nguon_goc": "Đời sống du canh vùng núi cao, tự dệt vải lanh nhuộm chàm.",
+                    "dac_diem": "Sắc đỏ rực rỡ, khăn đội đầu khổ lớn kèm tua rua và trang sức bạc."
+                },
+                "Ê Đê": {
+                    "nguon_goc": "Truyền thống mẫu hệ Tây Nguyên, dệt sợi bông nhuộm màu tự nhiên.",
+                    "dac_diem": "Áo chui đầu, váy tấm đen-đỏ, kỹ thuật dệt Kteh đính cườm độc đáo."
+                },
+                "H'Mông": {
+                    "nguon_goc": "Văn hóa rẻo cao, kỹ thuật vẽ sáp ong và nhuộm chàm thủ công.",
+                    "dac_diem": "Váy xòe dập ly, thêu ghép vải màu rực rỡ và bộ xà tích bạc."
+                },
+                "Kinh": {
+                    "nguon_goc": "Văn minh lúa nước, biến đổi từ áo giao lĩnh đến áo dài hiện đại.",
+                    "dac_diem": "Áo dài xẻ tà cao, quần ống rộng, nón lá, chất liệu lụa thanh lịch."
+                },
+                "Khmer": {
+                    "nguon_goc": "Văn hóa Angkor và Phật giáo Nam tông, sử dụng tơ lụa dệt Hol.",
+                    "dac_diem": "Quấn Săm-pốt, áo tầm vông, khăn Sbay quàng vai màu sắc rực rỡ."
+                },
+                "Mường": {
+                    "nguon_goc": "Vùng đất cổ Hòa Bình, Thanh Hóa với nghề dệt thổ cẩm lâu đời.",
+                    "dac_diem": "Áo cánh ngắn, váy đen dài nổi bật với cạp váy dệt hoa văn tinh xảo."
+                },
+                "Nùng": {
+                    "nguon_goc": "Truyền thống canh tác vùng Việt Bắc, nhuộm chàm xanh đen đặc trưng.",
+                    "dac_diem": "Trang phục màu chàm đơn giản, áo cài cúc vải, viền tay áo màu sáng."
+                },
+                "Pà Thẻn": {
+                    "nguon_goc": "Cư dân vùng núi cao Hà Giang, dệt hoa văn trực tiếp trên khung cửi.",
+                    "dac_diem": "Màu đỏ rực rỡ như chim phượng hoàng, khăn đội đầu xếp nhiều lớp."
+                },
+                "Tày": {
+                    "nguon_goc": "Cư dân thung lũng Việt Bắc, dệt vải chàm tự nhiên giản dị.",
+                    "dac_diem": "Áo dài năm thân màu chàm, thắt lưng xanh, vòng cổ bạc bản lớn."
+                },
+                "Hoa": {
+                    "nguon_goc": "Ảnh hưởng từ văn hóa Hán, sử dụng chất liệu gấm lụa cao cấp.",
+                    "dac_diem": "Xường xám hoặc áo năm thân cài cúc vải, họa tiết rồng phượng thêu tay."
+                },
+                "Mảng": {
+                    "nguon_goc": "Cư dân vùng cao Lai Châu, tự may váy áo phối hợp với vải mộc trắng.",
+                    "dac_diem": "Tấm choàng trắng (Tà xịa) thêu chỉ đỏ và áo trang trí bằng nhiều hàng đồng xu bạc."
+                },
+                "Sán Dìu": {
+                    "nguon_goc": "Cư dân trung du miền núi phía Bắc, dệt vải chàm bền chắc cho đi rừng.",
+                    "dac_diem": "Áo dài bốn thân, váy xẻ hai mảnh quấn quanh hông và xà cạp bảo vệ chân."
+                },
+                "Thổ": {
+                    "nguon_goc": "Giao thoa văn hóa Kinh - Mường vùng Nghệ An, Thanh Hóa.",
+                        "dac_diem": "Váy đen có cạp dệt hoa văn tinh xảo, thắt lưng màu nổi và khăn vuông trắng."},
+                }},
                 "Phong tục": {
                     "Tết Nguyên Đán": "Tết Nguyên Đán(Từ cuối tháng Chạp đến mùng 3 Tết): Đây là cái Tết lớn nhất, khi mọi người gác lại lo toan để về nhà sum họp. Không chỉ là dọn dẹp nhà cửa cho sạch sẽ, sáng sủa mà còn là dịp để 'làm mới' tâm hồn, tha thứ cho nhau và cùng chúc nhau một năm mới vạn sự hanh thông, gia đình êm ấm.",
                     "Ông Công Ông Táo": "Ông Công Ông Táo(Ngày 23 tháng Chạp): Người Việt tin rằng đây là ngày các vị thần bếp cưỡi cá chép lên trời để 'báo cáo' việc lớn nhỏ trong nhà. Hình ảnh phóng sinh cá chép xuống sông hồ không chỉ là nghi lễ tâm linh mà còn thể hiện tấm lòng nhân ái, mong muốn những điều tốt đẹp nhất sẽ đến với gia đình.",
@@ -125,24 +156,24 @@ INFO_DATA = {
 
     "cho_ben_thanh":"Chợ Bến Thành là khu chợ nổi tiếng và lâu đời của TP. Hồ Chí Minh. Chợ bày bán nhiều loại hàng hóa như quần áo, thủ công mỹ nghệ, đặc sản và đồ lưu niệm. Đây cũng là điểm tham quan quen thuộc của du khách khi đến thành phố. Không khí buôn bán nhộn nhịp phản ánh đời sống đô thị. Chợ là nơi giao thoa văn hóa giữa nhiều vùng miền. Đây là biểu tượng sôi động của Sài Gòn."
 },
-    "Lịch sử": {
-            "An_Duong_Vuong": "Sự kiện đánh dấu sự ra đời của nhà nước Âu Lạc với kinh đô Cổ Loa, nổi bật với kỹ thuật xây thành kiên cố và nỏ liên châu huyền thoại.",
-            "Hai_Ba_Trung": "Cuộc khởi nghĩa vũ trang đầu tiên chống lại ách đô hộ phương Bắc, khẳng định sức mạnh và vai trò to lớn của phụ nữ Việt Nam.",
-            "Ba_Trieu": "Hình tượng oai phong với câu nói 'cưỡi cơn gió mạnh, đạp luồng sóng dữ', biểu tượng bất diệt cho ý chí kiên cường, không chịu cúi đầu làm tì thiếp.",
-            "chien_thang_bach_dang": "Trận thủy chiến vĩ đại đánh bại quân Nam Hán bằng trận địa cọc gỗ, chấm dứt vĩnh viễn 1000 năm Bắc thuộc, mở ra kỷ nguyên độc lập lâu dài.",
-            "dinh_bo_linh": "Hành trình dẹp yên loạn 12 sứ quân, thống nhất đất nước và đặt quốc hiệu Đại Cồ Việt, củng cố mạnh mẽ nền độc lập non trẻ.",
-            "le_hoan_pha_tong": "Cuộc kháng chiến oanh liệt đánh tan quân xâm lược nhà Tống cả trên bộ lẫn trên sông Bạch Đằng, buộc nhà Tống thừa nhận sức mạnh Đại Cồ Việt.",
-            "doi_do_thang_long": "Quyết định mang tính bước ngoặt chuyển kinh đô về vùng đất 'Rồng cuộn hổ ngồi' Đại La, tạo tiền đề cho sự phát triển rực rỡ của kinh thành ngàn năm.",
-            "Lý_Thường_Kiệt": "Trận chiến trên sông Như Nguyệt bẻ gãy ý chí xâm lược của nhà Tống gắn liền với bài thơ thần 'Nam quốc sơn hà' - bản Tuyên ngôn Độc lập đầu tiên.",
-            "khang_chien_nguyen_mong": "Bản hùng ca chói lọi của quân dân nhà Trần với những trận đánh tan đạo quân hùng mạnh nhất thế giới, gắn liền với hào khí Đông A rực lửa.",
-            "khoi_nghia_lam_son": "Cuộc kháng chiến trường kỳ 10 năm 'nằm gai nếm mật' đánh đuổi giặc Minh, mở ra thời kỳ phát triển thịnh vượng và để lại bản 'Bình Ngô Đại Cáo'.",
-            "Quang_Trung": "Cuộc hành quân thần tốc mùa xuân năm Kỷ Dậu đánh tan 29 vạn quân Thanh chỉ trong 5 ngày, đỉnh cao của nghệ thuật quân sự đánh nhanh diệt gọn.",
-            "phap_no_sung": "Sự kiện mở đầu cho quá trình thực dân Pháp xâm lược Việt Nam tại Đà Nẵng, đưa đất nước vào thời kỳ kháng chiến cam go chống lại vũ khí phương Tây.",
-            "thanh_lap_dang": "Bước ngoặt vĩ đại hợp nhất các tổ chức cộng sản do Nguyễn Ái Quốc chủ trì, chấm dứt thời kỳ khủng hoảng về đường lối giải phóng dân tộc.",
-            "cach_mang_thang_tam": "Cuộc tổng khởi nghĩa giành chính quyền rực rỡ và ngày 2/9/1945 khai sinh ra nước Việt Nam Dân chủ Cộng hòa tại quảng trường Ba Đình.",
-            "dien_bien_phu": "Trận quyết chiến chiến lược kéo dài 56 ngày đêm 'lừng lẫy năm châu, chấn động địa cầu', buộc Pháp ký Hiệp định Geneva lập lại hòa bình miền Bắc.",
-            "chien_dich_ho_chi_minh": "Chiến dịch quân sự cuối cùng mang tính quyết định, giải phóng hoàn toàn miền Nam và thống nhất đất nước vào trưa ngày 30/4/1975."
-            },
+    "Lịch_sử": {
+    "An_Duong_Vuong": "Thục Phán An Dương Vương với quyết định mang tính chiến lược sáp nhập hai bộ tộc Âu Việt và Lạc Việt, dời đô từ vùng núi hiểm trở về bình nguyên Cổ Loa và xây dựng nhà nước Âu Lạc, mang ý nghĩa đánh dấu một bước chuyển mình vĩ đại của dân tộc. Sự kiện này không chỉ thể hiện bước tiến vượt bậc về kỹ thuật quân sự thông qua việc đúc mũi tên đồng, chế tạo nỏ liên châu và kiến trúc thành ốc kiên cố nhiều vòng, mà còn cho thấy tư duy địa chính trị sâu sắc, phản ánh năng lực tổ chức, quản lý xã hội quy mô lớn của người Việt cổ nhằm đối phó với những thách thức từ tự nhiên và nguy cơ xâm lăng từ phương Bắc.",
+    "Hai_Ba_Trung": "Trưng Trắc và Trưng Nhị với cuộc khởi nghĩa vũ trang đầu tiên quy tụ hào kiệt khắp sáu mươi lăm thành trì chống lại ách đô hộ bạo tàn của thái thú Tô Định nhà Đông Hán, mang ý nghĩa như một bản hùng ca bất diệt về lòng yêu nước. Thắng lợi này không chỉ phá vỡ xiềng xích nô lệ ngay từ buổi đầu Bắc thuộc, mà còn khẳng định sức mạnh quật cường, tinh thần tự chủ mãnh liệt và minh chứng cho vai trò, vị thế vô song của người phụ nữ Việt Nam trong việc gánh vác vận mệnh non sông, để lại một dấu ấn văn hóa lịch sử độc nhất vô nhị.",
+    "Ba_Trieu": "Bà Triệu (Triệu Thị Trinh) với cuộc dấy binh khởi nghĩa oai hùng tại vùng núi Nưa (Thanh Hóa) cùng câu nói bất hủ 'muốn cưỡi cơn gió mạnh, đạp luồng sóng dữ, chém cá kình ở biển Đông' để chống lại ách cai trị tàn ác của Đông Ngô, mang ý nghĩa thức tỉnh tinh thần dân tộc giữa đêm trường Bắc thuộc. Khí phách của bà là biểu tượng tuyệt đỉnh của ý chí kiên trung, thà hy sinh vinh liệt chứ tuyệt đối không chịu cúi đầu làm nô lệ, qua đó trao truyền ngọn lửa đấu tranh giải phóng dân tộc rực cháy cho muôn đời sau.",
+    "chien_thang_bach_dang": "Ngô Quyền với tài thao lược kiệt xuất, tận dụng quy luật thủy triều và địa thế hiểm yếu để dựng trận địa cọc gỗ ngầm, đánh chìm hạm đội quân Nam Hán trên sông Bạch Đằng năm 938, mang ý nghĩa tạo ra một khúc quanh vĩ đại bậc nhất trong lịch sử nước nhà. Chiến công hiển hách này đã đập tan hoàn toàn dã tâm bành trướng của phương Bắc, tự hào chấm dứt vĩnh viễn hơn một ngàn năm đau thương dưới ách Bắc thuộc, đồng thời đặt nền móng vững chắc, mở ra kỷ nguyên vươn mình độc lập, tự chủ và hưng thịnh lâu dài cho dân tộc.",
+    "dinh_bo_linh": "Đinh Bộ Lĩnh với tầm nhìn chính trị sắc bén và tài năng quân sự xuất chúng trong công cuộc đánh dẹp, thu phục 12 sứ quân cát cứ, chính thức lên ngôi Hoàng đế và xưng quốc hiệu Đại Cồ Việt năm 968, mang ý nghĩa chấm dứt sự chia rẽ nội bộ, quy non sông về một mối. Việc ông xưng 'Đế' (thay vì xưng 'Vương') và đặt niên hiệu riêng là một lời khẳng định đanh thép về tư thế độc lập, tự cường, đặt quốc gia ngang hàng với các triều đại phương Bắc, củng cố thể chế phong kiến trung ương tập quyền vững mạnh.",
+    "le_hoan_pha_tong": "Thập đạo tướng quân Lê Hoàn với tài năng cầm quân xuất quỷ nhập thần, trực tiếp lãnh đạo quân dân Đại Cồ Việt đập tan hai mũi gọng kìm xâm lược của nhà Tống trên cả tuyến đường bộ và thủy chiến sông Bạch Đằng năm 981, mang ý nghĩa bảo vệ trọn vẹn bờ cõi thiêng liêng của một nhà nước non trẻ. Chiến thắng oanh liệt này không chỉ chặn đứng âm mưu tái đô hộ của giặc ngoại xâm mà còn là minh chứng cho tinh thần đoàn kết toàn dân, buộc triều đình phương Bắc phải nhượng bộ và chính thức công nhận sức mạnh của dân tộc Việt.",
+    "doi_do_thang_long": "Vua Lý Thái Tổ với 'Chiếu dời đô' mang tầm nhìn vượt thời đại, quyết định chuyển trung tâm quyền lực từ vùng núi đá hẹp Hoa Lư ra vùng đồng bằng châu thổ sông Hồng rộng lớn Đại La (Thăng Long) vào năm 1010, mang ý nghĩa chuyển đổi tư duy chiến lược từ phòng ngự thụ động sang chủ động kiến thiết, mở cửa phát triển. Lựa chọn vùng đất 'rồng cuộn hổ ngồi' này đã tạo ra một bệ phóng địa chính trị, kinh tế và văn hóa hoàn hảo, xây dựng nên một kinh đô Thăng Long ngàn năm văn hiến rực rỡ.",
+    "Ly_Thuong_Kiet": "Thái úy Lý Thường Kiệt với chiến lược 'tiên phát chế nhân' (chủ động tiến công để tự vệ) và tài nghệ thiết lập phòng tuyến sông Như Nguyệt đánh tan đạo quân hùng hậu nhà Tống năm 1077, mang ý nghĩa thể hiện đỉnh cao của nghệ thuật chiến tranh tâm lý và chiến thuật phòng ngự phản công. Thắng lợi này, gắn liền với bài thơ thần 'Nam quốc sơn hà', đã trở thành bản Tuyên ngôn Độc lập đầu tiên, bẻ gãy vĩnh viễn dã tâm xâm lược của nhà Tống và khắc sâu chân lý về chủ quyền bất khả xâm phạm của nước Nam.",
+    "khang_chien_nguyen_mong": "Hưng Đạo Đại Vương Trần Quốc Tuấn cùng các tầng lớp nhân dân nhà Trần với ba lần thực hiện chiến lược 'vườn không nhà trống', lấy đoản binh thắng trường trận để đập tan đạo kỵ binh Mông Nguyên - đội quân tàn bạo nhất thế giới thế kỷ 13, mang ý nghĩa minh chứng cho sức mạnh vô địch của chiến tranh nhân dân và sự đồng lòng 'vua tôi đồng tâm, anh em hòa mục'. Khúc tráng ca này không chỉ cứu vãn nền độc lập dân tộc mà còn góp phần ngăn chặn thảm họa bành trướng của đế chế Mông Cổ xuống khu vực Đông Nam Á, tỏa sáng hào khí Đông A bất diệt.",
+    "khoi_nghia_lam_son": "Bình Định Vương Lê Lợi và Ức Trai Nguyễn Trãi với tư tưởng 'đem đại nghĩa để thắng hung tàn, lấy chí nhân để thay cường bạo', lãnh đạo cuộc kháng chiến trường kỳ 10 năm gian khổ đánh đuổi quân Minh xâm lược, mang ý nghĩa kết thúc trọn vẹn hai thập kỷ bị bóc lột tàn bạo và chính sách đồng hóa thâm độc. Sự kiện này mở ra thời kỳ Hậu Lê với sự vươn lên đỉnh cao của nền văn hóa, giáo dục và luật pháp Đại Việt, đồng thời để lại cho hậu thế áng thiên cổ hùng văn 'Bình Ngô Đại Cáo' - bản tuyên ngôn rực rỡ về hòa bình và nhân nghĩa.",
+    "Quang_Trung": "Hoàng đế Quang Trung - Nguyễn Huệ với thiên tài quân sự bách chiến bách thắng, tổ chức cuộc hành quân thần tốc ra Bắc và đánh tan 29 vạn quân Thanh xâm lược chỉ trong 5 ngày đêm mùa xuân Kỷ Dậu (1789), mang ý nghĩa cứu nguy dân tộc khỏi ách xâm lăng ở khoảnh khắc ngàn cân treo sợi tóc. Đây là đỉnh cao chói lọi của nghệ thuật tác chiến hiệp đồng các binh chủng, đánh nhanh diệt gọn, không chỉ giữ vững bờ cõi mà còn đập tan tàn dư của các thế lực phong kiến mục nát, mở ra hy vọng thống nhất và canh tân đất nước.",
+    "phap_no_sung": "Nhân dân Đà Nẵng dưới sự chỉ huy của danh tướng Nguyễn Tri Phương cùng triều đình nhà Nguyễn với cuộc chiến đấu anh dũng kiên cường chặn đứng liên quân Pháp - Tây Ban Nha nổ súng tấn công bán đảo Sơn Trà (tháng 9/1858), mang ý nghĩa đánh dấu một khúc quanh bi tráng của lịch sử. Sự kiện này khép lại thời kỳ độc lập tự chủ lâu dài của chế độ quân chủ phong kiến, đẩy cả dân tộc bước vào một thử thách sinh tử mới: cuộc kháng chiến trường kỳ chống lại chủ nghĩa thực dân phương Tây với vũ khí kỹ thuật vượt trội.",
+    "thanh_lap_dang": "Lãnh tụ Nguyễn Ái Quốc với nhãn quan chính trị lỗi lạc, chủ trì thành công hội nghị hợp nhất các tổ chức cộng sản thành Đảng Cộng sản Việt Nam vào mùa xuân năm 1930, mang ý nghĩa tạo ra một bước ngoặt vĩ đại làm thay đổi hoàn toàn vận mệnh dân tộc. Sự kiện này chấm dứt triệt để thời kỳ bế tắc, khủng hoảng sâu sắc về đường lối cứu nước, kết hợp thành công chủ nghĩa Mác - Lênin với phong trào công nhân và phong trào yêu nước, vạch ra quỹ đạo đúng đắn tiến tới giải phóng dân tộc và đi lên chủ nghĩa xã hội.",
+    "cach_mang_thang_tam": "Chủ tịch Hồ Chí Minh cùng toàn thể dân tộc Việt Nam với khả năng chớp thời cơ lịch sử xuất thần, tiến hành cuộc tổng khởi nghĩa lật đổ ách thống trị của thực dân Pháp, phát xít Nhật và đọc Tuyên ngôn Độc lập ngày 2/9/1945, mang ý nghĩa kiến tạo một sự thay đổi mang tính thời đại. Cuộc cách mạng không chỉ xóa bỏ chế độ phong kiến ngàn năm, đập tan ách thực dân gần một thế kỷ, khai sinh ra nước Việt Nam Dân chủ Cộng hòa, mà còn đưa người dân Việt Nam từ thân phận nô lệ lầm than bước lên đài vinh quang, trở thành những người chủ thực sự của đất nước độc lập.",
+    "dien_bien_phu": "Đại tướng Võ Nguyên Giáp với quyết định lịch sử chuyển từ 'đánh nhanh thắng nhanh' sang 'đánh chắc tiến chắc', chỉ huy quân dân ta đập tan tập đoàn cứ điểm quân sự mạnh nhất Đông Dương của Pháp tại Điện Biên Phủ (1954), mang ý nghĩa tạo ra một cơn địa chấn toàn cầu. Chiến thắng 'lừng lẫy năm châu, chấn động địa cầu' này đã đánh sập ý chí xâm lược của thực dân Pháp, buộc chúng phải ký Hiệp định Geneva, giải phóng hoàn toàn miền Bắc, đồng thời thổi bùng ngọn lửa phong trào giải phóng dân tộc, báo hiệu sự sụp đổ của chủ nghĩa thực dân cũ trên toàn thế giới.",
+    "chien_dich_ho_chi_minh": "Quân và dân ta với trí tuệ quân sự nhạy bén và ý chí thống nhất non sông mãnh liệt, tiến hành thành công cuộc tổng tiến công nổi dậy mùa xuân năm 1975, kết thúc bằng việc xe tăng húc đổ cổng Dinh Độc Lập ngày 30/4, mang ý nghĩa là dấu son chói lọi nhất kết thúc 30 năm chiến tranh giải phóng dân tộc đầy máu và nước mắt. Thắng lợi trọn vẹn này đã đập tan ách thống trị của chủ nghĩa đế quốc và chính quyền tay sai, thu non sông về một mối, mở ra một kỷ nguyên mới – kỷ nguyên của hòa bình, độc lập, thống nhất và đi lên xây dựng đất nước."
+  },
 }
 
 class MemoryGame:
