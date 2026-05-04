@@ -15,7 +15,7 @@ MARGIN = 20
 
 # --- CẤU HÌNH NÚT BẤM (dễ chỉnh sửa) ---
 BUTTON_START_X_RATIO = 0.15   # Tọa độ X bắt đầu (15% chiều rộng màn hình)
-BUTTON_BOTTOM_MARGIN = 60     # Cách chân màn hình (px)
+BUTTON_BOTTOM_MARGIN = 80     # Cách chân màn hình (px)
 BUTTON_SPACING_RATIO = 0.03   # Khoảng cách giữa các nút (3% chiều rộng màn hình)
 BUTTON_WIDTH_RATIO = 0.20     # Chiều rộng nút = 20% chiều rộng màn hình
 BUTTON_HEIGHT_RATIO = 0.4    # Chiều cao nút = chiều rộng nút × 0.8
@@ -23,23 +23,23 @@ BUTTON_HEIGHT_RATIO = 0.4    # Chiều cao nút = chiều rộng nút × 0.8
 # --- DATABASE (Giao cho cả nhóm soạn nội dung) ---
 INFO_DATA = {
     "Ẩm thực": {
-            "pho": "'Quốc hồn quốc túy' với sợi bánh gạo mềm, nước dùng trong vắt, thanh ngọt từ xương ống và hương hồi, quế đặc trưng. Được khẳng định chỗ đứng trên thị trường quốc tế khi đã được liệt kê vào từ điển Oxford từ những năm 2011.", 
-            "bun_bo_hue": "Bún Bò Huế là món ăn đặc trưng của miền Trung, gây ấn tượng bởi nước dùng cay nồng, thơm mùi mắm ruốc với những sợi bún to, đậm đà.",
-            "ruou_can": "Rượu Cần là biểu tượng văn hóa cộng đồng của Tây Nguyên, mang hương vị nồng nàn của núi rừng, thường được thưởng thức chung qua những chiếc cần tre.",
-            "trung_vit_lon": "Trứng Vịt Lộn: món ăn dân dã đầy bổ dưỡng, thường ăn kèm cùng rau răm và gừng thái chỉ để cân bằng hương vị. Một món không thể bỏ qua khi đến thăm mảnh đất hình chữ S này",
-            "banh_xeo": "Bánh Xèo: lớp vỏ vàng giòn rụm, nhân tôm thịt đầy đặn, gói trọn trong rau sống và chấm cùng nước mắm chua ngọt.", 
-            "bánh Chưng - bánh Tét": "Bánh chưng và bánh tét không chỉ là món ăn ngày Tết mà còn là biểu tượng văn hóa gắn liền với ký ức sum họp của người Việt. Qua hình dáng, cách gói và ý nghĩa, hai loại bánh truyền thống phản ánh sự đa dạng vùng miền nhưng vẫn thống nhất trong tinh thần Tết cổ truyền.",
-            "bánh Pía": "Đặc sản Sóc Trăng với lớp vỏ mỏng nhiều lớp ôm lấy nhân đậu xanh, sầu riêng và trứng muối thơm lừng.",
-            "bún Chả Hà Nội": "Sự kết hợp hài hòa giữa thịt nướng cháy cạnh thơm nức xì dầu và bát nước chấm đu đủ xanh hài hòa vị chua cay mặn ngọt.",
-            "Cà Phê Trứng": "Sự giao thoa tinh tế giữa vị đắng của cà phê và lớp kem trứng đánh bông mịn màng, béo ngậy như một món tráng miệng cao cấp.",
-            "Cơm Tấm": "Món ăn đặc trưng của Sài Gòn với hạt cơm vụn độc đáo, ăn kèm sườn nướng than, bì chả và nước mắm kẹo.",
-            "Cơm Lam Gà Nướng": "Hương vị vùng cao với gạo nếp dẻo thơm trong ống tre nướng, ăn cùng gà thả vườn nướng vàng óng, là một cặp bài trùng khi được thưởng thức cùng với muối lá é đặc trưng",
-            "Bún Đậu Mắm Tôm": "Món ăn gây 'nghiện' bởi sự tương phản thú vị giữa bún lá thanh mát, đậu rán giòn và mùi vị nồng nàn, đặc trưng của mắm tôm. Song, lâu dần cũng xuất hiện thêm nhiều biến thể như bún đậu nước mắm, nước tương ,...",
-            "Gỏi Cuốn": "Món ăn dân dã vô cùng quen thuộc với người dân miền Nam. Với những nguyên liệu đơn giản như tôm, thịt, rau, bánh tráng, bạn có thể vào bếp chế biến ngay những chiếc gỏi cuốn thơm ngon ngay tại nhà.",
-            "Mì Quảng": "Tinh túy ẩm thực Quảng Nam với sợi mì vàng, to,  ít nước lèo đậm đặc, ăn kèm bánh tráng nướng, đậu phộng rang và gà xé phay.",
-            "Nem Chua": "Đặc sản Thanh Hóa có vị chua thanh, giòn sần sật từ bì lợn và tỏi ớt, món nhắm lý tưởng trong mọi cuộc vui.",
-            "Bánh Mì": "'Vua đường phố' thế giới với vỏ ngoài giòn tan, bên trong đầy ắp pate, thịt nguội, bơ và rau dưa tươi mát. Một trong những món ăn đã được đưa vào từ điển Oxford. Nhiều chuyên trang ẩm thực uy tín như The Guardian hay Lonely Planet liên tục xếp bánh mì Việt Nam vào danh sách những món ăn đường phố ngon nhất hành tinh."
-        },
+            "pho": "Phở: 'Quốc hồn quốc túy' với sợi bánh gạo mềm, nước dùng trong vắt, thanh ngọt từ xương ống. Linh hồn của món ăn nằm ở hương hồi, quế và gừng nướng tạo nên mùi thơm nồng nàn đặc trưng. Món ăn đã khẳng định vị thế quốc tế khi được liệt kê chính thức vào từ điển Oxford từ năm 2011. Đây là biểu tượng không thể thay thế, đại diện cho sự tinh tế trong cách ăn uống của người Việt.",
+            "bun_bo_hue": "Bún Bò Huế: Món ăn đặc trưng của miền Trung, gây ấn tượng bởi nước dùng cay nồng, đậm đà. Sự kết hợp hoàn hảo giữa mắm ruốc thơm nồng, sả tươi và những sợi bún to, tròn, dẻo dai. Ăn kèm với bắp bò thái mỏng, giò heo ninh mềm, huyết và chả cua tạo nên hương vị cố đô khó quên. Món ăn phản ánh nét văn hóa ẩm thực cung đình cầu kỳ nhưng vẫn gần gũi với đời sống người dân.",
+            "ruou_can": "Rượu Cần: Biểu tượng văn hóa cộng đồng của Tây Nguyên, mang hương vị nồng nàn của núi rừng. Nguyên liệu từ gạo, ngô hoặc sắn trộn với men lá rừng đặc hữu, ủ kỹ trong các ché đất nung cổ. Cách thưởng thức độc đáo bằng cách dùng các cần tre dài hút trực tiếp, thể hiện sự gắn kết và đoàn kết. Thường được dùng trong các lễ hội đâm trâu, mừng lúa mới để tạ ơn thần linh và thắt chặt tình làng nghĩa xóm.",
+            "trung_vit_lon": "Trứng Vịt Lộn: Món ăn dân dã đầy bổ dưỡng, là bài thuốc quý giúp cân bằng âm dương theo Đông y. Thường được thưởng thức kèm với rau răm cay nồng, gừng thái chỉ và một chút muối tiêu chanh đậm đà. Vị béo ngậy của lòng đỏ hòa quyện cùng vị ngọt của nước trứng tạo nên trải nghiệm ẩm thực độc đáo. Đây là món ăn đường phố quen thuộc, gắn liền với nhịp sống ban đêm hối hả tại mảnh đất hình chữ S.",
+            "banh_xeo": "Bánh Xèo: Lớp vỏ vàng giòn rụm từ bột gạo và nghệ, mang theo âm thanh 'xèo xèo' vui tai khi chế biến. Nhân bánh đầy đặn với tôm tươi, thịt ba chỉ, giá đỗ và đậu xanh bùi bùi tỏa hương thơm hấp dẫn. Được gói trọn trong các loại rau sống vườn nhà và chấm cùng nước mắm chua ngọt pha chế cầu kỳ. Món ăn là hiện thân của sự trù phú từ vùng sông nước, gắn liền với những buổi họp mặt gia đình ấm cúng.",
+            "bánh Chưng - bánh Tét": "Bánh Chưng - Bánh Tét: Biểu tượng văn hóa thiêng liêng gắn liền với ký ức sum họp trong ngày Tết cổ truyền. Gạo nếp dẻo thơm quấn lấy nhân đậu xanh bùi và thịt mỡ béo ngậy, ướp tiêu nồng nàn thơm phức. Hình dáng vuông tròn (Bánh Chưng đại diện cho Đất, Bánh Tét đại diện cho Trời) chứa đựng triết lý nhân sinh. Sự khác biệt vùng miền được thể hiện qua cách gói nhưng luôn thống nhất trong tinh thần hướng về nguồn cội.",
+            "bánh Pía": "Bánh Pía: Đặc sản trứ danh của vùng đất Sóc Trăng với lớp vỏ mỏng nhiều lớp xếp chồng tinh tế. Nhân bánh là sự hòa quyện giữa đậu xanh xay nhuyễn, sầu riêng tươi thơm nức và trứng muối mặn nhẹ. Món bánh có nguồn gốc từ người Hoa di cư, trải qua thời gian đã trở thành niềm tự hào của ẩm thực miền Tây. Hương vị ngọt thanh, béo bùi khiến bánh Pía trở thành món quà quý giá cho khách phương xa ghé thăm.",
+            "bún Chả Hà Nội": "Bún Chả Hà Nội: Sự kết hợp hài hòa giữa thịt nướng cháy cạnh thơm nức xì dầu và bát nước chấm đậm đà.  Những viên chả được nướng trên than củi hồng rực, tỏa mùi thơm đặc trưng len lỏi khắp các con phố cổ.  Ăn kèm với bún tươi và dưa góp từ đu đủ xanh, cà rốt hài hòa đủ vị chua, cay, mặn, ngọt tinh tế. Từng được cựu Tổng thống Mỹ Obama thưởng thức và khen ngợi, góp phần đưa tinh túy Tràng An ra thế giới.",
+            "Cà Phê Trứng": "Cà Phê Trứng: Sự giao thoa tinh tế giữa vị đắng của cà phê và lớp kem trứng đánh bông mịn màng. Vị béo ngậy của lòng đỏ trứng gà kết hợp cùng mật ong tạo nên lớp màng mịn màng như món tráng miệng cao cấp. Thường được đặt trong bát nước nóng để giữ độ ấm, giúp hương vị cà phê luôn đậm đà và không bị tanh. Sáng tạo độc đáo này của người Hà Nội đã chinh phục những thực khách sành sỏi nhất trên toàn cầu.",
+            "Cơm Tấm": "Cơm Tấm: Món ăn đặc trưng của Sài Gòn với những hạt cơm vụn độc đáo, mang hơi thở của đô thị năng động. Thành phần kinh điển bao gồm sườn nướng than hoa, bì heo thính thơm, chả trứng và một chút mỡ hành béo ngậy. Điểm nhấn quan trọng nhất là bát nước mắm kẹo sánh đặc, cay cay mặn mặn tưới đều lên đĩa cơm nóng hổi. Từ một món ăn bình dân của người lao động, cơm Tấm đã vươn mình trở thành biểu tượng ẩm thực sầm uất.",
+            "Cơm Lam Gà Nướng": "Cơm Lam Gà Nướng: Hương vị đặc trưng của vùng cao với gạo nếp dẻo thơm được nướng chín trong ống tre xanh. Gà thả vườn được tẩm ướp gia vị núi rừng, nướng vàng óng trên lửa than tạo nên lớp da giòn, thịt ngọt. Là 'cặp bài trùng' hoàn hảo khi thưởng thức cùng muối lá é hoặc muối mè giữa không gian đại ngàn lộng gió. Món ăn không chỉ là thực phẩm mà còn là cách người dân vùng cao giữ gìn hồn cốt của rừng già.",
+            "Bún Đậu Mắm Tôm": "Bún Đậu Mắm Tôm: Món ăn gây 'nghiện' bởi sự tương phản thú vị giữa các nguyên liệu mộc mạc và đậm đà. Bún lá thanh mát ăn kèm đậu hũ rán giòn tan, thịt chân giò luộc và các loại rau thơm đặc trưng như kinh giới. Linh hồn nằm ở bát mắm tôm được đánh bông với chanh ớt, tỏa mùi hương nồng nàn kích thích vị giác mạnh mẽ. Ngày nay, món ăn đã có nhiều biến thể phong phú nhưng mắm tôm vẫn là giá trị cốt lõi không thể thay thế.",
+            "Gỏi Cuốn": "Gỏi Cuốn: Món ăn dân dã vô cùng quen thuộc, đại diện cho nét ẩm thực thanh đạm và tươi mới của người miền Nam. Nguyên liệu đơn giản gồm tôm luộc đỏ âu, thịt ba chỉ, bún tươi và hẹ xanh được cuộn chặt trong lớp bánh tráng mỏng. Chấm cùng tương đậu béo bùi hoặc mắm nêm đậm đà, tạo nên sự bùng nổ hương vị ngay từ miếng đầu tiên. Được CNN bình chọn là một trong những món ăn ngon nhất thế giới, phù hợp cho mọi lứa tuổi và chế độ ăn.",
+            "Mì Quảng": "Mì Quảng: Tinh túy của vùng đất Quảng Nam nắng gió với sợi mì vàng, to, mang đậm dấu ấn miền Trung. Nước lèo được hầm đậm đặc, ít nhưng tinh túy, thấm đẫm vào từng sợi mì và miếng thịt gà xé phay ngọt lịm. Ăn kèm bánh tráng nướng giòn tan, đậu phộng rang thơm bùi và các loại rau sống Trà Quế nức tiếng gần xa. Món ăn thể hiện sự chân chất, nồng hậu của người dân xứ Quảng, ăn một lần là nhớ mãi hương vị quê hương.",
+            "Nem Chua": "Nem Chua: Đặc sản trứ danh của Thanh Hóa với vị chua thanh đặc trưng được lên men từ thịt lợn tươi sống. Độ giòn sần sật của bì lợn kết hợp cùng vị cay nồng của tỏi ớt và mùi thơm của lá đinh lăng quấn quanh. Là món nhắm lý tưởng trong mọi cuộc vui, thường xuất hiện trong các mâm cỗ trang trọng hoặc bữa cơm sum họp. Nem chua không chỉ là món ăn mà còn là món quà tình thân, mang theo hơi thở của vùng đất miền Trung kiên cường.",
+            "Bánh Mì": "Bánh Mì: 'Vua đường phố' thế giới với lớp vỏ ngoài giòn tan, bên trong mềm mại đầy ắp các loại nhân hấp dẫn. Sự hòa quyện giữa pate béo ngậy, thịt nguội, bơ, dưa chuột và rau dưa tạo nên một bản giao hưởng hương vị. Tự hào được đưa vào từ điển Oxford và liên tục đứng đầu các bảng xếp hạng ẩm thực uy tín như The Guardian. Bánh mì là minh chứng cho sự sáng tạo không giới hạn của người Việt, biến tấu từ món ăn ngoại quốc thành quốc bảo."
+                },
     "Văn hóa": {"Trang phục Dân tộc": {
                 "Ba Na": {
                     "nguon_goc": "Từ nghề dệt thổ cẩm thủ công, nhuộm từ lá và vỏ cây rừng.",
@@ -104,60 +104,75 @@ INFO_DATA = {
                 "Thổ": {
                     "nguon_goc": "Giao thoa văn hóa Kinh - Mường vùng Nghệ An, Thanh Hóa.",
                         "dac_diem": "Váy đen có cạp dệt hoa văn tinh xảo, thắt lưng màu nổi và khăn vuông trắng."},
-                },
+                }},
                 "Phong tục": {
-                    "Tết Nguyên Đán": "(Từ cuối tháng Chạp đến mùng 3 Tết): Lễ hội lớn nhất trong năm, là dịp 'tống cựu nghinh tân'. Mọi nghi thức từ dọn dẹp nhà cửa đến chúc Tết đều hướng về tinh thần đoàn viên và hiếu nghĩa.",
-                    "Ông Công Ông Táo": "(Ngày 23 tháng Chạp âm lịch): Ngày các vị thần bếp cưỡi cá chép về trời. Người Việt thường chuẩn bị mũ áo giấy và cá chép thật để phóng sinh, mong những điều tốt đẹp được tâu báo với Ngọc Hoàng.",
-                    "Gói bánh chưng": "(Từ 26 đến 29 Tết): Bắt nguồn từ sự tích Lang Liêu. Bánh hình vuông tượng trưng cho Đất, đại diện cho sự phồn thịnh của nền văn minh lúa nước và lòng biết ơn nguồn cội.",
-                    "Đi chùa đầu năm": "(Từ đêm Giao thừa đến hết tháng Giêng): Khoảnh khắc tâm linh để gửi gắm ước vọng về sức khỏe và an nhiên. Đi kèm là tục 'hái lộc' để mang may mắn từ nơi linh thiêng về nhà.",
-                    "Xin chữ": "(Những ngày đầu tháng Giêng): Nét đẹp đề cao tri thức và sự hướng thiện. Người xin thường chọn các chữ như Tâm, Phúc, Đức, Nhẫn... để thể hiện mục tiêu phấn đấu trong năm mới.",
-                    "Lì xì": "(Từ mùng 1 đến mùng 10 Tết): Tiền mở hàng đặt trong bao đỏ để trừ tà ma và chúc may mắn. Quan trọng ở lời chúc tốt đẹp dành cho trẻ nhỏ và sự tôn kính dành cho người già.",
-                    "Giỗ Tổ Hùng Vương": "(Ngày 10/03 âm lịch): Ngày hội tụ bản sắc dân tộc, khẳng định sức mạnh đại đoàn kết và lòng tự hào về dòng máu 'Con Rồng cháu Tiên', nhắc nhớ đạo lý 'Uống nước nhớ nguồn'.",
-                    "Tết Trung thu": "(Ngày Rằm tháng Tám âm lịch): Bắt nguồn từ nghi lễ mừng mùa màng bội thu. Hình ảnh bánh nướng, bánh dẻo tượng trưng cho sự trọn vẹn của trời đất và tình cảm gia đình khăng khít.",
-                    "Lễ cầu ngư": "(Tháng Giêng hoặc tháng Hai âm lịch): Gắn liền với tục thờ cá Ông. Bao gồm tế lễ trang nghiêm và phần hội (đua ghe, hò bả trạo), thể hiện sức mạnh tập thể và niềm tin vào biển cả.",
-                    "Rằm tháng Giêng": "(Ngày 15/01 âm lịch): Còn gọi là Tết Thượng Nguyên. Người dân thường đến chùa dâng sao giải hạn, cầu nguyện cho mọi việc khởi đầu trong năm được hanh thông.",
-                    "Tục ăn trầu": "(Diễn ra hàng ngày và trong nghi lễ): Gắn liền với 'Sự tích trầu cau'. Miếng trầu là biểu tượng cho sự gắn kết thủy chung, bền chặt giữa người với người.",
-                    "Tục cưới hỏi": "(Ngày lành tháng tốt): Bao gồm các lễ Chạm ngõ, Ăn hỏi và Xin dâu. Lễ vật chứa đựng lời chúc phúc cho cặp đôi 'trăm năm tình viên mãn, bạc đầu nghĩa phu thê'.",
-                    "Tục đốt vàng mã": "(Các ngày giỗ, Rằm và mồng 1): Thể hiện niềm tin 'trần sao âm vậy'. Đây là sợi dây kết nối tình cảm và lòng tưởng nhớ của người sống đối với tổ tiên.",
-                    "Tục tang ma": "(Khi có người thân qua đời): Thể hiện đạo lý 'Nghĩa tử là nghĩa tận'. Các nghi lễ được thực hiện cẩn trọng để linh hồn người khuất được yên nghỉ và phù hộ cho hậu thế.",
-                    "Tục treo câu đối": "(Trước đêm Giao thừa): Những đôi câu đối đỏ tượng trưng cho sự may mắn, trí tuệ và là lời nhắc nhở về đạo đức, lối sống cho con cháu trong nhà.",
-                    "Tục uống trà": "(Mọi lúc trong ngày): Trà Việt thường là trà mộc hoặc ướp hoa. Thưởng trà là nghệ thuật đòi hỏi sự tĩnh lặng, thể hiện tính cách điềm đạm và lòng hiếu khách."
+                    "Tết Nguyên Đán": "Tết Nguyên Đán(Từ cuối tháng Chạp đến mùng 3 Tết): Đây là cái Tết lớn nhất, khi mọi người gác lại lo toan để về nhà sum họp. Không chỉ là dọn dẹp nhà cửa cho sạch sẽ, sáng sủa mà còn là dịp để 'làm mới' tâm hồn, tha thứ cho nhau và cùng chúc nhau một năm mới vạn sự hanh thông, gia đình êm ấm.",
+                    "Ông Công Ông Táo": "Ông Công Ông Táo(Ngày 23 tháng Chạp): Người Việt tin rằng đây là ngày các vị thần bếp cưỡi cá chép lên trời để 'báo cáo' việc lớn nhỏ trong nhà. Hình ảnh phóng sinh cá chép xuống sông hồ không chỉ là nghi lễ tâm linh mà còn thể hiện tấm lòng nhân ái, mong muốn những điều tốt đẹp nhất sẽ đến với gia đình.",
+                    "Gói bánh chưng": "Gói bánh chưng(Từ 26 đến 29 Tết): Chiếc bánh vuông vức gói ghém bên trong là gạo nếp, đậu xanh, thịt mỡ - những hạt ngọc của đất trời. Cảm giác cả nhà quây quân bên nồi bánh đỏ lửa, thức xuyên đêm trò chuyện chính là hình ảnh ấm áp nhất của sự đoàn viên và lòng biết ơn tổ tiên.",
+                    "Đi chùa đầu năm": "Đi chùa đầu năm(Từ Giao thừa đến hết tháng Giêng): Giữa không khí tĩnh lặng và mùi hương trầm thơm ngát, người ta đến chùa để tìm sự bình an trong tâm hồn. Tục 'hái lộc' hay xin quẻ đầu năm là cách người Việt gửi gắm hy vọng vào một năm mới sức khỏe dồi dào và gặp nhiều điều may mắn.",
+                    "Xin chữ": "Xin chữ(Những ngày đầu tháng Giêng): Hình ảnh ông đồ già bên mực tàu giấy đỏ là nét đẹp tri thức của người Việt. Người ta đi xin chữ không chỉ để trang trí nhà cửa mà còn là cách để rèn tâm, hướng thiện, mong muốn con chữ ấy sẽ vận vào người để cả năm thông tuệ, học hành đỗ đạt.",
+                    "Lì xì": "Lì xì(Từ mùng 1 đến mùng 10 Tết): Những phong bao đỏ thắm chứa đựng niềm vui dành cho con trẻ và sự kính trọng đối với người già. Quan trọng nhất không phải số tiền bên trong, mà là lời chúc 'hay ăn chóng lớn' cho trẻ nhỏ và 'sống lâu trăm tuổi' cho ông bà, cha mẹ.",
+                    "Giỗ Tổ Hùng Vương": "Giỗ Tổ Hùng Vương(Ngày 10/03 âm lịch): Là ngày để mỗi người dân Việt dù ở đâu cũng hướng về cội nguồn dân tộc. Ngày này nhắc nhở chúng ta về tình đồng bào, về sức mạnh của sự đoàn kết và đạo lý sống đẹp: luôn nhớ về gốc gác, cha ông đã có công dựng nước.",
+                    "Tết Trung thu": "Tết Trung thu(Ngày Rằm tháng Tám âm lịch): Là dịp trăng tròn và đẹp nhất, khi trẻ em được rước đèn, phá cỗ, còn người lớn thì cùng nhau thưởng trà, ăn bánh nướng, bánh dẻo. Đây là cái Tết của sự tình thân, là lúc mọi người dành thời gian chăm sóc và tạo niềm vui cho thế hệ mầm non.",
+                    "Lễ cầu ngư": "Lễ cầu ngư(Tháng Giêng hoặc tháng Hai âm lịch): Đối với bà con vùng biển, đây là lễ hội quan trọng nhất để cảm ơn biển cả và thờ cúng cá Ông (cá voi). Tiếng hò bả trạo và những cuộc đua ghe sôi động thể hiện niềm tin mãnh liệt vào một mùa biển lặng, tôm cá đầy khoang.",
+                    "Rằm tháng Giêng": "Rằm tháng Giêng(Ngày 15/01 âm lịch): Người xưa có câu 'Lễ Phật quanh năm không bằng Rằm tháng Giêng'. Đây là lúc mọi người đi chùa cầu nguyện cho sự khởi đầu của một năm mới được thuận buồm xuôi gió, công việc hanh thông và mọi sự dữ hóa lành.",
+                    "Tục ăn trầu": "Tục ăn trầu(Diễn ra hàng ngày và trong nghi lễ): Miếng trầu cay nồng là 'đầu câu chuyện', giúp mọi người xích lại gần nhau hơn. Dù ngày nay ít người ăn trầu thường xuyên, nhưng trong các dịp lễ tết, cưới hỏi, cơi trầu vẫn là lễ vật quan trọng nhất để thể hiện tình cảm gắn bó, sắt son.",
+                    "Tục cưới hỏi": "Tục cưới hỏi(Ngày lành tháng tốt): Đám cưới là sự kiện trọng đại, đánh dấu sự gắn kết của hai dòng họ. Từ lễ dạm ngõ đến lễ rước dâu, mỗi chi tiết đều mang ý nghĩa chúc phúc cho đôi trẻ có một đời sống vợ chồng hòa thuận, yêu thương và cùng nhau xây dựng tổ ấm vững bền.",
+                    "Lễ mừng thọ": "Lễ mừng thọ(Dịp đầu Xuân hoặc sinh nhật): Khi ông bà, cha mẹ bước sang tuổi xế chiều, con cháu tổ chức lễ mừng thọ để tỏ lòng hiếu thảo. Hình ảnh con cháu quây quần chúc rượu, tặng bức tranh chữ 'Thọ' là niềm hạnh phúc lớn nhất của người già, khẳng định giá trị của gia đình.",
+                    "Tục tang ma": "Tục tang ma(Khi có người thân qua đời): Đây là lúc tình làng nghĩa xóm và lòng hiếu thảo của con cái thể hiện rõ nhất. Các nghi lễ dù buồn thương nhưng luôn được thực hiện chu đáo để tiễn đưa người đã khuất về nơi yên nghỉ cuối cùng một cách thanh thản và trang nghiêm.",
+                    "Tục treo câu đối": "Tục treo câu đối(Trước đêm Giao thừa): Những đôi câu đối đỏ dán hai bên cửa không chỉ làm ngôi nhà thêm rực rỡ mà còn là những lời răn dạy về đạo đức, lối sống. Màu đỏ tượng trưng cho may mắn, hy vọng xua đuổi điều không may và đón nhận niềm vui vào nhà.",
+                    "Tục uống trà": "Tục uống trà(Mọi lúc trong ngày): Người Việt uống trà rất mộc mạc nhưng cũng đầy tinh tế. Một chén trà xanh nóng hổi mời khách hay chén trà ướp hoa thơm dịu của ông bà là cách thể hiện lòng hiếu khách, sự điềm đạm và thói quen sống chậm lại để lắng nghe, chia sẻ với nhau."
                 },
-                "Địa danh": {
-                    "vinh_ha_long": "Vịnh Hạ Long là một trong những kỳ quan thiên nhiên nổi tiếng nhất của Việt Nam và đã được UNESCO công nhận là di sản thiên nhiên thế giới. Nơi đây có hàng nghìn hòn đảo đá vôi lớn nhỏ với nhiều hình dạng độc đáo nhô lên giữa làn nước xanh ngọc. Cảnh quan hùng vĩ cùng hệ thống hang động kỳ ảo khiến vịnh trở thành điểm du lịch hấp dẫn đối với du khách trong và ngoài nước.",
-                    "pho_co_hoi_an": "Phố cổ Hội An là đô thị cổ nổi tiếng với những ngôi nhà mái ngói rêu phong và những con phố nhỏ yên bình. Nơi đây từng là thương cảng sầm uất từ thế kỷ XVI đến XVII, nơi giao lưu văn hóa giữa nhiều quốc gia. Vào buổi tối, ánh đèn lồng rực rỡ tạo nên khung cảnh rất thơ mộng và đặc trưng.",
-                    "hang_son_doong": "Hang Sơn Đoòng được xem là hang động tự nhiên lớn nhất thế giới, nằm trong Vườn quốc gia Phong Nha Kẻ Bàng. Bên trong hang có những khối thạch nhũ khổng lồ, sông ngầm và cả khu rừng nguyên sinh. Đây là địa điểm khám phá nổi tiếng dành cho các nhà thám hiểm và du khách yêu thiên nhiên.",
-                    "dao_phu_quoc": "Đảo Phú Quốc là hòn đảo lớn nhất của Việt Nam, nằm trong vịnh Thái Lan. Hòn đảo nổi tiếng với những bãi biển cát trắng, làn nước trong xanh và hệ sinh thái đa dạng. Ngoài ra, Phú Quốc còn nổi tiếng với nước mắm truyền thống, hồ tiêu và nhiều khu nghỉ dưỡng hiện đại.",
-                    "cau_vang_ba_na_hills":"Cầu Vàng là cây cầu du lịch nổi tiếng nằm trong khu du lịch Bà Nà Hills. Điểm đặc biệt của cây cầu là hai bàn tay khổng lồ nâng đỡ cầu giữa núi rừng, tạo nên kiến trúc vô cùng độc đáo. Từ đây, du khách có thể ngắm nhìn toàn cảnh núi non và thiên nhiên tuyệt đẹp của Đà Nẵng.",
-                    "thanh_dia_my_son":"Thánh địa Mỹ Sơn là quần thể đền tháp cổ của vương quốc Chăm Pa được xây dựng từ nhiều thế kỷ trước. Nơi đây từng là trung tâm tôn giáo quan trọng của người Chăm. Những công trình kiến trúc bằng gạch với hoa văn tinh xảo thể hiện trình độ nghệ thuật và kỹ thuật cao của nền văn minh Chăm.",
-                    "kinh_thanh_hue": "Kinh thành Huế là quần thể cung điện, thành quách và lăng tẩm của triều Nguyễn triều đại phong kiến cuối cùng của Việt Nam. Công trình có kiến trúc đồ sộ và mang đậm phong cách truyền thống. Đây là một di sản văn hóa thế giới và là biểu tượng lịch sử của cố đô Huế.",
-                    "ruong_bac_thang":"Ruộng bậc thang Sa Pa là cảnh quan nông nghiệp độc đáo của vùng núi Tây Bắc do người dân tộc thiểu số tạo nên. Những thửa ruộng uốn lượn theo sườn núi tạo thành khung cảnh rất đẹp. Vào mùa lúa chín, cả vùng núi được phủ một màu vàng rực rỡ.",
-                    "ho_xuan_huong": "Hồ Xuân Hương nằm ngay trung tâm thành phố Đà Lạt và được xem là biểu tượng của thành phố này. Hồ có hình dạng cong nhẹ như vầng trăng và được bao quanh bởi rừng thông và vườn hoa. Khung cảnh nơi đây rất thơ mộng và thích hợp cho việc dạo bộ, đạp xe hay ngắm cảnh.",
-                    "van_mieu_quoc_tu_giam": "Văn Miếu Quốc Tử Giám được xây dựng từ thế kỷ XI và được xem là trường đại học đầu tiên của Việt Nam. Nơi đây thờ Khổng Tử và tôn vinh những người đỗ đạt trong các kỳ thi Nho học. Công trình là biểu tượng cho truyền thống hiếu học và tôn sư trọng đạo của dân tộc.",
-                    "dinh_doc_lap": "Dinh Độc Lập, còn gọi là Hội trường Thống Nhất, là một công trình lịch sử quan trọng của Việt Nam. Nơi đây gắn liền với sự kiện ngày 30/4/1975 khi chiến tranh kết thúc. Hiện nay dinh là một điểm tham quan nổi tiếng thu hút nhiều du khách.",
-                    "thac_ban_gioc":"Thác Bản Giốc là một trong những thác nước đẹp nhất Việt Nam, nằm trên biên giới giữa Việt Nam và Trung Quốc. Thác có nhiều tầng nước đổ xuống từ độ cao lớn tạo nên khung cảnh rất hùng vĩ. Vào mùa nước nhiều, dòng thác trắng xóa giữa núi rừng tạo nên cảnh tượng tuyệt đẹp.",
-                    "nui_ba_den":"Núi Bà Đen được mệnh danh là “nóc nhà Nam Bộ” với độ cao hơn 900 mét. Đây là địa điểm du lịch tâm linh nổi tiếng với nhiều chùa và tượng Phật lớn. Du khách có thể leo núi hoặc đi cáp treo để ngắm toàn cảnh vùng đồng bằng xung quanh.",
-                    "ho_hoan_kiem":"Hồ Hoàn Kiếm nằm ở trung tâm thủ đô Hà Nội và gắn liền với truyền thuyết vua Lê trả gươm thần cho rùa vàng. Giữa hồ có Tháp Rùa cổ kính, tạo nên hình ảnh đặc trưng của thành phố. Đây là nơi người dân và du khách thường đến tham quan, dạo bộ và thư giãn.",
-                    "chua_mot_cot":"Chùa Một Cột là ngôi chùa có kiến trúc độc đáo được xây dựng trên một cột đá giữa hồ nước. Công trình được xây dựng từ thời nhà Lý và mang ý nghĩa biểu tượng cho hoa sen - biểu tượng của sự thanh cao trong văn hóa Việt Nam. Đây là một trong những ngôi chùa nổi tiếng nhất ở Hà Nội.",
-                    "cho_ben_thanh":"Chợ Bến Thành là khu chợ nổi tiếng và lâu đời của TP. Hồ Chí Minh. Chợ bày bán nhiều loại hàng hóa như quần áo, thủ công mỹ nghệ, đặc sản và đồ lưu niệm. Đây cũng là điểm tham quan quen thuộc của du khách khi đến thành phố."
-                },},
-    "Lịch sử": {
-    "An_Duong_Vuong": "Thục Phán An Dương Vương với việc sáp nhập hai bộ tộc Âu Việt và Lạc Việt, dời đô về Cổ Loa và xây dựng nhà nước Âu Lạc, mang ý nghĩa đánh dấu bước tiến vĩ đại về kỹ thuật quân sự (chế tạo nỏ liên châu, xây thành ốc kiên cố nhiều vòng) và nâng tầm năng lực tổ chức, quản lý xã hội của người Việt cổ trước nguy cơ ngoại xâm.",
-    "Hai_Ba_Trung": "Trưng Trắc và Trưng Nhị với cuộc khởi nghĩa vũ trang đầu tiên quy tụ hào kiệt khắp nơi chống lại ách đô hộ bạo tàn của thái thú Tô Định nhà Đông Hán, mang ý nghĩa khẳng định sức mạnh quật cường, tinh thần yêu nước sâu sắc và vai trò to lớn của người phụ nữ Việt Nam trong lịch sử chống giặc ngoại xâm.",
-    "Ba_Trieu": "Bà Triệu (Triệu Thị Trinh) với cuộc dấy binh khởi nghĩa oai hùng tại vùng núi Nưa (Thanh Hóa) chống lại ách đô hộ của quân Đông Ngô tàn ác, mang ý nghĩa là biểu tượng bất diệt cho ý chí kiên cường, thà hy sinh chứ không chịu cúi đầu làm tì thiếp, truyền ngọn lửa đấu tranh giải phóng dân tộc cho các thế hệ sau.",
-    "chien_thang_bach_dang": "Ngô Quyền với việc chỉ huy trận thủy chiến vĩ đại lợi dụng thủy triều để đánh bại hoàn toàn đạo quân Nam Hán bằng trận địa cọc gỗ ngầm trên sông Bạch Đằng năm 938, mang ý nghĩa chấm dứt vĩnh viễn hơn 1000 năm Bắc thuộc đen tối, mở ra kỷ nguyên độc lập, tự chủ và phát triển lâu dài cho dân tộc ta.",
-    "dinh_bo_linh": "Đinh Bộ Lĩnh với công cuộc dùng tài thao lược xuất chúng để dẹp yên loạn 12 sứ quân cát cứ và chính thức lên ngôi hoàng đế, đặt quốc hiệu Đại Cồ Việt năm 968, mang ý nghĩa thống nhất trọn vẹn đất nước, chấm dứt tình trạng chia cắt và củng cố vững chắc nền độc lập non trẻ ngang hàng với các triều đại phương Bắc.",
-    "le_hoan_pha_tong": "Thập đạo tướng quân Lê Hoàn với cuộc kháng chiến oanh liệt trực tiếp cầm quân đánh tan quân xâm lược nhà Tống trên cả hai mặt trận đường bộ và đường thủy (sông Bạch Đằng) năm 981, mang ý nghĩa bảo vệ toàn vẹn lãnh thổ thiêng liêng, đập tan âm mưu thôn tính và buộc triều đình phương Bắc phải nể phục, thừa nhận sức mạnh của Đại Cồ Việt.",
-    "doi_do_thang_long": "Vua Lý Thái Tổ với quyết định mang tầm nhìn chiến lược vĩ đại ban chiếu dời kinh đô từ vùng núi hiểm trở Hoa Lư về vùng đất địa linh nhân kiệt Đại La và đổi tên thành Thăng Long năm 1010, mang ý nghĩa tạo tiền đề vững chắc cho sự phát triển rực rỡ mọi mặt của kinh thành Thăng Long ngàn năm văn hiến, trung tâm chính trị, kinh tế, văn hóa của cả nước.",
-    "Ly_Thuong_Kiet": "Thái úy Lý Thường Kiệt với việc chủ động tiến công trước để tự vệ và sau đó chỉ huy phòng tuyến sông Như Nguyệt kiên cố đánh tan quân xâm lược Tống năm 1077, mang ý nghĩa bẻ gãy hoàn toàn ý chí bành trướng của kẻ thù và để lại bản Tuyên ngôn Độc lập đầu tiên (bài thơ thần Nam quốc sơn hà) khẳng định chủ quyền lãnh thổ thiêng liêng.",
-    "khang_chien_nguyen_mong": "Hưng Đạo Đại Vương Trần Quốc Tuấn (cùng vua quan và quân dân nhà Trần) với ba lần thực hiện xuất sắc chiến thuật 'vườn không nhà trống' đánh tan đạo quân Mông Nguyên hùng mạnh, tàn bạo nhất thế giới lúc bấy giờ, mang ý nghĩa bảo vệ vững chắc nền độc lập dân tộc, đập tan dã tâm xâm lược và khẳng định hào khí Đông A rực lửa bất diệt.",
-    "khoi_nghia_lam_son": "Bình Định Vương Lê Lợi (cùng mưu thần Nguyễn Trãi và các nghĩa sĩ) với cuộc khởi nghĩa trường kỳ 10 năm 'nếm mật nằm gai' từ vùng núi Lam Sơn đánh đuổi hoàn toàn giặc Minh tàn ác, mang ý nghĩa kết thúc 20 năm đô hộ vơ vét bóc lột, mở ra thời kỳ Hậu Lê phát triển thịnh vượng rực rỡ và để lại bản thiên cổ hùng văn vĩ đại (Bình Ngô Đại Cáo).",
-    "Quang_Trung": "Hoàng đế Quang Trung - Nguyễn Huệ với cuộc hành quân thần tốc ra Bắc mùa xuân năm Kỷ Dậu (1789) đánh tan tác 29 vạn quân Thanh xâm lược chỉ trong 5 ngày đêm, mang ý nghĩa đập tan dã tâm xâm chiếm của nhà Thanh, giữ vững bờ cõi và thể hiện đỉnh cao xuất chúng của nghệ thuật quân sự đánh nhanh diệt gọn, tác chiến hiệp đồng trong lịch sử Việt Nam.",
-    "phap_no_sung": "Nhân dân Đà Nẵng (dưới sự chỉ huy của Nguyễn Tri Phương và triều đình nhà Nguyễn) với cuộc chiến đấu kiên cường đối đầu với liên quân Pháp - Tây Ban Nha nổ súng tấn công bán đảo Sơn Trà tháng 9/1858, mang ý nghĩa đánh dấu thời kỳ kết thúc nền độc lập tự chủ của chế độ phong kiến và bắt đầu cuộc kháng chiến trường kỳ, cam go chống lại chủ nghĩa thực dân phương Tây với vũ khí hiện đại.",
-    "thanh_lap_dang": "Lãnh tụ Nguyễn Ái Quốc với việc chủ trì thành công hội nghị hợp nhất ba tổ chức cộng sản trong nước thành một đảng duy nhất lấy tên là Đảng Cộng sản Việt Nam vào mùa xuân năm 1930, mang ý nghĩa tạo ra bước ngoặt lịch sử vĩ đại, chấm dứt hoàn toàn thời kỳ khủng hoảng sâu sắc về đường lối cứu nước và giai cấp lãnh đạo cách mạng Việt Nam.",
-    "cach_mang_thang_tam": "Chủ tịch Hồ Chí Minh (cùng Đảng và toàn thể dân tộc Việt Nam) với việc chớp thời cơ ngàn năm có một lãnh đạo tổng khởi nghĩa lật đổ phát xít Nhật, thực dân Pháp và đọc Tuyên ngôn Độc lập ngày 2/9/1945 tại quảng trường Ba Đình, mang ý nghĩa chấm dứt chế độ quân chủ phong kiến, khai sinh ra nước Việt Nam Dân chủ Cộng hòa, đưa nhân dân từ thân phận nô lệ lên làm chủ đất nước.",
-    "dien_bien_phu": "Đại tướng Võ Nguyên Giáp với việc quyết định thay đổi phương châm tác chiến sang 'đánh chắc, tiến chắc' và trực tiếp chỉ huy trận quyết chiến chiến lược Điện Biên Phủ kéo dài 56 ngày đêm 'khoét núi, ngủ hầm', mang ý nghĩa làm nên chiến thắng 'lừng lẫy năm châu, chấn động địa cầu', đập tan kế hoạch Navarre, buộc Pháp phải ký Hiệp định Geneva năm 1954 và rút lui khỏi miền Bắc.",
-    "chien_dich_ho_chi_minh": "Quân và dân ta với việc thực hiện thành công cuộc tổng tiến công nổi dậy mùa xuân năm 1975, đỉnh cao là chiến dịch quân sự mang tên Bác tiến vào giải phóng Sài Gòn, mang ý nghĩa đập tan hoàn toàn bộ máy chính quyền tay sai, giải phóng trọn vẹn miền Nam, thống nhất non sông đất nước vào trưa ngày 30/4/1975 và mở ra kỷ nguyên hòa bình, độc lập trọn vẹn."
+               "Địa danh": {
+    "vinh_ha_long": "Vịnh Hạ Long là một trong những kỳ quan thiên nhiên nổi tiếng nhất của Việt Nam và đã được UNESCO công nhận là di sản thiên nhiên thế giới. Nơi đây có hàng nghìn hòn đảo đá vôi lớn nhỏ với nhiều hình dạng độc đáo nhô lên giữa làn nước xanh ngọc. Cảnh quan hùng vĩ cùng hệ thống hang động kỳ ảo khiến vịnh trở thành điểm du lịch hấp dẫn đối với du khách trong và ngoài nước. Không chỉ nổi bật bởi vẻ đẹp ngoạn mục, vịnh còn mang giá trị địa chất đặc biệt với lịch sử hình thành kéo dài hàng trăm triệu năm, ghi dấu quá trình vận động của vỏ Trái Đất. Những hang động như Sửng Sốt, Thiên Cung ẩn chứa hệ thống nhũ đá lung linh tạo nên không gian huyền bí. Khi hoàng hôn buông xuống, toàn bộ mặt vịnh chuyển sang sắc vàng cam rực rỡ, phản chiếu trên mặt nước tĩnh lặng như một bức tranh sống động. Truyền thuyết Rồng mẹ hạ thế giúp dân đánh giặc càng làm tăng thêm chiều sâu văn hóa, khiến nơi đây không chỉ là danh thắng mà còn là biểu tượng thiêng liêng của thiên nhiên Việt Nam.",
+
+    "pho_co_hoi_an": "Phố cổ Hội An là đô thị cổ nổi tiếng với những ngôi nhà mái ngói rêu phong và những con phố nhỏ yên bình. Nơi đây từng là thương cảng sầm uất từ thế kỷ XVI đến XVII, nơi giao lưu văn hóa giữa nhiều quốc gia. Vào buổi tối, ánh đèn lồng rực rỡ tạo nên khung cảnh rất thơ mộng và đặc trưng. Không gian phố cổ gần như giữ nguyên cấu trúc hàng trăm năm, tạo cảm giác như dòng thời gian ngưng đọng. Những công trình kiến trúc mang dấu ấn Nhật Bản, Trung Hoa và phương Tây hòa quyện tạo nên bản sắc độc nhất. Các lễ hội như thả hoa đăng trên sông Hoài mang lại trải nghiệm văn hóa sâu sắc. Ẩm thực địa phương, âm nhạc dân gian và nhịp sống chậm rãi khiến Hội An trở thành nơi không chỉ để tham quan mà còn để cảm nhận và sống cùng lịch sử.",
+
+    "hang_son_doong": "Hang Sơn Đoòng được xem là hang động tự nhiên lớn nhất thế giới, nằm trong Vườn quốc gia Phong Nha Kẻ Bàng. Bên trong hang có những khối thạch nhũ khổng lồ, sông ngầm và cả khu rừng nguyên sinh. Đây là địa điểm khám phá nổi tiếng dành cho các nhà thám hiểm và du khách yêu thiên nhiên. Không gian bên trong rộng đến mức có thể chứa cả tòa nhà cao tầng, tạo cảm giác choáng ngợp tuyệt đối. Những hố sụt tự nhiên cho phép ánh sáng chiếu vào, hình thành hệ sinh thái riêng biệt với cây cối và khí hậu độc lập. Các khối thạch nhũ có hình thù kỳ lạ được hình thành qua hàng triệu năm. Sơn Đoòng không chỉ là điểm du lịch mà còn là biểu tượng cho vẻ đẹp nguyên sơ, bí ẩn và sức mạnh kiến tạo của thiên nhiên.",
+
+    "dao_phu_quoc": "Đảo Phú Quốc là hòn đảo lớn nhất của Việt Nam, nằm trong vịnh Thái Lan. Hòn đảo nổi tiếng với những bãi biển cát trắng, làn nước trong xanh và hệ sinh thái đa dạng. Ngoài ra, Phú Quốc còn nổi tiếng với nước mắm truyền thống, hồ tiêu và nhiều khu nghỉ dưỡng hiện đại. Bên cạnh đó, đảo còn sở hữu các khu rừng nguyên sinh rộng lớn thuộc vườn quốc gia, nơi bảo tồn nhiều loài động thực vật quý hiếm. Các làng chài truyền thống mang đến cái nhìn chân thực về đời sống người dân ven biển. Hoàng hôn trên biển Phú Quốc được xem là một trong những khoảnh khắc đẹp nhất Việt Nam. Sự kết hợp giữa thiên nhiên hoang sơ và phát triển du lịch cao cấp đã giúp Phú Quốc trở thành điểm đến mang tầm quốc tế.",
+
+    "cau_vang_ba_na_hills":"Cầu Vàng là cây cầu du lịch nổi tiếng nằm trong khu du lịch Bà Nà Hills. Điểm đặc biệt của cây cầu là hai bàn tay khổng lồ nâng đỡ cầu giữa núi rừng, tạo nên kiến trúc vô cùng độc đáo. Từ đây, du khách có thể ngắm nhìn toàn cảnh núi non và thiên nhiên tuyệt đẹp của Đà Nẵng. Công trình mang thiết kế sáng tạo, kết hợp giữa yếu tố nghệ thuật và cảnh quan thiên nhiên. Lớp rêu phong giả cổ tạo cảm giác như cây cầu đã tồn tại hàng trăm năm. Khi mây bao phủ, nơi đây giống như một lối đi giữa trời. Cầu Vàng nhanh chóng trở thành biểu tượng du lịch mới của Việt Nam trên truyền thông quốc tế.",
+
+    "thanh_dia_my_son":"Thánh địa Mỹ Sơn là quần thể đền tháp cổ của vương quốc Chăm Pa được xây dựng từ nhiều thế kỷ trước. Nơi đây từng là trung tâm tôn giáo quan trọng của người Chăm. Những công trình kiến trúc bằng gạch với hoa văn tinh xảo thể hiện trình độ nghệ thuật và kỹ thuật cao của nền văn minh Chăm. Các đền tháp được xây dựng theo tín ngưỡng Hindu giáo, thờ thần Shiva. Dù bị tàn phá bởi thời gian và chiến tranh, nơi đây vẫn giữ được nét linh thiêng đặc biệt. Không gian thung lũng bao quanh tạo nên cảm giác huyền bí. Mỹ Sơn là minh chứng rõ nét cho một nền văn hóa cổ từng phát triển rực rỡ tại Việt Nam.",
+
+    "kinh_thanh_hue": "Kinh thành Huế là quần thể cung điện, thành quách và lăng tẩm của triều Nguyễn triều đại phong kiến cuối cùng của Việt Nam. Công trình có kiến trúc đồ sộ và mang đậm phong cách truyền thống. Đây là một di sản văn hóa thế giới và là biểu tượng lịch sử của cố đô Huế. Toàn bộ công trình được xây dựng theo nguyên tắc phong thủy chặt chẽ, phản ánh tư duy phương Đông. Các cung điện, sân chầu và lăng tẩm đều mang nét trang nghiêm, tinh xảo. Không gian nơi đây gợi lên sự trầm mặc và cổ kính. Huế không chỉ là di tích mà còn là nơi lưu giữ ký ức của một thời kỳ lịch sử.",
+
+    "ruong_bac_thang":"Ruộng bậc thang Sa Pa là cảnh quan nông nghiệp độc đáo của vùng núi Tây Bắc do người dân tộc thiểu số tạo nên. Những thửa ruộng uốn lượn theo sườn núi tạo thành khung cảnh rất đẹp. Vào mùa lúa chín, cả vùng núi được phủ một màu vàng rực rỡ. Đây là kết quả của quá trình lao động bền bỉ qua nhiều thế hệ. Mỗi mùa mang một vẻ đẹp khác nhau: mùa nước đổ lấp lánh, mùa xanh mướt tràn đầy sức sống. Ruộng bậc thang còn phản ánh sự thích nghi thông minh của con người với địa hình khắc nghiệt. Đây là biểu tượng văn hóa đặc trưng của vùng cao Việt Nam.",
+
+    "ho_xuan_huong": "Hồ Xuân Hương nằm ngay trung tâm thành phố Đà Lạt và được xem là biểu tượng của thành phố này. Hồ có hình dạng cong nhẹ như vầng trăng và được bao quanh bởi rừng thông và vườn hoa. Khung cảnh nơi đây rất thơ mộng và thích hợp cho việc dạo bộ, đạp xe hay ngắm cảnh. Vào buổi sáng, sương mù bao phủ tạo nên vẻ đẹp huyền ảo. Buổi chiều, ánh hoàng hôn phản chiếu trên mặt nước mang lại cảm giác yên bình. Đây là nơi gắn liền với hình ảnh Đà Lạt mộng mơ và lãng mạn.",
+
+    "van_mieu_quoc_tu_giam": "Văn Miếu Quốc Tử Giám được xây dựng từ thế kỷ XI và được xem là trường đại học đầu tiên của Việt Nam. Nơi đây thờ Khổng Tử và tôn vinh những người đỗ đạt trong các kỳ thi Nho học. Công trình là biểu tượng cho truyền thống hiếu học và tôn sư trọng đạo của dân tộc. Những tấm bia tiến sĩ ghi danh hiền tài là minh chứng cho lịch sử giáo dục lâu đời. Không gian trang nghiêm tạo cảm giác tôn kính. Đây là nơi gửi gắm ước vọng học hành của nhiều thế hệ.",
+
+    "dinh_doc_lap": "Dinh Độc Lập, còn gọi là Hội trường Thống Nhất, là một công trình lịch sử quan trọng của Việt Nam. Nơi đây gắn liền với sự kiện ngày 30/4/1975 khi chiến tranh kết thúc. Hiện nay dinh là một điểm tham quan nổi tiếng thu hút nhiều du khách. Bên trong lưu giữ nguyên trạng nhiều phòng chức năng và hiện vật lịch sử. Kiến trúc kết hợp hài hòa giữa hiện đại và truyền thống. Đây là biểu tượng của hòa bình và độc lập dân tộc.",
+
+    "thac_ban_gioc":"Thác Bản Giốc là một trong những thác nước đẹp nhất Việt Nam, nằm trên biên giới giữa Việt Nam và Trung Quốc. Thác có nhiều tầng nước đổ xuống từ độ cao lớn tạo nên khung cảnh rất hùng vĩ. Vào mùa nước nhiều, dòng thác trắng xóa giữa núi rừng tạo nên cảnh tượng tuyệt đẹp. Âm thanh thác nước vang vọng tạo cảm giác mạnh mẽ và sống động. Cảnh quan xung quanh hoang sơ, hùng tráng. Đây là điểm đến lý tưởng cho du khách yêu thiên nhiên.",
+
+    "nui_ba_den":"Núi Bà Đen được mệnh danh là “nóc nhà Nam Bộ” với độ cao hơn 900 mét. Đây là địa điểm du lịch tâm linh nổi tiếng với nhiều chùa và tượng Phật lớn. Du khách có thể leo núi hoặc đi cáp treo để ngắm toàn cảnh vùng đồng bằng xung quanh. Ngọn núi gắn liền với nhiều truyền thuyết linh thiêng. Không gian trên đỉnh núi thoáng đãng và mát mẻ. Đây là nơi kết hợp giữa khám phá thiên nhiên và hành hương.",
+
+    "ho_hoan_kiem":"Hồ Hoàn Kiếm nằm ở trung tâm thủ đô Hà Nội và gắn liền với truyền thuyết vua Lê trả gươm thần cho rùa vàng. Giữa hồ có Tháp Rùa cổ kính, tạo nên hình ảnh đặc trưng của thành phố. Đây là nơi người dân và du khách thường đến tham quan, dạo bộ và thư giãn. Không gian xung quanh kết hợp hài hòa giữa cổ kính và hiện đại. Hồ mang giá trị lịch sử và văn hóa sâu sắc. Đây là biểu tượng không thể thiếu của Hà Nội.",
+
+    "chua_mot_cot":"Chùa Một Cột là ngôi chùa có kiến trúc độc đáo được xây dựng trên một cột đá giữa hồ nước. Công trình được xây dựng từ thời nhà Lý và mang ý nghĩa biểu tượng cho hoa sen - biểu tượng của sự thanh cao trong văn hóa Việt Nam. Đây là một trong những ngôi chùa nổi tiếng nhất ở Hà Nội. Kiến trúc đơn giản nhưng mang giá trị tinh thần sâu sắc. Chùa là nơi sinh hoạt tín ngưỡng quen thuộc. Đây là biểu tượng văn hóa tâm linh đặc trưng.",
+
+    "cho_ben_thanh":"Chợ Bến Thành là khu chợ nổi tiếng và lâu đời của TP. Hồ Chí Minh. Chợ bày bán nhiều loại hàng hóa như quần áo, thủ công mỹ nghệ, đặc sản và đồ lưu niệm. Đây cũng là điểm tham quan quen thuộc của du khách khi đến thành phố. Không khí buôn bán nhộn nhịp phản ánh đời sống đô thị. Chợ là nơi giao thoa văn hóa giữa nhiều vùng miền. Đây là biểu tượng sôi động của Sài Gòn."
+},
+    "Lịch_sử": {
+    "An_Duong_Vuong": "Thục Phán An Dương Vương với quyết định mang tính chiến lược sáp nhập hai bộ tộc Âu Việt và Lạc Việt, dời đô từ vùng núi hiểm trở về bình nguyên Cổ Loa và xây dựng nhà nước Âu Lạc, mang ý nghĩa đánh dấu một bước chuyển mình vĩ đại của dân tộc. Sự kiện này không chỉ thể hiện bước tiến vượt bậc về kỹ thuật quân sự thông qua việc đúc mũi tên đồng, chế tạo nỏ liên châu và kiến trúc thành ốc kiên cố nhiều vòng, mà còn cho thấy tư duy địa chính trị sâu sắc, phản ánh năng lực tổ chức, quản lý xã hội quy mô lớn của người Việt cổ nhằm đối phó với những thách thức từ tự nhiên và nguy cơ xâm lăng từ phương Bắc.",
+    "Hai_Ba_Trung": "Trưng Trắc và Trưng Nhị với cuộc khởi nghĩa vũ trang đầu tiên quy tụ hào kiệt khắp sáu mươi lăm thành trì chống lại ách đô hộ bạo tàn của thái thú Tô Định nhà Đông Hán, mang ý nghĩa như một bản hùng ca bất diệt về lòng yêu nước. Thắng lợi này không chỉ phá vỡ xiềng xích nô lệ ngay từ buổi đầu Bắc thuộc, mà còn khẳng định sức mạnh quật cường, tinh thần tự chủ mãnh liệt và minh chứng cho vai trò, vị thế vô song của người phụ nữ Việt Nam trong việc gánh vác vận mệnh non sông, để lại một dấu ấn văn hóa lịch sử độc nhất vô nhị.",
+    "Ba_Trieu": "Bà Triệu (Triệu Thị Trinh) với cuộc dấy binh khởi nghĩa oai hùng tại vùng núi Nưa (Thanh Hóa) cùng câu nói bất hủ 'muốn cưỡi cơn gió mạnh, đạp luồng sóng dữ, chém cá kình ở biển Đông' để chống lại ách cai trị tàn ác của Đông Ngô, mang ý nghĩa thức tỉnh tinh thần dân tộc giữa đêm trường Bắc thuộc. Khí phách của bà là biểu tượng tuyệt đỉnh của ý chí kiên trung, thà hy sinh vinh liệt chứ tuyệt đối không chịu cúi đầu làm nô lệ, qua đó trao truyền ngọn lửa đấu tranh giải phóng dân tộc rực cháy cho muôn đời sau.",
+    "chien_thang_bach_dang": "Ngô Quyền với tài thao lược kiệt xuất, tận dụng quy luật thủy triều và địa thế hiểm yếu để dựng trận địa cọc gỗ ngầm, đánh chìm hạm đội quân Nam Hán trên sông Bạch Đằng năm 938, mang ý nghĩa tạo ra một khúc quanh vĩ đại bậc nhất trong lịch sử nước nhà. Chiến công hiển hách này đã đập tan hoàn toàn dã tâm bành trướng của phương Bắc, tự hào chấm dứt vĩnh viễn hơn một ngàn năm đau thương dưới ách Bắc thuộc, đồng thời đặt nền móng vững chắc, mở ra kỷ nguyên vươn mình độc lập, tự chủ và hưng thịnh lâu dài cho dân tộc.",
+    "dinh_bo_linh": "Đinh Bộ Lĩnh với tầm nhìn chính trị sắc bén và tài năng quân sự xuất chúng trong công cuộc đánh dẹp, thu phục 12 sứ quân cát cứ, chính thức lên ngôi Hoàng đế và xưng quốc hiệu Đại Cồ Việt năm 968, mang ý nghĩa chấm dứt sự chia rẽ nội bộ, quy non sông về một mối. Việc ông xưng 'Đế' (thay vì xưng 'Vương') và đặt niên hiệu riêng là một lời khẳng định đanh thép về tư thế độc lập, tự cường, đặt quốc gia ngang hàng với các triều đại phương Bắc, củng cố thể chế phong kiến trung ương tập quyền vững mạnh.",
+    "le_hoan_pha_tong": "Thập đạo tướng quân Lê Hoàn với tài năng cầm quân xuất quỷ nhập thần, trực tiếp lãnh đạo quân dân Đại Cồ Việt đập tan hai mũi gọng kìm xâm lược của nhà Tống trên cả tuyến đường bộ và thủy chiến sông Bạch Đằng năm 981, mang ý nghĩa bảo vệ trọn vẹn bờ cõi thiêng liêng của một nhà nước non trẻ. Chiến thắng oanh liệt này không chỉ chặn đứng âm mưu tái đô hộ của giặc ngoại xâm mà còn là minh chứng cho tinh thần đoàn kết toàn dân, buộc triều đình phương Bắc phải nhượng bộ và chính thức công nhận sức mạnh của dân tộc Việt.",
+    "doi_do_thang_long": "Vua Lý Thái Tổ với 'Chiếu dời đô' mang tầm nhìn vượt thời đại, quyết định chuyển trung tâm quyền lực từ vùng núi đá hẹp Hoa Lư ra vùng đồng bằng châu thổ sông Hồng rộng lớn Đại La (Thăng Long) vào năm 1010, mang ý nghĩa chuyển đổi tư duy chiến lược từ phòng ngự thụ động sang chủ động kiến thiết, mở cửa phát triển. Lựa chọn vùng đất 'rồng cuộn hổ ngồi' này đã tạo ra một bệ phóng địa chính trị, kinh tế và văn hóa hoàn hảo, xây dựng nên một kinh đô Thăng Long ngàn năm văn hiến rực rỡ.",
+    "Ly_Thuong_Kiet": "Thái úy Lý Thường Kiệt với chiến lược 'tiên phát chế nhân' (chủ động tiến công để tự vệ) và tài nghệ thiết lập phòng tuyến sông Như Nguyệt đánh tan đạo quân hùng hậu nhà Tống năm 1077, mang ý nghĩa thể hiện đỉnh cao của nghệ thuật chiến tranh tâm lý và chiến thuật phòng ngự phản công. Thắng lợi này, gắn liền với bài thơ thần 'Nam quốc sơn hà', đã trở thành bản Tuyên ngôn Độc lập đầu tiên, bẻ gãy vĩnh viễn dã tâm xâm lược của nhà Tống và khắc sâu chân lý về chủ quyền bất khả xâm phạm của nước Nam.",
+    "khang_chien_nguyen_mong": "Hưng Đạo Đại Vương Trần Quốc Tuấn cùng các tầng lớp nhân dân nhà Trần với ba lần thực hiện chiến lược 'vườn không nhà trống', lấy đoản binh thắng trường trận để đập tan đạo kỵ binh Mông Nguyên - đội quân tàn bạo nhất thế giới thế kỷ 13, mang ý nghĩa minh chứng cho sức mạnh vô địch của chiến tranh nhân dân và sự đồng lòng 'vua tôi đồng tâm, anh em hòa mục'. Khúc tráng ca này không chỉ cứu vãn nền độc lập dân tộc mà còn góp phần ngăn chặn thảm họa bành trướng của đế chế Mông Cổ xuống khu vực Đông Nam Á, tỏa sáng hào khí Đông A bất diệt.",
+    "khoi_nghia_lam_son": "Bình Định Vương Lê Lợi và Ức Trai Nguyễn Trãi với tư tưởng 'đem đại nghĩa để thắng hung tàn, lấy chí nhân để thay cường bạo', lãnh đạo cuộc kháng chiến trường kỳ 10 năm gian khổ đánh đuổi quân Minh xâm lược, mang ý nghĩa kết thúc trọn vẹn hai thập kỷ bị bóc lột tàn bạo và chính sách đồng hóa thâm độc. Sự kiện này mở ra thời kỳ Hậu Lê với sự vươn lên đỉnh cao của nền văn hóa, giáo dục và luật pháp Đại Việt, đồng thời để lại cho hậu thế áng thiên cổ hùng văn 'Bình Ngô Đại Cáo' - bản tuyên ngôn rực rỡ về hòa bình và nhân nghĩa.",
+    "Quang_Trung": "Hoàng đế Quang Trung - Nguyễn Huệ với thiên tài quân sự bách chiến bách thắng, tổ chức cuộc hành quân thần tốc ra Bắc và đánh tan 29 vạn quân Thanh xâm lược chỉ trong 5 ngày đêm mùa xuân Kỷ Dậu (1789), mang ý nghĩa cứu nguy dân tộc khỏi ách xâm lăng ở khoảnh khắc ngàn cân treo sợi tóc. Đây là đỉnh cao chói lọi của nghệ thuật tác chiến hiệp đồng các binh chủng, đánh nhanh diệt gọn, không chỉ giữ vững bờ cõi mà còn đập tan tàn dư của các thế lực phong kiến mục nát, mở ra hy vọng thống nhất và canh tân đất nước.",
+    "phap_no_sung": "Nhân dân Đà Nẵng dưới sự chỉ huy của danh tướng Nguyễn Tri Phương cùng triều đình nhà Nguyễn với cuộc chiến đấu anh dũng kiên cường chặn đứng liên quân Pháp - Tây Ban Nha nổ súng tấn công bán đảo Sơn Trà (tháng 9/1858), mang ý nghĩa đánh dấu một khúc quanh bi tráng của lịch sử. Sự kiện này khép lại thời kỳ độc lập tự chủ lâu dài của chế độ quân chủ phong kiến, đẩy cả dân tộc bước vào một thử thách sinh tử mới: cuộc kháng chiến trường kỳ chống lại chủ nghĩa thực dân phương Tây với vũ khí kỹ thuật vượt trội.",
+    "thanh_lap_dang": "Lãnh tụ Nguyễn Ái Quốc với nhãn quan chính trị lỗi lạc, chủ trì thành công hội nghị hợp nhất các tổ chức cộng sản thành Đảng Cộng sản Việt Nam vào mùa xuân năm 1930, mang ý nghĩa tạo ra một bước ngoặt vĩ đại làm thay đổi hoàn toàn vận mệnh dân tộc. Sự kiện này chấm dứt triệt để thời kỳ bế tắc, khủng hoảng sâu sắc về đường lối cứu nước, kết hợp thành công chủ nghĩa Mác - Lênin với phong trào công nhân và phong trào yêu nước, vạch ra quỹ đạo đúng đắn tiến tới giải phóng dân tộc và đi lên chủ nghĩa xã hội.",
+    "cach_mang_thang_tam": "Chủ tịch Hồ Chí Minh cùng toàn thể dân tộc Việt Nam với khả năng chớp thời cơ lịch sử xuất thần, tiến hành cuộc tổng khởi nghĩa lật đổ ách thống trị của thực dân Pháp, phát xít Nhật và đọc Tuyên ngôn Độc lập ngày 2/9/1945, mang ý nghĩa kiến tạo một sự thay đổi mang tính thời đại. Cuộc cách mạng không chỉ xóa bỏ chế độ phong kiến ngàn năm, đập tan ách thực dân gần một thế kỷ, khai sinh ra nước Việt Nam Dân chủ Cộng hòa, mà còn đưa người dân Việt Nam từ thân phận nô lệ lầm than bước lên đài vinh quang, trở thành những người chủ thực sự của đất nước độc lập.",
+    "dien_bien_phu": "Đại tướng Võ Nguyên Giáp với quyết định lịch sử chuyển từ 'đánh nhanh thắng nhanh' sang 'đánh chắc tiến chắc', chỉ huy quân dân ta đập tan tập đoàn cứ điểm quân sự mạnh nhất Đông Dương của Pháp tại Điện Biên Phủ (1954), mang ý nghĩa tạo ra một cơn địa chấn toàn cầu. Chiến thắng 'lừng lẫy năm châu, chấn động địa cầu' này đã đánh sập ý chí xâm lược của thực dân Pháp, buộc chúng phải ký Hiệp định Geneva, giải phóng hoàn toàn miền Bắc, đồng thời thổi bùng ngọn lửa phong trào giải phóng dân tộc, báo hiệu sự sụp đổ của chủ nghĩa thực dân cũ trên toàn thế giới.",
+    "chien_dich_ho_chi_minh": "Quân và dân ta với trí tuệ quân sự nhạy bén và ý chí thống nhất non sông mãnh liệt, tiến hành thành công cuộc tổng tiến công nổi dậy mùa xuân năm 1975, kết thúc bằng việc xe tăng húc đổ cổng Dinh Độc Lập ngày 30/4, mang ý nghĩa là dấu son chói lọi nhất kết thúc 30 năm chiến tranh giải phóng dân tộc đầy máu và nước mắt. Thắng lợi trọn vẹn này đã đập tan ách thống trị của chủ nghĩa đế quốc và chính quyền tay sai, thu non sông về một mối, mở ra một kỷ nguyên mới – kỷ nguyên của hòa bình, độc lập, thống nhất và đi lên xây dựng đất nước."
   },
 }
 
@@ -241,25 +256,110 @@ class MemoryGame:
         self.popup_scroll_step = 40
         self.popup_max_scroll = 0
 
-        # --- PHẦN XỬ LÝ ÂM THANH MỚI ---
-        pygame.mixer.init()
-        
-        # 1. Phát nhạc nền ngay khi mở game
+        # Pause & Mute state
+        self.is_paused = False
+        self.is_muted = False
+        self.pause_start_time = 0
+        self.total_pause_duration = 0
+
+        # UI buttons for settings
+        self.btn_settings = pygame.Rect(0, 0, 0, 0)
+        self.show_settings_menu = False
+        self.btn_pause = pygame.Rect(0, 0, 0, 0)
+        self.btn_mute = pygame.Rect(0, 0, 0, 0)
+        self.btn_close_settings = pygame.Rect(0, 0, 0, 0)
+
+        # ⚙️ CONFIG SETTINGS MENU UI (dễ sửa)
+        self.settings_menu_config = {
+            "bg_color": (25, 35, 50),          # Màu nền menu
+            "bg_alpha": 245,                    # Độ trong suốt nền (0-255)
+            "border_color": (100, 150, 200),   # Màu border
+            "border_width": 3,                  # Độ dày border (px)
+            "border_radius": 15,                # Độ cong góc (px)
+            "shadow_color": (0, 0, 0),          # Màu shadow
+            "shadow_alpha": 120,                # Độ trong suốt shadow (0-255)
+            "shadow_offset_x": 8,               # Offset shadow X
+            "shadow_offset_y": 8,               # Offset shadow Y
+        }
+
+        # MENU buttons (mute & guide)
+        self.btn_menu_mute = pygame.Rect(0, 0, 0, 0)
+        self.btn_menu_guide = pygame.Rect(0, 0, 0, 0)
+
+        # Guide popup
+        self.show_guide_popup = False
+        self.guide_scroll_y = 0
+        self.guide_scroll_max = 0
+        self.guide_content = ""  # Nội dung file hướng dẫn
+
+        # Tracking thời gian & điểm
+        self.game_start_time = 0
+        self.game_end_time = 0
+        self.combo_count = 0           # Combo hiện tại
+        self.combo_best = 0            # Combo cao nhất
+        self.match_count = 0           # Số cặp ghép thành công
+        self.score = 0                 # Tổng điểm
+
+        # --- PHẦN XỬ LÝ ÂM THANH ---
+        # Khởi tạo mixer (pygame.init() đã gọi ở dòng 166)
+        try:
+            pygame.mixer.init()
+        except:
+            pass
+
+        # Nhạc nền
+        self.bg_music_loaded = False
         try:
             pygame.mixer.music.load("nhac_nen.mp3")
-            pygame.mixer.music.set_volume(0.6) # Chỉnh âm lượng (0.0 đến 1.0)
-            pygame.mixer.music.play(-1)        # -1 để lặp lại vô tận
-        except:
-            print("Lỗi tải nhạc nền")
+            pygame.mixer.music.set_volume(0.6)
+            self.bg_music_loaded = True
+            print("✓ Nhạc nền (nhac_nen.mp3) đã load thành công")
+        except FileNotFoundError:
+            print("✗ Lỗi: Không tìm thấy file nhac_nen.mp3")
+        except Exception as e:
+            print(f"✗ Lỗi tải nhạc nền: {e}")
 
         # Âm thanh chuyển cảnh
-        pygame.mixer.init()
-        self.intro_duration = 4000 # Thời gian dừng ở Intro (4 giây)
+        self.intro_duration = 4000
+        self.sound_transition = None
         try:
-            self.sound_transition = pygame.mixer.Sound("transition.mp3") # Tên file âm thanh của nhóm
+            self.sound_transition = pygame.mixer.Sound("transition.mp3")
+            self.sound_transition.set_volume(0.7)
         except:
-            self.sound_transition = None
             print("Không tìm thấy file âm thanh chuyển cảnh")
+
+        # Âm thanh lật thẻ
+        self.flip_sound = None
+        try:
+            self.flip_sound = pygame.mixer.Sound("flip_sound.mp3")
+            self.flip_sound.set_volume(0.7)
+        except:
+            print("Không tìm thấy file âm thanh flip_sound.mp3")
+
+        # Âm thanh vỖ tay (hoàn thành game)
+        self.clap_sound = None
+        
+
+        # Trạng thái mute
+        self.is_muted = False
+
+        # Phát nhạc nền khi menu
+        self.play_background_music()
+
+        # Load hướng dẫn chơi
+        self.load_guide_file()
+
+    def load_guide_file(self):
+        """Đọc nội dung từ file huong_dan_choi.txt"""
+        try:
+            with open("huong_dan_choi.txt", "r", encoding="utf-8") as f:
+                self.guide_content = f.read()
+        except FileNotFoundError:
+            print("Không tìm thấy file huong_dan_choi.txt!")
+            self.guide_content = "Không tìm thấy file hướng dẫn.\n\nVui lòng kiểm tra file huong_dan_choi.txt"
+        except Exception as e:
+            print(f"Lỗi đọc file: {e}")
+            self.guide_content = f"Lỗi: {e}"
 
     def setup_level(self, theme):
         self.current_theme = self.normalize_text(theme)
@@ -275,6 +375,7 @@ class MemoryGame:
             "Ẩm thực": "bg_amthuc.png",
             "Lịch sử": "bg_lichsu.jpg",
             "Văn hóa": "bg_vanhoa.jpg"
+
         }
         bg_path = theme_files.get(theme)
         if bg_path and os.path.exists(bg_path):
@@ -322,6 +423,14 @@ class MemoryGame:
         self.matched_info = None
         self.popup_scroll_y = 0
         self.popup_max_scroll = 0
+
+        # Reset các biến điểm khi bắt đầu game
+        self.combo_count = 0
+        self.combo_best = 0
+        self.match_count = 0
+        self.score = 0
+        self.game_start_time = pygame.time.get_ticks()
+        self.game_end_time = 0
         
         # 4. TẢI ẢNH VÀO BỘ NHỚ
         self.card_images = {}
@@ -346,14 +455,27 @@ class MemoryGame:
 
     def handle_click(self, pos):
         if self.scene == "MENU":
-            
+            # Mute button
+            if self.btn_menu_mute.collidepoint(pos):
+                self.toggle_mute()
+                return
+
+            # Guide button
+            if self.btn_menu_guide.collidepoint(pos):
+                self.show_guide_popup = not self.show_guide_popup
+                self.guide_scroll_y = 0  # Reset scroll
+                return
+
             if self.btn_amthuc.collidepoint(pos):
+                self.stop_background_music() # Dừng nhạc nền khi bắt đầu intro
                 self.start_intro("Ẩm thực")
 
             elif self.btn_vanhoa.collidepoint(pos):
+                self.stop_background_music() # Dừng nhạc nền khi bắt đầu intro
                 self.start_intro("Văn hóa")
 
             elif self.btn_lichsu.collidepoint(pos):
+                self.stop_background_music() # Dừng nhạc nền khi bắt đầu intro
                 self.start_intro("Lịch sử")
             # Kiểm tra click vào nút chọn Theme (Giao cho Sâm/Nghĩa vẽ nút)
             # if 100 < pos[0] < 300: self.start_intro("Ẩm thực")
@@ -363,14 +485,55 @@ class MemoryGame:
         #elif self.scene == "INTRO":
             #khúc này thêm âm thanh ready go
             #self.scene = "GAMEPLAY" # Click để vào chơi
-            
+
         elif self.scene == "GAMEPLAY":
+            # Settings button
+            if self.btn_settings.collidepoint(pos) and not self.game_completed:
+                self.show_settings_menu = not self.show_settings_menu
+                return
+
+            # Settings menu options (nếu menu đang hiển thị)
+            if self.show_settings_menu and not self.game_completed:
+                if self.btn_pause.collidepoint(pos):
+                    self.toggle_pause()
+                    return
+                if self.btn_mute.collidepoint(pos):
+                    self.toggle_mute()
+                    return
+                if self.btn_close_settings.collidepoint(pos):
+                    # Nút THOÁT: Reset game + Quay về MENU với fade nhạc
+                    self.fade_out_music(400)  # Fade out nhạc gameplay (0.4 giây)
+
+                    # 🔄 Reset game state (xóa hết trò chơi hiện tại)
+                    self.cards = []
+                    self.revealed = []
+                    self.selected = []
+                    self.matched_info = None
+                    self.game_completed = False
+                    self.turn_count = 0
+                    self.combo_count = 0
+                    self.combo_best = 0
+                    self.match_count = 0
+                    self.score = 0
+                    self.stop_clap_sound()  # Tắt âm thanh vỗ tay
+                    self.show_settings_menu = False
+
+                    # Chuyển về MENU
+                    self.scene = "MENU"
+                    return
+
             if self.game_completed:
                 if self.btn_replay.collidepoint(pos):
+                    self.stop_clap_sound()  # Tắt âm thanh vỖ tay
                     self.setup_level(self.current_theme)
+                    # Phát lại nhạc nền khi chơi lại
+                    self.play_background_music()
                 elif self.btn_change_theme.collidepoint(pos):
+                    self.stop_clap_sound()  # Tắt âm thanh vỖ tay
                     self.scene = "MENU"
                     self.game_completed = False
+                    # Phát nhạc nền khi quay lại MENU
+                    self.play_background_music()
                 return
 
             if self.matched_info:
@@ -385,44 +548,57 @@ class MemoryGame:
 
             x, y = pos
             sw, sh = self.screen.get_size()
-            
+
             # Tái sử dụng công thức tính toán từ draw_grid
-            
             start_x = (sw - (4*self.dynamic_size + 3*MARGIN)) // 2
             start_y = (sh - (4*self.dynamic_size + 3*MARGIN)) // 2
 
             # Xác định tọa độ hàng/cột dựa trên vị trí chuột
             col = (x - start_x) // (self.dynamic_size + MARGIN)
             row = (y - start_y) // (self.dynamic_size + MARGIN)
-            
+
             # Kiểm tra xem có click trúng vào phạm vi lưới 4x4 không
             if 0 <= col < 4 and 0 <= row < 4:
-            # Tạo rect ảo để kiểm tra va chạm chính xác (tránh click vào khoảng trống MARGIN)
+                # Tạo rect ảo để kiểm tra va chạm chính xác (tránh click vào khoảng trống MARGIN)
                 card_rect = pygame.Rect(
-                    start_x + col*(self.dynamic_size + MARGIN), 
-                    start_y + row*(self.dynamic_size + MARGIN), 
+                    start_x + col*(self.dynamic_size + MARGIN),
+                    start_y + row*(self.dynamic_size + MARGIN),
                     self.dynamic_size, self.dynamic_size
-            )
-            if card_rect.collidepoint(pos):
-                idx = row * 4 + col
-                if not self.revealed[idx]:
-                    self.start_card_animation(idx, True, pygame.time.get_ticks())
-                    self.revealed[idx] = True
-                    self.selected.append(idx)
-                    if len(self.selected) == 2:
-                        self.turn_count += 1
+                )
+
+                # Chỉ xử lý nếu click trúng thẻ bài (không phải khoảng trống)
+                if card_rect.collidepoint(pos):
+                    idx = row * 4 + col
+                    if not self.revealed[idx]:
+                        self.start_card_animation(idx, True, pygame.time.get_ticks())
+                        # Phát âm thanh lật thẻ
+                        if self.flip_sound:
+                            self.flip_sound.play()
+                        self.revealed[idx] = True
+                        self.selected.append(idx)
+                        if len(self.selected) == 2:
+                            self.turn_count += 1
+                # Nếu click vào khoảng trống giữa các thẻ → không làm gì, không crash
 
     def update(self):
         current_time = pygame.time.get_ticks()
+
+        if self.scene == "MENU":
+            self.ensure_background_music() # Đảm bảo nhạc nền luôn phát khi ở menu
+            self.stop_clap_sound()  # Đảm bảo khi ở menu thì âm thanh vỗ tay đã tắt
+
+        # Nếu đang pause, không update logic game
+        if self.is_paused and self.scene == "GAMEPLAY":
+            return    
+
         if self.scene == "INTRO":
             elapsed = current_time - self.intro_start_time
             if elapsed >= self.intro_duration:
                 self.scene = "GAMEPLAY"
 
-                try:
-                    pygame.mixer.music.play(-1) # Bật lại nhạc nền khi vào gameplay
-                except:
-                    print("Lỗi phát nhạc nền trong gameplay")
+                # Phát lại nhạc nền khi vào GAMEPLAY
+                self.play_background_music()
+
             return
 
         self.finish_card_animations(current_time)
@@ -434,7 +610,6 @@ class MemoryGame:
                 # TRÙNG KHỚP -> Hiện Pop-up giáo dục
                 item_name = self.cards[idx1]
 
-
                 if self.current_theme == "Văn hóa":
                     self.matched_info = self.culture_lookup.get(item_name, "Chưa có dữ liệu cho mục này.")
                 else:
@@ -442,16 +617,27 @@ class MemoryGame:
                 self.popup_scroll_y = 0
                 self.popup_max_scroll = 0
 
+                # Cập nhật combo & điểm khi match thành công
+                self.match_count += 1
+                self.combo_count += 1
+                if self.combo_count > self.combo_best:
+                    self.combo_best = self.combo_count
+
                 self.selected = []
             else:
                 # KHÔNG TRÙNG -> Chờ một nhịp ngắn rồi úp cùng lúc cả 2 thẻ
                 if self.hide_pair_at == 0:
                     self.hide_pair_at = current_time + 700
+                    # Reset combo khi sai
+                    self.combo_count = 0
 
         if self.hide_pair_at and current_time >= self.hide_pair_at and len(self.selected) == 2:
             idx1, idx2 = self.selected
             self.start_card_animation(idx1, False, current_time)
             self.start_card_animation(idx2, False, current_time)
+            # Phát âm thanh lật thẻ khi úp lại
+            if self.flip_sound:
+                self.flip_sound.play()
             self.selected = []
             self.hide_pair_at = 0
 
@@ -461,8 +647,16 @@ class MemoryGame:
             and not self.selected
             and not self.card_animations
         ):
+            self.game_end_time = current_time
+            self.calculate_score()  # Gọi hàm tính điểm
             self.game_completed = True
             self.matched_info = None
+            # Phát âm thanh tiếng vỖ tay khi hoàn thành
+            # Tắt nhạc nền trước để không bị nhiễu
+            self.stop_background_music()
+            # # if self.clap_sound:
+            #     self.clap_sound.play()
+            self.play_clap_sound()
 
     def start_card_animation(self, idx, to_state, current_time):
         from_state = self.revealed[idx]
@@ -489,8 +683,584 @@ class MemoryGame:
         return False
     
     def play_transition_sound(self):
-        if self.sound_transition:
+        """Phát âm thanh chuyển cảnh"""
+        if self.sound_transition and not self.is_muted:
             self.sound_transition.play()
+
+    def play_background_music(self):
+        """Phát nhạc nền lặp lại"""
+        if self.bg_music_loaded and not self.is_muted:
+            try:
+                pygame.mixer.music.play(-1)  # -1 để lặp lại vô tận
+            except:
+                print("Lỗi phát nhạc nền")
+
+    def stop_background_music(self):
+        """Tắt nhạc nền"""
+        try:
+            pygame.mixer.music.stop()
+        except:
+            print("Lỗi tắt nhạc nền")
+
+    def ensure_background_music(self):
+        """Đảm bảo nhạc nền luôn phát ở MENU (nếu không bị mute)
+
+        Kiểm tra xem nhạc có đang phát không.
+        Nếu nhạc bị stop, sẽ tự động restart nó với fade in smooth.
+        Hàm này an toàn - có thể gọi nhiều lần mỗi frame.
+        """
+        # Nếu chưa load nhạc hoặc đang mute, không làm gì
+        if not self.bg_music_loaded or self.is_muted:
+            return
+
+        try:
+            # get_busy() = True nếu nhạc đang phát, False nếu không
+            if not pygame.mixer.music.get_busy():
+                # Nhạc không phát → restart nó với fade in smooth
+                pygame.mixer.music.play(-1, fade_ms=300)
+                print("🔊 Nhạc nền được restart ở MENU (fade in)")
+        except Exception as e:
+            print(f"Lỗi restart nhạc nền: {e}")
+
+    def fade_out_music(self, duration_ms=500):
+        """Fade out nhạc nền (dần yên tĩnh)
+
+        Args:
+            duration_ms: Thời gian fade (ms). VD: 500 = 0.5 giây
+        """
+        if self.bg_music_loaded:
+            try:
+                pygame.mixer.music.fadeout(duration_ms)
+                print(f"🔇 Fade out nhạc nền ({duration_ms}ms)")
+            except Exception as e:
+                print(f"Lỗi fade out: {e}")
+
+    def fade_in_music(self, duration_ms=500):
+        """Fade in nhạc nền (dần lớn dần)
+
+        Args:
+            duration_ms: Thời gian fade (ms). VD: 500 = 0.5 giây
+        """
+        if self.bg_music_loaded and not self.is_muted:
+            try:
+                pygame.mixer.music.play(-1, fade_ms=duration_ms)
+                print(f"🔊 Fade in nhạc nền ({duration_ms}ms)")
+            except Exception as e:
+                print(f"Lỗi fade in: {e}")
+
+    def play_clap_sound(self):         
+        """Phát âm thanh vỖ tay"""
+        try:
+            self.clap_sound = pygame.mixer.Sound("tieng-vo-tay.mp3")
+            self.clap_sound.set_volume(0.8)
+        except:
+            print("Không tìm thấy file âm thanh tieng-vo-tay.mp3")
+        if self.clap_sound and not self.is_muted:
+            self.clap_sound.play()
+
+
+    def stop_clap_sound(self):
+        """Tắt âm thanh vỖ tay"""
+        if self.clap_sound:
+            self.clap_sound.stop()
+
+    def calculate_score(self):
+        """Tính tổng điểm dựa trên combo, thời gian, và lượt chơi"""
+        if self.game_end_time == 0 or self.game_start_time == 0:
+            self.score = 0
+            return
+
+        # 1. Điểm cơ bản
+        base_score = 1000
+
+        # 2. Điểm combo
+        combo_points = self.combo_best * 200
+
+        # 3. Điểm thời gian (bonus nếu nhanh) - trừ đi thời gian pause
+        elapsed_time = (self.game_end_time - self.game_start_time - self.total_pause_duration) // 1000  # đơn vị giây
+        time_bonus = max(0, (60 - elapsed_time) * 10)
+
+        # 4. Điểm lượt chơi (penalty nếu chơi nhiều lượt)
+        ideal_turns = 8
+        turns_bonus = max(0, (ideal_turns - self.turn_count) * 100)
+
+        # Tổng điểm (không bao giờ âm)
+        self.score = max(0, base_score + combo_points + time_bonus + turns_bonus)
+
+    def toggle_pause(self):
+        """Toggle pause state"""
+        if self.is_paused:
+            # Resume
+            self.total_pause_duration += (pygame.time.get_ticks() - self.pause_start_time)
+            self.is_paused = False
+            if not self.is_muted:
+                pygame.mixer.music.unpause()
+        else:
+            # Pause
+            self.pause_start_time = pygame.time.get_ticks()
+            self.is_paused = True
+            pygame.mixer.music.pause()
+
+    def toggle_mute(self):
+        """Toggle mute state"""
+        self.is_muted = not self.is_muted
+        volume = 0.0 if self.is_muted else 0.6
+        pygame.mixer.music.set_volume(volume)
+
+        # Điều chỉnh volume cho sound effects
+        if self.flip_sound:
+            self.flip_sound.set_volume(0.0 if self.is_muted else 0.7)
+        if self.clap_sound:
+            self.clap_sound.set_volume(0.0 if self.is_muted else 0.8)
+        
+        # Nếu tắt âm thanh, dừng nhạc nền
+        if self.is_muted:
+            self.stop_background_music()
+        # Nếu bật lại âm thanh, phát nhạc nền nếu đang ở MENU hoặc GAMEPLAY (và chưa hoàn thành game)
+        elif self.scene in ["MENU", "GAMEPLAY"] and not self.game_completed:
+            self.play_background_music()
+
+    def update_settings_button(self):
+        """Cập nhật vị trí nút settings ở góc trên phải"""
+        sw, sh = self.screen.get_size()
+
+        # Kích thước nút responsive
+        btn_size = max(40, int(sh * 0.06))  # 6% chiều cao màn hình
+        margin = max(10, int(sw * 0.015))   # Margin từ góc (1.5% chiều rộng)
+
+        # Vị trí: góc trên phải
+        self.btn_settings = pygame.Rect(
+            sw - btn_size - margin,
+            margin,
+            btn_size,
+            btn_size
+        )
+
+    def update_menu_buttons_circle(self):
+        """Cập nhật vị trí nút tròn (Mute & Guide) ở MENU"""
+        sw, sh = self.screen.get_size()
+
+        # Kích thước nút responsive (giống settings button)
+        btn_size = max(40, int(sh * 0.06))  # 6% chiều cao
+        margin = max(10, int(sw * 0.015))   # Margin từ góc
+        gap_between = 15  # Khoảng cách giữa 2 nút
+
+        # Nút Mute - góc trên phải
+        self.btn_menu_mute = pygame.Rect(
+            sw - btn_size - margin,
+            margin,
+            btn_size,
+            btn_size
+        )
+
+        # Nút Guide - Dưới nút Mute, bên phải (cùng cột)
+        self.btn_menu_guide = pygame.Rect(
+            sw - btn_size - margin,  # Cùng X với nút mute
+            margin + btn_size + gap_between,  # Dưới nút mute + gap
+            btn_size,
+            btn_size
+        )
+
+    def draw_menu_button_circle(self, rect, icon, hover_color_factor=1.2):
+        """Vẽ nút tròn với border, shadow cho MENU"""
+        mouse_pos = pygame.mouse.get_pos()
+        is_hover = rect.collidepoint(mouse_pos)
+
+        # 🎨 Màu nút
+        base_color = (218, 165, 32)  
+        border_color = (139, 101, 8) 
+        shadow_color = (0, 0, 0)
+
+        # Đổi màu khi hover
+        if is_hover:
+            bg_color = tuple(min(255, int(c * 1.3)) for c in base_color)
+            border_color = (200, 240, 255)
+        else:
+            bg_color = base_color
+
+        radius = rect.width // 2
+        center = rect.center
+
+        # ✨ Vẽ shadow (chiều sâu)
+        shadow_offset = 2
+        pygame.draw.circle(
+            self.screen,
+            (*shadow_color, 80),
+            (center[0] + shadow_offset, center[1] + shadow_offset),
+            radius,
+        )
+
+        # 🎨 Vẽ nền nút tròn
+        pygame.draw.circle(
+            self.screen,
+            bg_color,
+            center,
+            radius
+        )
+
+        # 🟦 Vẽ border (khác màu nền)
+        pygame.draw.circle(
+            self.screen,
+            border_color,
+            center,
+            radius,
+            width=2  # Độ dày border
+        )
+
+        # Vẽ icon từ hình ảnh
+        icon_size = int(rect.width * 0.6)
+
+        # Nếu là nút mute, dựa vào is_muted để chọn ảnh
+        if icon == "🔇":
+            icon_path = "mo.png" if self.is_muted else "tat.png"
+        elif icon == "❓":
+            icon_path = "chamhoi.png"
+        else:
+            icon_font = self.load_text_font(max(18, icon_size))
+            icon_text = icon_font.render(icon, True, (255, 255, 255))
+            icon_rect = icon_text.get_rect(center=center)
+            self.screen.blit(icon_text, icon_rect)
+            return
+
+        try:
+            icon_img = pygame.image.load(icon_path)
+            icon_img = pygame.transform.scale(icon_img, (icon_size, icon_size))
+            icon_rect = icon_img.get_rect(center=center)
+            self.screen.blit(icon_img, icon_rect)
+        except:
+            icon_font = self.load_text_font(max(18, icon_size))
+            icon_text = icon_font.render(icon, True, (255, 255, 255))
+            icon_rect = icon_text.get_rect(center=center)
+            self.screen.blit(icon_text, icon_rect)
+
+    def draw_settings_button(self):
+        """Vẽ nút settings ở góc trên phải với border + shadow"""
+        mouse_pos = pygame.mouse.get_pos()
+        is_hover = self.btn_settings.collidepoint(mouse_pos)
+
+        # 🎨 Màu nút
+        base_color = (60, 100, 150)  # Xanh dương
+        border_color = (150, 200, 255)  # Xanh sáng cho border
+        shadow_color = (0, 0, 0)
+
+        # Đổi màu khi hover
+        if is_hover:
+            bg_color = tuple(min(255, int(c * 1.3)) for c in base_color)
+            border_color = (200, 240, 255)
+        else:
+            bg_color = base_color
+
+        radius = self.btn_settings.width // 2
+        center = self.btn_settings.center
+
+        # ✨ Vẽ shadow (chiều sâu)
+        shadow_offset = 2
+        pygame.draw.circle(
+            self.screen,
+            (*shadow_color, 80),
+            (center[0] + shadow_offset, center[1] + shadow_offset),
+            radius,
+        )
+
+        # 🎨 Vẽ nền nút tròn
+        pygame.draw.circle(
+            self.screen,
+            bg_color,
+            center,
+            radius
+        )
+
+        # 🟦 Vẽ border (khác màu nền)
+        pygame.draw.circle(
+            self.screen,
+            border_color,
+            center,
+            radius,
+            width=3  # Độ dày border
+        )
+
+        # Vẽ icon từ hình ảnh
+        icon_size = int(self.btn_settings.width * 0.6)
+        try:
+            icon_img = pygame.image.load("caidat.png")
+            icon_img = pygame.transform.scale(icon_img, (icon_size, icon_size))
+            icon_rect = icon_img.get_rect(center=center)
+            self.screen.blit(icon_img, icon_rect)
+        except:
+            icon_font = self.load_text_font(max(18, icon_size))
+            icon_text = icon_font.render("⚙", True, (255, 255, 255))
+            icon_rect = icon_text.get_rect(center=center)
+            self.screen.blit(icon_text, icon_rect)
+
+    def draw_settings_menu(self):
+        """Vẽ popup menu settings với border, shadow, và chiều sâu"""
+        sw, sh = self.screen.get_size()
+        cfg = self.settings_menu_config  # Lấy config
+
+        # Kích thước menu
+        menu_w = min(280, int(sw * 0.35))
+        menu_h = 240
+        menu_x = sw - menu_w - max(10, int(sw * 0.015))
+        menu_y = self.btn_settings.bottom + 10
+        menu_rect = pygame.Rect(menu_x, menu_y, menu_w, menu_h)
+
+        # ✨ Vẽ Shadow (chiều sâu)
+        shadow_rect = menu_rect.copy()
+        shadow_rect.x += cfg["shadow_offset_x"]
+        shadow_rect.y += cfg["shadow_offset_y"]
+        shadow_surface = pygame.Surface((shadow_rect.width, shadow_rect.height), pygame.SRCALPHA)
+        pygame.draw.rect(
+            shadow_surface,
+            (*cfg["shadow_color"], cfg["shadow_alpha"]),
+            (0, 0, shadow_rect.width, shadow_rect.height),
+            border_radius=cfg["border_radius"]
+        )
+        self.screen.blit(shadow_surface, shadow_rect.topleft)
+
+        # 🎨 Vẽ nền menu (với độ trong suốt)
+        menu_surface = pygame.Surface((menu_w, menu_h), pygame.SRCALPHA)
+        pygame.draw.rect(
+            menu_surface,
+            (*cfg["bg_color"], cfg["bg_alpha"]),
+            (0, 0, menu_w, menu_h),
+            border_radius=cfg["border_radius"]
+        )
+        self.screen.blit(menu_surface, menu_rect.topleft)
+
+        # 🟦 Vẽ border
+        pygame.draw.rect(
+            self.screen,
+            cfg["border_color"],
+            menu_rect,
+            width=cfg["border_width"],
+            border_radius=cfg["border_radius"]
+        )
+
+        # Font
+        title_font = self.load_text_font(max(16, int(self.size_normal * 0.95)))
+        btn_font = self.load_text_font(max(13, int(self.size_normal * 0.8)))
+
+        # Tiêu đề
+        title_img = title_font.render("CÀI ĐẶT", True, (220, 240, 255))
+        self.screen.blit(title_img, (menu_x + 15, menu_y + 12))
+
+        # ────────────────────────
+        # Nút Mute/Unmute
+        # ────────────────────────
+        mute_label = "Âm thanh"
+
+        self.btn_mute = pygame.Rect(menu_x + 10, menu_y + 50, menu_w - 20, 45)
+        self.draw_option_button_with_icon(
+            self.btn_mute,
+            (50, 100, 150),
+            (70, 130, 180),
+            mute_label,
+            btn_font,
+            "tat.png" if self.is_muted else "mo.png"
+        )
+
+        # ────────────────────────
+        # Nút Pause/Resume
+        # ────────────────────────
+        pause_status = "TIẾP TỤC" if self.is_paused else "DỪNG"
+        pause_label = pause_status
+
+        self.btn_pause = pygame.Rect(menu_x + 10, menu_y + 110, menu_w - 20, 45)
+        self.draw_option_button_with_icon(
+            self.btn_pause,
+            (100, 50, 50),
+            (150, 80, 80),
+            pause_label,
+            btn_font,
+            "dung.png"
+        )
+
+        # ────────────────────────
+        # Nút Đóng
+        # ────────────────────────
+        self.btn_close_settings = pygame.Rect(menu_x + 10, menu_y + 170, menu_w - 20, 35)
+        self.draw_option_button(
+            self.btn_close_settings,
+            (60, 60, 60),
+            (100, 100, 100),
+            "THOÁT",
+            btn_font
+        )
+
+    def draw_guide_popup(self):
+        """Vẽ popup hướng dẫn chơi (tái sử dụng logic từ draw_popup)"""
+        sw, sh = self.screen.get_size()
+
+        # Lớp tối
+        dim = pygame.Surface((sw, sh), pygame.SRCALPHA)
+        dim.fill((8, 10, 16, 175))
+        self.screen.blit(dim, (0, 0))
+
+        # Kích thước popup
+        box_w = min(700, int(sw * 0.85))
+        box_h = min(500, int(sh * 0.82))
+        start_x = (sw - box_w) // 2
+        start_y = (sh - box_h) // 2
+        box_rect = pygame.Rect(start_x, start_y, box_w, box_h)
+
+        # Vẽ nền popup
+        pygame.draw.rect(self.screen, (23, 28, 43), box_rect, border_radius=24)
+        pygame.draw.rect(self.screen, (114, 159, 255), box_rect, width=2, border_radius=24)
+
+        # Header
+        header_h = 70
+        pygame.draw.rect(self.screen, (36, 56, 95), (start_x, start_y, box_w, header_h), border_top_left_radius=24, border_top_right_radius=24)
+        pygame.draw.line(self.screen, (130, 180, 255), (start_x + 20, start_y + header_h), (start_x + box_w - 20, start_y + header_h), 1)
+
+        # Font
+        title_font = self.load_text_font(max(22, int(self.size_normal * 1.4)))
+        hint_font = self.load_text_font(max(14, int(self.size_normal * 0.7)))
+
+        # Tiêu đề với icon
+        title_font = self.load_text_font(max(22, int(self.size_normal * 1.4)))
+        
+        # Tải hình ảnh dấu chấm hỏi
+        try:
+            question_img = pygame.image.load("chamhoi.jpg")
+            question_size = int(title_font.get_height() * 1.2)
+            question_img = pygame.transform.scale(question_img, (question_size, question_size))
+            self.screen.blit(question_img, (start_x + 24, start_y + 16))
+            title_text = title_font.render(" HƯỚNG DẪN CHƠI", True, (235, 243, 255))
+            self.screen.blit(title_text, (start_x + 24 + question_size + 10, start_y + 18))
+        except:
+            title_img = title_font.render("❓ HƯỚNG DẪN CHƠI", True, (235, 243, 255))
+            self.screen.blit(title_img, (start_x + 24, start_y + 18))
+
+        # Hint text
+        hint_img = hint_font.render("Nhan chuot de dong", True, (180, 205, 255))
+        self.screen.blit(hint_img, (start_x + box_w - 180, start_y + 22))
+
+        # Nội dung text
+        body_x = start_x + 26
+        body_y = start_y + header_h + 20
+        body_w = box_w - 52
+        body_h = box_h - header_h - 36
+        line_gap = 8
+
+        # Parse nội dung & tính scroll
+        guide_lines = self.wrap_text(self.guide_content, self.font, body_w)
+
+        line_height = self.font.get_height() + line_gap
+        total_content_h = len(guide_lines) * line_height
+        self.guide_scroll_max = max(0, total_content_h - body_h)
+        self.guide_scroll_y = max(0, min(self.guide_scroll_y, self.guide_scroll_max))
+
+        # Vẽ text với scroll
+        prev_clip = self.screen.get_clip()
+        self.screen.set_clip(pygame.Rect(body_x, body_y, body_w, body_h))
+
+        y_offset = body_y - self.guide_scroll_y
+        for i, line in enumerate(guide_lines):
+            # Dòng đầu là tiêu đề (format đặc biệt)
+            if i == 0 or (line.strip() and line.isupper()):
+                text_font = self.load_text_font(max(16, int(self.size_normal * 1.1)))
+                text_surface = text_font.render(line, True, (255, 215, 0))  # Vàng
+            else:
+                text_surface = self.font.render(line, True, (244, 247, 255))  # Trắng
+
+            self.screen.blit(text_surface, (body_x, y_offset))
+            y_offset += line_height
+
+        self.screen.set_clip(prev_clip)
+
+        # Scrollbar
+        if self.guide_scroll_max > 0:
+            track_x = start_x + box_w - 12
+            track_y = body_y
+            track_h = body_h
+            pygame.draw.rect(self.screen, (70, 88, 122), (track_x, track_y, 4, track_h), border_radius=3)
+
+            thumb_h = max(22, int(track_h * (body_h / max(total_content_h, 1))))
+            thumb_y = track_y + int((self.guide_scroll_y / self.guide_scroll_max) * (track_h - thumb_h))
+            pygame.draw.rect(self.screen, (170, 205, 255), (track_x - 1, thumb_y, 6, thumb_h), border_radius=4)
+
+            # Hint scroll
+            note_img = hint_font.render("Lan chuot de xem them", True, (160, 196, 255))
+            self.screen.blit(note_img, (body_x, start_y + box_h - 18))
+
+        # Hint text ở dưới cùng
+        hint_font = self.load_text_font(max(12, int(self.size_normal * 0.7)))
+        hint_text = hint_font.render("Ấn để đóng", True, (150, 180, 220))
+        hint_rect = hint_text.get_rect(center=(sw // 2, start_y + box_h - 12))
+        self.screen.blit(hint_text, hint_rect)
+
+    def draw_intro_loading(self):
+        """Vẽ loading screen đẹp khi chuẩn bị vào game"""
+        sw, sh = self.screen.get_size()
+        
+        # Lớp phủ nửa trong suốt ở giữa
+        overlay = pygame.Surface((sw, sh), pygame.SRCALPHA)
+        overlay.fill((0, 0, 0, 100))
+        self.screen.blit(overlay, (0, 0))
+        
+        # Hộp loading chính
+        box_w = min(500, int(sw * 0.7))
+        box_h = 280
+        box_x = (sw - box_w) // 2
+        box_y = (sh - box_h) // 2
+        
+        # Vẽ hộp với gradient effect (từ tối đến sáng)
+        pygame.draw.rect(self.screen, (20, 35, 60), (box_x, box_y, box_w, box_h), border_radius=20)
+        pygame.draw.rect(self.screen, (100, 150, 220), (box_x, box_y, box_w, box_h), width=3, border_radius=20)
+        
+        # Tiêu đề chủ đề (lớn, sáng)
+        title_font = self.load_text_font(max(32, int(sh * 0.08)))
+        title_text = title_font.render(self.current_theme, True, (255, 215, 0))
+        title_rect = title_text.get_rect(center=(sw // 2, box_y + 50))
+        self.screen.blit(title_text, title_rect)
+        
+        # Text "Đang chuẩn bị..."
+        body_font = self.load_text_font(max(20, int(sh * 0.05)))
+        body_text = body_font.render("Đang chuẩn bị vào game", True, (200, 220, 255))
+        body_rect = body_text.get_rect(center=(sw // 2, box_y + 130))
+        self.screen.blit(body_text, body_rect)
+        
+        # Tính progress dựa trên thời gian INTRO thực tế
+        current_time = pygame.time.get_ticks()
+        elapsed = current_time - self.intro_start_time
+        progress = min(100, (elapsed / self.intro_duration) * 100)  # 0-100%
+        
+        # Animated loading dots (dựa trên progress)
+        loading_cycle = int((progress / 100) * 4) % 4  # Sync với progress
+        
+        dot_font = self.load_text_font(max(28, int(sh * 0.07)))
+        dots_text = "●" * loading_cycle + "○" * (3 - loading_cycle)
+        dots_surface = dot_font.render(dots_text, True, (150, 200, 255))
+        dots_rect = dots_surface.get_rect(center=(sw // 2, box_y + 200))
+        self.screen.blit(dots_surface, dots_rect)
+        
+        # Thanh tiến trình (progress bar)
+        progress_bar_w = int(box_w * 0.6)
+        progress_bar_h = 8
+        progress_bar_x = (sw - progress_bar_w) // 2
+        progress_bar_y = box_y + 240
+        
+        # Nền thanh tiến trình
+        pygame.draw.rect(self.screen, (40, 60, 100), 
+                        (progress_bar_x, progress_bar_y, progress_bar_w, progress_bar_h), 
+                        border_radius=4)
+        
+        # Thanh tiến trình chạy (dựa trên thời gian thực)
+        filled_w = int(progress_bar_w * (progress / 100))
+        pygame.draw.rect(self.screen, (100, 200, 255), 
+                        (progress_bar_x, progress_bar_y, filled_w, progress_bar_h), 
+                        border_radius=4)
+        
+        # Viền thanh tiến trình
+        pygame.draw.rect(self.screen, (150, 180, 220), 
+                        (progress_bar_x, progress_bar_y, progress_bar_w, progress_bar_h), 
+                        width=1, border_radius=4)
+        
+        # Text phần trăm tiến độ (tuỳ chọn)
+        percent_font = self.load_text_font(max(14, int(sh * 0.04)))
+        percent_text = percent_font.render(f"{int(progress)}%", True, (150, 200, 255))
+        percent_rect = percent_text.get_rect(center=(sw // 2, box_y + 265))
+        self.screen.blit(percent_text, percent_rect)
 
     def draw(self):
 
@@ -503,9 +1273,12 @@ class MemoryGame:
         if self.scene == "MENU":
             #lấy kích thước hiện tại
             self.curr_w = self.screen.get_width()
-            self.curr_h = self.screen.get_height() 
+            self.curr_h = self.screen.get_height()
             self.update_menu_buttons((self.curr_w, self.curr_h))
-            
+
+            # Update menu circle buttons
+            self.update_menu_buttons_circle()
+
             #viết tên tiêu đề game
             #self.draw_text_title("FLIP GAME", (self.screen.get_width()*0.5, self.screen.get_height()*0.2))
 
@@ -514,18 +1287,35 @@ class MemoryGame:
             self.draw_image_button(self.btn_amthuc, "Ẩm thực")
             self.draw_image_button(self.btn_vanhoa, "Văn hóa")
             self.draw_image_button(self.btn_lichsu, "Lịch sử")
+
+            # Draw menu circle buttons
+            self.draw_menu_button_circle(self.btn_menu_mute, "🔇")
+            self.draw_menu_button_circle(self.btn_menu_guide, "❓")
+
+            # Draw guide popup nếu hiển thị
+            if self.show_guide_popup:
+                self.draw_guide_popup()
         elif self.scene == "INTRO":
             if hasattr(self, 'intro_bg') and self.intro_bg:
                 self.screen.blit(self.intro_bg, (0, 0))
             else:
                 self.screen.blit(self.bg_current, (0, 0))
-            curr_w = self.screen.get_width()
-            curr_h = self.screen.get_height()
-            self.draw_text(f"Chủ đề: {self.current_theme}. Đang chuẩn bị vào game...", (curr_w // 2, curr_h // 2))
+            
+            # Vẽ loading screen đẹp hơn
+            self.draw_intro_loading()
 
         elif self.scene == "GAMEPLAY":
+            self.update_settings_button()  # Cập nhật vị trí
             self.draw_grid()
             self.draw_side_text()
+
+            # Draw settings button
+            self.draw_settings_button()
+
+            # Draw settings menu nếu hiển thị
+            if self.show_settings_menu and not self.game_completed:
+                self.draw_settings_menu()
+
             if self.game_completed:
                 self.draw_endgame_popup()
             elif self.matched_info:
@@ -551,14 +1341,33 @@ class MemoryGame:
         info_font = self.load_text_font(max(18, int(self.size_normal * 1.05)))
         btn_font = self.load_text_font(max(16, int(self.size_normal * 0.9)))
 
+        # Tính thời gian
+        elapsed_time = (self.game_end_time - self.game_start_time) // 1000
+        minutes = elapsed_time // 60
+        seconds = elapsed_time % 60
+
         title_img = title_font.render("HOAN THANH!", True, (235, 245, 255))
-        title_rect = title_img.get_rect(center=(box_x + box_w // 2, box_y + 60))
+        title_rect = title_img.get_rect(center=(box_x + box_w // 2, box_y + 40))
         self.screen.blit(title_img, title_rect)
 
-        info_text = f"Ban da hoan thanh trong {self.turn_count} luot"
-        info_img = info_font.render(info_text, True, (209, 229, 255))
-        info_rect = info_img.get_rect(center=(box_x + box_w // 2, box_y + 120))
-        self.screen.blit(info_img, info_rect)
+        # Điểm số chính (vàng)
+        score_img = info_font.render(f"Diem so: {self.score}", True, (255, 215, 0))
+        score_rect = score_img.get_rect(center=(box_x + box_w // 2, box_y + 100))
+        self.screen.blit(score_img, score_rect)
+
+        # Thống kê chi tiết
+        stats_font = self.load_text_font(max(14, int(self.size_normal * 0.85)))
+        stats_lines = [
+            f"Thoi gian: {minutes}m {seconds}s",
+            f"So luot: {self.turn_count} | Combo cao nhat: {self.combo_best}",
+            f"Toc do: {8/max(1, minutes or 1):.1f} cap/phut"
+        ]
+        stats_y = box_y + 150
+        for line in stats_lines:
+            stats_img = stats_font.render(line, True, (209, 229, 255))
+            stats_rect = stats_img.get_rect(center=(box_x + box_w // 2, stats_y))
+            self.screen.blit(stats_img, stats_rect)
+            stats_y += 28
 
         btn_w = max(170, int(box_w * 0.33))
         btn_h = 56
@@ -580,6 +1389,29 @@ class MemoryGame:
         pygame.draw.rect(self.screen, (220, 235, 255), rect, width=1, border_radius=12)
         text_img = font.render(text, True, WHITE)
         text_rect = text_img.get_rect(center=rect.center)
+        self.screen.blit(text_img, text_rect)
+    
+    def draw_option_button_with_icon(self, rect, color, hover_color, text, font, icon_path):
+        """Vẽ nút option với icon hình ảnh bên trái"""
+        mouse_pos = pygame.mouse.get_pos()
+        draw_color = hover_color if rect.collidepoint(mouse_pos) else color
+        pygame.draw.rect(self.screen, draw_color, rect, border_radius=12)
+        pygame.draw.rect(self.screen, (220, 235, 255), rect, width=1, border_radius=12)
+        
+        # Vẽ icon
+        icon_size = int(rect.height * 0.6)
+        try:
+            icon_img = pygame.image.load(icon_path)
+            icon_img = pygame.transform.scale(icon_img, (icon_size, icon_size))
+            icon_rect = icon_img.get_rect(center=(rect.x + icon_size // 2 + 8, rect.centery))
+            self.screen.blit(icon_img, icon_rect)
+        except:
+            pass
+        
+        # Vẽ text bên phải icon
+        text_img = font.render(text, True, WHITE)
+        text_x = rect.x + icon_size + 18
+        text_rect = text_img.get_rect(midleft=(text_x, rect.centery))
         self.screen.blit(text_img, text_rect)
     
     def draw_button(self,rect, color, hover_color, text):
@@ -844,6 +1676,14 @@ class MemoryGame:
             thumb_y = track_y + int((self.popup_scroll_y / self.popup_max_scroll) * (track_h - thumb_h))
             pygame.draw.rect(self.screen, (170, 205, 255), (track_x - 1, thumb_y, 6, thumb_h), border_radius=4)
 
+    def handle_guide_scroll(self, wheel_y):
+        """Xử lý scroll trong popup hướng dẫn"""
+        if not self.show_guide_popup:
+            return
+
+        self.guide_scroll_y -= wheel_y * self.popup_scroll_step
+        self.guide_scroll_y = max(0, min(self.guide_scroll_y, self.guide_scroll_max))
+
     def handle_popup_scroll(self, wheel_y):
         if self.scene != "GAMEPLAY" or not self.matched_info or self.game_completed:
             return
@@ -970,13 +1810,16 @@ class MemoryGame:
             self.screen.blit(img, (x, y))
             y += spacing
     def start_intro(self, theme):
+        # Tắt nhạc nền trước khi phát transition
+        self.stop_background_music()
+        
+        # Phát âm thanh chuyển cảnh (transition)
+        self.play_transition_sound()
+        
+        # Setup level
         self.setup_level(theme)
         self.scene = "INTRO"
         self.intro_start_time = pygame.time.get_ticks() # Lưu lúc bắt đầu Intro
-        # Phát âm thanh ngay khi vào Intro
-        pygame.mixer.music.stop()  # Dừng nhạc nền menu nếu đang phát
-        if self.sound_transition:
-            self.sound_transition.play()
         self.sound_played = True
         
     def scale_bg(self, current_size=None): #hàm này dùng để điều chỉnh kích thước
@@ -1009,6 +1852,9 @@ class MemoryGame:
         if hasattr(self, 'intro_bg') and self.intro_bg:
             sw, sh = self.screen.get_size()
             self.intro_bg = pygame.transform.smoothscale(self.intro_bg, (sw, sh))
+
+        # Cập nhật settings button
+        self.update_settings_button()
 
     def normalize_text(self, value):
         if isinstance(value, str):
@@ -1120,9 +1966,17 @@ if __name__ == "__main__":
                 game.curr_w = new_width
                                 
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                game.handle_click(event.pos)
+                # Xử lý click nút đóng popup guide (ấn bất cứ chỗ nào)
+                if game.show_guide_popup:
+                    game.show_guide_popup = False
+                else:
+                    game.handle_click(event.pos)
+
             if event.type == pygame.MOUSEWHEEL:
                 game.handle_popup_scroll(event.y)
+
+                # Xử lý scroll popup guide
+                game.handle_guide_scroll(event.y)
         
         game.update()
             
