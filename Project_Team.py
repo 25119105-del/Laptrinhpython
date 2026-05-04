@@ -40,71 +40,40 @@ INFO_DATA = {
             "Nem Chua": "Nem Chua: Đặc sản trứ danh của Thanh Hóa với vị chua thanh đặc trưng được lên men từ thịt lợn tươi sống. Độ giòn sần sật của bì lợn kết hợp cùng vị cay nồng của tỏi ớt và mùi thơm của lá đinh lăng quấn quanh. Là món nhắm lý tưởng trong mọi cuộc vui, thường xuất hiện trong các mâm cỗ trang trọng hoặc bữa cơm sum họp. Nem chua không chỉ là món ăn mà còn là món quà tình thân, mang theo hơi thở của vùng đất miền Trung kiên cường.",
             "Bánh Mì": "Bánh Mì: 'Vua đường phố' thế giới với lớp vỏ ngoài giòn tan, bên trong mềm mại đầy ắp các loại nhân hấp dẫn. Sự hòa quyện giữa pate béo ngậy, thịt nguội, bơ, dưa chuột và rau dưa tạo nên một bản giao hưởng hương vị. Tự hào được đưa vào từ điển Oxford và liên tục đứng đầu các bảng xếp hạng ẩm thực uy tín như The Guardian. Bánh mì là minh chứng cho sự sáng tạo không giới hạn của người Việt, biến tấu từ món ăn ngoại quốc thành quốc bảo."
                 },
-    "Văn hóa": {"Trang phục Dân tộc": {
-                "Ba Na": {
-                    "nguon_goc": "Từ nghề dệt thổ cẩm thủ công, nhuộm từ lá và vỏ cây rừng.",
-                    "dac_diem": "Màu đen/đỏ chủ đạo. Nam đóng khố, nữ váy hở, hoa văn đối xứng."
-                },
-                "Thái": {
-                    "nguon_goc": "Gắn liền với vùng thung lũng Tây Bắc và nghề dệt tằm tang.",
-                    "dac_diem": "Áo cỏm ôm sát, hàng khuy bạc hình bướm và chiếc khăn Piêu thêu tay."
-                },
-                "Chăm": {
-                    "nguon_goc": "Nền văn minh Chămpa cổ đại, ảnh hưởng Ấn Độ và Hồi giáo.",
-                    "dac_diem": "Áo dài chui đầu Patra, quấn xà rông và thắt lưng dệt tinh xảo."
-                },
-                "Dao Đỏ": {
-                    "nguon_goc": "Đời sống du canh vùng núi cao, tự dệt vải lanh nhuộm chàm.",
-                    "dac_diem": "Sắc đỏ rực rỡ, khăn đội đầu khổ lớn kèm tua rua và trang sức bạc."
-                },
-                "Ê Đê": {
-                    "nguon_goc": "Truyền thống mẫu hệ Tây Nguyên, dệt sợi bông nhuộm màu tự nhiên.",
-                    "dac_diem": "Áo chui đầu, váy tấm đen-đỏ, kỹ thuật dệt Kteh đính cườm độc đáo."
-                },
-                "H'Mông": {
-                    "nguon_goc": "Văn hóa rẻo cao, kỹ thuật vẽ sáp ong và nhuộm chàm thủ công.",
-                    "dac_diem": "Váy xòe dập ly, thêu ghép vải màu rực rỡ và bộ xà tích bạc."
-                },
-                "Kinh": {
-                    "nguon_goc": "Văn minh lúa nước, biến đổi từ áo giao lĩnh đến áo dài hiện đại.",
-                    "dac_diem": "Áo dài xẻ tà cao, quần ống rộng, nón lá, chất liệu lụa thanh lịch."
-                },
-                "Khmer": {
-                    "nguon_goc": "Văn hóa Angkor và Phật giáo Nam tông, sử dụng tơ lụa dệt Hol.",
-                    "dac_diem": "Quấn Săm-pốt, áo tầm vông, khăn Sbay quàng vai màu sắc rực rỡ."
-                },
-                "Mường": {
-                    "nguon_goc": "Vùng đất cổ Hòa Bình, Thanh Hóa với nghề dệt thổ cẩm lâu đời.",
-                    "dac_diem": "Áo cánh ngắn, váy đen dài nổi bật với cạp váy dệt hoa văn tinh xảo."
-                },
-                "Nùng": {
-                    "nguon_goc": "Truyền thống canh tác vùng Việt Bắc, nhuộm chàm xanh đen đặc trưng.",
-                    "dac_diem": "Trang phục màu chàm đơn giản, áo cài cúc vải, viền tay áo màu sáng."
-                },
-                "Pà Thẻn": {
-                    "nguon_goc": "Cư dân vùng núi cao Hà Giang, dệt hoa văn trực tiếp trên khung cửi.",
-                    "dac_diem": "Màu đỏ rực rỡ như chim phượng hoàng, khăn đội đầu xếp nhiều lớp."
-                },
-                "Tày": {
-                    "nguon_goc": "Cư dân thung lũng Việt Bắc, dệt vải chàm tự nhiên giản dị.",
-                    "dac_diem": "Áo dài năm thân màu chàm, thắt lưng xanh, vòng cổ bạc bản lớn."
-                },
-                "Hoa": {
-                    "nguon_goc": "Ảnh hưởng từ văn hóa Hán, sử dụng chất liệu gấm lụa cao cấp.",
-                    "dac_diem": "Xường xám hoặc áo năm thân cài cúc vải, họa tiết rồng phượng thêu tay."
-                },
-                "Mảng": {
-                    "nguon_goc": "Cư dân vùng cao Lai Châu, tự may váy áo phối hợp với vải mộc trắng.",
-                    "dac_diem": "Tấm choàng trắng (Tà xịa) thêu chỉ đỏ và áo trang trí bằng nhiều hàng đồng xu bạc."
-                },
-                "Sán Dìu": {
-                    "nguon_goc": "Cư dân trung du miền núi phía Bắc, dệt vải chàm bền chắc cho đi rừng.",
-                    "dac_diem": "Áo dài bốn thân, váy xẻ hai mảnh quấn quanh hông và xà cạp bảo vệ chân."
-                },
-                "Thổ": {
-                    "nguon_goc": "Giao thoa văn hóa Kinh - Mường vùng Nghệ An, Thanh Hóa.",
-                        "dac_diem": "Váy đen có cạp dệt hoa văn tinh xảo, thắt lưng màu nổi và khăn vuông trắng."},
-                }},
+    "Văn hóa": {
+        "Trang phục Dân tộc": {
+            "ba_na": "Trang phục Ba Na có nguồn gốc từ nghề dệt thổ cẩm truyền thống lâu đời. Người Ba Na sử dụng sợi bông tự nhiên, nhuộm màu bằng lá và vỏ cây rừng nên màu sắc rất bền. Trang phục chủ yếu có màu đen làm nền, kết hợp hoa văn đỏ, trắng mang ý nghĩa tâm linh và đời sống. Nam thường đóng khố, ở trần hoặc mặc áo ngắn; nữ mặc váy quấn và áo chui đầu. Hoa văn thường là hình học đối xứng, thể hiện núi rừng và vũ trụ.",
+
+            "thai": "Trang phục người Thái gắn liền với đời sống vùng núi Tây Bắc và nghề dệt tằm tang phát triển. Nổi bật nhất là áo cóm bó sát cơ thể, giúp tôn dáng người phụ nữ, phía trước có hàng khuy bạc hình bướm tượng trưng cho tình yêu. Váy dài màu đen với hoa văn ở chân váy. Khăn Piêu đội đầu được thêu tay công phu, mỗi hoa văn thể hiện sự khéo léo và cá tính riêng của người phụ nữ.",
+
+            "cham": "Trang phục Chăm bắt nguồn từ nền văn minh Chămpa cổ, chịu ảnh hưởng mạnh từ văn hóa Ấn Độ và Hồi giáo. Phụ nữ thường mặc áo dài chui đầu gọi là Patra, kết hợp với váy quấn (xà rông) và khăn đội đầu. Trang phục có màu sắc nhẹ nhàng như trắng, vàng, nâu. Hoa văn mang tính tôn giáo và biểu tượng văn hóa. Nam giới mặc áo dài và quấn khăn, thể hiện sự trang nghiêm.",
+
+            "dao_do": "Trang phục Dao Đỏ phản ánh rõ nét đời sống vùng núi cao phía Bắc. Trang phục sử dụng vải lanh nhuộm chàm, kết hợp thêu tay tinh xảo. Màu đỏ là màu chủ đạo, tượng trưng cho may mắn và sức mạnh. Phụ nữ đội khăn lớn màu đỏ, đính hạt và tua rua. Áo dài có nhiều họa tiết cầu kỳ ở cổ và tay áo. Trang sức bạc được sử dụng nhiều để thể hiện địa vị và sự giàu có.",
+
+            "e_de": "Trang phục Ê Đê mang đậm dấu ấn văn hóa mẫu hệ Tây Nguyên. Chất liệu chủ yếu là sợi bông dệt thủ công, nhuộm màu tự nhiên. Trang phục có màu đen làm nền, điểm xuyết hoa văn đỏ và trắng. Nữ mặc váy dài và áo chui đầu ôm sát cơ thể. Nam mặc khố và áo ngắn. Hoa văn thể hiện đời sống, thiên nhiên và tín ngưỡng của người Ê Đê.",
+
+            "hmong": "Trang phục H'Mông rất nổi bật với màu sắc rực rỡ và kỹ thuật thủ công độc đáo. Người H'Mông sử dụng kỹ thuật vẽ sáp ong lên vải trước khi nhuộm chàm để tạo hoa văn. Váy xòe nhiều lớp, thêu họa tiết cầu kỳ. Áo có màu sắc tươi sáng như đỏ, xanh, vàng. Trang sức bạc là phần không thể thiếu, thể hiện sự giàu có và nét đẹp truyền thống.",
+
+            "kinh": "Trang phục truyền thống của người Kinh tiêu biểu là áo dài. Áo dài có thiết kế ôm sát cơ thể, tà áo dài xẻ hai bên, mặc cùng quần dài. Chất liệu thường là lụa mềm mại. Áo dài thể hiện sự thanh lịch, kín đáo nhưng vẫn tôn lên vẻ đẹp của người mặc. Ngoài ra còn có nón lá – biểu tượng đặc trưng của văn hóa Việt Nam.",
+
+            "khmer": "Trang phục Khmer chịu ảnh hưởng của văn hóa Angkor và Phật giáo Nam tông. Phụ nữ thường mặc Săm-pốt (váy quấn), kết hợp với áo tầm vông và khăn choàng Sbay. Trang phục thường có màu sắc tươi sáng như vàng, đỏ. Hoa văn mang tính tôn giáo và hoàng gia. Nam giới mặc áo sơ mi và quần truyền thống trong các dịp lễ.",
+
+            "muong": "Trang phục người Mường mang nét giản dị nhưng tinh tế. Phụ nữ mặc áo cánh ngắn màu trắng hoặc xanh, váy dài màu đen. Điểm đặc biệt là cạp váy được dệt hoa văn rất cầu kỳ với nhiều màu sắc. Thắt lưng màu nổi tạo điểm nhấn. Trang phục thể hiện sự khéo léo trong nghề dệt và gu thẩm mỹ của người Mường.",
+
+            "nung": "Trang phục người Nùng thường có màu chàm đặc trưng, được nhuộm từ lá cây tự nhiên. Áo có thiết kế đơn giản, cài cúc vải, không nhiều họa tiết. Tay áo thường có viền sáng màu. Trang phục thể hiện sự mộc mạc, thực tế trong đời sống sinh hoạt của người Nùng.",
+
+            "pa_then": "Trang phục Pà Thẻn nổi bật với màu đỏ rực rỡ. Phụ nữ đội khăn nhiều lớp, trang trí hoa văn dệt trực tiếp lên vải. Áo và váy có họa tiết độc đáo, mang tính tâm linh cao. Trang phục thường được mặc trong các nghi lễ quan trọng như lễ nhảy lửa.",
+
+            "tay": "Trang phục người Tày đơn giản nhưng thanh lịch. Áo dài màu chàm, không có nhiều hoa văn, kết hợp với thắt lưng xanh. Trang sức bạc như vòng cổ, vòng tay được sử dụng để làm điểm nhấn. Trang phục phản ánh lối sống giản dị và gần gũi thiên nhiên.",
+
+            "hoa": "Trang phục người Hoa chịu ảnh hưởng văn hóa Trung Hoa. Phụ nữ thường mặc xường xám hoặc áo năm thân với họa tiết thêu tinh xảo như hoa, rồng, phượng. Chất liệu thường là gấm hoặc lụa. Trang phục thể hiện sự sang trọng và truyền thống lâu đời.",
+
+            "mang": "Trang phục người Mảng khá đặc biệt với tấm choàng trắng thêu chỉ đỏ nổi bật. Áo được trang trí bằng nhiều đồng xu bạc, tạo âm thanh khi di chuyển. Trang phục thể hiện nét văn hóa riêng biệt và đời sống gắn với núi rừng.",
+
+            "san_diu": "Trang phục Sán Dìu gồm áo dài bốn thân, váy quấn và xà cạp. Màu sắc chủ yếu là nâu và chàm. Trang phục phù hợp với lao động và sinh hoạt hằng ngày. Ngoài ra còn có khăn đội đầu và trang sức đơn giản.",
+
+            "tho": "Trang phục Thổ là sự giao thoa giữa văn hóa Kinh và Mường. Phụ nữ mặc váy đen dài, cạp váy có hoa văn, thắt lưng màu nổi. Áo đơn giản nhưng tinh tế. Trang phục thể hiện sự hòa trộn văn hóa độc đáo giữa các dân tộc."
+}},
                 "Phong tục": {
                     "Tết Nguyên Đán": "Tết Nguyên Đán(Từ cuối tháng Chạp đến mùng 3 Tết): Đây là cái Tết lớn nhất, khi mọi người gác lại lo toan để về nhà sum họp. Không chỉ là dọn dẹp nhà cửa cho sạch sẽ, sáng sủa mà còn là dịp để 'làm mới' tâm hồn, tha thứ cho nhau và cùng chúc nhau một năm mới vạn sự hanh thông, gia đình êm ấm.",
                     "Ông Công Ông Táo": "Ông Công Ông Táo(Ngày 23 tháng Chạp): Người Việt tin rằng đây là ngày các vị thần bếp cưỡi cá chép lên trời để 'báo cáo' việc lớn nhỏ trong nhà. Hình ảnh phóng sinh cá chép xuống sông hồ không chỉ là nghi lễ tâm linh mà còn thể hiện tấm lòng nhân ái, mong muốn những điều tốt đẹp nhất sẽ đến với gia đình.",
